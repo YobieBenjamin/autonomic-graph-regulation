@@ -1,0 +1,38 @@
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/coupling.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference
+PASS t_identical_channels_complete_graph
+PASS t_lag_detection
+PASS t_independent_channels_weak_coupling
+PASS t_too_short
+5/5 tests passed
+python3 tests/experiment.py
+{
+ "n": 428,
+ "failures": 36,
+ "auroc_ci95": {
+  "graph_mixed_nodes": [
+   0.6549,
+   0.5411,
+   0.758
+  ],
+  "graph_substrate_nodes": [
+   0.6698,
+   0.5426,
+   0.7741
+  ],
+  "raw_channel_stats": [
+   0.7021,
+   0.5866,
+   0.8077
+  ],
+  "raw_plus_graph": [
+   0.682,
+   0.5592,
+   0.7842
+  ]
+ },
+ "prediction_graph_predicts": true,
+ "prediction_graph_adds_beyond_raw": false
+}

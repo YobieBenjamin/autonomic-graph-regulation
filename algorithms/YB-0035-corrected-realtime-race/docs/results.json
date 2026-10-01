@@ -1,0 +1,408 @@
+{
+ "dry_run": false,
+ "derivation_answered": 5367,
+ "derivation_wrong": 402,
+ "fixed_compute_cost_s": {
+  "organism": 0.005,
+  "aiews_v4": 0.005,
+  "length_C1": 0.0,
+  "length_C2": 0.0
+ },
+ "primary_seed7": {
+  "label": "PRIMARY: seed 7, fixed tap, answered episodes",
+  "episodes": 535,
+  "wrong": 40,
+  "monitorable_wrong": 40,
+  "monitorable_correct": 301,
+  "monitors": {
+   "organism": {
+    "threshold": 0.2333,
+    "recall": 0.575,
+    "caught": 23,
+    "fpr": 0.099,
+    "fpr_monitorable": 0.1628,
+    "recall_monitorable": 0.575,
+    "median_seconds_to_spare_first_crossing": 3.208
+   },
+   "aiews_v4": {
+    "threshold": 5.0,
+    "recall": 0.225,
+    "caught": 9,
+    "fpr": 0.0808,
+    "fpr_monitorable": 0.1329,
+    "recall_monitorable": 0.225,
+    "median_seconds_to_spare_first_crossing": 3.674
+   },
+   "length_C1": {
+    "threshold": 192.0,
+    "recall": 0.225,
+    "caught": 9,
+    "fpr": 0.0626,
+    "fpr_monitorable": 0.103,
+    "recall_monitorable": 0.225,
+    "median_seconds_to_spare_first_crossing": 3.854
+   },
+   "length_C2": {
+    "threshold": 0.2939,
+    "recall": 0.075,
+    "caught": 3,
+    "fpr": 0.0364,
+    "fpr_monitorable": 0.0598,
+    "recall_monitorable": 0.075,
+    "median_seconds_to_spare_first_crossing": 1.708
+   },
+   "judge_prefix": {
+    "threshold": 0.6,
+    "recall": 0.275,
+    "caught": 11,
+    "fpr": 0.0667,
+    "fpr_monitorable": 0.1096,
+    "recall_monitorable": 0.275,
+    "median_seconds_to_spare_first_crossing": 2.736
+   },
+   "selfcons_prefix": {
+    "threshold": -Infinity,
+    "recall": 0.0,
+    "caught": 0,
+    "fpr": 0.0081,
+    "fpr_monitorable": 0.0133,
+    "recall_monitorable": 0.0,
+    "median_seconds_to_spare_first_crossing": null
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "best_length": "length_C1",
+  "organism_minus_best_behavior": [
+   0.3,
+   0.0488,
+   0.4865
+  ],
+  "organism_minus_best_length": [
+   0.35,
+   0.1281,
+   0.5435
+  ],
+  "H1_holds": true,
+  "aiews_minus_best_length": [
+   0.0,
+   -0.1628,
+   0.2251
+  ],
+  "per_checkpoint_auroc": {
+   "organism": {
+    "48": 0.7044,
+    "96": 0.7299,
+    "192": 0.798,
+    "384": 0.828
+   },
+   "judge_prefix": {
+    "48": 0.5436,
+    "96": 0.5618,
+    "192": 0.6086,
+    "384": 0.7832
+   }
+  }
+ },
+ "sensitivity_seed7_incl_unanswered": {
+  "label": "SENSITIVITY (F5): seed 7 incl. never-answered as failures",
+  "episodes": 600,
+  "wrong": 105,
+  "monitorable_wrong": 105,
+  "monitorable_correct": 301,
+  "monitors": {
+   "organism": {
+    "threshold": 0.2333,
+    "recall": 0.6476,
+    "caught": 68,
+    "fpr": 0.099,
+    "fpr_monitorable": 0.1628,
+    "recall_monitorable": 0.6476,
+    "median_seconds_to_spare_first_crossing": 8.954
+   },
+   "aiews_v4": {
+    "threshold": 5.0,
+    "recall": 0.1143,
+    "caught": 12,
+    "fpr": 0.0808,
+    "fpr_monitorable": 0.1329,
+    "recall_monitorable": 0.1143,
+    "median_seconds_to_spare_first_crossing": 3.819
+   },
+   "length_C1": {
+    "threshold": 192.0,
+    "recall": 0.7048,
+    "caught": 74,
+    "fpr": 0.0626,
+    "fpr_monitorable": 0.103,
+    "recall_monitorable": 0.7048,
+    "median_seconds_to_spare_first_crossing": 5.529
+   },
+   "length_C2": {
+    "threshold": 0.2939,
+    "recall": 0.0381,
+    "caught": 4,
+    "fpr": 0.0364,
+    "fpr_monitorable": 0.0598,
+    "recall_monitorable": 0.0381,
+    "median_seconds_to_spare_first_crossing": 1.77
+   },
+   "judge_prefix": {
+    "threshold": 0.6,
+    "recall": 0.619,
+    "caught": 65,
+    "fpr": 0.0667,
+    "fpr_monitorable": 0.1096,
+    "recall_monitorable": 0.619,
+    "median_seconds_to_spare_first_crossing": 8.124
+   },
+   "selfcons_prefix": {
+    "threshold": -Infinity,
+    "recall": 0.019,
+    "caught": 2,
+    "fpr": 0.0081,
+    "fpr_monitorable": 0.0133,
+    "recall_monitorable": 0.019,
+    "median_seconds_to_spare_first_crossing": 2.626
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "best_length": "length_C1",
+  "organism_minus_best_behavior": [
+   0.0286,
+   -0.1546,
+   0.1207
+  ],
+  "organism_minus_best_length": [
+   -0.0571,
+   -0.1932,
+   0.0613
+  ],
+  "H1_holds": false,
+  "aiews_minus_best_length": [
+   -0.5905,
+   -0.7,
+   -0.4583
+  ],
+  "per_checkpoint_auroc": {
+   "organism": {
+    "48": 0.7104,
+    "96": 0.7605,
+    "192": 0.8094,
+    "384": 0.8684
+   },
+   "judge_prefix": {
+    "48": 0.7376,
+    "96": 0.7505,
+    "192": 0.7675,
+    "384": 0.7559
+   }
+  }
+ },
+ "secondary_seed5": {
+  "label": "SECONDARY: seed 5, realigned, answered",
+  "episodes": 538,
+  "wrong": 44,
+  "monitorable_wrong": 44,
+  "monitorable_correct": 301,
+  "monitors": {
+   "organism": {
+    "threshold": 0.2192,
+    "recall": 0.6818,
+    "caught": 30,
+    "fpr": 0.0992,
+    "fpr_monitorable": 0.1628,
+    "recall_monitorable": 0.6818,
+    "median_seconds_to_spare_first_crossing": 4.009
+   },
+   "aiews_v4": {
+    "threshold": 4.0,
+    "recall": 0.3864,
+    "caught": 17,
+    "fpr": 0.0749,
+    "fpr_monitorable": 0.1229,
+    "recall_monitorable": 0.3864,
+    "median_seconds_to_spare_first_crossing": 3.326
+   },
+   "length_C1": {
+    "threshold": 192.0,
+    "recall": 0.3864,
+    "caught": 17,
+    "fpr": 0.0668,
+    "fpr_monitorable": 0.1096,
+    "recall_monitorable": 0.3864,
+    "median_seconds_to_spare_first_crossing": 2.139
+   },
+   "length_C2": {
+    "threshold": 0.2939,
+    "recall": 0.1364,
+    "caught": 6,
+    "fpr": 0.0486,
+    "fpr_monitorable": 0.0797,
+    "recall_monitorable": 0.1364,
+    "median_seconds_to_spare_first_crossing": 1.118
+   },
+   "judge_prefix": {
+    "threshold": 0.6,
+    "recall": 0.2955,
+    "caught": 13,
+    "fpr": 0.0769,
+    "fpr_monitorable": 0.1262,
+    "recall_monitorable": 0.2955,
+    "median_seconds_to_spare_first_crossing": 5.711
+   },
+   "selfcons_prefix": {
+    "threshold": -Infinity,
+    "recall": 0.0,
+    "caught": 0,
+    "fpr": 0.0081,
+    "fpr_monitorable": 0.0133,
+    "recall_monitorable": 0.0,
+    "median_seconds_to_spare_first_crossing": null
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "best_length": "length_C1",
+  "organism_minus_best_behavior": [
+   0.3864,
+   0.1395,
+   0.5745
+  ],
+  "organism_minus_best_length": [
+   0.2955,
+   0.0881,
+   0.4908
+  ],
+  "H1_holds": true,
+  "aiews_minus_best_length": [
+   0.0,
+   -0.1944,
+   0.2084
+  ],
+  "per_checkpoint_auroc": {
+   "organism": {
+    "48": 0.7415,
+    "96": 0.7796,
+    "192": 0.8119,
+    "384": 0.697
+   },
+   "judge_prefix": {
+    "48": 0.6356,
+    "96": 0.6226,
+    "192": 0.7326,
+    "384": 0.6684
+   }
+  }
+ },
+ "secondary_seed6": {
+  "label": "SECONDARY: seed 6, realigned, answered",
+  "episodes": 537,
+  "wrong": 43,
+  "monitorable_wrong": 42,
+  "monitorable_correct": 308,
+  "monitors": {
+   "organism": {
+    "threshold": 0.2583,
+    "recall": 0.5814,
+    "caught": 25,
+    "fpr": 0.0992,
+    "fpr_monitorable": 0.1591,
+    "recall_monitorable": 0.5952,
+    "median_seconds_to_spare_first_crossing": 3.241
+   },
+   "aiews_v4": {
+    "threshold": 4.0,
+    "recall": 0.3256,
+    "caught": 14,
+    "fpr": 0.0972,
+    "fpr_monitorable": 0.1558,
+    "recall_monitorable": 0.3333,
+    "median_seconds_to_spare_first_crossing": 2.491
+   },
+   "length_C1": {
+    "threshold": 192.0,
+    "recall": 0.2558,
+    "caught": 11,
+    "fpr": 0.0729,
+    "fpr_monitorable": 0.1169,
+    "recall_monitorable": 0.2619,
+    "median_seconds_to_spare_first_crossing": 1.405
+   },
+   "length_C2": {
+    "threshold": 0.2939,
+    "recall": 0.1395,
+    "caught": 6,
+    "fpr": 0.0648,
+    "fpr_monitorable": 0.1039,
+    "recall_monitorable": 0.1429,
+    "median_seconds_to_spare_first_crossing": 0.715
+   },
+   "judge_prefix": {
+    "threshold": 0.6,
+    "recall": 0.3023,
+    "caught": 13,
+    "fpr": 0.0931,
+    "fpr_monitorable": 0.1494,
+    "recall_monitorable": 0.3095,
+    "median_seconds_to_spare_first_crossing": 3.991
+   },
+   "selfcons_prefix": {
+    "threshold": -Infinity,
+    "recall": 0.0,
+    "caught": 0,
+    "fpr": 0.0142,
+    "fpr_monitorable": 0.0227,
+    "recall_monitorable": 0.0,
+    "median_seconds_to_spare_first_crossing": null
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "best_length": "length_C1",
+  "organism_minus_best_behavior": [
+   0.2791,
+   0.0599,
+   0.4857
+  ],
+  "organism_minus_best_length": [
+   0.3256,
+   0.1078,
+   0.5135
+  ],
+  "H1_holds": true,
+  "aiews_minus_best_length": [
+   0.0698,
+   -0.1715,
+   0.2501
+  ],
+  "per_checkpoint_auroc": {
+   "organism": {
+    "48": 0.7261,
+    "96": 0.7662,
+    "192": 0.7495,
+    "384": 0.5303
+   },
+   "judge_prefix": {
+    "48": 0.6068,
+    "96": 0.626,
+    "192": 0.6321,
+    "384": 0.6073
+   }
+  }
+ },
+ "R3_pooled_5_6_7": {
+  "episodes": 1610,
+  "wrong": 127,
+  "best_behavior": "judge_prefix",
+  "best_length": "length_C1",
+  "organism_minus_best_behavior": [
+   0.3228,
+   0.1858,
+   0.4334
+  ],
+  "organism_minus_best_length": [
+   0.3228,
+   0.2047,
+   0.434
+  ]
+ },
+ "CONFIRMED": true
+}

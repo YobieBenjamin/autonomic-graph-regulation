@@ -1,0 +1,18 @@
+== Tools
+  [ok]   git
+  [ok]   python3
+  [ok]   make
+  [ok]   gcc
+  [ok]   gh
+== Python environment (.venv, pinned in requirements.txt)
+  [ok]   numpy / scipy / scikit-learn
+== Docker sandbox
+  [ok]   docker: 12 CPUs, 33601363968 bytes RAM
+== Local LLM (LM Studio)
+  [ok]   gpt-oss-120b present
+== Credentials (never stored in this repo)
+  [ok]   gh logged in
+  [todo] optional cloud tier: security add-generic-password -a "$USER" -s anthropic-api-key -w
+== Self-validation: build + test every algorithm inside the sandbox
+  [ok]   2 algorithm test suites pass
+Finish the [todo] items above, then rerun ./bootstrap.sh

@@ -1,0 +1,13 @@
+2026-09-28T10:15:28 start {"cloud": false, "local": true, "cfg": {"local_url": "http://localhost:1234/v1", "local_model": "local-strong", "cloud_model": "claude-sonnet-5", "cloud_daily": 2000000, "local_conc": 3, "sandbox_conc": 8, "hyp_conc": 4, "local_repairs": 4, "cloud_repairs": 1, "publish": false}}
+2026-09-28T10:15:28 resumed {"hid": "YB-0003"}
+2026-09-28T10:16:43 llm {"role": "repair_local", "provider": "local", "secs": 75, "chars": 11568}
+2026-09-28T10:16:44 repair {"hid": "YB-0003", "attempt": 1, "role": "repair_local", "fixed": "src/algo.py", "ok": false}
+2026-09-28T10:18:15 llm {"role": "repair_local", "provider": "local", "secs": 91, "chars": 9568}
+2026-09-28T10:18:16 repair {"hid": "YB-0003", "attempt": 2, "role": "repair_local", "fixed": "src/algo.py", "ok": false}
+2026-09-28T10:18:49 llm {"role": "repair_local", "provider": "local", "secs": 33, "chars": 371}
+2026-09-28T10:18:49 repair {"hid": "YB-0003", "attempt": 3, "role": "repair_local", "fixed": "src/__init__.py", "ok": false}
+2026-09-28T10:19:20 llm {"role": "repair_local", "provider": "local", "secs": 31, "chars": 1974}
+2026-09-28T10:19:20 repair {"hid": "YB-0003", "attempt": 4, "role": "repair_local", "fixed": "src/algo.py", "ok": false}
+2026-09-28T10:19:21 repair {"hid": "YB-0003", "attempt": 5, "role": "repair_cloud", "fixed": null, "ok": false}
+2026-09-28T10:19:21 finished {"hid": "YB-0003", "status": "failed build/test", "design": "resumed", "impl": "-", "repairs": 5, "review": "-"}
+2026-09-28T10:19:21 done {"results": ["YB-0003: failed build/test"], "usage": {"date": "2026-09-28", "cloud_in": 0, "cloud_out": 0, "local_in": 126912, "local_out": 33209}}

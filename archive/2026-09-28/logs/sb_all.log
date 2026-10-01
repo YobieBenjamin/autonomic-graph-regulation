@@ -1,0 +1,71 @@
+== algorithms/YB-0001-homeostatic-heat-trace-monitor/
+make[1]: Entering directory '/work/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libheattrace.so src/heattrace.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_matches_numpy_reference
+PASS test_spectrum_in_0_2_and_heat_trace_identities
+PASS test_components_counted
+PASS test_known_graph_complete_K4
+PASS test_effective_connectivity_shape_and_symmetry
+PASS test_drift_budget_freezes
+6/6 tests passed
+python3 tests/experiment.py
+In-distribution test accuracy: 1.000
+
+AUROC (higher = better detection)
+set                                          MSP                  Energy         Act-Mahalanobis      H2CM v1 shape-only          H2CM v2 (ours)  H2CM + Act-Maha (z-sum
+near-OOD (digits 5-9)                      0.940                   0.955                   0.855                   0.781                   0.719                   0.864
+far-OOD (noise)                            0.967                   0.972                   1.000                   0.758                   0.643                   1.000
+FGSM eps=0.1                               0.935                   0.899                   0.697                   0.648                   0.578                   0.680
+FGSM eps=0.2                               0.848                   0.826                   0.890                   0.648                   0.632                   0.862
+
+Slow-drift stream (alpha ramps 0->1 over steps 500-2500):
+  static                         {'flag_rate_final_500_(fully_OOD)': 0.256, 'flag_rate_first_500_(clean)': 0.074, 'drift_alarm_step': None}
+  homeostatic-unbounded          {'flag_rate_final_500_(fully_OOD)': 0.142, 'flag_rate_first_500_(clean)': 0.074, 'drift_alarm_step': None}
+  homeostatic-budgeted (ours)    {'flag_rate_final_500_(fully_OOD)': 0.158, 'flag_rate_first_500_(clean)': 0.074, 'drift_alarm_step': 1258}
+
+Drift-budget control over 5 seeds: {'clean_false_alarms': 0, 'drift_detected': 5, 'alarm_alpha': [0.363, 0.354, 0.396, 0.386, 0.369], 'seeds': 5}
+make[1]: Leaving directory '/work/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+== algorithms/YB-0002-bounded-homeostasis-wrapper/
+make[1]: Entering directory '/work/algorithms/YB-0002-bounded-homeostasis-wrapper'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libbhw.so src/bhw.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_c_matches_python_reference
+PASS test_T1_T2_bound_holds_under_worst_case_attack
+PASS test_T3_alarm_step_matches_theory
+PASS test_unbounded_is_unbounded
+PASS test_budget_rule_monotone_and_1d_closed_form
+5/5 tests passed
+python3 tests/experiment.py
+
+=== energy [C1] (p=1, B=0.331, T1 bound=0.369) ===
+  static     {'final500_flag_rate_mean': 0.6818, 'clean_segment_flag_rate_mean': 0.055200000000000006, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  unbounded  {'final500_flag_rate_mean': 0.0124, 'clean_segment_flag_rate_mean': 0.058800000000000005, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  budgeted   {'final500_flag_rate_mean': 0.5454000000000001, 'clean_segment_flag_rate_mean': 0.058800000000000005, 'drift_detected': '10/10', 'alarm_at_alpha_mean': 0.11925, 'clean_false_alarms': '2/10'}
+  worst-case attack: {'unbounded': {'max_baseline_displacement': 767.5844066224267, 'inputs_flagged': 0, 'alarm_step': None}, 'budgeted': {'max_baseline_displacement': 0.3454129829799904, 'inputs_flagged': 0, 'alarm_step': 9, 'T3_predicted_alarm_step': 8.616912404001988}}
+  calibration: {'predicted_exceed_rate': 0.001, 'empirical_exceed_rate': 0.0018974358974358973}
+
+=== act-mahalanobis [C1] (p=64, B=1.028, T1 bound=1.208) ===
+  static     {'final500_flag_rate_mean': 0.7938000000000001, 'clean_segment_flag_rate_mean': 0.23199999999999998, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  unbounded  {'final500_flag_rate_mean': 0.6678, 'clean_segment_flag_rate_mean': 0.23839999999999995, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  budgeted   {'final500_flag_rate_mean': 0.8018000000000001, 'clean_segment_flag_rate_mean': 0.23700000000000002, 'drift_detected': '10/10', 'alarm_at_alpha_mean': 0.0, 'clean_false_alarms': '10/10'}
+  worst-case attack: {'unbounded': {'max_baseline_displacement': 3560.0732897397625, 'inputs_flagged': 0, 'alarm_step': None}, 'budgeted': {'max_baseline_displacement': 1.0680219869221295, 'inputs_flagged': 0, 'alarm_step': 6, 'T3_predicted_alarm_step': 5.777775412016123}}
+  calibration: {'predicted_exceed_rate': 0.001, 'empirical_exceed_rate': 0.829025641025641}
+
+=== energy [C2 split-cal] (p=1, B=0.642, T1 bound=0.681) ===
+  static     {'final500_flag_rate_mean': 0.7046, 'clean_segment_flag_rate_mean': 0.055200000000000006, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  unbounded  {'final500_flag_rate_mean': 0.011199999999999998, 'clean_segment_flag_rate_mean': 0.05740000000000001, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  budgeted   {'final500_flag_rate_mean': 0.43019999999999997, 'clean_segment_flag_rate_mean': 0.05740000000000001, 'drift_detected': '10/10', 'alarm_at_alpha_mean': 0.18105000000000002, 'clean_false_alarms': '0/10'}
+  worst-case attack: {'unbounded': {'max_baseline_displacement': 785.5133760470276, 'inputs_flagged': 0, 'alarm_step': None}, 'budgeted': {'max_baseline_displacement': 0.6676863696400719, 'inputs_flagged': 0, 'alarm_step': 17, 'T3_predicted_alarm_step': 16.336728305090812}}
+  calibration: {'predicted_exceed_rate': 0.001, 'empirical_exceed_rate': 0.0}
+
+=== act-mahalanobis [C2 split-cal] (p=64, B=1.995, T1 bound=2.296) ===
+  static     {'final500_flag_rate_mean': 0.23419999999999996, 'clean_segment_flag_rate_mean': 0.04379999999999999, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  unbounded  {'final500_flag_rate_mean': 0.153, 'clean_segment_flag_rate_mean': 0.038400000000000004, 'drift_detected': '0/10', 'alarm_at_alpha_mean': None, 'clean_false_alarms': '0/10'}
+  budgeted   {'final500_flag_rate_mean': 0.23280000000000003, 'clean_segment_flag_rate_mean': 0.038400000000000004, 'drift_detected': '10/10', 'alarm_at_alpha_mean': 0.13515000000000002, 'clean_false_alarms': '10/10'}
+  worst-case attack: {'unbounded': {'max_baseline_displacement': 5953.82923776676, 'inputs_flagged': 0, 'alarm_step': None}, 'budgeted': {'max_baseline_displacement': 2.0838402332184778, 'inputs_flagged': 0, 'alarm_step': 7, 'T3_predicted_alarm_step': 6.702920526107253}}
+  calibration: {'predicted_exceed_rate': 0.001, 'empirical_exceed_rate': 0.014307692307692308}
+make[1]: Leaving directory '/work/algorithms/YB-0002-bounded-homeostasis-wrapper'
+EXIT=0

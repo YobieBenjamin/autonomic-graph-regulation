@@ -1,0 +1,38 @@
+test	Run python miner/test_miner.py	﻿2026-09-28T16:34:04.6610580Z ##[group]Run python miner/test_miner.py
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6610938Z ^[[36;1mpython miner/test_miner.py^[[0m
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6679839Z shell: /usr/bin/bash -e {0}
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6680114Z env:
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6680394Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.14/x64
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6680845Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib/pkgconfig
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6681308Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6681686Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6682054Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.14/x64
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6682430Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.14/x64/lib
+test	Run python miner/test_miner.py	2026-09-28T16:34:04.6682760Z ##[endgroup]
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1794836Z YB-0003: SKIPPED (score 2) mock low | used today: 250/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1795942Z YB-0004: FAILED after 3 attempts | used today: 1,250/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1814887Z YB-0005: FAILED after 3 attempts | used today: 2,250/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1824233Z YB-0006: FAILED after 3 attempts | used today: 3,250/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1844326Z YB-0007: FAILED after 3 attempts | used today: 4,250/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1854486Z YB-0008: FAILED after 3 attempts | used today: 5,500/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1855404Z YB-0009: FAILED after 3 attempts | used today: 6,500/1,000,000
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1856883Z Mining run complete. Weighted tokens used today: 6,500; raw usage: {'input_tokens': 2600, 'output_tokens': 1300, 'cache_read_input_tokens': 26000, 'cache_creation_input_tokens': 0}
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1858196Z  
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1858650Z PASS triage skipped low scorer (YB-0003)
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1859304Z FAIL broken build repaired with patch-only resend (YB-0004)
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1860217Z PASS repair request carried only the log tail + patch instruction
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1861003Z PASS recursive proposals appended, capped at 2
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1861742Z PASS proposed hypotheses were mined too
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1862407Z PASS system prompt cached with 1h TTL
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1863071Z PASS conversation auto-cache on build calls
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1863998Z PASS triage uses cheap model, no cache overhead
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1864584Z PASS budget counts cache reads at 0.1x
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1865160Z PASS run terminated on its own
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1865713Z --- last sandbox failure log ---
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1866434Z make all failed (log tail below). Send ONLY the files you change.
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1867481Z docker: Error response from daemon: range of CPUs is from 0.01 to 2.00, as there are only 2 CPUs available
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1868278Z 
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1868620Z Run 'docker run --help' for more information
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1869093Z 
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1869421Z 9/10 miner checks passed, 26 mock API calls
+test	Run python miner/test_miner.py	2026-09-28T16:34:33.1924046Z ##[error]Process completed with exit code 1.

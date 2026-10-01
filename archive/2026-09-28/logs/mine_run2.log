@@ -1,0 +1,21 @@
+2026-09-28T09:53:05 start {"cloud": false, "local": true, "cfg": {"local_url": "http://localhost:1234/v1", "local_model": "local-strong", "cloud_model": "claude-sonnet-5", "cloud_daily": 2000000, "local_conc": 3, "sandbox_conc": 8, "hyp_conc": 4, "local_repairs": 4, "cloud_repairs": 1, "publish": false}}
+2026-09-28T09:53:52 llm {"role": "design", "provider": "local", "secs": 47, "chars": 11605}
+2026-09-28T09:54:46 llm {"role": "implement", "provider": "local", "secs": 54, "chars": 8146}
+2026-09-28T09:54:46 generated {"hid": "YB-0003", "file": "src/core.c", "ok": true}
+2026-09-28T09:56:09 llm {"role": "implement", "provider": "local", "secs": 83, "chars": 11979}
+2026-09-28T09:56:09 generated {"hid": "YB-0003", "file": "src/algo.py", "ok": true}
+2026-09-28T09:57:26 llm {"role": "implement", "provider": "local", "secs": 77, "chars": 4689}
+2026-09-28T09:57:26 generated {"hid": "YB-0003", "file": "tests/test_core.py", "ok": true}
+2026-09-28T09:58:41 llm {"role": "implement", "provider": "local", "secs": 74, "chars": 6257}
+2026-09-28T09:58:41 generated {"hid": "YB-0003", "file": "tests/experiment.py", "ok": true}
+2026-09-28T10:00:04 llm {"role": "repair_local", "provider": "local", "secs": 82, "chars": 8784}
+2026-09-28T10:00:04 repair {"hid": "YB-0003", "attempt": 1, "role": "repair_local", "fixed": "src/core.c", "ok": false}
+2026-09-28T10:01:00 llm {"role": "repair_local", "provider": "local", "secs": 56, "chars": 8048}
+2026-09-28T10:01:01 repair {"hid": "YB-0003", "attempt": 2, "role": "repair_local", "fixed": "src/core.c", "ok": false}
+2026-09-28T10:01:25 llm {"role": "repair_local", "provider": "local", "secs": 24, "chars": 211}
+2026-09-28T10:01:25 repair {"hid": "YB-0003", "attempt": 3, "role": "repair_local", "fixed": null, "ok": false}
+2026-09-28T10:01:29 llm {"role": "repair_local", "provider": "local", "secs": 3, "chars": 232}
+2026-09-28T10:01:29 repair {"hid": "YB-0003", "attempt": 4, "role": "repair_local", "fixed": null, "ok": false}
+2026-09-28T10:01:29 repair {"hid": "YB-0003", "attempt": 5, "role": "repair_cloud", "fixed": null, "ok": false}
+2026-09-28T10:01:29 finished {"hid": "YB-0003", "status": "failed build/test", "design": "local", "impl": "local", "repairs": 5, "review": "-"}
+2026-09-28T10:01:29 done {"results": ["YB-0003: failed build/test"], "usage": {"date": "2026-09-28", "cloud_in": 0, "cloud_out": 0, "local_in": 81804, "local_out": 24585}}

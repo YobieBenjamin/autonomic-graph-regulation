@@ -1,0 +1,99 @@
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference_24_nodes
+PASS t_two_modules_modularity_half
+PASS t_single_module_no_split
+PASS t_blind_to_answer_tokens
+PASS t_prefix_consistency
+5/5 tests passed
+python3 tests/experiment.py
+{
+ "n": 217,
+ "failures": 21,
+ "train_episodes": 428,
+ "deviation_excluded_nonidentical_rerecording": [],
+ "auroc_ci95": {
+  "O_deep": [
+   0.7646,
+   0.6191,
+   0.897
+  ],
+  "O_token": [
+   0.7199,
+   0.5695,
+   0.8459
+  ],
+  "B1_llm_judge": [
+   0.8861,
+   0.7913,
+   0.9567
+  ],
+  "B2_self_consistency": [
+   0.9795,
+   0.962,
+   0.9919
+  ],
+  "B3_answer_confidence": [
+   0.3901,
+   0.2905,
+   0.5046
+  ]
+ },
+ "recall_at_10fpr": {
+  "O_deep": 0.5714,
+  "O_token": 0.4762,
+  "B1_llm_judge": 0.619,
+  "B2_self_consistency": 1.0,
+  "B3_answer_confidence": 0.0
+ },
+ "H0_deeper_helps": {
+  "diff_ci": [
+   0.0447,
+   -0.1315,
+   0.2193
+  ],
+  "holds": false
+ },
+ "paired_Odeep_minus_B": {
+  "B1_llm_judge": [
+   -0.1215,
+   -0.2592,
+   0.0121
+  ],
+  "B2_self_consistency": [
+   -0.2149,
+   -0.3602,
+   -0.0837
+  ],
+  "B3_answer_confidence": [
+   0.3745,
+   0.1558,
+   0.5872
+  ]
+ },
+ "H1_vs_best_behavior": {
+  "best": "B2_self_consistency",
+  "diff_ci": [
+   -0.2149,
+   -0.3602,
+   -0.0837
+  ],
+  "verdict": "inferior"
+ },
+ "H3_Odeep_plus_best_vs_best": {
+  "diff_ci": [
+   0.006,
+   -0.0055,
+   0.0178
+  ],
+  "holds": false
+ },
+ "H2_lead_time": {
+  "errors_detected": 12,
+  "median_lead_tokens": 331.0,
+  "median_lead_ms": 4650.0,
+  "share_before_answer": 1.0,
+  "holds": true
+ }
+}

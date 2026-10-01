@@ -1,0 +1,15 @@
+2026-09-28T09:49:23 start {"cloud": false, "local": true, "cfg": {"local_url": "http://localhost:1234/v1", "local_model": "local-strong", "cloud_model": "claude-sonnet-5", "cloud_daily": 2000000, "local_conc": 3, "sandbox_conc": 8, "hyp_conc": 4, "local_repairs": 4, "cloud_repairs": 1, "publish": false}}
+2026-09-28T09:50:09 llm {"role": "design", "provider": "local", "secs": 46, "chars": 12280}
+2026-09-28T09:51:08 llm {"role": "implement", "provider": "local", "secs": 60, "chars": 6630}
+2026-09-28T09:51:08 implemented {"hid": "YB-0003", "files": ["Makefile"]}
+2026-09-28T09:51:19 llm {"role": "repair_local", "provider": "local", "secs": 11, "chars": 2095}
+2026-09-28T09:51:20 repair {"hid": "YB-0003", "attempt": 1, "role": "repair_local", "ok": false}
+2026-09-28T09:51:25 llm {"role": "repair_local", "provider": "local", "secs": 5, "chars": 729}
+2026-09-28T09:51:25 repair {"hid": "YB-0003", "attempt": 2, "role": "repair_local", "ok": false}
+2026-09-28T09:51:34 llm {"role": "repair_local", "provider": "local", "secs": 9, "chars": 729}
+2026-09-28T09:51:35 repair {"hid": "YB-0003", "attempt": 3, "role": "repair_local", "ok": false}
+2026-09-28T09:51:41 llm {"role": "repair_local", "provider": "local", "secs": 6, "chars": 727}
+2026-09-28T09:51:41 repair {"hid": "YB-0003", "attempt": 4, "role": "repair_local", "ok": false}
+2026-09-28T09:51:42 repair {"hid": "YB-0003", "attempt": 5, "role": "repair_cloud", "ok": false}
+2026-09-28T09:51:42 finished {"hid": "YB-0003", "status": "failed build/test", "design": "local", "impl": "local", "repairs": 5, "review": "-"}
+2026-09-28T09:51:42 done {"results": ["YB-0003: failed build/test"], "usage": {"date": "2026-09-28", "cloud_in": 0, "cloud_out": 0, "local_in": 13983, "local_out": 7229}}

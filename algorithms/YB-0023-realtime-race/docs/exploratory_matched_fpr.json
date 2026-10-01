@@ -1,0 +1,38 @@
+{
+ "O_deep": {
+  "threshold": 0.8702,
+  "false_alarm_rate": 0.102,
+  "recall_before_deadline": 0.5238,
+  "caught": 11,
+  "median_seconds_to_spare": 3.57
+ },
+ "O_token": {
+  "threshold": 1.0,
+  "false_alarm_rate": 0.102,
+  "recall_before_deadline": 0.0,
+  "caught": 0,
+  "median_seconds_to_spare": null
+ },
+ "B1_judge_prefix": {
+  "threshold": 0.4,
+  "false_alarm_rate": 0.0969,
+  "recall_before_deadline": 0.2857,
+  "caught": 6,
+  "median_seconds_to_spare": 5.338
+ },
+ "B2_selfcons_prefix": {
+  "threshold": 0.0,
+  "false_alarm_rate": 0.0153,
+  "recall_before_deadline": 0.1429,
+  "caught": 3,
+  "median_seconds_to_spare": 1.224
+ },
+ "O_deep_minus_best_behavior": {
+  "best": "B1_judge_prefix",
+  "recall_diff": [
+   0.2381,
+   -0.0476,
+   0.5238
+  ]
+ }
+}

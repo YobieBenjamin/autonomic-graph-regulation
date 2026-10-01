@@ -1,0 +1,134 @@
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_direction_and_mirror
+PASS t_monotonic
+PASS t_bounded
+PASS t_explainable
+PASS t_red_flag_escalates
+PASS t_nan_scores_zero
+6/6 tests passed
+python3 tests/experiment.py
+{
+ "n": 217,
+ "failures": 21,
+ "derivation_n": 428,
+ "hpa_calibration": [
+  0.00134,
+  0.2578
+ ],
+ "derivation": {
+  "direction": {
+   "V1_entropy": 1,
+   "V2_margin": -1,
+   "V3_layer_hrv": 1,
+   "V4_layer_synchrony": 1,
+   "V5_router_entropy": 1,
+   "V6_critical_slowing": -1,
+   "V7_cortisol": 1
+  },
+  "bands": {
+   "V1_entropy": [
+    0.30915,
+    0.33941,
+    0.43684
+   ],
+   "V2_margin": [
+    8.53051,
+    8.19521,
+    7.483
+   ],
+   "V3_layer_hrv": [
+    0.35605,
+    0.35934,
+    0.36967
+   ],
+   "V4_layer_synchrony": [
+    0.91544,
+    0.9244,
+    0.93874
+   ],
+   "V5_router_entropy": [
+    3.24516,
+    3.24775,
+    3.25764
+   ],
+   "V6_critical_slowing": [
+    -0.01362,
+    -0.04391,
+    -0.09464
+   ],
+   "V7_cortisol": [
+    3.87838,
+    3.98934,
+    4.18351
+   ]
+  }
+ },
+ "H1_auroc_ci95": [
+  0.7252,
+  0.5873,
+  0.8567
+ ],
+ "H1_holds": true,
+ "H2_levels_failure_rate": {
+  "stable": {
+   "failures": 11,
+   "episodes": 190,
+   "rate": 0.0579
+  },
+  "watch": {
+   "failures": 2,
+   "episodes": 17,
+   "rate": 0.1176
+  },
+  "concern": {
+   "failures": 6,
+   "episodes": 8,
+   "rate": 0.75
+  },
+  "urgent": {
+   "failures": 2,
+   "episodes": 2,
+   "rate": 1.0
+  }
+ },
+ "H2_monotonic": true,
+ "H3_aiews_minus_deep_organism": {
+  "diff_ci": [
+   -0.0394,
+   -0.1971,
+   0.1402
+  ],
+  "not_significantly_worse": true
+ },
+ "H4_trajectory": {
+  "median_slope_failures": -2.4,
+  "median_slope_successes": -4.0,
+  "mannwhitney_p_failures_gt_successes": 0.2598,
+  "holds": false
+ },
+ "mean_score_by_checkpoint": {
+  "failures": [
+   5.905,
+   4.952,
+   4.19,
+   4.238
+  ],
+  "successes": [
+   3.903,
+   2.051,
+   1.643,
+   1.281
+  ]
+ },
+ "points_most_often_raised_on_failures": {
+  "V1_entropy": 21,
+  "V2_margin": 32,
+  "V3_layer_hrv": 2,
+  "V4_layer_synchrony": 1,
+  "V5_router_entropy": 21,
+  "V6_critical_slowing": 3,
+  "V7_cortisol": 9
+ }
+}

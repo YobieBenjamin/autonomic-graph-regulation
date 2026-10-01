@@ -1,0 +1,9 @@
+episodes 6 already done 0
+/Users/yobie_benjamin/Desktop/SAFETY/agr/recorder.py:71: RuntimeWarning: overflow encountered in cast
+  if LAYERS: np.save(os.path.join(LD, str(idx) + '.npy'), np.stack(lay).astype(np.float16))
+0 mul_easy correct 39 tok 0.6562 s
+1 mul_hard correct 354 tok 3.8391 s
+2 count correct 137 tok 1.573 s
+3 weekday correct 278 tok 3.0544 s
+4 modpow NO-ANSWER 800 tok 8.5866 s
+5 add_hard correct 33 tok 0.4667 s

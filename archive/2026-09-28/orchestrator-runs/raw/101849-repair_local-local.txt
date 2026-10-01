@@ -1,0 +1,10 @@
+FILE: src/__init__.py
+```python
+# Ensure the C core can be imported without modification.
+import importlib.util, sys, pathlib
+
+# Load libcore.so lazily when needed; this file exists solely to satisfy imports.
+_lib_path = pathlib.Path(__file__).with_name("libcore.so")
+if not _lib_path.is_file():
+    raise FileNotFoundError(f"Missing compiled library at {_lib_path}")
+```

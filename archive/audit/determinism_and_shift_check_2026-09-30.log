@@ -1,0 +1,9 @@
+WITHIN-TODAY determinism idx 1 | run1 146 run2 146 | identical tokens True
+WITHIN-TODAY determinism idx 3 | run1 260 run2 260 | identical tokens True
+WITHIN-TODAY determinism idx 19 | run1 250 run2 250 | identical tokens True
+SHIFT idx 0 | median error vs old[t+1] 0.0121  vs old[t] 0.8389 (in channel std units)
+SHIFT idx 2 | median error vs old[t+1] 0.0141  vs old[t] 0.5196 (in channel std units)
+SHIFT idx 5 | median error vs old[t+1] 0.0140  vs old[t] 0.8901 (in channel std units)
+SHIFT idx 6 | median error vs old[t+1] 0.0119  vs old[t] 0.8430 (in channel std units)
+SHIFT idx 8 | median error vs old[t+1] 0.0140  vs old[t] 0.5131 (in channel std units)
+SHIFT idx 12 | median error vs old[t+1] 0.0125  vs old[t] 0.8540 (in channel std units)

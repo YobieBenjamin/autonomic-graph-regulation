@@ -1,0 +1,11 @@
+{
+  "purpose": "Audit C1: independent (GitHub server-side) evidence that the YB-0035 protocol commit b6c795b reached GitHub before the seed-7 test recording began",
+  "github_push_event_created_at": "2026-09-30T15:26:40Z",
+  "github_actions_run_created_at": "2026-09-30T15:26:42Z",
+  "protocol_commit": "b6c795b9a70c1d805a1ca24a53f531170e58d368",
+  "protocol_commit_author_time_note": "git author/committer times are set by the local machine and are not independent evidence",
+  "first_seed7_episode_local_clock_utc": "2026-09-30T15:26:49.955Z",
+  "mac_clock_offset_check_now": "-0.001180 +/- 0.005572 time.apple.com 17.253.16.125",
+  "retrieved_utc": "2026-10-01T01:33:22Z",
+  "caveat": "GitHub events API is visible only to the repository owner while the repository is private; event history is retained by GitHub for a limited period, so this snapshot preserves it"
+}

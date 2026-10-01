@@ -1,0 +1,114 @@
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/hpa.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference
+PASS t_T1_positivity
+PASS t_T2_boundedness
+PASS t_T3_unique_equilibrium
+PASS t_T4_feedback_desensitization
+5/5 tests passed
+python3 tests/experiment.py
+{
+ "n": 428,
+ "failures": 36,
+ "tiers": {
+  "tier2_entropy": {
+   "auroc_ci95": {
+    "organism_peak_cortisol": [
+     0.7025,
+     0.6319,
+     0.7742
+    ],
+    "organism_final_cortisol": [
+     0.7031,
+     0.6276,
+     0.7774
+    ],
+    "raw_accumulated_drive": [
+     0.7985,
+     0.7368,
+     0.8582
+    ],
+    "raw_mean_drive": [
+     0.7947,
+     0.715,
+     0.8635
+    ]
+   },
+   "trend_hypothesis": {
+    "spearman_rho_peak_vs_raw": 0.7505,
+    "predicted": "> 0.7",
+    "holds": true
+   },
+   "variance": {
+    "cv_organism": 0.1117,
+    "cv_raw": 1.14
+   },
+   "alarm_bands_failures": [
+    11,
+    16,
+    8,
+    1
+   ],
+   "alarm_bands_correct": [
+    196,
+    156,
+    36,
+    4
+   ]
+  },
+  "tier0_latency": {
+   "auroc_ci95": {
+    "organism_peak_cortisol": [
+     0.6494,
+     0.5468,
+     0.7476
+    ],
+    "organism_final_cortisol": [
+     0.6219,
+     0.5104,
+     0.7187
+    ],
+    "raw_accumulated_drive": [
+     0.7003,
+     0.6043,
+     0.7983
+    ],
+    "raw_mean_drive": [
+     0.6125,
+     0.5127,
+     0.7168
+    ]
+   },
+   "trend_hypothesis": {
+    "spearman_rho_peak_vs_raw": 0.9217,
+    "predicted": "> 0.7",
+    "holds": true
+   },
+   "variance": {
+    "cv_organism": 0.2653,
+    "cv_raw": 2.4045
+   },
+   "alarm_bands_failures": [
+    9,
+    19,
+    8,
+    0
+   ],
+   "alarm_bands_correct": [
+    196,
+    156,
+    36,
+    4
+   ]
+  }
+ },
+ "oscillation_sweep_cv_late_cortisol_by_n": {
+  "1": 0.0,
+  "2": 0.0,
+  "4": 0.0,
+  "8": 0.0,
+  "16": 0.0,
+  "32": 0.0
+ }
+}

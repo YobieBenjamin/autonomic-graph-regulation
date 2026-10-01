@@ -1,0 +1,47 @@
+{
+ "2": {
+  "episodes": 4800,
+  "packed": 4800,
+  "never_answered_kept_with_last_reading_dropped": 507,
+  "shard_mb": [
+   36.8,
+   37.1,
+   37.6,
+   37.3,
+   36.3,
+   36.1
+  ]
+ },
+ "3": {
+  "episodes": 600,
+  "packed": 600,
+  "never_answered_kept_with_last_reading_dropped": 56,
+  "shard_mb": [
+   27.1
+  ]
+ },
+ "4": {
+  "episodes": 600,
+  "packed": 600,
+  "never_answered_kept_with_last_reading_dropped": 70,
+  "shard_mb": [
+   28.0
+  ]
+ },
+ "5": {
+  "episodes": 600,
+  "packed": 600,
+  "never_answered_kept_with_last_reading_dropped": 62,
+  "shard_mb": [
+   27.7
+  ]
+ },
+ "6": {
+  "episodes": 600,
+  "packed": 600,
+  "never_answered_kept_with_last_reading_dropped": 63,
+  "shard_mb": [
+   27.5
+  ]
+ }
+}

@@ -1,0 +1,280 @@
+/* src/core.c --------------------------------------------------------------
+ * Sparse Auditor core library (Algorithm YB‑0003)
+ *
+ * Implements the C API declared in src/core.h. The model file format is a
+ * simple binary layout:
+ *
+ *   int32_t  n_layers                // number of weight matrices
+ *   for each layer i = 0..n_layers-1:
+ *       int32_t out_dim            // rows    (output units)
+ *       int32_t in_dim             // cols    (input units)
+ *       float   weights[out_dim][in_dim]   // row‑major, no bias
+ *
+ * All integers are stored in native endianness. The library loads the model,
+ * performs a forward pass with ReLU activations, and computes Gini sparsity
+ * as well as k‑WTA concentration margins.
+ *
+ * Compilation flags: -Wall -Wextra -Werror -shared -fPIC
+ * ---------------------------------------------------------------------- */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/* --------------------------------------------------------------
+ * Public API declarations (normally from core.h)
+ * -------------------------------------------------------------- */
+typedef struct SA_Model SA_Model;
+
+SA_Model *sa_load_model(const char *path);
+void sa_free_model(SA_Model *model);
+int sa_compute_gini(const SA_Model *model,
+                    const float *input,
+                    int dim,
+                    int k,
+                    float *gini_out);
+int sa_layer_stats(const SA_Model *model,
+                   const float *input,
+                   int dim,
+                   int layer_id,
+                   float *gini_out,
+                   float *margin_out);
+
+/* --------------------------- internal types ---------------------------- */
+struct SA_Model {
+    int n_layers;      /* number of weight matrices (including output)   */
+    int *out_dims;     /* size n_layers                                   */
+    int *in_dims;      /* size n_layers                                   */
+    float **W;         /* each W[i] points to out_dim*in_dim floats       */
+};
+
+/* --------------------------- utility helpers -------------------------- */
+
+/* ReLU activation in‑place */
+static void relu_inplace(float *a, int n)
+{
+    for (int i = 0; i < n; ++i) {
+        if (a[i] < 0.0f) a[i] = 0.0f;
+    }
+}
+
+/* Gini coefficient of a non‑negative vector */
+static float gini_coeff(const float *a, int n)
+{
+    if (n <= 1) return 0.0f;
+
+    double sum = 0.0;
+    for (int i = 0; i < n; ++i) sum += a[i];
+    if (sum == 0.0) return 0.0f;
+
+    double num = 0.0;
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            num += fabs((double)a[i] - (double)a[j]);
+
+    return (float)(num / (2.0 * n * sum));
+}
+
+/* Sum of largest k entries */
+static double topk_sum(const float *a, int n, int k)
+{
+    if (k <= 0) return 0.0;
+    if (k >= n) {
+        double s = 0.0;
+        for (int i = 0; i < n; ++i) s += a[i];
+        return s;
+    }
+
+    float *tmp = (float *)malloc(n * sizeof(float));
+    if (!tmp) return 0.0;
+    memcpy(tmp, a, n * sizeof(float));
+
+    int cmp_desc(const void *p1, const void *p2)
+    {
+        float f1 = *(const float *)p1;
+        float f2 = *(const float *)p2;
+        return (f2 > f1) - (f2 < f1);
+    }
+    qsort(tmp, n, sizeof(float), cmp_desc);
+
+    double s = 0.0;
+    for (int i = 0; i < k; ++i) s += tmp[i];
+    free(tmp);
+    return s;
+}
+
+/* --------------------------- model handling -------------------------- */
+
+SA_Model *sa_load_model(const char *path)
+{
+    if (!path) return NULL;
+
+    FILE *fp = fopen(path, "rb");
+    if (!fp) return NULL;
+
+    SA_Model *m = (SA_Model *)calloc(1, sizeof(SA_Model));
+    if (!m) { fclose(fp); return NULL; }
+
+    int32_t n_layers;
+    if (fread(&n_layers, sizeof(int32_t), 1, fp) != 1) goto fail;
+
+    if (n_layers <= 0) goto fail;
+
+    m->n_layers = n_layers;
+    m->out_dims = (int *)calloc(n_layers, sizeof(int));
+    m->in_dims  = (int *)calloc(n_layers, sizeof(int));
+    m->W        = (float **)calloc(n_layers, sizeof(float *));
+    if (!m->out_dims || !m->in_dims || !m->W) goto fail;
+
+    for (int i = 0; i < n_layers; ++i) {
+        int32_t out_dim, in_dim;
+        if (fread(&out_dim, sizeof(int32_t), 1, fp) != 1) goto fail;
+        if (fread(&in_dim , sizeof(int32_t), 1, fp) != 1) goto fail;
+
+        if (out_dim <= 0 || in_dim <= 0) goto fail;
+
+        m->out_dims[i] = out_dim;
+        m->in_dims[i]  = in_dim;
+
+        size_t sz = (size_t)out_dim * (size_t)in_dim;
+        m->W[i] = (float *)malloc(sz * sizeof(float));
+        if (!m->W[i]) goto fail;
+
+        if (fread(m->W[i], sizeof(float), sz, fp) != sz) goto fail;
+    }
+
+    fclose(fp);
+    return m;
+
+fail:
+    if (fp) fclose(fp);
+    sa_free_model(m);
+    return NULL;
+}
+
+void sa_free_model(SA_Model *model)
+{
+    if (!model) return;
+    for (int i = 0; i < model->n_layers; ++i) free(model->W[i]);
+    free(model->W);
+    free(model->out_dims);
+    free(model->in_dims);
+    free(model);
+}
+
+/* Forward pass returning hidden activations */
+static float **forward_activations(const SA_Model *m,
+                                   const float *input, int dim_input)
+{
+    if (!m) return NULL;
+
+    float **acts = (float **)calloc(m->n_layers, sizeof(float *));
+    if (!acts) return NULL;
+
+    const float *prev = input;
+    int prev_dim = dim_input;
+
+    for (int l = 0; l < m->n_layers; ++l) {
+        int out = m->out_dims[l];
+        int in  = m->in_dims[l];
+
+        if (in != prev_dim) goto cleanup;
+
+        float *cur = (float *)calloc(out, sizeof(float));
+        if (!cur) goto cleanup;
+
+        const float *W = m->W[l];
+        for (int i = 0; i < out; ++i) {
+            double acc = 0.0;
+            for (int j = 0; j < in; ++j)
+                acc += (double)W[i * in + j] * (double)prev[j];
+            cur[i] = (float)acc;
+        }
+        relu_inplace(cur, out);
+        acts[l] = cur;
+
+        prev = cur;
+        prev_dim = out;
+    }
+    return acts;
+
+cleanup:
+    if (acts) {
+        for (int i = 0; i < m->n_layers; ++i) free(acts[i]);
+        free(acts);
+    }
+    return NULL;
+}
+
+/* --------------------------- API implementations --------------------- */
+
+int sa_compute_gini(const SA_Model *model,
+                    const float *input,
+                    int dim,
+                    int k,               /* unused */
+                    float *gini)
+{
+    (void)k;  /* suppress unused‑parameter warning */
+    if (!model || !input || dim <= 0 || !gini) return -1;
+
+    float **acts = forward_activations(model, input, dim);
+    if (!acts) return -2;
+
+    int hidden_cnt = model->n_layers - 1;
+    if (hidden_cnt <= 0) {
+        *gini = 0.0f;
+        for (int i = 0; i < model->n_layers; ++i) free(acts[i]);
+        free(acts);
+        return 0;
+    }
+
+    double sum = 0.0;
+    for (int l = 0; l < hidden_cnt; ++l) {
+        int sz = model->out_dims[l];
+        sum += gini_coeff(acts[l], sz);
+    }
+    *gini = (float)(sum / hidden_cnt);
+
+    for (int i = 0; i < model->n_layers; ++i) free(acts[i]);
+    free(acts);
+    return 0;
+}
+
+int sa_layer_stats(const SA_Model *model,
+                   const float *input,
+                   int dim,
+                   int layer_id,
+                   float *gini,
+                   float *margin)
+{
+    if (!model || !input || dim <= 0 ||
+        !gini || !margin) return -1;
+
+    int hidden_cnt = model->n_layers - 1;
+    if (layer_id < 0 || layer_id >= hidden_cnt) return -2;
+
+    float **acts = forward_activations(model, input, dim);
+    if (!acts) return -3;
+
+    int sz = model->out_dims[layer_id];
+    const float *a = acts[layer_id];
+
+    *gini = gini_coeff(a, sz);
+
+    /* k‑WTA margin with k=1 */
+    int k = 1;
+    double total = 0.0;
+    for (int i = 0; i < sz; ++i) total += a[i];
+    if (total == 0.0) {
+        *margin = 0.0f;
+    } else {
+        double c_k   = topk_sum(a, sz, k) / total;
+        double c_k1  = topk_sum(a, sz, k + 1) / total;
+        *margin = (float)(c_k - c_k1);
+    }
+
+    for (int i = 0; i < model->n_layers; ++i) free(acts[i]);
+    free(acts);
+    return 0;
+}

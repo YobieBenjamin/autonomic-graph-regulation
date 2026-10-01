@@ -1,0 +1,105 @@
+{
+ "scope": "answered episodes only; failure = wrong answer",
+ "no_answer_excluded": 52,
+ "n": 428,
+ "failures": 36,
+ "by_category": {
+  "add_hard": [
+   0,
+   80
+  ],
+  "count": [
+   4,
+   80
+  ],
+  "modpow": [
+   10,
+   29
+  ],
+  "mul_easy": [
+   0,
+   80
+  ],
+  "mul_hard": [
+   9,
+   79
+  ],
+  "weekday": [
+   13,
+   80
+  ]
+ },
+ "raw": {
+  "tier0_physical": {
+   "auroc_ci95": [
+    0.6712,
+    0.5844,
+    0.7522
+   ]
+  },
+  "tier2_substrate": {
+   "auroc_ci95": [
+    0.8637,
+    0.8046,
+    0.9175
+   ]
+  },
+  "combined": {
+   "auroc_ci95": [
+    0.8524,
+    0.7903,
+    0.9098
+   ]
+  }
+ },
+ "within_category": {
+  "tier0_physical": {
+   "auroc_ci95": [
+    0.5573,
+    0.4287,
+    0.6633
+   ]
+  },
+  "tier2_substrate": {
+   "auroc_ci95": [
+    0.6808,
+    0.5662,
+    0.7931
+   ]
+  },
+  "combined": {
+   "auroc_ci95": [
+    0.6759,
+    0.5539,
+    0.7886
+   ]
+  }
+ },
+ "gospel": {
+  "errors": 36,
+  "confident_errors": 27,
+  "share_confident": 0.75,
+  "raw": {
+   "substrate_recall_at_10fpr": 0.5833,
+   "substrate_missed_errors": 15,
+   "physical_recall_at_10fpr": 0.3056,
+   "physical_catches_of_substrate_misses": [
+    5,
+    15
+   ],
+   "substrate_recall_on_confident_errors": 0.7037,
+   "physical_recall_on_confident_errors": 0.3333
+  },
+  "within_category": {
+   "substrate_recall_at_10fpr": 0.5278,
+   "substrate_missed_errors": 17,
+   "physical_recall_at_10fpr": 0.3056,
+   "physical_catches_of_substrate_misses": [
+    2,
+    17
+   ],
+   "substrate_recall_on_confident_errors": 0.5926,
+   "physical_recall_on_confident_errors": 0.3704
+  }
+ }
+}

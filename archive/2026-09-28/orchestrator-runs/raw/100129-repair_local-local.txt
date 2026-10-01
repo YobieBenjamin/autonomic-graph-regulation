@@ -1,0 +1,7 @@
+FILE: src/__init__.py
+```python
+# Make the `src` directory a Python package.
+# No symbols are required here; the presence of this file allows imports such as:
+#   from src.algo import SparseAuditor
+#   from src.mlp    import MLP
+```

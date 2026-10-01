@@ -1,0 +1,130 @@
+== algorithms/YB-0001-homeostatic-heat-trace-monitor/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libheattrace.so src/heattrace.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_matches_numpy_reference
+PASS test_spectrum_in_0_2_and_heat_trace_identities
+PASS test_components_counted
+PASS test_known_graph_complete_K4
+PASS test_effective_connectivity_shape_and_symmetry
+PASS test_drift_budget_freezes
+6/6 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+== algorithms/YB-0002-bounded-homeostasis-wrapper/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0002-bounded-homeostasis-wrapper'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libbhw.so src/bhw.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_c_matches_python_reference
+PASS test_T1_T2_bound_holds_under_worst_case_attack
+PASS test_T3_alarm_step_matches_theory
+PASS test_unbounded_is_unbounded
+PASS test_budget_rule_monotone_and_1d_closed_form
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0002-bounded-homeostasis-wrapper'
+== algorithms/YB-0009-physiological-coupling-graph/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0009-physiological-coupling-graph'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/coupling.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference
+PASS t_identical_channels_complete_graph
+PASS t_lag_detection
+PASS t_independent_channels_weak_coupling
+PASS t_too_short
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0009-physiological-coupling-graph'
+== algorithms/YB-0012-vitals-vs-behavior-flagship/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0012-vitals-vs-behavior-flagship'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_vitals_c_equals_reference
+PASS t_hpa_c_equals_reference
+PASS t_prefix_at_answer_equals_full_reasoning
+PASS t_reasoning_features_blind_to_answer_tokens
+PASS t_paired_bootstrap_identical_is_zero
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0012-vitals-vs-behavior-flagship'
+== algorithms/YB-0015-contamination-test/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0015-contamination-test'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_random
+PASS t_constant
+PASS t_ramp
+PASS t_spike
+PASS t_short
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0015-contamination-test'
+== algorithms/YB-0017-hpa-axis-organism/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0017-hpa-axis-organism'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/hpa.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference
+PASS t_T1_positivity
+PASS t_T2_boundedness
+PASS t_T3_unique_equilibrium
+PASS t_T4_feedback_desensitization
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0017-hpa-axis-organism'
+== algorithms/YB-0018-metabolic-vitals/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0018-metabolic-vitals'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/metabolic.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference
+PASS t_constant_power_energy
+PASS t_linear_ramp_trapezoid_exact
+PASS t_short
+4/4 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0018-metabolic-vitals'
+== algorithms/YB-0019-deep-layer-graph-organism/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0019-deep-layer-graph-organism'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_c_equals_reference_24_nodes
+PASS t_two_modules_modularity_half
+PASS t_single_module_no_split
+PASS t_blind_to_answer_tokens
+PASS t_prefix_consistency
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0019-deep-layer-graph-organism'
+== algorithms/YB-0022-graded-agentic-early-warning/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0022-graded-agentic-early-warning'
+1/1 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0022-graded-agentic-early-warning'
+== algorithms/YB-0023-realtime-race/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0023-realtime-race'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_checkpoints
+PASS t_times
+PASS t_deadline_rule
+PASS t_first_valid_is_earliest
+PASS t_prefix_blind_to_future
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0023-realtime-race'
+== algorithms/YB-0030-ai-ews-v1/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0030-ai-ews-v1'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_direction_and_mirror
+PASS t_monotonic
+PASS t_bounded
+PASS t_explainable
+PASS t_red_flag_escalates
+PASS t_nan_scores_zero
+6/6 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0030-ai-ews-v1'
+To https://github.com/YobieBenjamin/safety.git
+   cb72e92..912affa  main -> main
+branch 'main' set up to track 'origin/main'.
+Published: https://github.com/YobieBenjamin/safety
+EXIT=0

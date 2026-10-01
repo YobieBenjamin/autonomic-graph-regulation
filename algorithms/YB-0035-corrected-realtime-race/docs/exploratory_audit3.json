@@ -1,0 +1,15 @@
+{
+ "note": "EXPLORATORY",
+ "type_by_length_baseline": {
+  "answered": 535,
+  "wrong": 40,
+  "caught": 9,
+  "fpr": 0.0606,
+  "threshold": 0.17771084337349397
+ },
+ "selfcons_compute_s": {
+  "checks": 1165,
+  "median": 5.77,
+  "p90": 19.61
+ }
+}

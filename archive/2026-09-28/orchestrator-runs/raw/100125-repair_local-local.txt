@@ -1,0 +1,6 @@
+FILE: src/__init__.py
+```python
+# Make the src directory a Python package.
+# No additional code is required; this file exists solely to allow imports such as
+# `import src.algo` or `from src.mlp import MLP`.
+```

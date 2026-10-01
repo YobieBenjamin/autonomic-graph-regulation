@@ -1,0 +1,21 @@
+# Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
+# Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
+name: verify-algorithms
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install numpy scikit-learn requests
+      - name: select changed algorithms (same script as local publish)
+        run: |
+          BASE="${{ github.event.before }}"; [ "${{ github.event_name }}" = pull_request ] && BASE="${{ github.event.pull_request.base.sha }}"
+          case "$BASE" in ""|0000000000000000000000000000000000000000) BASE=none;; esac
+          scripts/changed_algorithms.sh "$BASE" > .verify_changed; echo "experiments for:"; cat .verify_changed
+      - run: make verify
+      - run: python miner/test_miner.py   # offline miner test vs mock API (no tokens)

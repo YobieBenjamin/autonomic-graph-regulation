@@ -1,0 +1,127 @@
+FILE: src/mlp.py
+```python
+# src/mlp.py
+import numpy as np
+
+class MLP:
+    """
+    Simple fully‑connected network with two hidden layers.
+    The weight matrices are stored in ``self.weights`` (list of 2‑D arrays)
+    and a bias term is omitted for simplicity, matching the C core format.
+    """
+
+    def __init__(self, d, h1, h2, c, seed=0):
+        rng = np.random.default_rng(seed)
+        self.d = d
+        # weight shapes: (h1, d), (h2, h1), (c, h2)
+        self.weights = [
+            rng.standard_normal((h1, d), dtype=np.float32),
+            rng.standard_normal((h2, h1), dtype=np.float32),
+            rng.standard_normal((c,  h2), dtype=np.float32),
+        ]
+
+    # ------------------------------------------------------------------
+    # Training utilities (placeholder – deterministic dummy training)
+    # ------------------------------------------------------------------
+    def train(self, X, y):
+        """Deterministic “training”: do nothing, keep random init."""
+        pass
+
+    # ------------------------------------------------------------------
+    # Forward pass returning intermediate values
+    # ------------------------------------------------------------------
+    def forward(self, X):
+        """
+        Returns tuple (z1, a1, z2, a2, logits)
+        where zi are pre‑activations and ai are post‑ReLU activations.
+        """
+        X = np.asarray(X, dtype=np.float32)
+        W1, W2, W3 = self.weights
+        z1 = X @ W1.T
+        a1 = np.maximum(z1, 0.0)
+        z2 = a1 @ W2.T
+        a2 = np.maximum(z2, 0.0)
+        logits = a2 @ W3.T
+        return z1, a1, z2, a2, logits
+
+    def predict(self, X):
+        _, _, _, _, logits = self.forward(X)
+        return np.argmax(logits, axis=1)
+
+    # ------------------------------------------------------------------
+    # FGSM adversarial example generation
+    # ------------------------------------------------------------------
+    def fgsm(self, X, y, eps):
+        """
+        Simple FGSM using cross‑entropy loss gradient w.r.t. input.
+        Returns perturbed inputs clipped to [0, 1].
+        """
+        X = np.asarray(X, dtype=np.float32)
+        y = np.asarray(y, dtype=np.int64)
+
+        # forward
+        z1, a1, z2, a2, logits = self.forward(X)
+        probs = MLP.softmax(logits)
+
+        # one‑hot
+        Y_one = np.zeros_like(probs)
+        Y_one[np.arange(len(y)), y] = 1.0
+
+        # gradient of loss wrt logits
+        dL_dlogit = (probs - Y_one) / X.shape[0]
+
+        # backprop to input
+        W3, W2, W1 = self.weights[2], self.weights[1], self.weights[0]
+        grad_a2 = dL_dlogit @ W3          # shape (N, h2)
+        grad_z2 = grad_a2 * (a2 > 0)      # ReLU backprop
+        grad_a1 = grad_z2 @ W2            # shape (N, h1)
+        grad_z1 = grad_a1 * (a1 > 0)
+        grad_X  = grad_z1 @ W1           # shape (N, d)
+
+        X_adv = np.clip(X + eps * np.sign(grad_X), 0.0, 1.0)
+        return X_adv
+
+    @staticmethod
+    def softmax(z):
+        """Numerically stable softmax."""
+        z = np.asarray(z, dtype=np.float32)
+        m = np.max(z, axis=1, keepdims=True)
+        e = np.exp(z - m)
+        return e / np.sum(e, axis=1, keepdims=True)
+
+    # ------------------------------------------------------------------
+    # Persistence helpers – binary format compatible with C core
+    # ------------------------------------------------------------------
+    def _save_weights_to_file(self, path: str):
+        """
+        Write model to binary file matching the layout expected by src/core.c:
+        int32 n_layers; then for each layer: int32 out_dim, int32 in_dim,
+        followed by out_dim*in_dim float32 weights (row‑major).
+        """
+        with open(path, "wb") as f:
+            n_layers = len(self.weights)
+            f.write(np.int32(n_layers).tobytes())
+            for W in self.weights:
+                out_dim, in_dim = W.shape
+                f.write(np.int32(out_dim).tobytes())
+                f.write(np.int32(in_dim).tobytes())
+                # row‑major already
+                f.write(W.astype(np.float32).tobytes())
+
+    def _load_weights_from_file(self, path: str):
+        """
+        Load weights from a binary file written by ``_save_weights_to_file``.
+        Overwrites ``self.weights`` while keeping the architecture consistent.
+        """
+        with open(path, "rb") as f:
+            n_layers = np.frombuffer(f.read(4), dtype=np.int32)[0]
+            loaded = []
+            for _ in range(n_layers):
+                out_dim = np.frombuffer(f.read(4), dtype=np.int32)[0]
+                in_dim  = np.frombuffer(f.read(4), dtype=np.int32)[0]
+                count = out_dim * in_dim
+                w = np.frombuffer(f.read(count * 4), dtype=np.float32)
+                loaded.append(w.reshape((out_dim, in_dim)))
+            self.weights = loaded
+
+```

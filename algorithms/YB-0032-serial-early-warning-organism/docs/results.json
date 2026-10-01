@@ -1,0 +1,179 @@
+{
+ "dry_run": false,
+ "derivation_answered": 4837,
+ "derivation_wrong": 356,
+ "serial_observations": 19348,
+ "feature_minutes": 0.4,
+ "test_answered": 530,
+ "test_wrong": 46,
+ "H1_race": {
+  "monitors": {
+   "serial_organism": {
+    "recall_in_time": 0.6304,
+    "caught": 29,
+    "false_alarm_rate": 0.1012,
+    "median_seconds_to_spare": 1.251,
+    "median_compute_s": 0.00221
+   },
+   "reference_complete": {
+    "recall_in_time": 0.0652,
+    "caught": 3,
+    "false_alarm_rate": 0.1012,
+    "median_seconds_to_spare": 1.557,
+    "median_compute_s": 0.00219
+   },
+   "aiews_v3": {
+    "recall_in_time": 0.5217,
+    "caught": 24,
+    "false_alarm_rate": 0.0971,
+    "median_seconds_to_spare": 1.669,
+    "median_compute_s": 0.00164
+   },
+   "judge_prefix": {
+    "recall_in_time": 0.1957,
+    "caught": 9,
+    "false_alarm_rate": 0.0888,
+    "median_seconds_to_spare": 0.845,
+    "median_compute_s": 1.57615
+   },
+   "selfcons_prefix": {
+    "recall_in_time": 0.0,
+    "caught": 0,
+    "false_alarm_rate": 0.0062,
+    "median_seconds_to_spare": null,
+    "median_compute_s": 2.3607
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "serial_minus_best": [
+   0.4348,
+   0.2391,
+   0.6092
+  ],
+  "verdict": "SUPERIOR"
+ },
+ "H2_serial_minus_reference": {
+  "diff": [
+   0.5652,
+   0.413,
+   0.7174
+  ],
+  "holds": true
+ },
+ "H3_aiews_v3": {
+  "levels_by_stage": {
+   "0.25": {
+    "stable": [
+     28,
+     468
+    ],
+    "watch": [
+     8,
+     38
+    ],
+    "concern": [
+     9,
+     19
+    ],
+    "urgent": [
+     1,
+     5
+    ]
+   },
+   "0.5": {
+    "stable": [
+     28,
+     462
+    ],
+    "watch": [
+     7,
+     41
+    ],
+    "concern": [
+     8,
+     21
+    ],
+    "urgent": [
+     3,
+     6
+    ]
+   },
+   "0.75": {
+    "stable": [
+     22,
+     457
+    ],
+    "watch": [
+     9,
+     46
+    ],
+    "concern": [
+     13,
+     21
+    ],
+    "urgent": [
+     2,
+     6
+    ]
+   },
+   "1.0": {
+    "stable": [
+     23,
+     461
+    ],
+    "watch": [
+     9,
+     42
+    ],
+    "concern": [
+     11,
+     21
+    ],
+    "urgent": [
+     3,
+     6
+    ]
+   }
+  },
+  "ordered_every_stage": false,
+  "in_time_recall_ci": [
+   0.3913,
+   0.6739
+  ],
+  "holds": false
+ },
+ "H4_auroc_at_100": {
+  "serial": 0.8389,
+  "reference": 0.8193,
+  "diff": [
+   0.0197,
+   -0.0172,
+   0.0709
+  ],
+  "holds": true
+ },
+ "H5_slips_in_time": {
+  "slip_errors": 17,
+  "recall": 0.3529,
+  "ci": [
+   0.1765,
+   0.5882
+  ],
+  "holds": true
+ },
+ "per_stage_auroc": {
+  "serial": {
+   "0.25": 0.7898,
+   "0.5": 0.8394,
+   "0.75": 0.8367,
+   "1.0": 0.8389
+  },
+  "reference": {
+   "0.25": 0.4084,
+   "0.5": 0.7072,
+   "0.75": 0.7988,
+   "1.0": 0.8193
+  }
+ },
+ "EUREKA": true
+}

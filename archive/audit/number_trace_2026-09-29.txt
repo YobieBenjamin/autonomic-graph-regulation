@@ -1,0 +1,14 @@
+YB-0001-homeostatic-heat-trace-monitor | numbers checked 8 | untraced: 2009 2018 2020
+YB-0002-bounded-homeostasis-wrapper | numbers checked 19 | untraced: 112 1959 1992 2007 2010
+YB-0009-physiological-coupling-graph | numbers checked 26 | untraced: none
+YB-0012-vitals-vs-behavior-flagship | numbers checked 65 | untraced: 120 256 4.5 465 772
+YB-0015-contamination-test | numbers checked 55 | untraced: none
+YB-0017-hpa-axis-organism | numbers checked 46 | untraced: 392 40
+YB-0018-metabolic-vitals | numbers checked 27 | untraced: none
+YB-0019-deep-layer-graph-organism | numbers checked 75 | untraced: 650
+YB-0023-realtime-race | numbers checked 49 | untraced: none
+YB-0030-ai-ews-v1 | numbers checked 47 | untraced: none
+YB-0031-confirmatory-deep-program | numbers checked 74 | untraced: 0.00069 0.765 15 293
+YB-0032-serial-early-warning-organism | numbers checked 75 | untraced: 0.48 0.55 0.578 0.773 15 348 837
+YB-0033-clean-realtime-race | numbers checked 103 | untraced: 192 2.6 258 367 384 4.1 48 96
+TOTAL numbers checked 491 | untraced 37

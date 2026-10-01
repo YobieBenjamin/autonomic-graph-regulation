@@ -1,0 +1,34 @@
+00,000
+YB-0004: PASS - repaired (750 tokens) | used today: 1,000/1,000,000
+YB-0008: PASS - mock pass (500 tokens) | used today: 1,500/1,000,000
+YB-0010: PASS - mock pass (500 tokens) | used today: 2,000/1,000,000
+YB-0011: PASS - mock pass (500 tokens) | used today: 2,500/1,000,000
+YB-0013: PASS - mock pass (500 tokens) | used today: 3,000/1,000,000
+YB-0014: PASS - mock pass (500 tokens) | used today: 3,500/1,000,000
+YB-0016: PASS - mock pass (500 tokens) | used today: 4,000/1,000,000
+YB-0020: PASS - mock pass (500 tokens) | used today: 4,500/1,000,000
+YB-0021: PASS - mock pass (500 tokens) | used today: 5,000/1,000,000
+YB-0022: PASS - mock pass (500 tokens) | used today: 5,500/1,000,000
+YB-0023: PASS - mock pass (500 tokens) | used today: 6,000/1,000,000
+YB-0024: PASS - mock pass (500 tokens) | used today: 6,500/1,000,000
+YB-0025: PASS - mock pass (500 tokens) | used today: 7,000/1,000,000
+YB-0026: PASS - mock pass (500 tokens) | used today: 7,500/1,000,000
+YB-0027: PASS - mock pass (500 tokens) | used today: 8,000/1,000,000
+YB-0028: PASS - mock pass (500 tokens) | used today: 8,500/1,000,000
+YB-0029: PASS - mock pass (500 tokens) | used today: 9,000/1,000,000
+YB-0030: PASS - mock pass (500 tokens) | used today: 9,750/1,000,000
+YB-0031: PASS - mock pass (500 tokens) | used today: 10,250/1,000,000
+Mining run complete. Weighted tokens used today: 10,250; raw usage: {'input_tokens': 4100, 'output_tokens': 2050, 'cache_read_input_tokens': 41000, 'cache_creation_input_tokens': 0}
+ 
+PASS triage skipped low scorer (YB-0003)
+PASS broken build repaired with patch-only resend (YB-0004)
+PASS repair request carried only the log tail + patch instruction
+PASS recursive proposals appended, capped at 2
+PASS proposed hypotheses were mined too
+PASS system prompt cached with 1h TTL
+PASS conversation auto-cache on build calls
+PASS triage uses cheap model, no cache overhead
+PASS budget counts cache reads at 0.1x
+PASS run terminated on its own
+10/10 miner checks passed, 41 mock API calls
+EXIT=0

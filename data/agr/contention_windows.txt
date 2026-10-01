@@ -1,0 +1,7 @@
+2026-09-28T18:57:12Z 2026-09-28T18:57:19Z publish.sh sandbox tests
+2026-09-29T16:34:42Z start publish23 (YB-0032 prereg) during seed-4 recording
+2026-09-29T16:34:49Z end publish23
+2026-09-30T03:06:47Z start qwen recorder smoke test during seed-6 recording
+2026-09-30T03:07:29Z end qwen recorder smoke test (stopped by 300 s limit)
+2026-09-30T03:28:56Z start download of 3 MLX models (network/disk only) during seed-6 chain
+2026-09-30T03:34:11Z end model downloads

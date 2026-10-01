@@ -1,0 +1,94 @@
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libcore.so src/vitals.c src/hpa.c src/layergraph.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS t_checkpoints
+PASS t_times
+PASS t_deadline_rule
+PASS t_first_valid_is_earliest
+PASS t_prefix_blind_to_future
+5/5 tests passed
+python3 tests/experiment.py
+{
+ "n": 217,
+ "failures": 21,
+ "R2_deadline": {
+  "O_deep": {
+   "recall_before_deadline": 0.7619,
+   "false_alarm_rate_any_checkpoint": 0.6582,
+   "median_seconds_before_answer": 3.23,
+   "median_compute_s": 0.00238
+  },
+  "O_token": {
+   "recall_before_deadline": 0.9524,
+   "false_alarm_rate_any_checkpoint": 0.9388,
+   "median_seconds_before_answer": 2.837,
+   "median_compute_s": 0.00014
+  },
+  "B1_judge_prefix": {
+   "recall_before_deadline": 0.2857,
+   "false_alarm_rate_any_checkpoint": 0.1224,
+   "median_seconds_before_answer": 5.338,
+   "median_compute_s": 1.6628
+  },
+  "B2_selfcons_prefix": {
+   "recall_before_deadline": 0.1429,
+   "false_alarm_rate_any_checkpoint": 0.0153,
+   "median_seconds_before_answer": 1.224,
+   "median_compute_s": 2.411
+  }
+ },
+ "thresholds": {
+  "O_deep": {
+   "0.25": 0.1013,
+   "0.5": 0.1013,
+   "0.75": 0.1013
+  },
+  "O_token": {
+   "0.25": 0.1303,
+   "0.5": 0.1303,
+   "0.75": 0.1303
+  },
+  "B1_judge_prefix": {
+   "0.25": 0.36,
+   "0.5": 0.3,
+   "0.75": 0.3
+  },
+  "B2_selfcons_prefix": {
+   "0.25": 0.0,
+   "0.5": 0.0,
+   "0.75": 0.0
+  }
+ },
+ "H1_RT": {
+  "organism": "O_deep",
+  "best_behavior": "B1_judge_prefix",
+  "recall_diff_ci": [
+   0.4762,
+   0.2381,
+   0.7143
+  ],
+  "verdict": "organism wins"
+ },
+ "R1_information_matched_auroc": {
+  "O_deep": {
+   "0.25": 0.6516,
+   "0.5": 0.7257,
+   "0.75": 0.7442
+  },
+  "O_token": {
+   "0.25": 0.3724,
+   "0.5": 0.5595,
+   "0.75": 0.6232
+  },
+  "B1_judge_prefix": {
+   "0.25": 0.7041,
+   "0.5": 0.7753,
+   "0.75": 0.7725
+  },
+  "B2_selfcons_prefix": {
+   "0.25": 0.6939,
+   "0.5": 0.699,
+   "0.75": 0.5876
+  }
+ }
+}

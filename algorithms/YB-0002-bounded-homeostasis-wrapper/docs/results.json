@@ -1,0 +1,182 @@
+{
+  "eta": 0.02,
+  "seeds": 10,
+  "detectors": {
+    "energy [C1]": {
+      "p": 1,
+      "tau": 1.9383,
+      "B_rule_q0.999": 0.3307,
+      "bound_T1": 0.3695,
+      "static": {
+        "final500_flag_rate_mean": 0.6818,
+        "clean_segment_flag_rate_mean": 0.0552,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "unbounded": {
+        "final500_flag_rate_mean": 0.0124,
+        "clean_segment_flag_rate_mean": 0.0588,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "budgeted": {
+        "final500_flag_rate_mean": 0.5454,
+        "clean_segment_flag_rate_mean": 0.0588,
+        "drift_detected": "10/10",
+        "alarm_at_alpha_mean": 0.1192,
+        "clean_false_alarms": "2/10"
+      },
+      "worst_case_attack_20000_steps": {
+        "unbounded": {
+          "max_baseline_displacement": 767.5844,
+          "inputs_flagged": 0,
+          "alarm_step": null
+        },
+        "budgeted": {
+          "max_baseline_displacement": 0.3454,
+          "inputs_flagged": 0,
+          "alarm_step": 9,
+          "T3_predicted_alarm_step": 8.6169
+        }
+      },
+      "calibration_check": {
+        "predicted_exceed_rate": 0.001,
+        "empirical_exceed_rate": 0.0019
+      }
+    },
+    "act-mahalanobis [C1]": {
+      "p": 64,
+      "tau": 8.9901,
+      "B_rule_q0.999": 1.0285,
+      "bound_T1": 1.2083,
+      "static": {
+        "final500_flag_rate_mean": 0.7938,
+        "clean_segment_flag_rate_mean": 0.232,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "unbounded": {
+        "final500_flag_rate_mean": 0.6678,
+        "clean_segment_flag_rate_mean": 0.2384,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "budgeted": {
+        "final500_flag_rate_mean": 0.8018,
+        "clean_segment_flag_rate_mean": 0.237,
+        "drift_detected": "10/10",
+        "alarm_at_alpha_mean": 0.0,
+        "clean_false_alarms": "10/10"
+      },
+      "worst_case_attack_20000_steps": {
+        "unbounded": {
+          "max_baseline_displacement": 3560.0733,
+          "inputs_flagged": 0,
+          "alarm_step": null
+        },
+        "budgeted": {
+          "max_baseline_displacement": 1.068,
+          "inputs_flagged": 0,
+          "alarm_step": 6,
+          "T3_predicted_alarm_step": 5.7778
+        }
+      },
+      "calibration_check": {
+        "predicted_exceed_rate": 0.001,
+        "empirical_exceed_rate": 0.829
+      }
+    },
+    "energy [C2 split-cal]": {
+      "p": 1,
+      "tau": 1.9836,
+      "B_rule_q0.999": 0.6416,
+      "bound_T1": 0.6813,
+      "static": {
+        "final500_flag_rate_mean": 0.7046,
+        "clean_segment_flag_rate_mean": 0.0552,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "unbounded": {
+        "final500_flag_rate_mean": 0.0112,
+        "clean_segment_flag_rate_mean": 0.0574,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "budgeted": {
+        "final500_flag_rate_mean": 0.4302,
+        "clean_segment_flag_rate_mean": 0.0574,
+        "drift_detected": "10/10",
+        "alarm_at_alpha_mean": 0.1811,
+        "clean_false_alarms": "0/10"
+      },
+      "worst_case_attack_20000_steps": {
+        "unbounded": {
+          "max_baseline_displacement": 785.5134,
+          "inputs_flagged": 0,
+          "alarm_step": null
+        },
+        "budgeted": {
+          "max_baseline_displacement": 0.6677,
+          "inputs_flagged": 0,
+          "alarm_step": 17,
+          "T3_predicted_alarm_step": 16.3367
+        }
+      },
+      "calibration_check": {
+        "predicted_exceed_rate": 0.001,
+        "empirical_exceed_rate": 0.0
+      }
+    },
+    "act-mahalanobis [C2 split-cal]": {
+      "p": 64,
+      "tau": 15.0349,
+      "B_rule_q0.999": 1.9954,
+      "bound_T1": 2.2961,
+      "static": {
+        "final500_flag_rate_mean": 0.2342,
+        "clean_segment_flag_rate_mean": 0.0438,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "unbounded": {
+        "final500_flag_rate_mean": 0.153,
+        "clean_segment_flag_rate_mean": 0.0384,
+        "drift_detected": "0/10",
+        "alarm_at_alpha_mean": null,
+        "clean_false_alarms": "0/10"
+      },
+      "budgeted": {
+        "final500_flag_rate_mean": 0.2328,
+        "clean_segment_flag_rate_mean": 0.0384,
+        "drift_detected": "10/10",
+        "alarm_at_alpha_mean": 0.1352,
+        "clean_false_alarms": "10/10"
+      },
+      "worst_case_attack_20000_steps": {
+        "unbounded": {
+          "max_baseline_displacement": 5953.8292,
+          "inputs_flagged": 0,
+          "alarm_step": null
+        },
+        "budgeted": {
+          "max_baseline_displacement": 2.0838,
+          "inputs_flagged": 0,
+          "alarm_step": 7,
+          "T3_predicted_alarm_step": 6.7029
+        }
+      },
+      "calibration_check": {
+        "predicted_exceed_rate": 0.001,
+        "empirical_exceed_rate": 0.0143
+      }
+    }
+  }
+}

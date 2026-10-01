@@ -1,0 +1,5 @@
+mode: docker
+PASS
+53.82923776676, 'inputs_flagged': 0, 'alarm_step': None}, 'budgeted': {'max_baseline_displacement': 2.0838402332184778, 'inputs_flagged': 0, 'alarm_step': 7, 'T3_predicted_alarm_step': 6.702920526107253}}
+  calibration: {'predicted_exceed_rate': 0.001, 'empirical_exceed_rate': 0.014307692307692308}
+

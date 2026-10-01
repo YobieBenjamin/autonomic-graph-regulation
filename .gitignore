@@ -1,0 +1,23 @@
+# Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
+# Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
+*.so
+__pycache__/
+miner/sandbox/
+miner/state.json
+.env
+.venv/
+orchestrator/runs/
+data/agr/episodes.jsonl
+data/agr/episodes_power.jsonl
+data/agr/episodes_seed*.jsonl
+data/agr/monitors_seed1_*.jsonl
+data/agr/layers_seed*/
+data/agr/episodes_L_seed*.jsonl
+data/agr/prefix_*_seed1.jsonl
+data/agr/monitors_seed*_*.jsonl
+data/agr/prefix_*_seed*.jsonl
+data/agr/episodes_Q_seed*.jsonl
+data/agr/layers_Q_seed*/
+.verify_changed
+docs/book/

@@ -1,0 +1,4 @@
+2026-09-28T10:14:24 start {"cloud": false, "local": true, "cfg": {"local_url": "http://localhost:1234/v1", "local_model": "local-strong", "cloud_model": "claude-sonnet-5", "cloud_daily": 2000000, "local_conc": 3, "sandbox_conc": 8, "hyp_conc": 4, "local_repairs": 4, "cloud_repairs": 1, "publish": false}}
+2026-09-28T10:14:24 resumed {"hid": "YB-0003"}
+2026-09-28T10:14:58 llm {"role": "repair_local", "provider": "local", "secs": 34, "chars": 4819}
+2026-09-28T10:14:58 repair {"hid": "YB-0003", "attempt": 1, "role": "repair_local", "fixed": null, "ok": false}

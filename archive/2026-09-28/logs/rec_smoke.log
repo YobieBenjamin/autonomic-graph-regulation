@@ -1,0 +1,7 @@
+episodes 6 already done 0
+0 mul_easy correct 39 tok 1.1405 s
+1 mul_hard correct 72 tok 0.7023 s
+2 count correct 122 tok 1.1296 s
+3 weekday correct 391 tok 3.2797 s
+4 modpow correct 58 tok 0.5839 s
+5 add_hard correct 35 tok 0.3982 s

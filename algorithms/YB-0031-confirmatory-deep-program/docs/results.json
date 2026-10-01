@@ -1,0 +1,137 @@
+{
+ "derivation_answered": 4293,
+ "derivation_wrong": 309,
+ "test_answered": 544,
+ "test_wrong": 47,
+ "deviation": [
+  "hunch field (YB-0027) listed as a monitor but not implemented; no hypothesis depends on it"
+ ],
+ "H1_realtime_race": {
+  "monitors": {
+   "deep_organism": {
+    "recall_in_time": 0.0851,
+    "caught": 4,
+    "false_alarm_rate": 0.1006,
+    "median_seconds_to_spare": 0.907,
+    "median_compute_s": 0.00208
+   },
+   "judge_prefix": {
+    "recall_in_time": 0.2553,
+    "caught": 12,
+    "false_alarm_rate": 0.0986,
+    "median_seconds_to_spare": 1.609,
+    "median_compute_s": 1.4158
+   },
+   "selfcons_prefix": {
+    "recall_in_time": 0.0,
+    "caught": 0,
+    "false_alarm_rate": 0.0121,
+    "median_seconds_to_spare": null,
+    "median_compute_s": 2.1109
+   },
+   "aiews_v2": {
+    "recall_in_time": 0.1915,
+    "caught": 9,
+    "false_alarm_rate": 0.0443,
+    "median_seconds_to_spare": 1.555,
+    "median_compute_s": 0.00154
+   }
+  },
+  "best_behavior": "judge_prefix",
+  "deep_minus_best_recall": [
+   -0.1702,
+   -0.3191,
+   -0.0213
+  ],
+  "verdict": "inferior"
+ },
+ "H2_accuracy": {
+  "auroc": {
+   "deep_organism": [
+    0.8897,
+    0.8256,
+    0.9377
+   ],
+   "llm_judge": [
+    0.9471,
+    0.908,
+    0.9797
+   ],
+   "self_consistency": [
+    0.9818,
+    0.9718,
+    0.9904
+   ],
+   "answer_confidence": [
+    0.3657,
+    0.3044,
+    0.4329
+   ],
+   "aiews_v2": [
+    0.7761,
+    0.702,
+    0.8465
+   ]
+  },
+  "deep_minus_judge": [
+   -0.0574,
+   -0.1305,
+   0.0124
+  ],
+  "deep_minus_selfcons": [
+   -0.092,
+   -0.1571,
+   -0.0423
+  ],
+  "deep_minus_judge_verdict": "not distinguishable",
+  "deep_minus_selfcons_verdict": "inferior"
+ },
+ "H3_aiews_v2": {
+  "levels": {
+   "stable": {
+    "wrong": 27,
+    "episodes": 484,
+    "rate": 0.0558
+   },
+   "watch": {
+    "wrong": 8,
+    "episodes": 38,
+    "rate": 0.2105
+   },
+   "concern": {
+    "wrong": 9,
+    "episodes": 14,
+    "rate": 0.6429
+   },
+   "urgent": {
+    "wrong": 3,
+    "episodes": 8,
+    "rate": 0.375
+   }
+  },
+  "ordered": false,
+  "auroc": [
+   0.7761,
+   0.702,
+   0.8465
+  ],
+  "holds": false
+ },
+ "H4_silent_slips": {
+  "slip_errors": 25,
+  "recall": 0.6,
+  "ci": [
+   0.4,
+   0.8
+  ],
+  "holds": true
+ },
+ "H5_failure_to_settle": {
+  "direction_from_seed2": 1,
+  "median_wrong": -0.0869,
+  "median_correct": -0.1787,
+  "p": 0.000692,
+  "holds": true
+ },
+ "EUREKA": false
+}

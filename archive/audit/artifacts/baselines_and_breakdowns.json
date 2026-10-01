@@ -1,0 +1,71 @@
+{
+ "YB-0012 (seed 1)": {
+  "test_answered": 217,
+  "wrong": 21,
+  "organism_auroc_reported": 0.72,
+  "question_type_baseline_auroc": 0.7641,
+  "length_baseline_auroc": 0.796,
+  "type_plus_length_rank_auroc": 0.7873
+ },
+ "YB-0019 (seed 1)": {
+  "test_answered": 217,
+  "wrong": 21,
+  "organism_auroc_reported": 0.765,
+  "question_type_baseline_auroc": 0.7641,
+  "length_baseline_auroc": 0.796,
+  "type_plus_length_rank_auroc": 0.7873
+ },
+ "YB-0030 (seed 1)": {
+  "test_answered": 217,
+  "wrong": 21,
+  "organism_auroc_reported": 0.725,
+  "question_type_baseline_auroc": 0.7641,
+  "length_baseline_auroc": 0.796,
+  "type_plus_length_rank_auroc": 0.7873
+ },
+ "YB-0031 (seed 3)": {
+  "test_answered": 544,
+  "wrong": 47,
+  "organism_auroc_reported": 0.89,
+  "question_type_baseline_auroc": 0.8004,
+  "length_baseline_auroc": 0.7312,
+  "type_plus_length_rank_auroc": 0.7843
+ },
+ "YB-0032 length-only control": {
+  "test_answered": 530,
+  "wrong": 46,
+  "raw_length_auroc": 0.773,
+  "raw_length_caught_and_fpr": [
+   15,
+   0.1012
+  ],
+  "within_type_percentile_auroc": 0.5782,
+  "within_type_percentile_caught_and_fpr": [
+   11,
+   0.1012
+  ],
+  "note": "Previously reported (ad hoc): raw 0.773, 15/46; within-type 0.578, 11/46. This script is the reproducible record."
+ },
+ "YB-0012 per-type breakdown (errors, caught at frozen threshold)": {
+  "weekday": [
+   10,
+   8
+  ],
+  "mul_hard": [
+   5,
+   0
+  ],
+  "count": [
+   2,
+   2
+  ],
+  "modpow": [
+   3,
+   0
+  ],
+  "mul_easy": [
+   1,
+   0
+  ]
+ }
+}

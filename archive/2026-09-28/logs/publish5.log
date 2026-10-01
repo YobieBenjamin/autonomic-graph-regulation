@@ -1,0 +1,30 @@
+== algorithms/YB-0001-homeostatic-heat-trace-monitor/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libheattrace.so src/heattrace.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_matches_numpy_reference
+PASS test_spectrum_in_0_2_and_heat_trace_identities
+PASS test_components_counted
+PASS test_known_graph_complete_K4
+PASS test_effective_connectivity_shape_and_symmetry
+PASS test_drift_budget_freezes
+6/6 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0001-homeostatic-heat-trace-monitor'
+== algorithms/YB-0002-bounded-homeostasis-wrapper/
+make[1]: Entering directory '/tmp/w/algorithms/YB-0002-bounded-homeostasis-wrapper'
+gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o src/libbhw.so src/bhw.c -lm
+python3 -m py_compile src/*.py tests/*.py
+python3 tests/test_core.py
+PASS test_c_matches_python_reference
+PASS test_T1_T2_bound_holds_under_worst_case_attack
+PASS test_T3_alarm_step_matches_theory
+PASS test_unbounded_is_unbounded
+PASS test_budget_rule_monotone_and_1d_closed_form
+5/5 tests passed
+make[1]: Leaving directory '/tmp/w/algorithms/YB-0002-bounded-homeostasis-wrapper'
+To https://github.com/YobieBenjamin/safety.git
+   b3a9d96..e4ee081  main -> main
+branch 'main' set up to track 'origin/main'.
+Published: https://github.com/YobieBenjamin/safety
+EXIT=0

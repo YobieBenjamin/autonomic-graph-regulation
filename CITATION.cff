@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this work, please cite it as below. Commercial use requires a separate license (see LICENSING.md).
+title: 'Autonomic Graph Regulation (AGR): an external, text-blind early-warning regulator for transformer language models'
+authors:
+  - family-names: Benjamin
+    given-names: Yobie
+type: software
+repository-code: https://github.com/YobieBenjamin/safety
+license-url: https://polyformproject.org/licenses/noncommercial/1.0.0
+date-released: 2026-09-30
+keywords:
+  - AI safety
+  - early warning
+  - interoception
+  - transformer telemetry
+  - biology-inspired regulation

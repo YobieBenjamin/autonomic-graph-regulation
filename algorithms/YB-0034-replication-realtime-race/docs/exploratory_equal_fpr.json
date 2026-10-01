@@ -1,0 +1,24 @@
+{
+ "judge": {
+  "competitor_fpr": 0.0931,
+  "competitor_caught": 13,
+  "organism_fpr": 0.0931,
+  "organism_caught": 24,
+  "diff_ci": [
+   0.2558,
+   0.0698,
+   0.4419
+  ]
+ },
+ "length_C1": {
+  "competitor_fpr": 0.0729,
+  "competitor_caught": 11,
+  "organism_fpr": 0.0729,
+  "organism_caught": 22,
+  "diff_ci": [
+   0.2558,
+   0.0698,
+   0.4419
+  ]
+ }
+}

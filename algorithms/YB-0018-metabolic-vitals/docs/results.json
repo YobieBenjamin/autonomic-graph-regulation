@@ -1,0 +1,39 @@
+{
+ "n_recorded": 240,
+ "n": 215,
+ "failures": 16,
+ "excluded_no_answer_or_no_power": 25,
+ "auroc_ci95": {
+  "metabolic": [
+   0.4026,
+   0.2647,
+   0.5603
+  ],
+  "timing": [
+   0.4947,
+   0.3038,
+   0.6766
+  ],
+  "substrate": [
+   0.7478,
+   0.6023,
+   0.8727
+  ],
+  "metabolic_plus_timing": [
+   0.435,
+   0.2794,
+   0.5947
+  ],
+  "all_three": [
+   0.5948,
+   0.3859,
+   0.7762
+  ]
+ },
+ "P1_metabolic_predicts": false,
+ "P2_metabolic_adds_beyond_timing": false,
+ "gpu_mean_W_correct_vs_wrong": [
+  11.01,
+  10.09
+ ]
+}
