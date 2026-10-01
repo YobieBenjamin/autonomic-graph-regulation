@@ -102,11 +102,11 @@ Independent, read-only audit of YB-0035 and both blog drafts (archive/audit/yb00
 ## Third audit (2026-09-30): the v2 blog drafts
 
 Independent, read-only audit of the two v2 drafts (archive/audit/blog_v2_audit_2026-09-30.md): no invented numbers found;
-1 critical, 9 major, 20 minor findings on verifiability, attribution, provenance and wording. Resolution in progress, critical first.
+1 critical, 9 major, 20 minor findings on verifiability, attribution, provenance and wording. All resolved (rows below); blog wording applied in v3, re-audited in the fourth audit.
 
 | ID | Severity | Finding | Verified | Resolution |
 |---|---|---|---|---|
-| C1 | critical | Posts claim the protocol was committed before the test recordings existed, but the repository is private and git times are author-set | GitHub server records: push of b6c795b at 2026-09-30T15:26:40Z, CI run at 15:26:42Z; first seed-7 episode 15:26:49.96Z (Mac clock, offset -1.2 ms vs Apple time server when checked). Ordering holds; the margin is about 10 s, not the 4 min implied by the local commit time | ARTIFACT: archive/audit/artifacts/c1_github_server_timestamps.json. REWORD (blogs): cite GitHub server time and the ~10 s margin; state the repository is private pending patent review and the record is available to qualified reviewers. PROCESS: protocol rule 13 (public cryptographic timestamp of every pre-registration hash at commit time) |
+| C1 | critical | Posts claim the protocol was committed before the test recordings existed, but the repository is private and git times are author-set | GitHub server records: push of b6c795b at 2026-09-30T15:26:40Z, CI run at 15:26:42Z; first seed-7 episode 15:26:49.96Z (Mac clock, offset -1.2 ms vs Apple time server when checked). Ordering holds; the margin is about 10 s, not the 4 min implied by the local commit time | ARTIFACT: archive/audit/artifacts/c1_github_server_timestamps.json. REWORD (blogs): cite GitHub server time and the ~10 s margin; state that the code, data, reports and corrections are public (YobieBenjamin/autonomic-graph-regulation) and the commit history that timestamps the pre-registration is private and available to reviewers on request. PROCESS: protocol rule 13 (public cryptographic timestamp of every pre-registration hash at commit time) |
 | M1 | major | Plain draft: cannot be sweet-talked (reintroduces the retracted unjailbreakable claim) | CORRECTIONS F23; activations depend on input text | REWORD in v3: cannot be argued with directly; whether crafted inputs can fool it is untested |
 | M2 | major | Plain draft presents exploratory checks (type baseline, equal false alarms, frozen threshold) as part of the planned design | exploratory_audit2.json marks them EXPLORATORY | REWORD in v3: labeled as added afterwards |
 | M3 | major | Technical conclusion blends pre-registered and exploratory results; frozen-threshold check has no judge arm or interval | exploratory_audit2.py docstring; regulator 15.0% monitorable false alarms | REWORD in v3 |
@@ -118,3 +118,37 @@ Independent, read-only audit of the two v2 drafts (archive/audit/blog_v2_audit_2
 | M9 | major | Re-ran the key experiment from scratch overstates: only seed 7 was newly recorded | YB-0035 PREREGISTRATION | REWORD in v3 |
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->
+| m1 | minor | judge size stated as total parameters only | checked | REWORD: 5.6x total, 1.4x active (model card, artifact model_sizes.json) |
+| m2 | minor | self-consistency 0/40 near-guaranteed by design; timing uncommitted | checked | ARTIFACT exploratory_audit3.json (median 5.8 s); REWORD |
+| m3 | minor | exactly the same false-alarm rate | checked | REWORD: about the same |
+| m4 | minor | frozen threshold false-alarm rate omitted | checked | REWORD |
+| m5 | minor | 600 questions without the answered count | checked | REWORD: 535 answered |
+| m6 | minor | length works just as well (it did better, 74 vs 68) | checked | REWORD |
+| m7 | minor | lag bug implied critical (it was major) | checked | REWORD |
+| m8 | minor | confidence wording (inverted, not useless; one model) | checked | REWORD |
+| m9 | minor | firm conclusion from the small power null | checked | REWORD: points toward |
+| m10 | minor | synchronization test scope | checked | REWORD |
+| m11 | minor | shift verification scope (seed 2; likely cause) | checked | REWORD |
+| m12 | minor | 5 ms fixed vs 4.1 ms measured excluding recorder overhead | checked | REWORD |
+| m13 | minor | per-checkpoint sample sizes missing | checked | ARTIFACT seed7_counts.json; REWORD |
+| m14 | minor | YB-0033/34 ran under the since-corrected protocol | checked | REWORD |
+| m15 | minor | launch script committed after the fact | checked | DOC |
+| m16 | minor | 25 findings mostly, not only, interpretation | checked | REWORD |
+| m17 | minor | offline replay, not live race | checked | REWORD |
+| m18 | minor | strongest vs most stringent | checked | REWORD |
+| m19 | minor | effectors not built | checked | REWORD |
+| m20 | minor | all errors from four of six types | checked | ARTIFACT seed7_counts.json; REWORD |
+
+## Fourth audit (2026-10-01): the v3 blog drafts
+
+Independent, read-only audit of the v3 drafts with access to the public snapshot (archive/audit/blog_v3_audit_2026-10-01.md). All numbers verified against committed files; no leakage or post-registration changes. 1 critical, 5 major, 17 minor findings. IDs prefixed D4- to avoid collision with the third audit.
+
+| ID | Severity | Finding | Verified | Resolution |
+|---|---|---|---|---|
+| D4-K1 | critical | Posts said the full record is public; the commit history (incl. b6c795b) is private | Public snapshot has 1 commit (checked) | REWORD (author decision): the code, data, reports and corrections are public; the commit history that timestamps the pre-registration is private and available to reviewers on request |
+| D4-M1 | major | Recording start time is self-reported (local clock); clock offset checked about 10 h later | c1 artifact retrieved 01:33Z; recorder uses time.time() | REWORD: disclose; rule 13 addresses future experiments |
+| D4-M2 | major | Third-audit minors not logged; C1 row outdated | checked | FIX: logged above; C1 updated |
+| D4-M3 | major | LEDGER rows still stated retracted claims | 9 rows (checked) | FIX: correction notes appended, original text preserved |
+| D4-M4 | major | Confidence wording (inverted signal carries information; from YB-0031) | YB-0031 0.366 [0.304, 0.433] | REWORD |
+| D4-M5 | major | No standard hidden-state probe baseline | YB-0035 monitor list (checked) | DOC: limitation stated; experiment YB-0042 added to the backlog |
+| D4-m1..m17 | minor | Audit count, rule count, verification attribution, which regulators the baselines beat, frozen-threshold false alarms, fixed vs measured cost, judge-vs-regulator wording, simulation wording, Qwen design class, book status, novelty caveat, judge settings, sync-test detail, resynchronized counts, model-size source, license scope for replication, full reference for arXiv 2607.21433 | checked | REWORD in v4; ARTIFACT model_sizes.json |

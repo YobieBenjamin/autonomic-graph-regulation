@@ -1,0 +1,13 @@
+{
+ "source": "OpenAI, gpt-oss-120b & gpt-oss-20b Model Card, arXiv:2508.10925, Table 1",
+ "gpt-oss-120b": {
+  "total_B": 116.83,
+  "active_B": 5.13
+ },
+ "gpt-oss-20b": {
+  "total_B": 20.91,
+  "active_B": 3.61
+ },
+ "ratio_total": 5.59,
+ "ratio_active": 1.42
+}

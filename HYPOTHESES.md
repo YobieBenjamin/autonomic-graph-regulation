@@ -226,3 +226,8 @@ latency and drop rates; pass = at the chosen k, zero warnings arrive after emiss
 within budget, and every injected telemetry fault raises an alarm (fail-safe, not fail-silent).
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->
+
+## YB-0042 — Hidden-state probe baseline (fourth audit D4-M5)
+status: open (next scientific priority)
+hypothesis: the regulator's in-time advantage over the LLM judge also holds against a standard linear probe on raw hidden states (the text-blind competitor from prior work), trained on the same derivation data and evaluated in the same race.
+test: pre-registered on a fresh seed; probes on residual-stream activations at matched checkpoints; same race rules; report regulator minus probe with threshold-resampling CIs. If the probe matches or beats the regulator, the contribution is the race methodology and external framing, not the telemetry features.
