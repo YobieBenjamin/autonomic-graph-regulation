@@ -1,0 +1,18 @@
+{
+ "role": "prefix_monitors_judge",
+ "started_utc": "2026-10-01T05:49:16Z",
+ "git_commit": "84e631e",
+ "model": null,
+ "python": "3.13.2",
+ "macos": "27.0",
+ "machine": "arm64",
+ "mlx": "0.32.2",
+ "mlx_lm": "0.31.3",
+ "mlx_metal": "0.32.2",
+ "numpy": "2.5.3",
+ "concurrent_heavy_jobs": [],
+ "allow_shared": false,
+ "seed": "8",
+ "ckpt": "abs",
+ "all_episodes": "1"
+}

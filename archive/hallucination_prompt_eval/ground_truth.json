@@ -1,0 +1,56 @@
+[
+ {
+  "id": "E1",
+  "type": "arithmetic",
+  "planted": "(260 features)",
+  "key": "260 features"
+ },
+ {
+  "id": "E2",
+  "type": "arithmetic",
+  "planted": "140 channels per token",
+  "key": "140 channels"
+ },
+ {
+  "id": "E3",
+  "type": "factual",
+  "planted": "8.6x the monitored",
+  "key": "8.6x"
+ },
+ {
+  "id": "E4",
+  "type": "inconsistency",
+  "planted": "15:25:49.96",
+  "key": "15:25:49"
+ },
+ {
+  "id": "E5",
+  "type": "math",
+  "planted": "L = I + D",
+  "key": "I + D"
+ },
+ {
+  "id": "E6",
+  "type": "arithmetic",
+  "planted": "194 of 495 (about 61%) correct seed-7 answers",
+  "key": "61%"
+ },
+ {
+  "id": "E8",
+  "type": "citation",
+  "planted": "Farquhar et al., 2014",
+  "key": "2014"
+ },
+ {
+  "id": "E9",
+  "type": "inconsistency",
+  "planted": "600 recorded, 553 answered",
+  "key": "553"
+ },
+ {
+  "id": "E7",
+  "type": "overclaim",
+  "planted": "This proves that text-blind regulators detect hallucinations in all language models.",
+  "key": "all language models"
+ }
+]

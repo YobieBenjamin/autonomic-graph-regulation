@@ -1,0 +1,41 @@
+{
+  "findings": [
+    {
+      "id": 1,
+      "quote": "\"LLM judge (gpt-oss-120b; 8.6x the monitored model's total parameters and 1.4x its active parameters\"",
+      "type": "arithmetic",
+      "severity": "high",
+      "explanation": "The monitored model is gpt‑oss‑20B (~20 billion parameters). The judge model is gpt‑oss‑120B (~120 billion parameters). 120 / 20 = 6.0, not 8.6. Therefore the stated \"8.6x\" multiplier is mathematically incorrect. The claim about active parameters (1.4×) also lacks supporting numbers and contradicts typical sparsity ratios for a mixture‑of‑experts model of this size.",
+      "correction": "Replace \"8.6x\" with \"≈6×\" (or the exact ratio based on the official parameter counts). Provide the actual active‑parameter count or remove the unsupported 1.4× claim.",
+      "confidence": 0.97
+    },
+    {
+      "id": 2,
+      "quote": "\"This proves that text‑blind regulators detect hallucinations in all language models.\"",
+      "type": "overclaim",
+      "severity": "high",
+      "explanation": "The experiments were conducted on a single model (gpt‑oss‑20B) and a single family of arithmetic/logic tasks. No evidence is presented for other architectures, sizes, or domains. Claiming universal detection across \"all language models\" exceeds the scope of the data and is therefore an overgeneralization.",
+      "correction": "Rephrase to something like: \"These results demonstrate that a text‑blind regulator can detect hallucinations in the tested model and task family; further work is needed to assess generality across other models and domains.\"",
+      "confidence": 0.99
+    },
+    {
+      "id": 3,
+      "quote": "\"Regulator ... False alarms 9.9% / 16.3%\" (table)",
+      "type": "inconsistency",
+      "severity": "medium",
+      "explanation": "The text states there are 495 correct episodes, of which 194 finish before the first checkpoint and cannot be alarmed, leaving 301 monitorable correct episodes. If false‑alarm rate is 9.9% of monitorable episodes, expected false alarms ≈ 30. If 16.3% refers to all correct episodes, expected false alarms ≈ 81. Neither number matches any other reported count of false alarms in the document, creating a mismatch between percentages and implied counts.",
+      "correction": "Provide the absolute number of false‑alarm events for each denominator (e.g., \"9.9% (30/301)\" and \"16.3% (81/495)\") or adjust the percentages to reflect the actual counts reported elsewhere.",
+      "confidence": 0.85
+    },
+    {
+      "id": 4,
+      "quote": "\"seed 7: 600 recorded, 553 answered, 40 wrong\"",
+      "type": "arithmetic",
+      "severity": "low",
+      "explanation": "If 600 episodes were recorded and 553 were answered, that leaves 47 unanswered. The text later says \"65 never answered, 64 of them modular exponentiation,\" which contradicts the earlier count (47 vs 65). This discrepancy suggests an arithmetic inconsistency in the reported numbers of unanswered episodes.",
+      "correction": "Clarify the total number of recorded episodes and how many were unanswered; ensure both statements use the same figures.",
+      "confidence": 0.78
+    }
+  ],
+  "checked_but_ok": "All formulas for Laplacian, modularity, AUROC definitions, and the described compute‑time race logic are internally consistent and mathematically sound."
+}

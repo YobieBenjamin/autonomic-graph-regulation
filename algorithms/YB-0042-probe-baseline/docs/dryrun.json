@@ -1,0 +1,263 @@
+{
+ "dry_run": true,
+ "derivation_answered": 450,
+ "derivation_observations": 1293,
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.1
+ },
+ "probe_cv_table": {
+  "6|0.001": 0.4757,
+  "6|0.01": 0.4743,
+  "6|0.1": 0.4714,
+  "12|0.001": 0.468,
+  "12|0.01": 0.4742,
+  "12|0.1": 0.4745,
+  "18|0.001": 0.7282,
+  "18|0.01": 0.7368,
+  "18|0.1": 0.739,
+  "23|0.001": 0.5335,
+  "23|0.01": 0.5413,
+  "23|0.1": 0.5435
+ },
+ "probe_all_layers_C": 0.01,
+ "probe_all_layers_cv": {
+  "0.001": 0.6675,
+  "0.01": 0.671,
+  "0.1": 0.6617
+ },
+ "test_answered": 200,
+ "test_wrong": 27,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.09,
+   "recall": 1.0,
+   "caught": 27,
+   "fpr": 0.0983,
+   "fpr_monitorable": 0.0983,
+   "recall_monitorable": 1.0
+  },
+  "probe": {
+   "threshold": 0.4339,
+   "recall": 0.3333,
+   "caught": 9,
+   "fpr": 0.0983,
+   "fpr_monitorable": 0.0983,
+   "recall_monitorable": 0.3333
+  },
+  "probe_all_layers": {
+   "threshold": 0.3658,
+   "recall": 0.2593,
+   "caught": 7,
+   "fpr": 0.0983,
+   "fpr_monitorable": 0.0983,
+   "recall_monitorable": 0.2593
+  },
+  "length_C1": {
+   "threshold": 384.0,
+   "recall": 0.0,
+   "caught": 0,
+   "fpr": 0.0,
+   "fpr_monitorable": 0.0,
+   "recall_monitorable": 0.0
+  },
+  "type_C3": {
+   "threshold": 0.1667,
+   "recall": 0.0,
+   "caught": 0,
+   "fpr": 0.0,
+   "fpr_monitorable": 0.0,
+   "recall_monitorable": 0.0
+  },
+  "judge": {
+   "threshold": 0.8837,
+   "recall": 0.2593,
+   "caught": 7,
+   "fpr": 0.0983,
+   "fpr_monitorable": 0.0983,
+   "recall_monitorable": 0.2593
+  }
+ },
+ "H1_regulator_minus_probe": [
+  0.6667,
+  0.409,
+  0.9355
+ ],
+ "H1_verdict": "regulator better",
+ "H2_regulator_minus_judge": [
+  0.7407,
+  0.4571,
+  0.9
+ ],
+ "H2_replicated": true,
+ "S_probe_minus_judge": [
+  0.0741,
+  -0.3243,
+  0.3478
+ ],
+ "S_regulator_minus_probe_all_layers": [
+  0.7407,
+  0.5599,
+  0.92
+ ],
+ "S_regulator_minus_length": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "S_regulator_minus_type": [
+  1.0,
+  1.0,
+  1.0
+ ],
+ "S_equal_fpr_monitorable": {
+  "regulator": {
+   "caught": 27
+  },
+  "probe": {
+   "caught": 9
+  },
+  "probe_all_layers": {
+   "caught": 7
+  },
+  "length_C1": {
+   "caught": 0
+  },
+  "type_C3": {
+   "caught": 0
+  },
+  "judge": {
+   "caught": 7
+  }
+ },
+ "S_equal_fpr_regulator_minus_probe": [
+  0.6667,
+  0.409,
+  0.9355
+ ],
+ "S_frozen_derivation_thresholds": {
+  "regulator": {
+   "caught": 27,
+   "fpr": 0.0983
+  },
+  "probe": {
+   "caught": 4,
+   "fpr": 0.0751
+  }
+ },
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 200,
+   "wrong": 27,
+   "auroc_with_ci": {
+    "regulator": [
+     0.9996,
+     0.9982,
+     1.0
+    ],
+    "probe": [
+     0.7938,
+     0.7013,
+     0.8757
+    ],
+    "type": [
+     0.5123,
+     0.403,
+     0.6146
+    ],
+    "judge": [
+     0.7906,
+     0.7048,
+     0.8708
+    ]
+   }
+  },
+  "96": {
+   "episodes": 184,
+   "wrong": 25,
+   "auroc_with_ci": {
+    "regulator": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "probe": [
+     0.6964,
+     0.5904,
+     0.7892
+    ],
+    "type": [
+     0.5109,
+     0.3965,
+     0.6299
+    ],
+    "judge": [
+     0.6702,
+     0.5639,
+     0.7756
+    ]
+   }
+  },
+  "192": {
+   "episodes": 138,
+   "wrong": 19,
+   "auroc_with_ci": {
+    "regulator": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "probe": [
+     0.7249,
+     0.5875,
+     0.8462
+    ],
+    "type": [
+     0.5442,
+     0.4184,
+     0.6781
+    ],
+    "judge": [
+     0.7342,
+     0.6276,
+     0.8294
+    ]
+   }
+  },
+  "384": {
+   "episodes": 54,
+   "wrong": 7,
+   "auroc_with_ci": {
+    "regulator": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "probe": [
+     0.7872,
+     0.548,
+     0.9633
+    ],
+    "type": [
+     0.6687,
+     0.4524,
+     0.8462
+    ],
+    "judge": [
+     0.8146,
+     0.5448,
+     0.9818
+    ]
+   }
+  }
+ },
+ "S_sensitivity_never_answered_as_failures": {
+  "episodes": 200,
+  "failures": 27,
+  "regulator_minus_probe": [
+   0.6667,
+   0.409,
+   0.9355
+  ]
+ }
+}

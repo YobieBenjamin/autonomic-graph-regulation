@@ -1,0 +1,17 @@
+{
+ "role": "recorder",
+ "started_utc": "2026-10-01T03:55:53Z",
+ "git_commit": "84e631e",
+ "model": "/Users/yobie_benjamin/.lmstudio/models/mlx-community/gpt-oss-20b-MXFP4-Q8",
+ "python": "3.13.2",
+ "macos": "27.0",
+ "machine": "arm64",
+ "mlx": "0.32.2",
+ "mlx_lm": "0.31.3",
+ "mlx_metal": "0.32.2",
+ "numpy": "2.5.3",
+ "concurrent_heavy_jobs": [],
+ "allow_shared": false,
+ "seed": 3,
+ "layers": true
+}

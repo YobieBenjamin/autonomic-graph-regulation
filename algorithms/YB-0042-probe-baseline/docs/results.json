@@ -1,0 +1,263 @@
+{
+ "dry_run": false,
+ "derivation_answered": 1031,
+ "derivation_observations": 2779,
+ "probe_selected": {
+  "layer": 6,
+  "C": 0.001
+ },
+ "probe_cv_table": {
+  "6|0.001": 0.8224,
+  "6|0.01": 0.8105,
+  "6|0.1": 0.8029,
+  "12|0.001": 0.8201,
+  "12|0.01": 0.808,
+  "12|0.1": 0.7986,
+  "18|0.001": 0.8191,
+  "18|0.01": 0.8004,
+  "18|0.1": 0.7882,
+  "23|0.001": 0.8069,
+  "23|0.01": 0.7947,
+  "23|0.1": 0.7896
+ },
+ "probe_all_layers_C": 0.001,
+ "probe_all_layers_cv": {
+  "0.001": 0.8169,
+  "0.01": 0.8079,
+  "0.1": 0.8025
+ },
+ "test_answered": 340,
+ "test_wrong": 40,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.4762,
+   "recall": 0.425,
+   "caught": 17,
+   "fpr": 0.1,
+   "fpr_monitorable": 0.1003,
+   "recall_monitorable": 0.425
+  },
+  "probe": {
+   "threshold": 0.2666,
+   "recall": 0.45,
+   "caught": 18,
+   "fpr": 0.1,
+   "fpr_monitorable": 0.1003,
+   "recall_monitorable": 0.45
+  },
+  "probe_all_layers": {
+   "threshold": 0.2608,
+   "recall": 0.525,
+   "caught": 21,
+   "fpr": 0.1,
+   "fpr_monitorable": 0.1003,
+   "recall_monitorable": 0.525
+  },
+  "length_C1": {
+   "threshold": 384.0,
+   "recall": 0.0,
+   "caught": 0,
+   "fpr": 0.0,
+   "fpr_monitorable": 0.0,
+   "recall_monitorable": 0.0
+  },
+  "type_C3": {
+   "threshold": 0.214,
+   "recall": 0.125,
+   "caught": 5,
+   "fpr": 0.1,
+   "fpr_monitorable": 0.1003,
+   "recall_monitorable": 0.125
+  },
+  "judge": {
+   "threshold": 0.65,
+   "recall": 0.25,
+   "caught": 10,
+   "fpr": 0.0967,
+   "fpr_monitorable": 0.097,
+   "recall_monitorable": 0.25
+  }
+ },
+ "H1_regulator_minus_probe": [
+  -0.025,
+  -0.1702,
+  0.1088
+ ],
+ "H1_verdict": "not distinguishable",
+ "H2_regulator_minus_judge": [
+  0.175,
+  -0.0607,
+  0.4391
+ ],
+ "H2_replicated": false,
+ "S_probe_minus_judge": [
+  0.2,
+  -0.0426,
+  0.4635
+ ],
+ "S_regulator_minus_probe_all_layers": [
+  -0.1,
+  -0.2286,
+  0.0968
+ ],
+ "S_regulator_minus_length": [
+  0.425,
+  0.0476,
+  0.5953
+ ],
+ "S_regulator_minus_type": [
+  0.3,
+  0.1514,
+  0.579
+ ],
+ "S_equal_fpr_monitorable": {
+  "regulator": {
+   "caught": 17
+  },
+  "probe": {
+   "caught": 18
+  },
+  "probe_all_layers": {
+   "caught": 20
+  },
+  "length_C1": {
+   "caught": 0
+  },
+  "type_C3": {
+   "caught": 0
+  },
+  "judge": {
+   "caught": 10
+  }
+ },
+ "S_equal_fpr_regulator_minus_probe": [
+  -0.025,
+  -0.1667,
+  0.1212
+ ],
+ "S_frozen_derivation_thresholds": {
+  "regulator": {
+   "caught": 17,
+   "fpr": 0.0933
+  },
+  "probe": {
+   "caught": 18,
+   "fpr": 0.0833
+  }
+ },
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 339,
+   "wrong": 40,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7129,
+     0.6205,
+     0.8021
+    ],
+    "probe": [
+     0.6982,
+     0.5844,
+     0.7964
+    ],
+    "type": [
+     0.6254,
+     0.5471,
+     0.7016
+    ],
+    "judge": [
+     0.5125,
+     0.425,
+     0.6007
+    ]
+   }
+  },
+  "96": {
+   "episodes": 302,
+   "wrong": 39,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7878,
+     0.7063,
+     0.8658
+    ],
+    "probe": [
+     0.7582,
+     0.665,
+     0.8412
+    ],
+    "type": [
+     0.5779,
+     0.4926,
+     0.6605
+    ],
+    "judge": [
+     0.5666,
+     0.4677,
+     0.6667
+    ]
+   }
+  },
+  "192": {
+   "episodes": 230,
+   "wrong": 35,
+   "auroc_with_ci": {
+    "regulator": [
+     0.765,
+     0.6608,
+     0.8539
+    ],
+    "probe": [
+     0.7785,
+     0.6732,
+     0.8634
+    ],
+    "type": [
+     0.5098,
+     0.4224,
+     0.6054
+    ],
+    "judge": [
+     0.5629,
+     0.4466,
+     0.671
+    ]
+   }
+  },
+  "384": {
+   "episodes": 47,
+   "wrong": 11,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7071,
+     0.4824,
+     0.9027
+    ],
+    "probe": [
+     0.7727,
+     0.5618,
+     0.95
+    ],
+    "type": [
+     0.3561,
+     0.1906,
+     0.5284
+    ],
+    "judge": [
+     0.8485,
+     0.7333,
+     0.9514
+    ]
+   }
+  }
+ },
+ "S_sensitivity_never_answered_as_failures": {
+  "episodes": 405,
+  "failures": 105,
+  "regulator_minus_probe": [
+   -0.0857,
+   -0.2076,
+   0.0481
+  ]
+ }
+}

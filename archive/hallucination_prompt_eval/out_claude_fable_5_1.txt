@@ -1,0 +1,104 @@
+{
+  "findings": [
+    {
+      "id": 1,
+      "quote": "This proves that text-blind regulators detect hallucinations in all language models.",
+      "type": "overclaim",
+      "severity": "high",
+      "explanation": "Directly contradicted by the document's own scope statements: Section 1 says 'results for one model and one task family, not a general law'; Section 7 says 'One monitored model, one task family... No evidence yet for hallucination detection in open prose'; the same paragraph ends 'narrow in scope'. The evidence is 40 wrong answers on machine-gradable arithmetic/counting tasks from a single gpt-oss-20b run, which is neither 'proof', nor 'hallucination' detection in the usual sense, nor about 'all language models'.",
+      "correction": "On the pre-registered seed-7 test set of one model and one task family, a text-blind regulator raised in-time warnings on more wrong answers than the judge and length baselines; generalization to other models, open prose, or hallucinations is untested.",
+      "confidence": 0.98
+    },
+    {
+      "id": 2,
+      "quote": "194 of 495 (about 61%) correct seed-7 answers finish before the first checkpoint and can never be alarmed",
+      "type": "arithmetic",
+      "severity": "high",
+      "explanation": "194 / 495 = 0.392, i.e. about 39%, not 61%. 61% is the complement: 301 / 495 = 0.608, the monitorable fraction (301 monitorable correct episodes are stated in Section 5 and match the 341 episodes minus 40 wrong at t = 48).",
+      "correction": "194 of 495 (about 39%) correct seed-7 answers finish before the first checkpoint; about 61% (301) are monitorable.",
+      "confidence": 0.95
+    },
+    {
+      "id": 3,
+      "quote": "Seed 7: 600 recorded, 553 answered, 40 wrong (all from four of the six task types; 65 never answered",
+      "type": "inconsistency",
+      "severity": "high",
+      "explanation": "553 answered + 65 never answered = 618, not 600. Every other figure in the paper implies 535 answered: 600 − 65 = 535; 495 correct + 40 wrong = 535; the boundary analysis uses 40 + 65 = 105 failures; and all false-alarm percentages in the table reproduce exactly with 495 correct episodes (e.g. 49/495 = 9.9%, 49/301 = 16.3%; 33/495 = 6.7%, 33/301 = 11.0%; 45/495 = 9.1%, 45/301 = 15.0%). With 553 answered there would be 513 correct, which fits none of them.",
+      "correction": "Seed 7: 600 recorded, 535 answered (495 correct, 40 wrong), 65 never answered.",
+      "confidence": 0.9
+    },
+    {
+      "id": 4,
+      "quote": "Normalised Laplacian: L = I + D^(−1/2) W D^(−1/2); algebraic connectivity λ₂",
+      "type": "math",
+      "severity": "medium",
+      "explanation": "The symmetric normalised Laplacian is L = I − D^(−1/2) W D^(−1/2). With a plus sign the matrix is the normalised signless Laplacian, whose second-smallest eigenvalue is not the algebraic connectivity; the smallest eigenvalue would no longer be 0 for a connected graph, so 'λ₂ = algebraic connectivity' is only meaningful with the minus sign.",
+      "correction": "L = I − D^(−1/2) W D^(−1/2); algebraic connectivity λ₂ (second-smallest eigenvalue).",
+      "confidence": 0.85
+    },
+    {
+      "id": 5,
+      "quote": "Farquhar et al., 2014",
+      "type": "citation",
+      "severity": "medium",
+      "explanation": "The output-uncertainty / semantic-entropy work by Farquhar, Kossen, Kuhn and Gal ('Detecting hallucinations in large language models using semantic entropy') was published in Nature in 2024, not 2014; the 2014 date is inconsistent with the adjacent Kuhn, Gal and Farquhar 2023 paper it builds on.",
+      "correction": "Farquhar et al., 2024",
+      "confidence": 0.9
+    },
+    {
+      "id": 6,
+      "quote": "gpt-oss-120b; 8.6x the monitored model's total parameters and 1.4x its active parameters, per the model card",
+      "type": "factual",
+      "severity": "medium",
+      "explanation": "Per the OpenAI gpt-oss model card, gpt-oss-120b has about 117B total / 5.1B active parameters and gpt-oss-20b about 21B total / 3.6B active. Total ratio = 117 / 21 ≈ 5.6x (not 8.6x); active ratio = 5.1 / 3.6 ≈ 1.4x (correct).",
+      "correction": "about 5.6x the monitored model's total parameters and 1.4x its active parameters",
+      "confidence": 0.75
+    },
+    {
+      "id": 7,
+      "quote": "router entropy −Σ pₑ log pₑ: 140 channels per token",
+      "type": "inconsistency",
+      "severity": "medium",
+      "explanation": "Five readings per layer (‖aℓ‖, ‖mℓ‖, ‖xℓ,out‖, cosine, router entropy) across 24 blocks gives 5 × 24 = 120 channels, not 140. Section 3 then reports 'mean and RMSSD' per layer and channel as 260 features, which implies 130 channels (260 / 2); 140 channels would give 280 features and 120 channels 240. The three numbers (140, 260, 5 × 24) cannot all be right.",
+      "correction": "State the actual channel count (120 if five readings over 24 layers) and make the feature count equal to twice that (240), or explain any extra channels.",
+      "confidence": 0.65
+    },
+    {
+      "id": 8,
+      "quote": "GitHub's server recorded its push at 15:26:40 UTC and the CI run it triggered at 15:26:42; the first seed-7 episode began at 15:25:49.96 UTC by the Mac's clock.",
+      "type": "inconsistency",
+      "severity": "medium",
+      "explanation": "The first test episode started about 50 s before the only public timestamp of the pre-registration, yet the text says a launch script 'waited for the push'. A clock offset of −1 ms cannot account for 50 s. As presented, the document's own evidence does not establish that the analysis code was publicly fixed before the seed-7 recordings began, which weakens the Section 2 claim of pre-registration 'before test recordings exist' for YB-0035.",
+      "correction": "Either explain the 50 s gap (e.g. local commit time vs. server push time, or script triggered on local push completion) or state that the public timestamp postdates the start of recording by ~50 s and that pre-registration for seed 7 rests on the private commit history.",
+      "confidence": 0.6
+    },
+    {
+      "id": 9,
+      "quote": "All three audits were separate sessions of an AI model given no knowledge of earlier findings",
+      "type": "inconsistency",
+      "severity": "low",
+      "explanation": "The section is titled 'Four adversarial audits' and describes four (38, 25, 30 and 23 findings), but this sentence says 'all three'.",
+      "correction": "All four audits were separate sessions...",
+      "confidence": 0.9
+    },
+    {
+      "id": 10,
+      "quote": "Coupling: Wᵢⱼ = max over g ∈ {0..3} of |ρ(xᵢ(t), xⱼ(t+g))|",
+      "type": "math",
+      "severity": "low",
+      "explanation": "With lags applied only to xⱼ, Wᵢⱼ ≠ Wⱼᵢ in general (i leading j vs j leading i), so W is directed. The normalised Laplacian, λ₂ as algebraic connectivity, and Newman's spectral modularity (B = W − ddᵀ/2m with a single degree vector d) are defined for symmetric W. The document does not state a symmetrisation step.",
+      "correction": "State how W is symmetrised (e.g. max or mean of Wᵢⱼ and Wⱼᵢ, or lags over g ∈ {−3..3}) before computing Laplacian and modularity statistics.",
+      "confidence": 0.45
+    },
+    {
+      "id": 11,
+      "quote": "Oladri, Jawahar and Mohamed, 2026, arXiv:2607.21433",
+      "type": "citation",
+      "severity": "low",
+      "explanation": "Unverifiable: the arXiv identifier denotes a July 2026 submission, which I cannot check. Flagged as unverifiable rather than wrong.",
+      "correction": "Verify authors, title and identifier against arXiv.",
+      "confidence": 0.3
+    }
+  ],
+  "checked_but_ok": "Verified 27/36 = 75%; 0.890 − 0.947 = −0.057; the three regulator-minus-monitor differences (12/40 = 0.300, 14/40 = 0.350, 17/40 = 0.425) and the equal-false-alarm difference 8/40 = 0.20; all table false-alarm rates against 495 correct and 301 monitorable episodes; 40 + 65 = 105 boundary failures; 3 + 20 + 15 = 38 audit findings; 11 + 9 = 20 re-recorded episodes; six task types enumerated; 341 episodes − 40 wrong = 301 monitorable; the spectral modularity formula; gpt-oss-20b's 24 layers / 32 experts and Qwen3-30B-A3B's 48 layers / 128 experts; the 1.4x active-parameter ratio; and the remaining citations (Azaria & Mitchell 2023, Burns 2023, Kadavath 2022, Orgad 2024, Kossen 2024, Kuhn/Gal/Farquhar 2023, Wang 2022, Goldowsky-Dill 2025, Bailey 2024, Man & Damasio 2019, Chiba & Krichmar 2020, Mineault 2024, Scheffer 2009) appear correct."
+}

@@ -9,5 +9,10 @@
   "active_B": 3.61
  },
  "ratio_total": 5.59,
- "ratio_active": 1.42
+ "ratio_active": 1.42,
+ "gpt-oss-120b_experts_per_layer": 128,
+ "gpt-oss-20b_experts_per_layer": 32,
+ "gpt-oss-120b_layers": 36,
+ "gpt-oss-20b_layers": 24,
+ "experts_source": "OpenAI gpt-oss model card (arXiv:2508.10925) and model configuration; 4 experts active per token in both"
 }

@@ -1,0 +1,115 @@
+```json
+{
+  "findings": [
+    {
+      "id": 1,
+      "quote": "This proves that text-blind regulators detect hallucinations in all language models.",
+      "type": "overclaim",
+      "severity": "high",
+      "explanation": "The evidence covers one monitored model (gpt-oss-20b), one machine-gradable arithmetic/counting task family, 40 wrong answers and checkpoints up to 384 tokens. Section 1 says these are 'not a general law'. Section 7 says there is 'No evidence yet for hallucination detection in open prose'. The closing sentence also calls the result 'narrow in scope'. 'Proves' and 'all language models' contradict all three.",
+      "correction": "Remove the sentence, or limit it to the setting tested: 'On one MoE model and six arithmetic/counting task types, a text-blind regulator gave more in-time warnings on answered wrong answers than the comparators.'",
+      "confidence": 0.98
+    },
+    {
+      "id": 2,
+      "quote": "GitHub's server recorded its push at 15:26:40 UTC ... the first seed-7 episode began at 15:25:49.96 UTC by the Mac's clock.",
+      "type": "inconsistency",
+      "severity": "high",
+      "explanation": "15:25:49.96 is about 50 s before 15:26:40, so the first test episode started before the server recorded the protocol push. This conflicts with three claims: that a launch script 'waited for the push'; that pre-registration covered analysis code 'before test recordings exist'; and the conclusion's 'pre-registered fresh test set'. The stated Mac clock offset (−1 ms) cannot explain a 50 s gap.",
+      "correction": "Either correct the timestamps or state plainly that recording began about 50 s before the public push record, and weaken the pre-registration claim to match.",
+      "confidence": 0.85
+    },
+    {
+      "id": 3,
+      "quote": "194 of 495 (about 61%) correct seed-7 answers finish before the first checkpoint",
+      "type": "arithmetic",
+      "severity": "medium",
+      "explanation": "194/495 = 0.392, which is about 39%, not 61%. The 61% figure is the monitorable share: 301/495 = 0.608.",
+      "correction": "194 of 495 (about 39%) correct seed-7 answers finish before the first checkpoint.",
+      "confidence": 0.97
+    },
+    {
+      "id": 4,
+      "quote": "Seed 7: 600 recorded, 553 answered, 40 wrong (all from four of the six task types; 65 never answered",
+      "type": "arithmetic",
+      "severity": "medium",
+      "explanation": "With 553 answered, never-answered = 600 − 553 = 47, not 65, and correct = 553 − 40 = 513, not the 495 used elsewhere. Every other figure fits 535 answered: 600 − 535 = 65; 535 − 40 = 495; 495 − 194 = 301 monitorable correct (matching 341 − 40 at t = 48); 65 + 40 = 105 in the boundary analysis. The false-alarm pairs also fit a 495 denominator: 49/495 = 9.9% and 49/301 = 16.3%. '553' is most likely a transposition of 535.",
+      "correction": "600 recorded, 535 answered, 40 wrong, 65 never answered.",
+      "confidence": 0.9
+    },
+    {
+      "id": 5,
+      "quote": "8.6x the monitored model's total parameters and 1.4x its active parameters, per the model card",
+      "type": "factual",
+      "severity": "medium",
+      "explanation": "The gpt-oss model card gives about 117B total / 5.1B active for gpt-oss-120b and about 21B total / 3.6B active for gpt-oss-20b. Total ratio: 117/21 ≈ 5.6x, not 8.6x. Active ratio: 5.1/3.6 ≈ 1.4x, which is correct.",
+      "correction": "about 5.6x the monitored model's total parameters and 1.4x its active parameters",
+      "confidence": 0.85
+    },
+    {
+      "id": 6,
+      "quote": "router entropy −Σ pₑ log pₑ: 140 channels per token",
+      "type": "arithmetic",
+      "severity": "medium",
+      "explanation": "Five readings per layer (‖a‖, ‖m‖, ‖x_out‖, cosine, router entropy) times 24 layers = 120 channels, not 140.",
+      "correction": "120 channels per token, or list the additional readings that bring the count to 140.",
+      "confidence": 0.8
+    },
+    {
+      "id": 7,
+      "quote": "for each layer and channel, the mean and RMSSD over the prefix (260 features)",
+      "type": "arithmetic",
+      "severity": "medium",
+      "explanation": "Mean plus RMSSD for each channel gives 2 × channels. That is 240 for 120 channels or 280 for the stated 140. 260 matches neither, so the feature count is inconsistent with the channel count.",
+      "correction": "State the correct channel and feature counts consistently, e.g. 120 channels → 240 features.",
+      "confidence": 0.75
+    },
+    {
+      "id": 8,
+      "quote": "Normalised Laplacian: L = I + D^(−1/2) W D^(−1/2); algebraic connectivity λ₂",
+      "type": "math",
+      "severity": "medium",
+      "explanation": "The symmetric normalised Laplacian is L = I − D^(−1/2) W D^(−1/2). With a plus sign the matrix is not a Laplacian: for a connected graph its smallest eigenvalue is not 0, so λ₂ is not the algebraic connectivity.",
+      "correction": "L = I − D^(−1/2) W D^(−1/2)",
+      "confidence": 0.9
+    },
+    {
+      "id": 9,
+      "quote": "All three audits were separate sessions of an AI model given no knowledge of earlier findings",
+      "type": "inconsistency",
+      "severity": "low",
+      "explanation": "The section is titled 'Four adversarial audits', the subtitle says 'four audits', and the text describes a first, second, third and fourth audit.",
+      "correction": "All four audits were separate sessions...",
+      "confidence": 0.9
+    },
+    {
+      "id": 10,
+      "quote": "Farquhar et al., 2014",
+      "type": "citation",
+      "severity": "low",
+      "explanation": "The semantic-entropy hallucination-detection paper by Farquhar, Kossen, Kuhn and Gal was published in Nature in 2024. A 2014 date is impossible for this LLM-uncertainty work.",
+      "correction": "Farquhar et al., 2024",
+      "confidence": 0.85
+    },
+    {
+      "id": 11,
+      "quote": "Oladri, Jawahar and Mohamed, 2026, arXiv:2607.21433",
+      "type": "citation",
+      "severity": "low",
+      "explanation": "I cannot verify this citation. The ID format fits a July 2026 preprint, but I could not confirm that the paper, its authors or its content exist.",
+      "correction": "Check the arXiv ID, authors and title against the actual record.",
+      "confidence": 0.3
+    },
+    {
+      "id": 12,
+      "quote": "Faster serving would help the behavior monitors, not the regulator, which is always in time",
+      "type": "overclaim",
+      "severity": "low",
+      "explanation": "The regulator's cost is charged as a fixed 5 ms, checked against a measured 4.1 ms that excludes the telemetry recorder's own overhead. That supports 'in time at every checkpoint in this replay', not an unconditional 'always'.",
+      "correction": "which met the deadline at every checkpoint in this replay (with recorder overhead not included in its 5 ms cost)",
+      "confidence": 0.45
+    }
+  ],
+  "checked_but_ok": "Checked and found consistent: 27/36 = 75%; the −0.057 gap (0.890 − 0.947); the primary differences 12/40 = 0.300, 14/40 = 0.350 and 17/40 = 0.425; the equal-false-alarm difference 8/40 = 0.20; the false-alarm pairs (9.9%/16.3%, 6.7%/11.0%, 6.3%/10.3%, 9.1%/15.0%) against denominators of 495 and 301; per-checkpoint counts (341 − 40 = 301); 105 = 65 + 40; audit tallies 3 + 20 + 15 = 38 and 11 + 9 = 20; the six task types; gpt-oss-20b's 24 layers and 32 experts; Qwen3-30B-A3B's 48 layers and 128 experts; Newman's spectral modularity formula; and the remaining citations (Azaria & Mitchell 2023, Kadavath 2022, Kuhn et al. 2023, Wang et al. 2022, Kossen 2024, Scheffer 2009, Bailey 2024, Goldowsky-Dill 2025, Man & Damasio 2019)."
+}
+```

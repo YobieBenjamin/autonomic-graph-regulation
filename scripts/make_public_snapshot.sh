@@ -29,6 +29,9 @@ cd "$PUB"
 
 # Guards: no book material, no oversized prose, no secrets or personal addresses.
 [ ! -e docs/book ] || { echo 'ABORT: book directory present in snapshot'; exit 1; }
+# Guard: raw per-episode recordings never go public (the packed copies under algorithms/*/data are the record).
+RAW=$(find data/agr -mindepth 1 \( -name "*.npy" -o -name "*.npz" -o -name "episodes_*.jsonl" \) 2>/dev/null | head -3)
+[ -z "$RAW" ] || { echo "ABORT: raw per-episode recordings present in snapshot: $RAW"; exit 1; }
 BIG=$(find . -path ./.git -prune -o -name '*.md' -size +300k -print)
 [ -z "$BIG" ] || { echo "ABORT: unexpectedly large prose files: $BIG"; exit 1; }
 # Every line of every file is checked; lines that are themselves scanner pattern definitions (they contain grep -rIlE /

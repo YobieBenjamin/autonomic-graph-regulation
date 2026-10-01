@@ -16,6 +16,7 @@ PATIENT = os.path.expanduser('~/.lmstudio/models/mlx-community/gpt-oss-20b-MXFP4
 SEED = int(next((a.split('=')[1] for a in sys.argv if a.startswith('--seed=')), '0')); sys.argv = [a for a in sys.argv if not a.startswith('--seed=')]
 LAYERS = '--layers' in sys.argv; sys.argv = [a for a in sys.argv if a != '--layers']
 POWER = '--power' in sys.argv; sys.argv = [a for a in sys.argv if a != '--power']
+HS = '--hs' in sys.argv; sys.argv = [a for a in sys.argv if a != '--hs']   # YB-0042: also capture hidden states (requires --layers)
 N, MAXT = (int(sys.argv[1]) if len(sys.argv) > 1 else 40), (int(sys.argv[2]) if len(sys.argv) > 2 else 400)
 DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
@@ -45,6 +46,9 @@ def main():
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import layertap; layertap.install()
         out = os.path.join(ROOT, 'data', 'agr', 'episodes_L_seed' + str(SEED) + '.jsonl'); LD = os.path.join(ROOT, 'data', 'agr', 'layers_seed' + str(SEED)); os.makedirs(LD, exist_ok=True)
         done = sum(1 for _ in open(out)) if os.path.exists(out) else 0
+    if HS:
+        import hstap; hstap.install(); HD = os.path.join(ROOT, 'data', 'agr', 'hs_seed' + str(SEED)); os.makedirs(HD, exist_ok=True)
+        out = os.path.join(ROOT, 'data', 'agr', 'episodes_LH_seed' + str(SEED) + '.jsonl'); LD = os.path.join(ROOT, 'data', 'agr', 'layers_LH_seed' + str(SEED)); os.makedirs(LD, exist_ok=True)   # new files: never mixes with earlier recordings
     if POWER:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from power import PowerSampler; ps = PowerSampler(); time.sleep(1.0)
     done = sum(1 for _ in open(out)) if os.path.exists(out) else 0
@@ -56,11 +60,13 @@ def main():
         except TypeError: ids = tok.apply_chat_template(msgs, add_generation_prompt=True)
         ent, p1, marg, lat, toks, lay = [], [], [], [], [], []; t0 = time.perf_counter(); prev = t0
         if LAYERS: layertap.reset()
+        if HS: hstap.reset(); hsl = []
         for (token, logprobs), _ in zip(generate_step(mx.array(ids), model, max_tokens=MAXT), range(MAXT)):
             p = mx.exp(logprobs); top = mx.topk(logprobs, 2)
             e, a, b = float(-(p * logprobs).sum()), float(mx.max(logprobs)), float(mx.min(top))
             now = time.perf_counter(); lat.append(now - prev); prev = now
             if LAYERS: lay.append(layertap.pop())
+            if HS: hsl.append(hstap.pop())
             ent.append(round(e, 5)); p1.append(round(float(mx.exp(mx.array(a))), 5)); marg.append(round(a - b, 5)); toks.append(int(token))
             if int(token) in tok.eos_token_ids: break
         text = tok.decode(toks); fi = text.rfind('final<|message|>')
@@ -73,6 +79,11 @@ def main():
                    entropy=ent, p_top1=p1, margin=marg, latency=[round(x, 5) for x in lat],
                    power=[[round(t - t0, 4), g, c] for t, g, c in pw] if ps else None)
         if LAYERS: np.save(os.path.join(LD, str(idx) + '.npy'), np.stack(lay).astype(np.float32))
+        if HS:   # probe inputs at each checkpoint t: the reading for the last token before t, and the mean over tokens before t
+            Hs = np.stack(hsl).astype(np.float32); snap = {}
+            for t in (48, 96, 192, 384):
+                if t < len(hsl): snap['last_%d' % t] = Hs[t - 1].astype(np.float16); snap['mean_%d' % t] = Hs[:t].mean(0).astype(np.float16)
+            np.savez_compressed(os.path.join(HD, str(idx) + '.npz'), **snap)
         open(out, 'a').write(json.dumps(rec) + chr(10))
         if ps and ps.error: print('POWER SAMPLER ERROR', ps.error, flush=True)
         print(idx, cat, 'correct' if rec['correct'] else ('WRONG' if rec['answered'] else 'NO-ANSWER'), len(toks), 'tok', rec['wall'], 's', flush=True)

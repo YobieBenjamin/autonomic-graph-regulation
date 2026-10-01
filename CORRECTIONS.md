@@ -30,7 +30,7 @@ Resolution codes: **FIXED-YB-0035** (corrected in the re-run experiment), **RETR
 | F12 | YB-0019 '≈302 features' (actual 314); unregistered metric and extrapolation change | auditor, self | DOC: count corrected; deviations listed |
 | F13 | YB-0030 called pre-registered (4 minutes before results, on thrice-used data); V6 changed | auditor | REWORD: retrospective; DOC the V6 change |
 | F15 | YB-0031 H5 'failure to settle confirmed' driven by one question type | auditor rerun | REWORD: weekday-specific; within-type tests reported |
-| F16 | Length and question-type baselines match or beat pre-YB-0033 organisms | auditor rerun | DOC + ARTIFACT (archive/audit/artifacts/): seed 1 type 0.764 and length 0.796 exceed YB-0012 (0.72), YB-0019 (0.765), YB-0030 (0.725); YB-0031 0.89 exceeds type 0.80 and length 0.73 |
+| F16 | Length and question-type baselines match or beat pre-YB-0033 organisms | auditor rerun | DOC + ARTIFACT (archive/audit/artifacts/): on seed 1, length (0.796) exceeds YB-0012 (0.72), YB-0019 (0.765) and YB-0030 (0.725); question type (0.764) exceeds YB-0012 and YB-0030 and roughly matches YB-0019 (corrected per fifth audit A3); YB-0031 0.89 exceeds type 0.80 and length 0.73 |
 | F17 | YB-0009 topology features include n_windows (a length proxy) | auditor rerun | OPEN (backlog) rerun without it; DOC |
 | F18 | YB-0018 'substrate' entropy includes answer tokens; Proposition 2 false | auditor | RETRACT Proposition 2; OPEN (backlog) re-window |
 | F19 | YB-0017 'variance 9-10x lower' is a CV ratio (≈3.7x above rest); drive correlates with length | auditor rerun | REWORD; DOC |
@@ -152,3 +152,18 @@ Independent, read-only audit of the v3 drafts with access to the public snapshot
 | D4-M4 | major | Confidence wording (inverted signal carries information; from YB-0031) | YB-0031 0.366 [0.304, 0.433] | REWORD |
 | D4-M5 | major | No standard hidden-state probe baseline | YB-0035 monitor list (checked) | DOC: limitation stated; experiment YB-0042 added to the backlog |
 | D4-m1..m17 | minor | Audit count, rule count, verification attribution, which regulators the baselines beat, frozen-threshold false alarms, fixed vs measured cost, judge-vs-regulator wording, simulation wording, Qwen design class, book status, novelty caveat, judge settings, sync-test detail, resynchronized counts, model-size source, license scope for replication, full reference for arXiv 2607.21433 | checked | REWORD in v4; ARTIFACT model_sizes.json |
+
+## Fifth audit (2026-10-01): the v4 blog drafts
+
+Independent, read-only audit (archive/audit/blog_v4_audit_2026-10-01.md). Verdict: both drafts publishable with listed fixes. Seed-7 timeline consistent (push 15:26:40Z; alignment log 15:26:48Z; recorder start 15:26:49.955Z); no leakage; public snapshot verified; citation verified. 1 major, 10 minor findings, IDs prefixed D5-.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| D5-A1 | major | Posts said audits were told nothing about earlier findings; audits 2-4 could and did read them | REWORD v5: fresh, read-only sessions, separate from the work; later audits could read earlier findings |
+| D5-A2..A11 | minor | Audit count; YB-0019 matched (not failed) the type baseline; reused seeds labelled; low reasoning effort of the monitored model; expert-count source; false-alarm footnote; single judge configuration (weak early); Part II without Part I; AI audits not unforgiving; full reference missing from the record | REWORD v5; FIX F16 wording; ARTIFACT model_sizes.json (experts); DOC RESEARCH_PROGRAM full reference |
+
+## Self-found (2026-10-01)
+
+| ID | Finding | How found | Resolution |
+|---|---|---|---|
+| S7 | The YB-0042 chain publish committed 4,810 raw per-episode recordings (about 466 MB) under data/agr: new filenames were not covered by .gitignore | Found by the three-copy verification before any public upload completed (public stayed at b7d526d) | FIX: untracked (files kept locally and in private history; packed copies under algorithms/YB-0042-probe-baseline/data are the record); .gitignore extended; snapshot pipeline now aborts on raw recordings |

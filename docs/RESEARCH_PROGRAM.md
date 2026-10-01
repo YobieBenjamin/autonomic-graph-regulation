@@ -122,7 +122,7 @@ Consequences for the research:
   more than they show'; Kossen et al. (2024), semantic entropy probes (Oxford).
 - **Uncertainty from outputs:** Farquhar et al. (2024, Nature), semantic entropy; Wang et al. (2022), self-consistency.
 - **Monitoring internals for safety:** Goldowsky-Dill et al. (2025, Apollo Research), linear probes for strategic
-  deception; early detection of reasoning non-convergence from hidden states (arXiv 2607.21433, 2026).
+  deception; early detection of reasoning non-convergence from hidden-state probes (Oladri, Jawahar and Mohamed, 2026, Token Budget Saturation and Mechanistic Early Detection of Reasoning Non-Convergence in Chain-of-Thought Models, arXiv:2607.21433).
 - **Biology-inspired regulation and interoception:** Man and Damasio (2019, Nature Machine Intelligence), homeostasis
   and feeling machines; Chiba and Krichmar (2020, Proceedings of the IEEE), neurobiologically inspired self-monitoring;
   interoceptive AI (Nature Machine Intelligence, 2026); Byrnes (Astera Institute), brain-like AGI safety; Mineault et
@@ -146,3 +146,13 @@ framed as a clinical early-warning system.
 - **Authorship (M7):** see README.md, Authorship and AI assistance.
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->
+
+## Related work addendum (2026-10-01): NVIDIA Open Agent Safety Platform
+Announced 2026-09-28 (NVIDIA Developer Blog): OpenShell, an open-source (Apache 2.0) agent runtime that sandboxes agents and enforces policy outside the agent process, plus NVIDIA Sentry, an out-of-band monitor and enforcement layer on BlueField-4 DPUs on the path to the model, with a vendor-stated millisecond quarantine. Convergent with this program's Independence Principle and separate-silicon design. Complementary in what it observes: it governs actions (system calls, tool access, network requests) against policy; it does not observe the model's internal state, so it cannot catch a permitted action based on a wrong conclusion. AGR (or a hidden-state probe, per YB-0042) supplies that internal-state signal, which an enforcement layer could act on at commit points.
+
+## Claim status after YB-0042 (2026-10-01; supersedes earlier claim-status sections where they conflict)
+- **Supported:** before the answer exists, monitors that read the model's internal state (the telemetry regulator or a standard hidden-state probe) discriminate wrong answers better than a larger LLM judge reading the reasoning so far at early checkpoints (seed 8, t = 96: 0.79 and 0.76 vs 0.57), and beat length and question-type baselines.
+- **Not supported:** that the telemetry vital signs add value over a standard hidden-state probe (YB-0042 H1: not distinguishable).
+- **Mixed:** the in-time recall advantage over the judge: YB-0035 seed 7 significant; YB-0042 seed 8 not significant (smaller training set; stricter population). A powered replication is YB-0045.
+- **Hypothesis only:** the regulator reaches probe-level performance from about 24x less telemetry per token (120 values vs 2,880 per layer), which may matter for a hardware telemetry port.
+
