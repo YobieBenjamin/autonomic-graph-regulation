@@ -1,0 +1,267 @@
+{
+ "dry_run": false,
+ "derivation_answered": 5365,
+ "derivation_observations": 9189,
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.001
+ },
+ "probe_cv_table": {
+  "6|0.001": 0.8102,
+  "6|0.01": 0.78,
+  "6|0.1": 0.7633,
+  "12|0.001": 0.818,
+  "12|0.01": 0.7937,
+  "12|0.1": 0.7741,
+  "18|0.001": 0.8188,
+  "18|0.01": 0.7953,
+  "18|0.1": 0.78,
+  "23|0.001": 0.8124,
+  "23|0.01": 0.7893,
+  "23|0.1": 0.7775
+ },
+ "probe_all_layers_C": 0.001,
+ "probe_all_layers_cv": {
+  "0.001": 0.8089,
+  "0.01": 0.7973,
+  "0.1": 0.7904
+ },
+ "test_answered": 1605,
+ "test_wrong": 138,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.2477,
+   "recall": 0.6812,
+   "caught": 94,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6912
+  },
+  "probe": {
+   "threshold": 0.2054,
+   "recall": 0.7246,
+   "caught": 100,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7353
+  },
+  "probe_all_layers": {
+   "threshold": 0.2018,
+   "recall": 0.7029,
+   "caught": 97,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7132
+  },
+  "length_C1": {
+   "threshold": 192.0,
+   "recall": 0.2826,
+   "caught": 39,
+   "fpr": 0.0627,
+   "fpr_monitorable": 0.104,
+   "recall_monitorable": 0.2868
+  },
+  "type_C3": {
+   "threshold": 0.1934,
+   "recall": 0.2246,
+   "caught": 31,
+   "fpr": 0.0525,
+   "fpr_monitorable": 0.087,
+   "recall_monitorable": 0.2279
+  },
+  "judge": {
+   "threshold": 0.6,
+   "recall": 0.2029,
+   "caught": 28,
+   "fpr": 0.0702,
+   "fpr_monitorable": 0.1164,
+   "recall_monitorable": 0.2059
+  }
+ },
+ "population_check": {
+  "answered": 1605,
+  "monitorable": 1021,
+  "short_correct_included": 582
+ },
+ "H1_regulator_minus_judge": [
+  0.4783,
+  0.3071,
+  0.5595
+ ],
+ "H1_supported": true,
+ "S_regulator_minus_probe": [
+  -0.0435,
+  -0.1278,
+  0.0237
+ ],
+ "S_probe_minus_judge": [
+  0.5217,
+  0.3629,
+  0.6057
+ ],
+ "S_regulator_minus_probe_all_layers": [
+  -0.0217,
+  -0.0935,
+  0.0533
+ ],
+ "S_regulator_minus_length": [
+  0.3986,
+  0.2925,
+  0.496
+ ],
+ "S_regulator_minus_type": [
+  0.4565,
+  0.3435,
+  0.5479
+ ],
+ "S_equal_fpr_monitorable": {
+  "regulator": {
+   "caught": 83
+  },
+  "probe": {
+   "caught": 90
+  },
+  "probe_all_layers": {
+   "caught": 88
+  },
+  "length_C1": {
+   "caught": 0
+  },
+  "type_C3": {
+   "caught": 31
+  },
+  "judge": {
+   "caught": 26
+  }
+ },
+ "S_equal_fpr_regulator_minus_probe": [
+  -0.0515,
+  -0.1429,
+  0.0336
+ ],
+ "S_frozen_derivation_thresholds": {
+  "regulator": {
+   "caught": 93,
+   "fpr": 0.0975
+  },
+  "probe": {
+   "caught": 100,
+   "fpr": 0.0975
+  }
+ },
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 1021,
+   "wrong": 136,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7628,
+     0.7117,
+     0.8079
+    ],
+    "probe": [
+     0.8151,
+     0.7683,
+     0.8563
+    ],
+    "type": [
+     0.6866,
+     0.6395,
+     0.7331
+    ],
+    "judge": [
+     0.6171,
+     0.5708,
+     0.6665
+    ]
+   }
+  },
+  "96": {
+   "episodes": 893,
+   "wrong": 134,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8157,
+     0.7743,
+     0.8568
+    ],
+    "probe": [
+     0.8322,
+     0.79,
+     0.8735
+    ],
+    "type": [
+     0.6489,
+     0.6027,
+     0.6942
+    ],
+    "judge": [
+     0.5904,
+     0.5361,
+     0.6447
+    ]
+   }
+  },
+  "192": {
+   "episodes": 661,
+   "wrong": 111,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8389,
+     0.7893,
+     0.8801
+    ],
+    "probe": [
+     0.8689,
+     0.832,
+     0.9035
+    ],
+    "type": [
+     0.5876,
+     0.5335,
+     0.6427
+    ],
+    "judge": [
+     0.6428,
+     0.5836,
+     0.6977
+    ]
+   }
+  },
+  "384": {
+   "episodes": 131,
+   "wrong": 39,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7611,
+     0.666,
+     0.8513
+    ],
+    "probe": [
+     0.8397,
+     0.7603,
+     0.9075
+    ],
+    "type": [
+     0.4659,
+     0.3806,
+     0.5487
+    ],
+    "judge": [
+     0.6897,
+     0.5926,
+     0.7803
+    ]
+   }
+  }
+ },
+ "S_sensitivity_never_answered_as_failures": {
+  "episodes": 1800,
+  "failures": 333,
+  "regulator_minus_probe": [
+   -0.0811,
+   -0.1461,
+   -0.0363
+  ]
+ }
+}

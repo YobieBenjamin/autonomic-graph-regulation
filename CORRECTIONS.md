@@ -167,3 +167,36 @@ Independent, read-only audit (archive/audit/blog_v4_audit_2026-10-01.md). Verdic
 | ID | Finding | How found | Resolution |
 |---|---|---|---|
 | S7 | The YB-0042 chain publish committed 4,810 raw per-episode recordings (about 466 MB) under data/agr: new filenames were not covered by .gitignore | Found by the three-copy verification before any public upload completed (public stayed at b7d526d) | FIX: untracked (files kept locally and in private history; packed copies under algorithms/YB-0042-probe-baseline/data are the record); .gitignore extended; snapshot pipeline now aborts on raw recordings |
+
+## Sixth audit (2026-10-01): the v6 blog drafts, including the first audit of YB-0042 and the NVIDIA section
+
+archive/audit/blog_v6_audit_2026-10-01.md: 1 critical, 8 major, 11 minor. Numbers verified; YB-0042 code unchanged between pre-registration and results.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| D6-C1 | critical | Public repo lacked YB-0042 when audited | Resolved: snapshot b2c7a50 (from a025fca) includes YB-0042; re-cut after YB-0045 adds the timestamp proofs |
+| D6-M1 | major | Internal-state monitoring as a class overclaimed; early AUROC comparison descriptive and unpaired | FIX: RESEARCH_PROGRAM claim status; REWORD v7 |
+| D6-M2 | major | Seed-8 length comparison degenerate (0/40 under the monitorable cap); probe comparisons have no interval | REWORD v7 |
+| D6-M3 | major | Technical draft omits the race the regulator lost (YB-0031) and the rejected YB-0032 design | REWORD v7 |
+| D6-M4 | major | YB-0042, the probe conclusion and the NVIDIA section had not been audited before | This audit covers them; v7 states six audits |
+| D6-M5 | major | "blind" contradicts D5-A1 | REWORD v7 |
+| D6-M6 | major | README audit description stale (three audits, no knowledge of earlier findings) | FIX: README |
+| D6-M7 | major | NVIDIA facts lacked a committed source | DOC: docs/sources/nvidia_open_agent_safety_platform.md; attribution in v7 |
+| D6-M8 | major | YB-0042 OpenTimestamps proof pending when audited | Resolved: proof complete (Bitcoin-anchored), committed in 4a3da80; RFC 3161 tokens added |
+| D6-m1..m11 | minor | Four-layer wording; which audit verified F2; contention windows; YB-0042 training-size description; seed-8 counts; "clearly"; base rate for correct answers; quantized build; theorem-test coverage; CITATION.cff pointed to the private repo; GitHub timestamps retrieved by the author | FIX: YB-0042 README, CITATION.cff, ARTIFACT derivation_sizes.json; REWORD v7 |
+
+## Seventh audit (2026-10-01): the v8 blog drafts, the first audit of YB-0045
+
+archive/audit/blog_v8_audit_2026-10-01.md: 1 critical, 7 major, 7 minor. Every figure verified; YB-0045 analysis code unchanged since pre-registration 682f373.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| D7-C1 | critical | Public snapshot lacks YB-0045, docs/sources, rule 13 and timestamp proofs (repeat of D6-C1) | Re-cut after these fixes and verified on GitHub before posting |
+| D7-M1 | major | Public YB-0042 OpenTimestamps proof was the unfinished one | Fixed by the re-cut (complete proof committed in 4a3da80) |
+| D7-M2 | major | YB-0045 OpenTimestamps proof pending; timeline of the RFC 3161 tokens not stated | FIX: proof upgraded (complete, 4 Bitcoin attestations); REWORD: OTS 14:53Z, RFC 3161 15:45Z (after derivation recording began at 15:14Z, before the first test recording at 18:59Z) |
+| D7-M3 | major | No audit had reviewed YB-0045 | This audit covers it; REWORD |
+| D7-M4 | major | "At every checkpoint" overstated; equal-false-alarm and frozen-threshold results lack intervals | FIX RESEARCH_PROGRAM; REWORD v9 |
+| D7-M5 | major | Probe compute cost assumed (5 ms), never measured | DOC + REWORD |
+| D7-M6 | major | "Solid ground" overstated | REWORD |
+| D7-M7 | major | Seed 7 called the main result while YB-0045 carries the conclusion | REWORD |
+| D7-m1..m7 | minor | Per-seed sums (only the judge differs); older regulator in the offline comparison; YB-0045 monitorable false-alarm rates; power figures without an artifact; 24x is versus one layer; 100+ partners from secondary outlets; comma splice | ARTIFACT tests/power.py + docs/power.json; REWORD v9 |

@@ -69,6 +69,9 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
 
 25. **Second audit (YB-0035 and blog drafts).** No leakage found; 25 findings on interpretation (2 critical: the win holds only before the answer exists, offline the judge is better; YB-0035 never measured confidence). Artifact gaps closed with committed scripts; exploratory fairness checks: equal monitorable false alarms 19 vs 11 (+0.20 [+0.02, +0.43]), frozen threshold 22/40, question-type baseline 6/40.
 
+26. **YB-0045 (powered replication).** Pre-registered; three fresh test seeds; H1 supported: regulator minus judge +0.478 [+0.307, +0.560], holding in each seed (post hoc); the probe still matches the regulator. Seventh audit (first of YB-0045): numbers verified; wording fixed.
+27. **NVIDIA OpenShell set up for YB-0044.** Docker Desktop on macOS lacks Landlock, so OpenShell sandboxes run in a Colima VM confined to the OpenShell gateway (Docker Desktop stays the system default); a reverse SSH tunnel keeps the gateway loopback-only. docs/OPENSHELL_SETUP.md; one command: scripts/openshell_up.sh.
+
 ## Open items
 - Anthropic API key in Keychain, then a supervised pilot (`./mine --max 1`) to measure real cloud-token cost per algorithm.
 - Decide the single miner of record: local orchestrator (`./mine`) vs GitHub `mine.yml`; running both would compete for hypotheses.

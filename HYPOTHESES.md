@@ -263,11 +263,11 @@ budget always produces an alarm; (4) every commit and verdict appears in the has
 test: TLA+ (or equivalent) specification checked exhaustively by a model checker; pass = no invariant or liveness violation.
 
 ## YB-0044 — OpenShell integration prototype: internal-state signal gating agent actions
-status: open (after YB-0043)
+status: in progress (YB-0045 verdict in: H1 supported); OpenShell 0.1.2 set up on Colima (docs/OPENSHELL_SETUP.md)
 hypothesis: an OpenShell policy that consumes an internal-state risk score (regulator or probe) can hold or block irreversible tool calls when the score is high, stopping actions built on wrong conclusions that permission policy alone allows, at acceptable delay.
 test: in a sandboxed agent task with verifiable outcomes, compare policy-only enforcement with policy plus internal-state gating; measure harmful-but-permitted actions stopped, correct actions delayed or blocked, and added latency. Pre-register before running.
 
 ## YB-0045 — Powered replication of the judge comparison
-status: open (next scientific priority)
+status: tested 2026-10-01: H1 supported, +0.478 [+0.307, +0.560]
 hypothesis: with training data matched to YB-0035 (about 1,800 episodes per derivation seed) and the false-alarm cap over all correct test episodes (the YB-0035 definition), an internal-state monitor (probe and regulator) catches more wrong answers in time than the LLM judge on a fresh test seed. Pre-register with the population defined identically in prose and code, and a power calculation.
 

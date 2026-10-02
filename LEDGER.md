@@ -23,3 +23,4 @@ Every hypothesis attempted is recorded here, including failures. A negative resu
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->
 | YB-0042 | Regulator vs hidden-state probe; second fresh replication vs the judge (seed 8) | standard probe from prior work | tested | H1 not distinguishable: probe 18 (all layers 21) vs regulator 17 of 40; H2 not replicated: regulator 17 vs judge 10, +0.175 [-0.061, +0.439]. Deviations: population (monitorable only) and training set one third of YB-0035. |
+| YB-0045 | Powered replication: regulator vs LLM judge in time (seeds 9, 13, 14) | matched training, population fixed | tested, H1 supported | Regulator 94, probe 100, judge 28 of 138; +0.478 [+0.307, +0.560]; holds in each seed (post hoc). Regulator vs probe not distinguishable. |

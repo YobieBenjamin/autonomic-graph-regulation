@@ -1,0 +1,11 @@
+{
+ "method": "normal approximation, half-width scaled as 1/sqrt(n_wrong) from YB-0035",
+ "anchor_half_width_at_40": 0.22,
+ "planned_wrong": 120,
+ "half_width": 0.127,
+ "power": {
+  "0.175": 0.77,
+  "0.2": 0.87,
+  "0.3": 1.0
+ }
+}

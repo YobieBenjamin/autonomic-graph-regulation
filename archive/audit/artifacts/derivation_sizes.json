@@ -1,0 +1,60 @@
+{
+ "YB-0035 derivation": {
+  "2": {
+   "recorded": 4800,
+   "answered": 4293,
+   "wrong": 309,
+   "answered_with_checkpoint": 2745
+  },
+  "3": {
+   "recorded": 600,
+   "answered": 544,
+   "wrong": 47,
+   "answered_with_checkpoint": 354
+  },
+  "4": {
+   "recorded": 600,
+   "answered": 530,
+   "wrong": 46,
+   "answered_with_checkpoint": 335
+  },
+  "total": {
+   "recorded": 6000,
+   "answered": 5367,
+   "wrong": 402,
+   "answered_with_checkpoint": 3434
+  }
+ },
+ "YB-0042 derivation": {
+  "2": {
+   "recorded": 600,
+   "answered": 536,
+   "wrong": 42,
+   "answered_with_checkpoint": 338
+  },
+  "3": {
+   "recorded": 600,
+   "answered": 537,
+   "wrong": 47,
+   "answered_with_checkpoint": 347
+  },
+  "4": {
+   "recorded": 600,
+   "answered": 536,
+   "wrong": 49,
+   "answered_with_checkpoint": 342
+  },
+  "total": {
+   "recorded": 1800,
+   "answered": 1609,
+   "wrong": 138,
+   "answered_with_checkpoint": 1027
+  }
+ },
+ "YB-0042 test seed 8": {
+  "recorded": 600,
+  "answered": 535,
+  "wrong": 40,
+  "answered_with_checkpoint": 339
+ }
+}

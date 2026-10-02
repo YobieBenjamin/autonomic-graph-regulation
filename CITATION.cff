@@ -5,7 +5,7 @@ authors:
   - family-names: Benjamin
     given-names: Yobie
 type: software
-repository-code: https://github.com/YobieBenjamin/safety
+repository-code: https://github.com/YobieBenjamin/autonomic-graph-regulation
 license-url: https://polyformproject.org/licenses/noncommercial/1.0.0
 date-released: 2026-09-30
 keywords:

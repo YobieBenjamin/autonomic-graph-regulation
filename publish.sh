@@ -12,7 +12,7 @@ if [ "${PUBLISH_SANDBOX:-docker}" = docker ]; then          # default: verify un
   sandbox/ensure_docker.sh            # aborts publish (set -e) if Docker is unavailable
   scripts/changed_algorithms.sh > .verify_changed   # same selection as CI (Phase D)
   echo "verify: experiments for: $(tr '\n' ' ' < .verify_changed)"
-  SANDBOX_MEM="${SANDBOX_MEM:-6g}" SANDBOX_TIMEOUT="${SANDBOX_TIMEOUT:-10800}" sandbox/run.sh . verify --ro   # aborts publish on failure
+  SANDBOX_TMPFS="${SANDBOX_TMPFS:-10g}" SANDBOX_MEM="${SANDBOX_MEM:-16g}" SANDBOX_TIMEOUT="${SANDBOX_TIMEOUT:-10800}" sandbox/run.sh . verify --ro   # aborts publish on failure
   rm -f .verify_changed
 else                                                         # explicit opt-out: run on this machine
   if [ "$(uname)" = Darwin ] && [ -z "${SDKROOT:-}" ]; then   # macOS: pick an SDK the linker can read
@@ -48,3 +48,6 @@ else
   echo "Authenticate first: 'gh auth login' or export GITHUB_TOKEN"; exit 1
 fi
 echo "Published: https://github.com/$OWNER/$REPO"
+
+# mirror sync: keep the second local copy (~/safety) identical to GitHub after every publish
+[ -d "$HOME/safety/.git" ] && git -C "$HOME/safety" pull -q --ff-only || echo "warning: mirror ~/safety not synced"
