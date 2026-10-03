@@ -1,0 +1,142 @@
+{
+  "verdict": "not_publishable",
+  "claims_checked": 57,
+  "claims_verified": 22,
+  "findings": [
+    {
+      "id": "G1",
+      "severity": "major",
+      "draft": "plain",
+      "quote": "three out of four of its mistakes were delivered with 90% confidence or more.",
+      "issue": "No evidence provided for this specific proportion; the closest evidence mentions 27 of 36 errors (75%) at >=0.9 confidence, not 75% of all mistakes.",
+      "evidence": "UNVERIFIABLE",
+      "fix": "Replace with a statement supported by evidence, e.g., \"In an early test, 27 of 36 errors (75%) had top‑1 probability ≥ 0.9\"."
+    },
+    {
+      "id": "G2",
+      "severity": "major",
+      "draft": "plain",
+      "quote": "reading the inside of the AI caught more than three times as many mistakes as the bigger AI judge reading its words.",
+      "issue": "Evidence shows regulator caught 94 of 138 wrong answers, judge caught 28; ratio ≈3.36, which is correct, but the table in the draft lists the standard method catching 100 (which is not supported).",
+      "evidence": "YB-0045 results table: standard method catches 100, regulator 94, judge 28.",
+      "fix": "Clarify that the “standard method” refers to a hidden‑state probe and keep the ratio statement only for regulator vs. judge."
+    },
+    {
+      "id": "G3",
+      "severity": "major",
+      "draft": "plain",
+      "quote": "The watchdog warned in time about 93 wrong answers.",
+      "issue": "Evidence from YB-0045 shows 94 warnings (regulator) and 93 in‑time alarms for arm C; the number 93 refers to in‑time alarms, not total warnings. The draft conflates these.",
+      "evidence": "YB-0045 results: regulator caught 94, in‑time alarms 93.",
+      "fix": "State the exact figures: \"The regulator raised 94 warnings, of which 93 occurred before the answer was emitted.\""
+    },
+    {
+      "id": "G4",
+      "severity": "major",
+      "draft": "plain",
+      "quote": "Result: 74 of those 93 wrong actions went through anyway.",
+      "issue": "Evidence shows 19 of 93 were stopped under arm B (reactive block), leaving 74 that proceeded; however the draft does not mention the 19 stopped, making it appear all 93 passed.",
+      "evidence": "YB-0044 results table: Arm B stopped 19 wrong commits out of 93 alarms.",
+      "fix": "Add the missing detail: \"Of the 93 in‑time alarms, 19 were blocked by the reactive arm, while 74 still proceeded.\""
+    },
+    {
+      "id": "G5",
+      "severity": "major",
+      "draft": "plain",
+      "quote": "The price was a wait of about seven seconds per action.",
+      "issue": "Evidence gives median delay 7.4 s (90th percentile 9.0 s) for arm C holds; the draft rounds to “about seven seconds” without specifying it is a median, which may mislead.",
+      "evidence": "YB-0044 costs: median 7.4 s.",
+      "fix": "Specify that the delay is a median of 7.4 seconds."
+    },
+    {
+      "id": "G6",
+      "severity": "major",
+      "draft": "technical",
+      "quote": "Answer‑token confidence detected wrong answers at AUROC 0.366 [0.304, 0.433]. Below a coin flip: the model was more confident when it was wrong.",
+      "issue": "AUROC 0.366 is below 0.5 (worse than random), but saying “below a coin flip” mischaracterises the result; the confidence being higher on wrong answers is implied by AUROC < 0.5, not by the interval alone.",
+      "evidence": "YB-0031 evidence in other records (not listed) – but within provided evidence only YB-0031 mention exists elsewhere; still the claim is supported.",
+      "fix": "Rephrase to “AUROC 0.366 (< 0.5) indicates the model’s confidence was inversely correlated with correctness.”"
+    },
+    {
+      "id": "G7",
+      "severity": "major",
+      "draft": "technical",
+      "quote": "Regulator minus judge: +0.478 [0.307, 0.560]. Supported.",
+      "issue": "Evidence shows H1 regulator minus judge = +0.478 [0.307, 0.560] in YB-0045 results – correct. However the draft later states “regulator minus judge: +0.405 … +0.469 … +0.404” for per‑seed post‑hoc; mixing these numbers without clarification is confusing.",
+      "evidence": "YB-0045 results table and post‑hoc per‑seed values.",
+      "fix": "Separate the pre‑registered aggregate result (+0.478) from the post‑hoc per‑seed figures, noting they are exploratory."
+    },
+    {
+      "id": "G8",
+      "severity": "major",
+      "draft": "technical",
+      "quote": "Policy latency: a deny took effect after a median 5.47 s (4.99 to 5.94 s); an allow after 3.55 s (3.08 to 4.01 s).",
+      "issue": "Evidence gives median deny 5.47 s with min/max, not a confidence interval; the draft presents it as a range which could be misread as CI.",
+      "evidence": "YB-0044 policy latency summary.",
+      "fix": "State “median 5.47 s (range 4.99–5.94 s) for denies and median 3.55 s (range 3.08–4.01 s) for allows.”"
+    },
+    {
+      "id": "G9",
+      "severity": "major",
+      "draft": "technical",
+      "quote": "Arm C stopped exactly the 93 alarmed wrong answers.",
+      "issue": "Evidence confirms arm C stops all alarmed wrong answers by design, but the claim omits that arm C also held 16 correct commits (14 with alarms). The omission overstates effectiveness.",
+      "evidence": "YB-0044 results table showing 93 stopped wrong and 16 correct held.",
+      "fix": "Add that arm C also held 16 correct commits, of which 14 had alarms."
+    },
+    {
+      "id": "G10",
+      "severity": "minor",
+      "draft": "plain",
+      "quote": "gpt‑oss‑120b … about five and a half times larger.",
+      "issue": "Model size evidence shows total parameters ratio 5.59, active parameters ratio 1.42; the “five and a half times larger” refers to total parameters, which is correct but should cite the specific ratio.",
+      "evidence": "Model sizes table.",
+      "fix": "Specify “≈ 5.6× more total parameters (ratio 5.59).”"
+    },
+    {
+      "id": "G11",
+      "severity": "minor",
+      "draft": "plain",
+      "quote": "The watchdog warned in time about 93 wrong answers.",
+      "issue": "Same as G3 – already addressed; keep this entry for the minor rounding issue.",
+      "evidence": "YB-0045 results.",
+      "fix": "Use the precise figure 94 warnings, 93 in‑time."
+    },
+    {
+      "id": "G12",
+      "severity": "minor",
+      "draft": "technical",
+      "quote": "per‑checkpoint AUROC t = 48/96/192/384: regulator 0.763/0.816/0.839/0.761.",
+      "issue": "Evidence shows these numbers for YB-0045; correct."
+      "evidence": "YB-0045 per‑checkpoint AUROC values.",
+      "fix": null
+    },
+    {
+      "id": "G13",
+      "severity": "minor",
+      "draft": "technical",
+      "quote": "Judge timing median 1.55 s, 90th percentile 7.2 s.",
+      "issue": "Evidence gives median 1.55 s and 90th 7.2 s (from YB-0045 S_per_checkpoint_auroc for judge at 384). Correct."
+      "evidence": "YB-0045 per‑checkpoint AUROC timing data.",
+      "fix": null
+    },
+    {
+      "id": "G14",
+      "severity": "minor",
+      "draft": "technical",
+      "quote": "Power calculation: half‑width 0.127 at planned wrong = 120.",
+      "issue": "Evidence shows anchor_half_width_at_40 = 0.22, planned_wrong = 120, half_width = 0.127 – matches.",
+      "evidence": "YB-0045 power calculation.",
+      "fix": null
+    },
+    {
+      "id": "G15",
+      "severity": "minor",
+      "draft": "technical",
+      "quote": "Eight audits; the first seven were fresh, read‑only Claude sessions.",
+      "issue": "Evidence lists eight audits with counts; matches.",
+      "evidence": "Other records evidence.",
+      "fix": null
+    }
+  ]
+}

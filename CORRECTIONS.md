@@ -225,3 +225,22 @@ archive/audit/blog_v8_audit_2026-10-01.md: 1 critical, 7 major, 7 minor. Every f
 | D8-G10 | minor | About 20 ms per token unsupported; measured median 14.4 ms over 442,306 tokens | FIX + ARTIFACT archive/audit/artifacts/token_timing_and_width.json (missed by Claude) |
 | D8-G4, G7, G9 | minor | Stricter-rule claim unexplained; 2,880 width uncited | REWORD; width confirmed (2,880; ratio 24.0) in the same artifact |
 | D8-G1, G3, G5, G6, G8, G11..G15 | minor | Items outside the evidence bundle, or already fixed in v11 | No change needed (verified in the repository by the Claude audit) or already fixed |
+
+## Ninth audit (2026-10-03): the final drafts (LinkedIn plain-English version and technical v11); three auditors, three companies
+
+**Claude** (repository access; archive/audit/final_audit_claude_2026-10-03.md): every number verified; P1 critical; P2-P5, T1-T3 major; 14 minor.
+**GLM-5.3-flash** (Z.ai; evidence bundle; archive/audit/final_audit_glm_2026-10-03.json): publishable with fixes; 74 checked, 64 verified; 1 major (same sentence as Claude P4), 9 minor bundle gaps; no wrong number.
+**gpt-oss-120b** (OpenAI open-weight, local; same prompt and bundle; archive/audit/final_audit_gptoss_raw.txt): returned malformed JSON (recovered leniently); verdict not publishable; 57 checked, 22 verified; most findings incorrect (for example, called the probe count of 100 unsupported and an AUROC below 0.5 not below chance). **Not independent:** it is the judge in the experiments and wrote some code. Only findings confirmed against the files were adopted (93 vs 94; median for the 7.4 s delay), both also raised by Claude.
+Prompt and bundle: archive/audit/multi_audit.py, multi_audit_prompt_final.txt.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| D9-P1 | critical | Plain draft stated as fact that the model said 2 + 2 = 5 (fabricated) | FIX: replaced with a real error type (a big multiplication) |
+| D9-P2 | major | Can-not-talk-its-way-past restated the retracted unjailbreakable claim (D8-M5 lost in rewrite) | REWORD with the untested caveat |
+| D9-P3 | major | 1.4x active-parameter caveat missing (D8-m6 lost) | FIX |
+| D9-P4 | major | Three-times claim per test set overstated (2.5x, 2.9x, 2.6x; post hoc) | REWORD |
+| D9-P5 | major | Are-you-sure claim untested; self-consistency works on finished answers | REWORD: does not work as a brake |
+| D9-T1 | major | Gates list contradicted the model-cannot-be-a-gate claim | REWORD: second opinion yes, control of its own actions no |
+| D9-T2 | major | H2 direction largely foreseeable from pre-registered files | DISCLOSED: 68 of 93 gaps (73.1%) under 5.47 s in the plan (verified) |
+| D9-T3 | major | Unaware-error ERN attributed to Gehring 1993 | FIX: Nieuwenhuis et al. 2001; source Dehaene et al. 1994 |
+| D9-minor | minor | Hyperdirect hedge (Nambu 2002); literally race; brake speed; Damasio year; 93 vs 94; connected wording; lands on nobody; exactly the same confidence; 90% caveats; gpt-oss code role; review-gate untested; YB-0035 judge timing label; NVIDIA architecture wording; list numbering; full path; audit count | FIX or REWORD |
