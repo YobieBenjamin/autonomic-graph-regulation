@@ -3,7 +3,7 @@
 This repository is a **public snapshot** of the private research repository YobieBenjamin/safety, which holds the
 complete, unaltered history (every commit, pre-registration and correction) and remains the evidence of record.
 
-- **Source commit (private):** 0ea82694a5635c3ba36075dbf6005515def01cec (2026-10-02T20:03:48-07:00)
+- **Source commit (private):** d9deaee6a97fedd42f5f5d537749e9ceb35eacf6 (2026-10-02T20:29:30-07:00)
 - **Excluded from this snapshot:** docs/book/ (an unpublished draft of the author's book) and
   .github/workflows/mine.yml (a disabled automation). Nothing else was removed or changed.
 - **Verify the files:** run `shasum -a 256 -c MANIFEST.sha256` to check every file against its fingerprint.

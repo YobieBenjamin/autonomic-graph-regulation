@@ -244,3 +244,19 @@ Prompt and bundle: archive/audit/multi_audit.py, multi_audit_prompt_final.txt.
 | D9-T2 | major | H2 direction largely foreseeable from pre-registered files | DISCLOSED: 68 of 93 gaps (73.1%) under 5.47 s in the plan (verified) |
 | D9-T3 | major | Unaware-error ERN attributed to Gehring 1993 | FIX: Nieuwenhuis et al. 2001; source Dehaene et al. 1994 |
 | D9-minor | minor | Hyperdirect hedge (Nambu 2002); literally race; brake speed; Damasio year; 93 vs 94; connected wording; lands on nobody; exactly the same confidence; 90% caveats; gpt-oss code role; review-gate untested; YB-0035 judge timing label; NVIDIA architecture wording; list numbering; full path; audit count | FIX or REWORD |
+
+## Citation verification (2026-10-03)
+
+Every literature citation in the published posts (32, including three added during the check) was verified against a primary source: DOI, publisher, PubMed or PMC, arXiv, proceedings, or the issuing body. Registry with URLs and access level: docs/sources/CITATIONS.md. 31 verified at abstract or full-text level; 1 (Dehaene, Posner and Tucker 1994) at record level via citing literature.
+
+| ID | Finding | Resolution |
+|---|---|---|
+| CV-1 | Kadavath et al. 2022 shows self-evaluation partly works; thesis called self-policing an architectural category error | REWORD: acknowledge Kadavath; narrower claim (model cannot be the control on its own actions) |
+| CV-2 | Wang et al. 2022 proposed self-consistency for accuracy, not detection | REWORD: adapted as a disagreement signal |
+| CV-3 | Byrnes cited without year; a blog series | FIX: Byrnes, 2022, blog series |
+| CV-4 | flexHEG cited without authors | FIX: Petrie and Aarne, 2025 |
+| CV-5 | Sparrow 2007 presented without its critics | ADD: Champagne and Tonkens 2015; Robillard 2018 |
+| CV-6 | ERN 100 ms timing not in the Gehring 1993 abstract | ADD: Yeung, Botvinick and Cohen 2004 |
+| CV-7 | Orgad et al. 2024: hidden-state detectors generalise poorly | ADD to limitations |
+| CV-8 | Sentry is a reference design, not a shipping product | REWORD |
+| CV-9 | Ninth-audit fixes confirmed by primary sources: Nieuwenhuis 2001 (unaware errors), Aron and Poldrack 2006 full text (hyperdirect stop not established) | Confirmed |
