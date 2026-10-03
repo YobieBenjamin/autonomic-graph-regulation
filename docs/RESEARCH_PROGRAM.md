@@ -83,6 +83,7 @@ Calm prompt: mean entropy 0.886, RMSSD 0.994, peak 3.53. Jailbreak prompt: mean 
 ## Status of the central claim after YB-0012 (pre-registered, held-out)
 - 'Superior to behavior monitoring' is **not supported for accuracy on verifiable tasks**: self-consistency (0.98) and an LLM judge (0.89) beat the organism (0.72).
 - Supported: output appearance is blind or inverted (answer confidence 0.39, below chance), and the organism warns early (median 4.5 s, 291 tokens before the answer exists), nearly free (290 ns/token), text-blind and unjailbreakable by construction.
+  > **Retracted (see CORRECTIONS.md F1/F2 and F23):** the 4.5 s early warning came from alarms that also fired on most correct answers; "unjailbreakable" is untested and withdrawn.
 - Open: whether the accuracy gap shrinks or reverses where behavior cannot be verified (YB-0022), and whether the organism dominates at equal compute or latency budgets (YB-0023). The biobrain product case now rests on earliness, cost, and non-verifiable settings, which must be demonstrated before building hardware.
 
 ## Product objective (author, 2026-09-29): graded early warning, not binary flagging
@@ -162,4 +163,12 @@ Announced 2026-09-28 (NVIDIA Developer Blog): OpenShell, an open-source (Apache 
 - **Not supported:** that the telemetry features add value over a standard hidden-state probe (YB-0042, YB-0045). With never-answered episodes as failures the probe is better.
 - **History:** significant in YB-0035, not significant in the underpowered YB-0042, supported in YB-0045.
 - **Scope:** one monitored model, machine-gradable single-answer tasks, four checkpoints up to 384 tokens.
+
+## Related work addendum (2026-10-02)
+Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: activation-based monitors can be evaded by inputs optimised against them; the regulator's robustness to such attacks on its telemetry is untested (CORRECTIONS B23, F23).
+
+## Claim status after YB-0044 (2026-10-02)
+- **Supported (pre-registered replay, one setup):** acting on an in-time internal-state warning by changing an OpenShell policy on the fly lost the race in 74 of 93 cases (79.6% [72.0%, 87.1%]); re-counting 4 suspiciously fast wins as losses gives 83.9% [76.3%, 91.4%] (post hoc).
+- **By design, not a finding:** hold-until-cleared stops every alarmed action (93 of 93), so H1 was nearly guaranteed once reactive blocking lost races. The measured findings for holding are its costs: 16 of 138 correct actions held (14 alarms, 2 release timeouts) and a median 7.4 s delay.
+- **Scope:** precomputed alarm times replayed through open-source OpenShell 0.1.2 on a Mac (Colima, tunnel); no model in the loop; NVIDIA Sentry/BlueField not used.
 

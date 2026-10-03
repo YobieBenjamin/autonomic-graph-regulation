@@ -1,0 +1,158 @@
+{
+ "verdict": "publishable_with_fixes",
+ "claims_checked": 86,
+ "claims_verified": 71,
+ "findings": [
+  {
+   "id": "G1",
+   "severity": "major",
+   "draft": "technical",
+   "quote": "judge 11, length 9, question type 6 (exploratory), self-consistency 0",
+   "issue": "No YB-0035 monitor caught 6. YB-0035 primary results report judge_prefix 11, length_C1 9, length_C2 3, aiews_v4 9, selfcons 0; there is no question-type monitor and no monitor with 6 catches. The number is unsupported and contradicts the results file.",
+   "evidence": "YB-0035 results (seed 7), primary_seed7.monitors",
+   "fix": "Replace 'question type 6 (exploratory)' with a value present in the YB-0035 results (e.g. 'length control C2: 3, exploratory') or delete the item."
+  },
+  {
+   "id": "G2",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "unpaired intervals separate at the first three and overlap at 384",
+   "issue": "The comparison pair is unspecified. Read as regulator vs probe, the claim is false: their AUROC CIs overlap at 48 ([0.712,0.808] vs [0.768,0.856]), 96 and 192. It is only true for probe vs judge.",
+   "evidence": "YB-0045 results, S_per_checkpoint_auroc",
+   "fix": "Name the pair explicitly, e.g. 'probe vs judge intervals separate at 48/96/192 and overlap at 384; regulator vs probe intervals overlap at every checkpoint.'"
+  },
+  {
+   "id": "G3",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "2 because my release command was slower than the agent's patience",
+   "issue": "Contradicts the evidence, which states the release was issued on time; the policy change outlasted the agent's 12 s retry window. The mechanism is misdescribed (the 14/2 counts are correct).",
+   "evidence": "Other records: 'release issued on time, retry window 12 s'; YB-0044 results",
+   "fix": "Write: '2 because the policy change outlasted the agent's 12-second retry window even though my release command was issued on time.'"
+  },
+  {
+   "id": "G4",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "That test had a third of the training data and a stricter false-alarm rule",
+   "issue": "The disclosed deviation was that the false-alarm cap was applied to monitorable episodes only; the evidence does not establish that this made the rule stricter (in YB-0042 overall and monitorable FPR are nearly identical, 0.1 vs 0.1003).",
+   "evidence": "YB-0042 results; technical draft's own disclosure of the two deviations",
+   "fix": "Replace 'a stricter false-alarm rule' with 'a differently scoped false-alarm rule (the cap was applied to monitorable episodes only)'."
+  },
+  {
+   "id": "G5",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "a warning 4.5 seconds before the answer",
+   "issue": "No evidence covers this retracted early result; the 4.5 s figure is unverifiable.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Keep the retraction narrative but drop the specific 4.5 s figure, or mark it as an unretracted-number from a superseded analysis."
+  },
+  {
+   "id": "G6",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "with more than 100 partners according to press reports",
+   "issue": "No evidence covers the partner count for NVIDIA's platform announcement.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Either cite and verify a specific press source for the count or drop the number and keep the qualitative announcement reference."
+  },
+  {
+   "id": "G7",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "it carries about 24 times less data per word than a single layer",
+   "issue": "Depends on a hidden-state width of 2,880 per layer, which appears in no evidence item; the 24x ratio is unverifiable (the 120-channel side is supported).",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Mark the comparison as an engineering estimate ('about 24x less, if one layer's hidden state is 2,880 values') or cite the model configuration file."
+  },
+  {
+   "id": "G8",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "Six kinds a computer can grade exactly",
+   "issue": "No evidence confirms six task types (derivation records cover types 2, 3 and 4 only), and the draft's own colon list names only five kinds, an internal inconsistency.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "State the actual number of task types and make the list match it (currently five named)."
+  },
+  {
+   "id": "G9",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "versus 2,880 for one layer's hidden state",
+   "issue": "The 2,880 per-layer hidden-state width appears in no evidence item; it underpins both this figure and the plain draft's 24x claim.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Cite the gpt-oss-20b model configuration for the hidden size, or present 2,880 as an unverified assumption."
+  },
+  {
+   "id": "G10",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "about 20 milliseconds, not seconds",
+   "issue": "No evidence covers the per-token generation time of ~20 ms (repeated in the technical draft as 'one token time (about 20 ms)').",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Label it explicitly as an order-of-magnitude estimate for token production time, not a measured figure."
+  },
+  {
+   "id": "G11",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "L2 logistic regression (C = 0.1), one threshold",
+   "issue": "The regulator's C = 0.1 appears in no evidence item (evidence only records probe selections: layer 6/C 0.001 and layer 18/C 0.001).",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Point to the regulator configuration or analysis file that records C = 0.1."
+  },
+  {
+   "id": "G12",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "chosen by grouped 5-fold CV on derivation data only",
+   "issue": "The 5-fold grouped CV procedure for probe selection is not covered by the evidence (only the selected layer/C and CV scores are recorded).",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Cite the probe-selection script or results file that documents the CV scheme."
+  },
+  {
+   "id": "G13",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "paired bootstrap, 1,000 resamples",
+   "issue": "The number of bootstrap resamples appears in no evidence item, though the CIs themselves are verified.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Cite the analysis code/config setting the resample count, or state 'bootstrap CIs (resample count in analysis code)'."
+  },
+  {
+   "id": "G14",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "the mean and RMSSD over the prefix (240 features)",
+   "issue": "The feature counts 240 and 74 appear in no evidence item and cannot be checked (120 channels are supported; 2x120=240 is plausible but unconfirmed, as is 74).",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Cite the feature-extraction code or a results file listing the feature dimensions."
+  },
+  {
+   "id": "G15",
+   "severity": "minor",
+   "draft": "technical",
+   "quote": "thirteen process rules, each traced to a finding",
+   "issue": "The count of thirteen process rules in PROTOCOL.md is not covered by the evidence.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Cite PROTOCOL.md directly for the count or drop the specific number."
+  }
+ ],
+ "_meta": {
+  "model": "glm-5.3-flash",
+  "endpoint": "https://api.z.ai/api/paas/v4/chat/completions",
+  "seconds": 361,
+  "usage": {
+   "completion_tokens": 19841,
+   "completion_tokens_details": {
+    "reasoning_tokens": 17908
+   },
+   "prompt_tokens": 16494,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "total_tokens": 36335
+  }
+ }
+}

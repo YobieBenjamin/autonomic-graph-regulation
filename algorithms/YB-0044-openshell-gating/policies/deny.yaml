@@ -1,0 +1,27 @@
+version: 1
+filesystem_policy:
+  include_workdir: true
+  read_only:
+    - /bin
+    - /usr
+    - /lib
+    - /proc
+    - /dev/urandom
+    - /etc
+    - /var/log
+  read_write:
+    - /tmp
+    - /dev/null
+landlock:
+  compatibility: best_effort
+network_policies:
+  mock_commit:
+    endpoints:
+      - host: host.openshell.internal
+        port: 18080
+        protocol: rest
+        enforcement: enforce
+        rules:
+          - allow: {method: GET, path: /health}
+    binaries:
+      - path: /usr/local/bin/python3.12

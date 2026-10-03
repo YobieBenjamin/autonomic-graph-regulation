@@ -1,0 +1,12 @@
+{
+ "per_token_ms": {
+  "n_tokens": 442306,
+  "median": 14.44,
+  "p10": 13.08,
+  "p90": 16.6
+ },
+ "hidden_state_width_per_layer": 2880,
+ "telemetry_values_per_token": 120,
+ "ratio_one_layer_to_telemetry": 24.0,
+ "source": "YB-0045 test seeds 9, 13, 14"
+}

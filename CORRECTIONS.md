@@ -200,3 +200,28 @@ archive/audit/blog_v8_audit_2026-10-01.md: 1 critical, 7 major, 7 minor. Every f
 | D7-M6 | major | "Solid ground" overstated | REWORD |
 | D7-M7 | major | Seed 7 called the main result while YB-0045 carries the conclusion | REWORD |
 | D7-m1..m7 | minor | Per-seed sums (only the judge differs); older regulator in the offline comparison; YB-0045 monitorable false-alarm rates; power figures without an artifact; 24x is versus one layer; 100+ partners from secondary outlets; comma splice | ARTIFACT tests/power.py + docs/power.json; REWORD v9 |
+
+## Eighth audit (2026-10-02): the v10 blog drafts, first audit of YB-0044; two independent auditors
+
+**Claude** (fresh read-only session with repository access; archive/audit/blog_v10_audit_claude_2026-10-02.md): 3 critical, 8 major, 12 minor; every number verified by recomputation.
+**GLM-5.3-flash** (Z.ai; first non-Claude auditor; given the drafts plus an evidence bundle of committed results, no repository access; archive/audit/glm_audit.py, glm_audit_prompt_v10.txt, blog_v10_audit_glm_2026-10-02.json, blog_v10_audit_glm_response.json): 86 claims checked, 71 verified, 15 findings (1 major, 14 minor); no wrong number found.
+**How GLM was run:** LM Studio could not load the local GGUF (unknown architecture glm5next in llama.cpp 2.14.0, latest stable and beta); run 1 via the Z.ai API returned an empty answer because 17,908 reasoning tokens exceeded its 16,000-token budget (confirmed from run 2 usage); run 2 (reasoning effort high, 40,000-token budget) completed.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| D8-C1 | critical | YB-0044 results untracked and not public | FIX: committed; snapshot re-cut; cited paths verified on public GitHub |
+| D8-C2 | critical | Frozen-sandbox story not in the committed record | DOC: incident in docs/OPENSHELL_SETUP.md with caveat (logs not retained); claim cut from posts |
+| D8-C3 | critical | Arm C 93 of 93 fixed by design; H1 nearly guaranteed | REWORD: posts lead with arm B (74 of 93 lost) and arm C costs; README and claim status note it |
+| D8-M1 | major | Live enforcement latency wider than isolated; possible leftover blocks | ARTIFACT docs/supplementary.json: re-counting 4 short-gap wins as losses gives 83.9% [76.3%, 91.4%]; disclosed |
+| D8-M2 | major | Live start time not verifiable | ARTIFACT docs/mock_service_log.jsonl and supplementary.json: first start 14.1 s after the RFC 3161 stamp |
+| D8-M3 | major | Arm C stalls unreported; timeout cause inferred | DOC: 7 stalls over 60 s (largest 754 s) disclosed; cause not established |
+| D8-M4 | major | No audit had covered YB-0044; blind; README count | REWORD; README now points to CORRECTIONS for counts |
+| D8-M5 | major | Plain draft restated the retracted unjailbreakable claim | REWORD |
+| D8-M6 | major | Public timestamps not before every test | REWORD: from the second test on |
+| D8-M7 | major | Cited file still stated retracted claims | FIX: retraction banners in RESEARCH_PROGRAM, PROJECT_HISTORY, HYPOTHESES; Bailey et al. 2024 added |
+| D8-M8 | major | Overstated as plugged into NVIDIA platform; regulator not live | REWORD: replay through open-source OpenShell; no model in the loop; no Sentry or BlueField |
+| D8-m1..m12 | minor | Every-action wording; regulator-minus-probe label; AUROC source; frozen threshold scope; sixth task type; 1.4x active; post hoc label; 93 is the regulator; CORRECTIONS row for the population mismatch (see YB-0042 README deviation 1); 5 ms vs 4.1 ms; vendor claims; proofs | REWORD; proofs committed |
+| D8-G2 | minor | Interval-separation claim did not name the pair (false for regulator vs probe) | REWORD (missed by Claude) |
+| D8-G10 | minor | About 20 ms per token unsupported; measured median 14.4 ms over 442,306 tokens | FIX + ARTIFACT archive/audit/artifacts/token_timing_and_width.json (missed by Claude) |
+| D8-G4, G7, G9 | minor | Stricter-rule claim unexplained; 2,880 width uncited | REWORD; width confirmed (2,880; ratio 24.0) in the same artifact |
+| D8-G1, G3, G5, G6, G8, G11..G15 | minor | Items outside the evidence bundle, or already fixed in v11 | No change needed (verified in the repository by the Claude audit) or already fixed |

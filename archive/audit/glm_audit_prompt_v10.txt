@@ -1,0 +1,816 @@
+You are an independent, adversarial fact-checker for two blog drafts about an AI safety research project.
+Use ONLY the EVIDENCE section below. You cannot browse; do not use outside knowledge to confirm numbers.
+
+Procedure:
+1. Extract every quantitative claim (counts, percentages, intervals, timings, sizes) from both drafts.
+2. For each, find the supporting evidence. If it matches (allow rounding to the precision shown), it is verified.
+   If it contradicts the evidence, report a finding. If no evidence covers it, report it as UNVERIFIABLE (severity minor)
+   unless it is central to a conclusion (then major).
+3. Check internal consistency: the same quantity must not appear with different values in different places.
+4. Check for overclaims: conclusions stronger than the evidence (for example generalising beyond one model or one task
+   family, calling a descriptive comparison significant, or claiming something was tested that was not).
+5. Do NOT report style. The plain-English draft is intentionally informal and irreverent; only flag wording that changes
+   or overstates a claim.
+
+Severity: critical = a false or misleading headline claim; major = a wrong number or an overclaim a reader would rely on;
+minor = imprecision, an unverifiable detail, or a small inconsistency.
+
+Output ONE JSON object and nothing else (no markdown fences, no prose before or after):
+{"verdict": "publishable" | "publishable_with_fixes" | "not_publishable",
+ "claims_checked": <int>, "claims_verified": <int>,
+ "findings": [{"id": "G1", "severity": "critical|major|minor", "draft": "plain|technical",
+   "quote": "<exact words from the draft, at most 25 words>", "issue": "<what is wrong>",
+   "evidence": "<which evidence item, or UNVERIFIABLE>", "fix": "<concrete replacement wording>"}]}
+
+=== EVIDENCE ===
+[YB-0035 results (seed 7)] {"dry_run":false,"derivation_answered":5367,"derivation_wrong":402,"fixed_compute_cost_s":{"organism":0.005,"aiews_v4":0.005,"length_C1":0.0,"length_C2":0.0},"primary_seed7":{"label":"PRIMARY: seed 7, fixed tap, answered episodes","episodes":535,"wrong":40,"monitorable_wrong":40,"monitorable_correct":301,"monitors":{"organism":{"threshold":0.2333,"recall":0.575,"caught":23,"fpr":0.099,"fpr_monitorable":0.1628,"recall_monitorable":0.575,"median_seconds_to_spare_first_crossing":3.208},"aiews_v4":{"threshold":5.0,"recall":0.225,"caught":9,"fpr":0.0808,"fpr_monitorable":0.1329,"recall_monitorable":0.225,"median_seconds_to_spare_first_crossing":3.674},"length_C1":{"threshold":192.0,"recall":0.225,"caught":9,"fpr":0.0626,"fpr_monitorable":0.103,"recall_monitorable":0.225,"median_seconds_to_spare_first_crossing":3.854},"length_C2":{"threshold":0.2939,"recall":0.075,"caught":3,"fpr":0.0364,"fpr_monitorable":0.0598,"recall_monitorable":0.075,"median_seconds_to_spare_first_crossing":1.708},"judge_prefix":{"threshold":0.6,"recall":0.275,"caught":11,"fpr":0.0667,"fpr_monitorable":0.1096,"recall_monitorable":0.275,"median_seconds_to_spare_first_crossing":2.736},"selfcons_prefix":{"threshold":-Infinity,"recall":0.0,"caught":0,"fpr":0.0081,"fpr_monitorable":0.0133,"recall_monitorable":0.0,"median_seconds_to_spare_first_crossing":null}},"best_behavior":"judge_prefix","best_length":"length_C1","organism_minus_best_behavior":[0.3,0.0488,0.4865],"organism_minus_best_length":[0.35,0.1281,0.5435],"H1_holds":true,"aiews_minus_best_length":[0.0,-0.1628,0.2251],"per_checkpoint_auroc":{"organism":{"48":0.7044,"96":0.7299,"192":0.798,"384":0.828},"judge_prefix":{"48":0.5436,"96":0.5618,"192":0.6086,"384":0.7832}}},"sensitivity_seed7_incl_unanswered":{"label":"SENSITIVITY (F5): seed 7 incl. never-answered as failures","episodes":600,"wrong":105,"monitorable_wrong":105,"monitorable_correct":301,"monitors":{"organism":{"threshold":0.2333,"recall":0.6476,"caught":68,"fpr":0.099,"fpr_monitorable":0.1628,"recall_monitorable":0.6476,"median_seconds_to_spare_first_crossing":8.954},"aiews_v4":{"threshold":5.0,"recall":0.1143,"caught":12,"fpr":0.0808,"fpr_monitorable":0.1329,"recall_monitorable":0.1143,"median_seconds_to_spare_first_crossing":3.819},"length_C1":{"threshold":192.0,"recall":0.7048,"caught":74,"fpr":0.0626,"fpr_monitorable":0.103,"recall_monitorable":0.7048,"median_seconds_to_spare_first_crossing":5.529},"length_C2":{"threshold":0.2939,"recall":0.0381,"caught":4,"fpr":0.0364,"fpr_monitorable":0.0598,"recall_monitorable":0.0381,"median_seconds_to_spare_first_crossing":1.77},"judge_prefix":{"threshold":0.6,"recall":0.619,"caught":65,"fpr":0.0667,"fpr_monitorable":0.1096,"recall_monitorable":0.619,"median_seconds_to_spare_first_crossing":8.124},"selfcons_prefix":{"threshold":-Infinity,"recall":0.019,"caught":2,"fpr":0.0081,"fpr_monitorable":0.0133,"recall_monitorable":0.019,"median_seconds_to_spare_first_crossing":2.626}},"best_behavior":"judge_prefix","best_length":"length_C1","organism_minus_best_behavior":[0.0286,-0.1546,0.1207],"organism_minus_best_length":[-0.0571,-0.1932,0.0613],"H1_holds":false,"aiews_minus_best_length":[-0.5905,-0.7,-0.4583],"per_checkpoint_auroc":{"organism":{"48":0.7104,"96":0.7605,"192":0.8094,"384":0.8684},"judge_prefix":{"48":0.7376,"96":0.7505,"192":0.7675,"384":0.7559}}},"secondary_seed5":{"label":"SECONDARY: seed 5, realigned, answered","episodes":538,"wrong":44,"monitorable_wrong":44,"monitorable_correct":301,"monitors":{"organism":{"threshold":0.2192,"recall":0.6818,"caught":30,"fpr":0.0992,"fpr_monitorable":0.1628,"recall_monitorable":0.6818,"median_seconds_to_spare_first_crossing":4.009},"aiews_v4":{"threshold":4.0,"recall":0.3864,"caught":17,"fpr":0.0749,"fpr_monitorable":0.1229,"recall_monitorable":0.3864,"median_seconds_to_spare_first_crossing":3.326},"length_C1":{"threshold":192.0,"recall":0.3864,"caught":17,"fpr":0.0668,"fpr_monitorable":0.1096,"recall_monitorable":0.3864,"median_seconds_to_spare_first_crossing":2.139},"length_C2":{"threshold":0.2939,"recall":0.1364,"caught":6,"fpr":0.0486,"fpr_monitorable":0.0797,"recall_monitorable":0.1364,"median_seconds_to_spare_first_crossing":1.118},"judge_prefix":{"threshold":0.6,"recall":0.2955,"caught":13,"fpr":0.0769,"fpr_monitorable":0.1262,"recall_monitorable":0.2955,"median_seconds_to_spare_first_crossing":5.711},"selfcons_prefix":{"threshold":-Infinity,"recall":0.0,"caught":0,"fpr":0.0081,"fpr_monitorable":0.0133,"recall_monitorable":0.0,"median_seconds_to_spare_first_crossing":null}},"best_behavior":"judge_prefix","best_length":"length_C1","organism_minus_best_behavior":[0.3864,0.1395,0.5745],"organism_minus_best_length":[0.2955,0.0881,0.4908],"H1_holds":true,"aiews_minus_best_length":[0.0,-0.1944,0.2084],"per_checkpoint_auroc":{"organism":{"48":0.7415,"96":0.7796,"192":0.8119,"384":0.697},"judge_prefix":{"48":0.6356,"96":0.6226,"192":0.7326,"384":0.6684}}},"secondary_seed6":{"label":"SECONDARY: seed 6, realigned, answered","episodes":537,"wrong":43,"monitorable_wrong":42,"monitorable_correct":308,"monitors":{"organism":{"threshold":0.2583,"recall":0.5814,"caught":25,"fpr":0.0992,"fpr_monitorable":0.1591,"recall_monitorable":0.5952,"median_seconds_to_spare_first_crossing":3.241},"aiews_v4":{"threshold":4.0,"recall":0.3256,"caught":14,"fpr":0.0972,"fpr_monitorable":0.1558,"recall_monitorable":0.3333,"median_seconds_to_spare_first_crossing":2.491},"length_C1":{"threshold":192.0,"recall":0.2558,"caught":11,"fpr":0.0729,"fpr_monitorable":0.1169,"recall_monitorable":0.2619,"median_seconds_to_spare_first_crossing":1.405},"length_C2":{"threshold":0.2939,"recall":0.1395,"caught":6,"fpr":0.0648,"fpr_monitorable":0.1039,"recall_monitorable":0.1429,"median_seconds_to_spare_first_crossing":0.715},"judge_prefix":{"threshold":0.6,"recall":0.3023,"caught":13,"fpr":0.0931,"fpr_monitorable":0.1494,"recall_monitorable":0.3095,"median_seconds_to_spare_first_crossing":3.991},"selfcons_prefix":{"threshold":-Infinity,"recall":0.0,"caught":0,"fpr":0.0142,"fpr_monitorable":0.0227,"recall_monitorable":0.0,"median_seconds_to_spare_first_crossing":null}},"best_behavior":"judge_prefix","best_length":"length_C1","organism_minus_best_behavior":[0.2791,0.0599,0.4857],"organism_minus_best_length":[0.3256,0.1078,0.5135],"H1_holds":true,"aiews_minus_best_length":[0.0698,-0.1715,0.2501],"per_checkpoint_auroc":{"organism":{"48":0.7261,"96":0.7662,"192":0.7495,"384":0.5303},"judge_prefix":{"48":0.6068,"96":0.626,"192":0.6321,"384":0.6073}}},"R3_pooled_5_6_7":{"episodes":1610,"wrong":127,"best_behavior":"judge_prefix","best_length":"length_C1","organism_minus_best_behavior":[0.3228,0.1858,0.4334],"organism_minus_best_length":[0.3228,0.2047,0.434]},"CONFIRMED":true}
+[YB-0042 results (seed 8)] {"dry_run":false,"derivation_answered":1031,"derivation_observations":2779,"probe_selected":{"layer":6,"C":0.001},"probe_cv_table":{"6|0.001":0.8224,"6|0.01":0.8105,"6|0.1":0.8029,"12|0.001":0.8201,"12|0.01":0.808,"12|0.1":0.7986,"18|0.001":0.8191,"18|0.01":0.8004,"18|0.1":0.7882,"23|0.001":0.8069,"23|0.01":0.7947,"23|0.1":0.7896},"probe_all_layers_C":0.001,"probe_all_layers_cv":{"0.001":0.8169,"0.01":0.8079,"0.1":0.8025},"test_answered":340,"test_wrong":40,"monitors":{"regulator":{"threshold":0.4762,"recall":0.425,"caught":17,"fpr":0.1,"fpr_monitorable":0.1003,"recall_monitorable":0.425},"probe":{"threshold":0.2666,"recall":0.45,"caught":18,"fpr":0.1,"fpr_monitorable":0.1003,"recall_monitorable":0.45},"probe_all_layers":{"threshold":0.2608,"recall":0.525,"caught":21,"fpr":0.1,"fpr_monitorable":0.1003,"recall_monitorable":0.525},"length_C1":{"threshold":384.0,"recall":0.0,"caught":0,"fpr":0.0,"fpr_monitorable":0.0,"recall_monitorable":0.0},"type_C3":{"threshold":0.214,"recall":0.125,"caught":5,"fpr":0.1,"fpr_monitorable":0.1003,"recall_monitorable":0.125},"judge":{"threshold":0.65,"recall":0.25,"caught":10,"fpr":0.0967,"fpr_monitorable":0.097,"recall_monitorable":0.25}},"H1_regulator_minus_probe":[-0.025,-0.1702,0.1088],"H1_verdict":"not distinguishable","H2_regulator_minus_judge":[0.175,-0.0607,0.4391],"H2_replicated":false,"S_probe_minus_judge":[0.2,-0.0426,0.4635],"S_regulator_minus_probe_all_layers":[-0.1,-0.2286,0.0968],"S_regulator_minus_length":[0.425,0.0476,0.5953],"S_regulator_minus_type":[0.3,0.1514,0.579],"S_equal_fpr_monitorable":{"regulator":{"caught":17},"probe":{"caught":18},"probe_all_layers":{"caught":20},"length_C1":{"caught":0},"type_C3":{"caught":0},"judge":{"caught":10}},"S_equal_fpr_regulator_minus_probe":[-0.025,-0.1667,0.1212],"S_frozen_derivation_thresholds":{"regulator":{"caught":17,"fpr":0.0933},"probe":{"caught":18,"fpr":0.0833}},"S_per_checkpoint_auroc":{"48":{"episodes":339,"wrong":40,"auroc_with_ci":{"regulator":[0.7129,0.6205,0.8021],"probe":[0.6982,0.5844,0.7964],"type":[0.6254,0.5471,0.7016],"judge":[0.5125,0.425,0.6007]}},"96":{"episodes":302,"wrong":39,"auroc_with_ci":{"regulator":[0.7878,0.7063,0.8658],"probe":[0.7582,0.665,0.8412],"type":[0.5779,0.4926,0.6605],"judge":[0.5666,0.4677,0.6667]}},"192":{"episodes":230,"wrong":35,"auroc_with_ci":{"regulator":[0.765,0.6608,0.8539],"probe":[0.7785,0.6732,0.8634],"type":[0.5098,0.4224,0.6054],"judge":[0.5629,0.4466,0.671]}},"384":{"episodes":47,"wrong":11,"auroc_with_ci":{"regulator":[0.7071,0.4824,0.9027],"probe":[0.7727,0.5618,0.95],"type":[0.3561,0.1906,0.5284],"judge":[0.8485,0.7333,0.9514]}}},"S_sensitivity_never_answered_as_failures":{"episodes":405,"failures":105,"regulator_minus_probe":[-0.0857,-0.2076,0.0481]}}
+[YB-0045 results (seeds 9, 13, 14)] {"dry_run":false,"derivation_answered":5365,"derivation_observations":9189,"probe_selected":{"layer":18,"C":0.001},"probe_cv_table":{"6|0.001":0.8102,"6|0.01":0.78,"6|0.1":0.7633,"12|0.001":0.818,"12|0.01":0.7937,"12|0.1":0.7741,"18|0.001":0.8188,"18|0.01":0.7953,"18|0.1":0.78,"23|0.001":0.8124,"23|0.01":0.7893,"23|0.1":0.7775},"probe_all_layers_C":0.001,"probe_all_layers_cv":{"0.001":0.8089,"0.01":0.7973,"0.1":0.7904},"test_answered":1605,"test_wrong":138,"monitors":{"regulator":{"threshold":0.2477,"recall":0.6812,"caught":94,"fpr":0.0995,"fpr_monitorable":0.165,"recall_monitorable":0.6912},"probe":{"threshold":0.2054,"recall":0.7246,"caught":100,"fpr":0.0995,"fpr_monitorable":0.165,"recall_monitorable":0.7353},"probe_all_layers":{"threshold":0.2018,"recall":0.7029,"caught":97,"fpr":0.0995,"fpr_monitorable":0.165,"recall_monitorable":0.7132},"length_C1":{"threshold":192.0,"recall":0.2826,"caught":39,"fpr":0.0627,"fpr_monitorable":0.104,"recall_monitorable":0.2868},"type_C3":{"threshold":0.1934,"recall":0.2246,"caught":31,"fpr":0.0525,"fpr_monitorable":0.087,"recall_monitorable":0.2279},"judge":{"threshold":0.6,"recall":0.2029,"caught":28,"fpr":0.0702,"fpr_monitorable":0.1164,"recall_monitorable":0.2059}},"population_check":{"answered":1605,"monitorable":1021,"short_correct_included":582},"H1_regulator_minus_judge":[0.4783,0.3071,0.5595],"H1_supported":true,"S_regulator_minus_probe":[-0.0435,-0.1278,0.0237],"S_probe_minus_judge":[0.5217,0.3629,0.6057],"S_regulator_minus_probe_all_layers":[-0.0217,-0.0935,0.0533],"S_regulator_minus_length":[0.3986,0.2925,0.496],"S_regulator_minus_type":[0.4565,0.3435,0.5479],"S_equal_fpr_monitorable":{"regulator":{"caught":83},"probe":{"caught":90},"probe_all_layers":{"caught":88},"length_C1":{"caught":0},"type_C3":{"caught":31},"judge":{"caught":26}},"S_equal_fpr_regulator_minus_probe":[-0.0515,-0.1429,0.0336],"S_frozen_derivation_thresholds":{"regulator":{"caught":93,"fpr":0.0975},"probe":{"caught":100,"fpr":0.0975}},"S_per_checkpoint_auroc":{"48":{"episodes":1021,"wrong":136,"auroc_with_ci":{"regulator":[0.7628,0.7117,0.8079],"probe":[0.8151,0.7683,0.8563],"type":[0.6866,0.6395,0.7331],"judge":[0.6171,0.5708,0.6665]}},"96":{"episodes":893,"wrong":134,"auroc_with_ci":{"regulator":[0.8157,0.7743,0.8568],"probe":[0.8322,0.79,0.8735],"type":[0.6489,0.6027,0.6942],"judge":[0.5904,0.5361,0.6447]}},"192":{"episodes":661,"wrong":111,"auroc_with_ci":{"regulator":[0.8389,0.7893,0.8801],"probe":[0.8689,0.832,0.9035],"type":[0.5876,0.5335,0.6427],"judge":[0.6428,0.5836,0.6977]}},"384":{"episodes":131,"wrong":39,"auroc_with_ci":{"regulator":[0.7611,0.666,0.8513],"probe":[0.8397,0.7603,0.9075],"type":[0.4659,0.3806,0.5487],"judge":[0.6897,0.5926,0.7803]}}},"S_sensitivity_never_answered_as_failures":{"episodes":1800,"failures":333,"regulator_minus_probe":[-0.0811,-0.1461,-0.0363]}}
+[YB-0045 post hoc per-seed] {"note":"POST HOC; not pre-registered as computed","probe":{"layer":18,"C":0.001},"seed 9":{"answered":536,"wrong":42,"caught":{"regulator":28,"probe":30,"judge":11},"regulator_minus_judge":[0.4048,0.2406,0.5952],"probe_minus_judge":[0.4524,0.2618,0.643]},"seed 13":{"answered":534,"wrong":49,"caught":{"regulator":35,"probe":38,"judge":12},"regulator_minus_judge":[0.4694,0.25,0.6227],"probe_minus_judge":[0.5306,0.3448,0.6667]},"seed 14":{"answered":535,"wrong":47,"caught":{"regulator":31,"probe":32,"judge":12},"regulator_minus_judge":[0.4043,0.2083,0.6279],"probe_minus_judge":[0.4255,0.2381,0.682]}}
+[YB-0045 power calculation] {"method":"normal approximation, half-width scaled as 1/sqrt(n_wrong) from YB-0035","anchor_half_width_at_40":0.22,"planned_wrong":120,"half_width":0.127,"power":{"0.175":0.77,"0.2":0.87,"0.3":1.0}}
+[YB-0044 results] {"episodes_planned":276,"harness_failures_excluded":0,"analysed":276,"wrong":138,"correct":138,"arm_A_permission_only":{"wrong_committed":138,"prevented":0},"arm_B_reactive":{"wrong_prevented":19,"correct_blocked":3},"arm_C_hold":{"wrong_prevented":93,"correct_held":16},"H1_prevented_C_minus_B":[0.5362,0.4563,0.6159],"H1_supported":true,"H2_inTime_alarms_on_wrong":93,"H2_share_still_committed_under_B":[0.7957,0.7204,0.871],"H2_supported":true,"C_release_delay_s":{"n":167,"median":7.419,"p90":8.98}}
+[YB-0044 OpenShell policy latency (summary)] {"note":"EXPLORATORY engineering measurement for YB-0044 design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms","block":{"command":{"n":20,"median":6.055,"min":5.051,"max":6.081},"effective":{"n":20,"median":5.465,"min":4.99,"max":5.943}},"unblock":{"command":{"n":20,"median":4.049,"min":3.053,"max":4.068},"effective":{"n":20,"median":3.551,"min":3.081,"max":4.013}},"failures":0}
+[YB-0044 replay plan (summary)] {"threshold_frozen":0.25802952163997805,"test_answered":1605,"selected":276,"wrong":138,"alarms_on_wrong":93,"alarms_on_selected_correct":14}
+[Model sizes] {"source":"OpenAI, gpt-oss-120b & gpt-oss-20b Model Card, arXiv:2508.10925, Table 1","gpt-oss-120b":{"total_B":116.83,"active_B":5.13},"gpt-oss-20b":{"total_B":20.91,"active_B":3.61},"ratio_total":5.59,"ratio_active":1.42,"gpt-oss-120b_experts_per_layer":128,"gpt-oss-20b_experts_per_layer":32,"gpt-oss-120b_layers":36,"gpt-oss-20b_layers":24,"experts_source":"OpenAI gpt-oss model card (arXiv:2508.10925) and model configuration; 4 experts active per token in both"}
+[Derivation sizes] {"YB-0035 derivation":{"2":{"recorded":4800,"answered":4293,"wrong":309,"answered_with_checkpoint":2745},"3":{"recorded":600,"answered":544,"wrong":47,"answered_with_checkpoint":354},"4":{"recorded":600,"answered":530,"wrong":46,"answered_with_checkpoint":335},"total":{"recorded":6000,"answered":5367,"wrong":402,"answered_with_checkpoint":3434}},"YB-0042 derivation":{"2":{"recorded":600,"answered":536,"wrong":42,"answered_with_checkpoint":338},"3":{"recorded":600,"answered":537,"wrong":47,"answered_with_checkpoint":347},"4":{"recorded":600,"answered":536,"wrong":49,"answered_with_checkpoint":342},"total":{"recorded":1800,"answered":1609,"wrong":138,"answered_with_checkpoint":1027}},"YB-0042 test seed 8":{"recorded":600,"answered":535,"wrong":40,"answered_with_checkpoint":339}}
+[Judge timing] {"seed7 (YB-0035)":{"checks":1165,"median_s":1.546,"p10_s":1.151,"p90_s":7.179,"median_by_checkpoint_s":{"48":2.039,"96":1.266,"192":2.277,"384":2.586}},"seed5 (YB-0033)":{"checks":920,"median_s":1.975,"p10_s":1.27,"p90_s":7.633,"median_by_checkpoint_s":{"48":3.335,"96":1.392,"192":2.984,"384":4.237}},"seed6 (YB-0034)":{"checks":930,"median_s":2.118,"p10_s":1.256,"p90_s":7.664,"median_by_checkpoint_s":{"48":2.626,"96":1.447,"192":2.726,"384":4.044}}}
+[Other records] Facts from other committed records (treat as evidence): seven earlier audits found 38 (3 critical), 25 (2), 30 (1), 23 (1), 11 (0), 20 (1) and 15 (1) findings (CORRECTIONS.md). YB-0031: the regulator lost a pre-registered race to the judge, 4 vs 12 of 47; on finished answers self-consistency AUROC 0.982, judge 0.947, earlier regulator 0.890. Answer-token confidence AUROC 0.366 [0.304, 0.433] on a fresh test; 27 of 36 errors at top-1 probability >= 0.9 in an early study. YB-0044 race details from live_B.jsonl: races won n = 19 (median alarm-to-commit gap 8.38 s); races lost n = 74 (median 2.89 s, max 8.23 s); 2 of the 16 correct commits held in arm C had no alarm (release issued on time, retry window 12 s). Timestamps: YB-0045 OpenTimestamps 14:53 UTC, RFC 3161 15:45 UTC, first test recording 18:59 UTC; YB-0044 pre-registration commit 43b2a9a, RFC 3161 18:08:17 UTC. OpenShell 0.1.2 on Colima (docs/OPENSHELL_SETUP.md).
+
+=== DRAFT 1: plain-English ===
+Your AI Lies With a Straight Face. So I Built It a Nervous System.
+
+*From the Garbage In, Gospel Out project, the plain-English version: why
+an AI can't police itself, what three locked-in tests found, and what
+happened when I wired it into NVIDIA's agent safety platform.*
+
+*This project is by me and AI. I came up with the ideas and called the
+shots. The code, experiments, analyses and drafts were produced by me
+together with AI systems: Anthropic's Claude as my research assistant,
+and a locally run gpt-oss-120b for some of the code. The code, data,
+reports and every correction are public at
+github.com/YobieBenjamin/autonomic-graph-regulation. The commit history
+that timestamps my pre-registrations is private, and reviewers can have
+it on request.*
+
+The short version
+
+Your AI sounds exactly as sure of itself when it is wrong as when it is
+right. I measured that. So I built it an outside nervous system that
+reads its internal vital signs instead of listening to what it says.
+Then I tested it three times, each time with the rules locked in public
+before the test, and had it audited seven times.
+
+It works. Reading the AI's internal state caught more than three times
+as many wrong answers before they came out as a much bigger AI judge
+reading the AI's reasoning. Then I plugged it into NVIDIA's brand new
+agent safety platform and learned the hard part: a warning is worthless
+if it shows up after the damage is done. Trying to block a bad action on
+the fly stopped 19 of 138. Making risky actions wait for an all clear
+stopped 93.
+
+That last result is the point of this whole post. Safety for AI is not
+one magic filter. It is a stack of gates, and the AI itself cannot be
+one of them.
+
+Why a transformer can't police itself
+
+In my forthcoming book, Garbage In, Gospel Out, I called large language
+models extremely fancy autocomplete with a PhD vocabulary. That was a
+joke, but it is also the architecture. A transformer does one thing. It
+looks at the text so far and guesses the next piece. Then it does it
+again. Billions of times a day, very well.
+
+Here is what that means for safety. There is no little inspector inside
+the model checking the work. Nothing in there holds the answer at arm's
+length and asks whether it is true. When you ask the model "are you
+sure?", you are not consulting a conscience. You are asking the same
+statistical guessing machine to guess what a confident review would
+sound like. It will produce one. Fluently.
+
+And the review runs on the same weights, trained on the same data, with
+the same blind spots as the answer it is reviewing. If the model learned
+something wrong, it will defend it with the same confidence it used to
+say it. Asking the defendant to be the judge is bad practice in a
+courtroom. With a transformer it is worse, because the defendant and the
+judge are literally the same set of numbers.
+
+I did not want to take that on faith, so I measured it. On a fresh test,
+the confidence the model put on its own answers pointed the wrong way:
+its wrong answers were more confident than its right ones. In an earlier
+experiment, three out of four of its wrong answers came out at 90%
+confidence or higher on every word of the answer. I didn't measure how
+often right answers looked the same in that one, so the backwards
+confidence result is the stronger evidence. Either way, the gospel
+problem is not a metaphor. It is a number.
+
+To be fair to the machine, there is one self-check that works: ask it
+the same question several times and see if it agrees with itself. On
+finished answers that is very accurate. But it is slow, it only works
+after the answer exists, and it can't help when the model is
+consistently wrong. It is a useful second opinion. It is not a cop.
+
+So architecturally, expecting a transformer to police itself makes no
+sense. The policing has to come from outside.
+
+The idea: vital signs, not conversation
+
+Hospitals figured this out decades ago. Nurses don't ask a patient how
+they feel and trust the answer. They measure heart rate, breathing,
+blood pressure, oxygen and temperature, turn the readings into points,
+and act when the score climbs, often hours before a crash. The patient
+can be lying through their teeth. The thermometer doesn't care.
+
+My bet is that there is no working model of judgment other than the
+human brain and body. So instead of asking the AI to judge itself, I'm
+building it a nervous system that sits outside it. Two rules. It never
+reads the AI's words, so you can't sweet talk it or jailbreak it with
+clever text. And it only reads numbers from the AI's insides, the way a
+monitor reads a patient.
+
+The setup
+
+-   **The patient.** An open AI model, gpt-oss-20b, whose insides I can
+    read. It has 24 layers, like 24 stages of processing.
+
+-   **The questions.** Six kinds a computer can grade exactly: big
+    multiplications, counting letters, figuring out the day of the week,
+    modular arithmetic and long addition. No AI ever decides what counts
+    as right.
+
+-   **The vital signs.** For every piece of text the AI produces, five
+    readings from each of its 24 layers, 120 numbers in all.
+
+-   **The regulator.** A small, boring, deterministic program that never
+    reads the AI's words. Besides the vital signs, it only knows what
+    kind of question it is and how long the AI has been thinking.
+
+-   **The competition.** An AI judge about five and a half times bigger
+    than the patient, reading the patient's reasoning as it goes. A
+    version of asking the AI again. And two deliberately dumb monitors,
+    one that only knows how long the AI has been thinking and one that
+    only knows the kind of question. If my regulator couldn't beat the
+    dumb ones, it wasn't reading anything real.
+
+-   **The race.** Every monitor gets four looks while the AI is still
+    thinking, and only warnings that arrive before the answer count.
+    Each monitor is charged its real thinking time: 5 milliseconds for
+    the regulator, a median of a second and a half for the judge, with
+    one look in ten taking over 7 seconds.
+
+-   **The rules.** Every monitor may raise false alarms on at most 10%
+    of the correct answers. Crying wolf doesn't count as catching
+    anything. The rules and the analysis code were locked and
+    timestamped in public before each test's questions were recorded.
+
+The part where I was wrong
+
+Several of my early results didn't survive. My favorite, a warning 4.5
+seconds before the answer, turned out to come from a monitor that cried
+wolf on most of the correct answers too. Retracted. My instrument was
+reading each vital sign one step late, a bug an audit found. Fixed. My
+early regulators didn't even beat the dumb monitors. Then my redesigned
+regulator lost a pre-registered race to the AI judge, 4 to 12. I
+published that too.
+
+Every one of those is logged in the public corrections file. Seven
+audits so far, each a fresh, read-only Claude session separate from the
+one that wrote the work. They are independent of my session, not of the
+AI, and no human expert has reviewed this yet. That is on my wish list
+below.
+
+What the tests found
+
+Test one
+
+Of 600 new questions, the AI answered 535 and got 40 wrong. The
+regulator caught 23 of them in time, the AI judge 11 and the length-only
+monitor 9. Asking the AI again caught none, because it is too slow to
+finish before the answer.
+
+Test two
+
+An audit pointed out I had never raced the standard tool from published
+research: a simple statistical probe trained on the AI's full internal
+state. So I did. The probe caught 18, my regulator 17, the judge 10. The
+probe matched my vital signs, and the edge over the judge was not
+statistically clear this time. That test had a third of the training
+data and a stricter false-alarm rule, both disclosed.
+
+Test three, built to settle it
+
+Two tests that disagree are not an answer. So the third had the full
+training data, three new test sets, 138 wrong answers, the false-alarm
+rule written the same way in the plan and the code, and a power
+calculation, all committed and timestamped before the new questions were
+recorded.
+
+  ------------------------------- ------------------- -------------------
+  **Monitor**                     **Wrong answers     **Share**
+                                  caught in time (of  
+                                  138)**              
+
+  Probe on the raw internal state 100                 72%
+
+  My regulator (120 vital signs)  94                  68%
+
+  Length-only monitor             39                  28%
+
+  Question-type monitor           31                  22%
+
+  AI judge, 5.6x bigger           28                  20%
+  ------------------------------- ------------------- -------------------
+
+More than three times as many, and the uncertainty range stays well
+clear of zero. It held in each of the three test sets on its own (28, 35
+and 31 for the regulator against the judge's 11, 12 and 12; that
+breakdown was in my plan but my code left it out, so I added it
+afterwards). It held when the alarm threshold was set from practice
+answers only.
+
+And the probe still matched my vital signs. So the idea is right and my
+particular way of doing it is not special. What works is reading the
+AI's internal state at all. My version's one possible edge is that it
+carries about 24 times less data per word than a single layer of the
+full state, which might matter on a chip. Untested.
+
+Then I plugged it into NVIDIA's safety platform
+
+While I was doing this, NVIDIA announced its Open Agent Safety Platform,
+with more than 100 partners according to press reports. Its OpenShell
+runtime puts an AI agent in a sandbox and controls what it may touch
+from outside the agent, and its Sentry layer runs on separate hardware.
+Same principle as mine: don't let the AI police itself.
+
+But it watches a different thing. It watches what the agent does, which
+files and networks and tools, and blocks what isn't allowed. It can't
+see inside the model. So it can't tell when an allowed action rests on a
+wrong conclusion: a payment inside the approved limit but calculated
+from a hallucinated number. That is exactly the gap my regulator is for.
+So I tested the two together.
+
+Getting OpenShell running on a Mac was its own adventure. Docker Desktop
+on a Mac lacks a Linux security feature OpenShell insists on, so I ran
+it in a separate Linux virtual machine and tunneled it in. Fun fact:
+when OpenShell lost its connection during one of my mistakes, it froze
+the agent instead of letting it run loose. Good. That is how a safety
+layer should fail.
+
+The setup: an agent in an OpenShell sandbox "commits" each answer to a
+mock payment service, replaying 276 recorded answers (all 138 wrong ones
+plus 138 right ones) in real time. OpenShell permits the commit. So
+without help, every wrong answer goes through.
+
+  ------------------------------- ------------------- -------------------
+  **How the warning was used**    **Wrong commits     **Right commits
+                                  stopped (of 138)**  held up (of 138)**
+
+  OpenShell permissions alone     0                   0
+  (computed: every commit is                          
+  allowed)                                            
+
+  Regulator warns, then OpenShell 19                  3
+  blocks on the fly                                   
+
+  Risky actions wait until        93                  16
+  cleared                                             
+  ------------------------------- ------------------- -------------------
+
+Here is why. Changing an OpenShell permission took a median of about
+five and a half seconds to take effect on my setup. The regulator warns
+in 5 milliseconds, but most wrong answers get committed a few seconds
+after the warning. So the regulator warned in time about 93 wrong
+answers, and 74 of those still went through, because the block showed up
+late. Holding risky actions until they are cleared stopped all 93.
+
+Holding has a price. Approved actions waited a median of 7.4 seconds.
+And 16 right answers got held up: 14 because the regulator raised a
+false alarm, and 2 because my release command was slower than the
+agent's patience, a harness glitch I am reporting rather than hiding.
+These numbers are for my Mac and its tunnel. NVIDIA says its hardware
+version quarantines in milliseconds. I haven't tested that.
+
+Why safety has to be a stack of gates
+
+Anyone who has built payment systems already knows this. A card payment
+doesn't pass one check. It gets authorized, fraud scored, limit checked
+and sometimes held before settlement, and each check catches things the
+others miss. Nobody asks the card to vouch for itself. Aviation and
+hospitals work the same way. Safety people call it the Swiss cheese
+model: every layer has holes, so you stack layers whose holes don't line
+up.
+
+My numbers say AI needs the same thing. Here is the stack I think it
+takes:
+
+1.  **A permission gate.** What the agent may touch at all. OpenShell
+    does this. Alone, it stopped none of the wrong answers, because they
+    were all allowed actions.
+
+2.  **An internal-state gate.** Is the thinking going sideways right
+    now? My regulator or a probe, reading the AI's insides in
+    milliseconds. It flagged 93 of 138 wrong answers before they came
+    out.
+
+3.  **A hold gate for anything irreversible.** The action waits until
+    it's cleared. Without it, the internal-state gate stopped 19. With
+    it, 93.
+
+4.  **A review gate after the fact.** Asking the AI again, or a bigger
+    AI judge, once the answer exists. Slow, but much more accurate on
+    finished work. That is where the 45 wrong answers my regulator
+    missed get another chance.
+
+5.  **A human gate for the scary stuff.** Some actions are expensive
+    enough that a person should look.
+
+Each gate looks at a different thing: permissions, internal state,
+timing, finished output, human judgment. That is why their holes don't
+line up. I haven't tested the full stack together yet. The pieces I have
+tested say every one of them is needed, and that the AI being watched
+can't be any of them.
+
+What I'm now convinced of
+
+I started with a hunch from writing my book. Three pre-registered tests
+and seven audits later, here is where I stand.
+
+-   **Reading the inside beats listening to the outside.** For this
+    model and these kinds of questions, I'd bet on it. More than three
+    times as many wrong answers caught before they came out, in a test
+    designed and sized to settle the question.
+
+-   **The cop has to live outside the AI.** My regulator never reads a
+    word. NVIDIA built its platform on the same principle from a
+    completely different direction. That is not proof, but it is a
+    strong signal.
+
+-   **Timing is the whole game.** A warning only matters if it arrives
+    before the action can't be undone. Reacting on the fly lost 74 of 93
+    races. Irreversible actions have to wait for the all clear.
+
+What I'm not convinced of yet: that this holds on other AI models, on
+ordinary prose instead of math-style answers, or at the speed and scale
+of real deployments. Those are the next proofs.
+
+The next proofs, with goals that can fail
+
+Each one gets pre-registered, timestamped and audited before it runs,
+and reported whichever way it comes out.
+
+6.  **A second AI model.** Pass: on another company's model,
+    internal-state monitoring again catches significantly more wrong
+    answers in time than an AI judge, on a new test with at least 100
+    wrong answers.
+
+7.  **Believable prose that is false.** Pass: in fluent paragraphs with
+    checkable facts, the warning rises inside the false sentences and
+    not the true ones, clearly better than chance, before each sentence
+    is finished.
+
+8.  **Stopping wrong actions in a real agent task.** Pass: with actions
+    held until cleared, at least half of the harmful but permitted
+    actions are stopped, with no more than 1 in 10 correct actions held
+    up.
+
+9.  **Fast enough for a chip.** Pass: compact vital signs come within a
+    small margin of the full internal state while carrying at least 10
+    times less data, and enforcement acts within the time it takes to
+    produce one word, about 20 milliseconds, not seconds.
+
+10. **Someone else gets the same answer.** Pass: an independent group
+    reruns the published experiments and agrees, or shows me where I'm
+    wrong.
+
+An open invitation
+
+All of this ran on one MacBook. That was enough to get the core result
+honestly. It is nowhere near enough for the next proofs. Those need
+things only bigger outfits have:
+
+-   **Bigger models with open insides,** to see whether the signal holds
+    as models grow.
+
+-   **Much bigger tests,** thousands of wrong answers across many tasks
+    and models instead of hundreds on one.
+
+-   **Hardware next to the accelerator,** a real path from the AI chip
+    to a separate monitor, to test warnings and enforcement at the speed
+    models actually run.
+
+-   **Human experts trying to break it.** Every audit so far was done by
+    AI.
+
+So this is an invitation to the foundation model labs, the cloud and
+chip companies, and university groups. The code, data,
+pre-registrations, audits and every correction are public at
+github.com/YobieBenjamin/autonomic-graph-regulation, free for
+noncommercial research. If you can run these tests bigger than I can, on
+your own models, or if you think I got something wrong, I want to hear
+it: yobie@ieee.org.
+
+Garbage in, gospel out. The fix isn't a more confident AI. It's a
+nervous system it can't talk its way past, and gates it can't open by
+itself.
+
+
+=== DRAFT 2: technical ===
+An External Nervous System for Transformers: Warning Before the Answer
+Exists, and Stopping the Action in Time
+
+*From the Garbage In, Gospel Out project, the technical version: why a
+transformer cannot police itself, three pre-registered tests, real
+OpenShell enforcement, and the case for a stack of gates. Every claim
+points to a public file.*
+
+*By Yobie Benjamin and AI. I came up with the ideas and directed the
+work; code, experiments, analyses and drafts were produced by me
+together with AI systems (Anthropic's Claude as research assistant; a
+locally run gpt-oss-120b for some code). Everything below can be
+checked: code, data, pre-registrations, results, audits and corrections
+are public at github.com/YobieBenjamin/autonomic-graph-regulation, and
+each section names the files. The private commit history that timestamps
+the pre-registrations is available to reviewers on request.*
+
+1\. The thesis: a transformer cannot police itself
+
+A decoder-only transformer computes p(xₜ \| x₁ ... xₜ₋₁) and samples.
+That is the whole machine. There is no separate verifier in the
+architecture, no component whose job is to hold the output at arm's
+length and test it against the world. When you ask the model to check
+its own answer, you get another conditional sample from the same
+weights: a statistically likely continuation of "a careful review of
+this answer", generated by the system that produced the answer, with the
+same training data and the same blind spots. Errors in the answer and
+errors in the review are correlated by construction. Expecting that loop
+to police itself is an architectural category error.
+
+I measured the symptom. On a fresh test set, answer-token confidence
+(one minus the minimum top-1 probability over answer tokens) detected
+wrong answers at AUROC 0.366 \[0.304, 0.433\]. Below a coin flip: the
+model was more confident when it was wrong. In an earlier study 27 of 36
+errors (75%) carried top-1 probability of at least 0.9 on every answer
+token; no base rate for correct answers was measured there, so the
+inverted AUROC is the stronger evidence. One model, one task family; not
+a general law.
+
+In fairness to the machine: self-consistency, which resamples and checks
+agreement, is strong on finished answers (AUROC 0.982, against 0.947 for
+an LLM judge and 0.890 for an earlier version of my regulator; YB-0031).
+It exploits sampling variance after the fact. It is too slow to act
+before the answer exists and blind when the model is consistently wrong.
+A useful second opinion, not a control.
+
+Hence the Independence Principle the whole project runs on: the
+regulator is not a transformer, contains none, never reads the monitored
+model's text or self-report, and takes only numeric telemetry plus the
+task category and elapsed token count. Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/RESEARCH_PROGRAM.md
+
+2\. Instruments
+
+-   **Monitored model:** gpt-oss-20b (MXFP4/Q8 MLX build, M4 Max 128
+    GB), 24 blocks, 32 routed experts per block, greedy decoding, low
+    reasoning effort.
+
+-   **Telemetry tap:** per token and layer ℓ: ‖aₗ‖ (attention update),
+    ‖mₗ‖ (expert update), ‖xₗ,out‖, cos(xₗ,in, xₗ,out) and router
+    entropy −Σ pₑ log pₑ: 120 channels per token, norms log(1+·) scaled.
+    Output-invariant. A synchronization test against fresh uncached
+    forward passes runs before every recording; an audit found the tap
+    one token late in early work, fixed and verified
+    (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/artifacts/shift_verification.json).
+
+-   **Ground truth:** six machine-gradable task types; correctness is
+    computed, never judged by a model.
+
+-   **Competitors:** an LLM judge (gpt-oss-120b; 5.6x the monitored
+    model's total parameters, 1.4x its active parameters,
+    github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/artifacts/model_sizes.json)
+    reading the question and the reasoning prefix; prefix
+    self-consistency; length and question-type controls; and, from
+    YB-0042, a standard hidden-state probe.
+
+-   **Infrastructure:** a locked-down Docker sandbox; pre-registration
+    of hypotheses, decision rules, full analysis code and a dry run
+    before test data exists; public timestamps (OpenTimestamps anchored
+    in Bitcoin plus RFC 3161 tokens from FreeTSA and DigiCert,
+    github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/scripts/timestamp_prereg.sh);
+    thirteen process rules, each traced to a finding
+    (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/PROTOCOL.md).
+
+3\. The regulator and the probe
+
+At checkpoint t, using only tokens before t: per layer and channel the
+mean and RMSSD over the prefix (240 features), two 24-node layer
+coupling graphs summarised by windowed spectral statistics (74
+features), and log t; z-scored per (question type, t); L2 logistic
+regression (C = 0.1), one threshold.
+
+> Coupling: Wᵢⱼ = max over g ∈ {0..3} of max(\|ρ(xᵢ(t), xⱼ(t+g))\|,
+> \|ρ(xⱼ(t), xᵢ(t+g))\|), symmetric; 24-token windows, stride 8
+>
+> Normalised Laplacian: L = I − D\^(−1/2) W D\^(−1/2); algebraic
+> connectivity λ₂
+>
+> Spectral modularity: B = W − d dᵀ/(2m), Q = sᵀBs/(4m), s = sign of B's
+> leading eigenvector
+
+The probe is the standard tool from the literature: L2 logistic
+regression on the last-token and prefix-mean hidden state at one layer
+plus log t, layer and C chosen by grouped 5-fold CV on derivation data
+only. Its 5 ms compute cost is assumed, not measured.
+
+4\. The race
+
+An offline replay of recorded episodes that charges each monitor its
+measured compute. Checkpoints t ∈ {48, 96, 192, 384} exist only while
+the model is still reasoning. With t_clock(t) the wall-clock time at t,
+D the answer emission time and c the monitor's compute time (5 ms per
+regulator check; measured per call for the judge, median 1.55 s, 90th
+percentile 7.2 s,
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/artifacts/judge_timing.json),
+an alarm counts iff
+
+> s(t) \> τ and t_clock(t) + c ≤ D
+
+Thresholds: the tightest τ with at most 10% of correct test episodes
+alarmed, set for every monitor the same way; a comparison device, not a
+deployment guarantee. Uncertainty: paired bootstrap, 1,000 resamples,
+thresholds re-set inside every resample.
+
+5\. Three pre-registered tests
+
+YB-0035, seed 7: the first fresh test
+
+535 answered, 40 wrong. Regulator 23/40 (false alarms 9.9%; 16.3% among
+monitorable correct episodes), judge 11, length 9, question type 6
+(exploratory), self-consistency 0. Regulator minus judge +0.300
+\[+0.049, +0.487\]; minus length +0.350 \[+0.128, +0.544\]. Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0035-corrected-realtime-race/docs/results.json
+
+YB-0042, seed 8: the probe, and a failed replication
+
+A standard probe matched the regulator: −0.025 \[−0.170, +0.109\] (probe
+18/40, four-layer probe 21, regulator 17). The judge comparison did not
+replicate: +0.175 \[−0.061, +0.439\]. Two deviations, both disclosed:
+the code applied the false-alarm cap to monitorable episodes only, and
+the training set was 1,609 answered episodes against YB-0035's 5,367
+(github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/artifacts/derivation_sizes.json).
+Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0042-probe-baseline/
+
+YB-0045, seeds 9, 13, 14: built to settle it
+
+Pre-registered with a power calculation
+(github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0045-powered-replication/docs/power.json:
+0.77 at +0.175, above 0.99 at +0.30). Derivation 5,365 answered, matched
+to YB-0035. Test 1,605 answered, 138 wrong; the false-alarm population
+is every correct answered episode, identical in prose and code.
+OpenTimestamps 14:53 UTC, RFC 3161 at 15:45 UTC, first test recording
+18:59 UTC.
+
+  --------------------------- ------------ ------------------ -------------
+  **Monitor**                 **In time    **False alarms     **Share
+                              (of 138)**   (all /             caught**
+                                           monitorable)**     
+
+  Probe (layer 18)            100          9.95% / 16.5%      72%
+
+  Regulator                   94           9.95% / 16.5%      68%
+
+  Length                      39           6.3% / 10.4%       28%
+
+  Question type               31           5.3% / 8.7%        22%
+
+  LLM judge                   28           7.0% / 11.6%       20%
+  --------------------------- ------------ ------------------ -------------
+
+-   **H1, regulator minus judge:** +0.478 \[+0.307, +0.560\]. Supported.
+    Probe minus judge +0.522 \[+0.363, +0.606\]; regulator minus probe
+    −0.044 \[−0.128, +0.024\], not distinguishable.
+
+-   Per test seed (post hoc; the plan listed it, the code left it out):
+    +0.405 \[+0.241, +0.595\], +0.469 \[+0.250, +0.623\], +0.404
+    \[+0.208, +0.628\]
+    (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0045-powered-replication/docs/posthoc_per_seed.json).
+
+-   Descriptive, no intervals: equal monitorable false alarms 83 vs 26;
+    thresholds frozen from derivation 93. Per-checkpoint AUROC t =
+    48/96/192/384: regulator 0.763/0.816/0.839/0.761, probe
+    0.815/0.832/0.869/0.840, judge 0.617/0.590/0.643/0.690; unpaired
+    intervals separate at the first three and overlap at 384.
+
+-   Never-answered episodes counted as failures: regulator minus probe
+    −0.081 \[−0.146, −0.036\]. The probe anticipates non-convergence
+    better.
+
+Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0045-powered-replication/docs/results.json
+
+6\. YB-0044: the warning meets real enforcement
+
+NVIDIA's Open Agent Safety Platform pairs OpenShell, an open-source
+agent sandbox that enforces policy outside the agent process, with
+Sentry on BlueField hardware (sources:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/sources/nvidia_open_agent_safety_platform.md).
+As described, it governs actions, not model internals, so a permitted
+action resting on a wrong conclusion passes. The question: can my
+internal-state warning stop that action through real OpenShell
+enforcement, given the commit-point race?
+
+Getting it running on a Mac
+
+Docker Desktop's kernel on macOS lacks Landlock, which OpenShell 0.1.2
+requires, so sandboxes run in a Colima VM confined to the OpenShell
+gateway, with Docker Desktop kept as the system default for every other
+experiment. A reverse SSH tunnel keeps the gateway loopback-only. Along
+the way I hit a Lima port-forwarding loop that took down the tunnel;
+OpenShell froze the workload rather than run it unmediated, which is the
+right way for a safety layer to fail. Full record and a one-command
+setup:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/OPENSHELL_SETUP.md
+
+Policy latency
+
+An agent in the sandbox POSTs to a mock commit service every 50 ms while
+the host flips the policy 20 times each way; ground truth is the
+service's own arrival log. A deny took effect after a median 5.47 s
+(4.99 to 5.94 s); an allow after 3.55 s (3.08 to 4.01 s); 0 failures.
+Specific to this Mac, Colima and tunnel setup. Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0044-openshell-gating/docs/reload_timing.json
+
+Design and results
+
+Pre-registration 43b2a9a (RFC 3161 at 18:08:17 UTC, before the live
+runs). 276 YB-0045 test episodes, all 138 wrong plus 138 correct (numpy
+seed 44), replayed in real time with real OpenShell policy changes and
+real commits; alarm threshold frozen from cross-fitted derivation
+scores. 93 of the 138 wrong answers have an in-time alarm, matching
+YB-0045's frozen-threshold count. Arm A, permission only (computed); arm
+B, reactive block (alarm, then policy set deny); arm C, hold until
+cleared (deny by default; released at D only without an alarm). 0
+harness failures.
+
+  ------------------------------ -------------------- --------------------
+  **Arm**                        **Wrong commits      **Correct commits
+                                 stopped (of 138)**   blocked or held (of
+                                                      138)**
+
+  A. Permission only (computed)  0                    0
+
+  B. Reactive block              19                   3
+
+  C. Hold until cleared          93                   16
+  ------------------------------ -------------------- --------------------
+
+-   **H1, prevented share C minus B:** +0.536 \[+0.456, +0.616\].
+    Supported.
+
+-   **H2, in-time alarms on wrong answers that still committed under
+    B:** 79.6% \[72.0%, 87.1%\] (74 of 93). Supported. Races won had a
+    median 8.4 s between alarm and commit; races lost a median 2.9 s, up
+    to 8.2 s.
+
+-   **Costs:** released commits in C waited a median 7.4 s (90th
+    percentile 9.0 s). Of the 16 correct commits held, 14 had regulator
+    alarms and 2 were release timeouts in my harness (the release was
+    issued on time; the policy change outlasted the agent's 12 s retry
+    window). Disclosed, not excluded.
+
+Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0044-openshell-gating/docs/results.json,
+with the per-episode rows in live_B.jsonl and live_C.jsonl.
+
+The principle, now measured: a warning is useful only if t_alarm +
+L_enforce \< t_commit, where L_enforce is the time for enforcement to
+take effect. With L_enforce in seconds and the model committing seconds
+after the alarm, most races are lost. A hold gate removes the race by
+making t_commit wait for clearance. NVIDIA says its hardware path
+quarantines in milliseconds; I have not tested that, and if true it
+changes L_enforce, not the principle.
+
+7\. Why safety has to be a stack of gates
+
+Every gate has a miss rate. If the gates look at different things, their
+misses are less correlated and stacking them multiplies the protection;
+if they look at the same thing (a model reviewing itself) they fail
+together. That is the Swiss cheese model, and it is how payments,
+aviation and hospitals already work. My data puts numbers on four of the
+gates:
+
+1.  **Permission gate** (OpenShell): stopped 0 of 138 wrong commits on
+    its own, because they were permitted actions.
+
+2.  **Internal-state gate** (regulator or probe, milliseconds): flagged
+    93 of 138 before the answer existed.
+
+3.  **Hold gate** (irreversible actions wait for clearance): turned
+    those 93 flags into 93 stopped actions, against 19 without it.
+
+4.  **Review gate** (self-consistency or an LLM judge on the finished
+    answer): more accurate after the fact, and the next chance for the
+    45 wrong answers the internal-state gate missed.
+
+5.  **Human gate** for the expensive and irreversible: untested here,
+    and probably not optional.
+
+I have not tested the full stack together. Each tested piece says the
+same thing: the model under watch cannot be one of the gates.
+
+8\. Audits and corrections
+
+Seven blind audits by fresh, read-only Claude sessions, separate from
+the authoring session; later audits could read earlier findings.
+Findings: 38 (3 critical), 25 (2), 30 (1), 23 (1), 11 (0), 20 (1), 15
+(1). Retracted along the way: early earliness claims (alarms that fired
+on most correct answers), a reasoning-trace claim, a proposition about
+GPU power. Fixed: the one-token telemetry lag, a prose-versus-code
+population mismatch, a training-size omission. Independent of the
+authoring session, not of the AI system; no human expert review yet.
+Verify:
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/CORRECTIONS.md
+and
+github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/
+
+9\. Limitations
+
+-   One monitored model, one family of single-answer machine-gradable
+    tasks, four checkpoints up to 384 tokens, one machine.
+
+-   No evidence yet on open prose, intent-type failures, or adversarial
+    manipulation of activations; text-blind does not mean untested
+    against attacks on telemetry.
+
+-   The probe's compute cost was assumed. The telemetry's possible
+    advantage is bandwidth: 120 values per token across all 24 layers
+    versus 2,880 for one layer's hidden state. Untested.
+
+-   YB-0044 replays recorded timings through a Mac-specific OpenShell
+    setup; it demonstrates the integration and the race, not deployment
+    performance.
+
+10\. Related work
+
+Hidden-state truthfulness and error probes (Azaria and Mitchell, 2023;
+Burns et al., 2023; Kadavath et al., 2022; Orgad et al., 2024; Kossen et
+al., 2024); output-uncertainty methods (Kuhn, Gal and Farquhar, 2023;
+Farquhar et al., 2024; self-consistency, Wang et al., 2022); early
+detection of reasoning non-convergence from hidden-state probes (Oladri,
+Jawahar and Mohamed, 2026, arXiv:2607.21433); activation monitors for
+deception (Goldowsky-Dill et al., 2025) and their vulnerability to
+obfuscated activations (Bailey et al., 2024); biology-inspired
+regulation and interoception (Man and Damasio, 2019; Chiba and Krichmar,
+2020; Byrnes; Mineault et al., 2024); clinical early warning (NEWS2) and
+critical transitions (Scheffer et al., 2009); accelerator-adjacent
+guarantee processors (flexHEG); and agent sandboxing with out-of-band
+enforcement (NVIDIA OpenShell and Sentry, 2026). What I think this adds,
+without a systematic search: an external, text-blind internal-state
+monitor raced against a larger LLM judge under a deadline that counts
+compute, on pre-registered fresh tests, and then wired into real agent
+enforcement to measure the commit-point race.
+
+11\. Where I stand
+
+-   **Convinced, for this model and task family:** reading internal
+    state beats reading the words as an early warning. YB-0045 is
+    pre-registered, powered, and holds in every seed.
+
+-   **Convinced:** the monitor has to live outside the model. NVIDIA
+    reached the same architecture from the enforcement side.
+
+-   **Convinced:** timing decides whether a warning protects anyone.
+    YB-0044: reacting lost 74 of 93 races; holding won all 93.
+
+-   **Not yet:** other model families, open prose, deployment-speed
+    enforcement, and whether my compact telemetry earns its keep over a
+    standard probe.
+
+12\. Next proofs, with pass criteria
+
+6.  **External validation.** A second model family (Qwen3-VL-30B-A3B
+    first, then dense models): internal-state minus judge, lower 95%
+    bound above 0, with at least 100 wrong answers.
+
+7.  **Prose spans.** Span-level detection of false claims in fluent text
+    with programmatic ground truth: AUROC lower bound above 0.5, with
+    flags before the sentence completes.
+
+8.  **Agentic gating.** A real multi-step agent task: hold-until-cleared
+    stops at least 50% of harmful but permitted actions with at most 10%
+    of correct actions held.
+
+9.  **Bandwidth and latency.** Compact telemetry within 0.02 AUROC of
+    the full hidden state at 10x less data; enforcement inside one token
+    time (about 20 ms).
+
+10. **Replication.** An independent group reruns the public pipeline.
+
+13\. An invitation to people with more compute than one MacBook
+
+The next proofs need open-internals frontier-scale models, test sets
+with thousands of errors across task families, accelerator-adjacent
+telemetry hardware, and human experts trying to break the results. If
+you run a foundation model lab, a cloud or chip company, or a university
+group and can do any of that, the repository is public under PolyForm
+Noncommercial and CC BY-NC, and I would like to hear from you:
+yobie@ieee.org.

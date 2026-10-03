@@ -27,6 +27,9 @@ Docker Desktop 28.3.2 (unchanged; remains the system default context, desktop-li
    output is now captured first and the check requires Status: Connected.
 9. **Result:** sandboxes reach Ready; the setup script ends with a real health sandbox.
 
+## Incident (2026-10-02 16:13 UTC): tunnel loss and a frozen sandbox
+A tunnel was opened for a port with no service on the Mac. Lima mirrors VM ports back to the Mac, which created a forwarding loop; the shared SSH connection carrying the gateway tunnel and Colima's Docker socket dropped. The sandbox lost its control connection; its log (openshell logs, captured in the working session) read "Sandbox Protocol connection lost; workload frozen pending authenticated recovery" and later "proxy accept loop exiting: boundary unavailable", and the sandbox entered the Error phase. **Caveat:** the sandbox was deleted during recovery and its logs were not saved, so these lines cannot be re-verified from committed files. Fix: scripts/openshell_up.sh refuses to tunnel a port with no listener and gives each tunnel its own SSH connection; Colima was restarted.
+
 ## Caveats
 - The tunnel lives on Colima's SSH connection: after a restart of Colima or the Mac, re-run scripts/openshell_up.sh.
 - Policy enforcement uses Landlock and seccomp inside Colima's VM, not Docker Desktop's; timings measured here include the

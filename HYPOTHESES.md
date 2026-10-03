@@ -123,6 +123,7 @@ test: new pre-registration committed before data; ground truth from outcomes tha
 ## YB-0023 — Cost- and latency-normalized monitoring
 status: tested (pre-registered rule flawed; exploratory matched-FPR favors organism, n.s.)
 foundation: YB-0012: the organism costs 290 ns per token and alarms 4.5 s before the answer; behavior monitors need extra generations or a larger model and a finished answer
+  > **Retracted (see CORRECTIONS.md F1/F2 and F23):** the 4.5 s early warning came from alarms that also fired on most correct answers; "unjailbreakable" is untested and withdrawn.
 hypothesis: at equal compute or equal latency budget (e.g., alarm required before the answer is emitted), the organism dominates behavior monitors. Must be pre-registered with the budget defined in advance.
 
 # Deep possibility-testing program (author: the brain runs deep and constantly tests possibilities before concluding)
@@ -263,7 +264,7 @@ budget always produces an alarm; (4) every commit and verdict appears in the has
 test: TLA+ (or equivalent) specification checked exhaustively by a model checker; pass = no invariant or liveness violation.
 
 ## YB-0044 — OpenShell integration prototype: internal-state signal gating agent actions
-status: in progress (YB-0045 verdict in: H1 supported); OpenShell 0.1.2 set up on Colima (docs/OPENSHELL_SETUP.md)
+status: tested 2026-10-02: H1 and H2 supported (algorithms/YB-0044-openshell-gating)
 hypothesis: an OpenShell policy that consumes an internal-state risk score (regulator or probe) can hold or block irreversible tool calls when the score is high, stopping actions built on wrong conclusions that permission policy alone allows, at acceptable delay.
 test: in a sandboxed agent task with verifiable outcomes, compare policy-only enforcement with policy plus internal-state gating; measure harmful-but-permitted actions stopped, correct actions delayed or blocked, and added latency. Pre-register before running.
 

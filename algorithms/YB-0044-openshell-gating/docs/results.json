@@ -1,0 +1,37 @@
+{
+ "episodes_planned": 276,
+ "harness_failures_excluded": 0,
+ "analysed": 276,
+ "wrong": 138,
+ "correct": 138,
+ "arm_A_permission_only": {
+  "wrong_committed": 138,
+  "prevented": 0
+ },
+ "arm_B_reactive": {
+  "wrong_prevented": 19,
+  "correct_blocked": 3
+ },
+ "arm_C_hold": {
+  "wrong_prevented": 93,
+  "correct_held": 16
+ },
+ "H1_prevented_C_minus_B": [
+  0.5362,
+  0.4563,
+  0.6159
+ ],
+ "H1_supported": true,
+ "H2_inTime_alarms_on_wrong": 93,
+ "H2_share_still_committed_under_B": [
+  0.7957,
+  0.7204,
+  0.871
+ ],
+ "H2_supported": true,
+ "C_release_delay_s": {
+  "n": 167,
+  "median": 7.419,
+  "p90": 8.98
+ }
+}

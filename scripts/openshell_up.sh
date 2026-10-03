@@ -20,9 +20,12 @@ if ! grep -q colima "$HOME/.config/openshell/gateway.env" 2>/dev/null; then
 fi
 colima ssh-config > "$HOME/.colima/ssh_config_agr"
 for P in 17670 ${OPENSHELL_TUNNEL_PORTS:-}; do                   # reverse tunnels: VM loopback -> Mac loopback (nothing exposed to the network)
+  # Guard: never tunnel a port with no listener on the Mac. Lima mirrors VM ports back to the Mac, so a tunnel without a host
+  # listener creates a forwarding loop that destabilised the SSH connection carrying the gateway tunnel (2026-10-02).
+  lsof -nP -iTCP:$P -sTCP:LISTEN 2>/dev/null | grep -v "^ssh " | grep -q LISTEN || { echo "ABORT: nothing listening on Mac port $P; start the service before its tunnel"; exit 1; }
   if ! colima ssh -- sh -c "ss -ltn | grep -q 127.0.0.1:$P"; then
-    ssh -F "$HOME/.colima/ssh_config_agr" -O forward -R "127.0.0.1:$P:127.0.0.1:$P" colima 2>/dev/null \
-      || ssh -F "$HOME/.colima/ssh_config_agr" -o ControlMaster=no -o ControlPath=none -f -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -R "127.0.0.1:$P:127.0.0.1:$P" colima
+    # one dedicated SSH connection per tunnel (not the shared Lima connection), so one failure cannot take down the others
+    ssh -F "$HOME/.colima/ssh_config_agr" -o ControlMaster=no -o ControlPath=none -f -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -R "127.0.0.1:$P:127.0.0.1:$P" colima
   fi
   colima ssh -- sh -c "ss -ltn | grep -q 127.0.0.1:$P" || { echo "ABORT: tunnel for port $P not up"; exit 1; }
 done

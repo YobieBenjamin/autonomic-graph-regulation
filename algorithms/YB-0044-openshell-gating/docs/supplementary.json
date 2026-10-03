@@ -1,0 +1,74 @@
+{
+ "note": "POST HOC (eighth audit); not pre-registered",
+ "rfc3161_stamp": "2026-10-02T18:08:17Z",
+ "first_live_start_signal": "2026-10-02T18:08:31Z",
+ "seconds_after_stamp": 14.1,
+ "arm_B_start_signals": 276,
+ "arm_C_start_signals": 276,
+ "arm_B_window": [
+  "2026-10-02T18:08:31Z",
+  "2026-10-02T18:39:16Z"
+ ],
+ "arm_C_window": [
+  "2026-10-02T18:39:22Z",
+  "2026-10-02T20:30:58Z"
+ ],
+ "stalls_over_60s": {
+  "B": [],
+  "C": [
+   {
+    "after_start": "2026-10-02T19:31:28Z",
+    "gap_s": 183.9
+   },
+   {
+    "after_start": "2026-10-02T19:36:02Z",
+    "gap_s": 159.2
+   },
+   {
+    "after_start": "2026-10-02T19:39:01Z",
+    "gap_s": 75.4
+   },
+   {
+    "after_start": "2026-10-02T19:40:37Z",
+    "gap_s": 95.0
+   },
+   {
+    "after_start": "2026-10-02T19:43:37Z",
+    "gap_s": 81.8
+   },
+   {
+    "after_start": "2026-10-02T19:45:18Z",
+    "gap_s": 753.9
+   },
+   {
+    "after_start": "2026-10-02T20:12:38Z",
+    "gap_s": 119.0
+   }
+  ]
+ },
+ "H2_sensitivity": {
+  "suspicious_wins": [
+   {
+    "idx": 1300004,
+    "gap_s": 4.94
+   },
+   {
+    "idx": 1300165,
+    "gap_s": 4.61
+   },
+   {
+    "idx": 1300249,
+    "gap_s": 3.85
+   },
+   {
+    "idx": 1400207,
+    "gap_s": 1.31
+   }
+  ],
+  "share_lost_if_reclassified": [
+   0.8387,
+   0.7634,
+   0.914
+  ]
+ }
+}

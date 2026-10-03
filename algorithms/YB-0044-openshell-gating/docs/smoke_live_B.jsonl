@@ -1,0 +1,2 @@
+{"idx": 900015, "correct": false, "D": 5.8627, "t_alarm": 0.8315, "arm": "B", "started": true, "committed": false, "commit_delay_s": null, "action_s": 0.832}
+{"idx": 900021, "correct": false, "D": 4.8114, "t_alarm": 0.8028, "arm": "B", "started": true, "committed": true, "commit_delay_s": 0.005, "action_s": 0.804}

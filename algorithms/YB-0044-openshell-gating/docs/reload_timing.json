@@ -1,0 +1,354 @@
+{
+ "note": "EXPLORATORY engineering measurement for YB-0044 design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms",
+ "block": {
+  "command": {
+   "n": 20,
+   "median": 6.055,
+   "min": 5.051,
+   "max": 6.081
+  },
+  "effective": {
+   "n": 20,
+   "median": 5.465,
+   "min": 4.99,
+   "max": 5.943
+  }
+ },
+ "unblock": {
+  "command": {
+   "n": 20,
+   "median": 4.049,
+   "min": 3.053,
+   "max": 4.068
+  },
+  "effective": {
+   "n": 20,
+   "median": 3.551,
+   "min": 3.081,
+   "max": 4.013
+  }
+ },
+ "failures": 0,
+ "rows": [
+  {
+   "cycle": 0,
+   "mode": "deny",
+   "command_s": 5.051,
+   "effective_s": 4.99,
+   "ok": true,
+   "arrivals_after_command": 93
+  },
+  {
+   "cycle": 0,
+   "mode": "allow",
+   "command_s": 4.048,
+   "effective_s": 4.013,
+   "ok": true,
+   "arrivals_after_command": 76
+  },
+  {
+   "cycle": 1,
+   "mode": "deny",
+   "command_s": 6.058,
+   "effective_s": 5.891,
+   "ok": true,
+   "arrivals_after_command": 108
+  },
+  {
+   "cycle": 1,
+   "mode": "allow",
+   "command_s": 4.068,
+   "effective_s": 3.9,
+   "ok": true,
+   "arrivals_after_command": 75
+  },
+  {
+   "cycle": 2,
+   "mode": "deny",
+   "command_s": 6.071,
+   "effective_s": 5.787,
+   "ok": true,
+   "arrivals_after_command": 103
+  },
+  {
+   "cycle": 2,
+   "mode": "allow",
+   "command_s": 4.05,
+   "effective_s": 3.793,
+   "ok": true,
+   "arrivals_after_command": 80
+  },
+  {
+   "cycle": 3,
+   "mode": "deny",
+   "command_s": 6.05,
+   "effective_s": 5.714,
+   "ok": true,
+   "arrivals_after_command": 106
+  },
+  {
+   "cycle": 3,
+   "mode": "allow",
+   "command_s": 4.046,
+   "effective_s": 3.736,
+   "ok": true,
+   "arrivals_after_command": 79
+  },
+  {
+   "cycle": 4,
+   "mode": "deny",
+   "command_s": 6.054,
+   "effective_s": 5.596,
+   "ok": true,
+   "arrivals_after_command": 104
+  },
+  {
+   "cycle": 4,
+   "mode": "allow",
+   "command_s": 4.047,
+   "effective_s": 3.649,
+   "ok": true,
+   "arrivals_after_command": 82
+  },
+  {
+   "cycle": 5,
+   "mode": "deny",
+   "command_s": 6.052,
+   "effective_s": 5.514,
+   "ok": true,
+   "arrivals_after_command": 102
+  },
+  {
+   "cycle": 5,
+   "mode": "allow",
+   "command_s": 4.049,
+   "effective_s": 3.562,
+   "ok": true,
+   "arrivals_after_command": 84
+  },
+  {
+   "cycle": 6,
+   "mode": "deny",
+   "command_s": 6.052,
+   "effective_s": 5.428,
+   "ok": true,
+   "arrivals_after_command": 101
+  },
+  {
+   "cycle": 6,
+   "mode": "allow",
+   "command_s": 4.048,
+   "effective_s": 3.474,
+   "ok": true,
+   "arrivals_after_command": 84
+  },
+  {
+   "cycle": 7,
+   "mode": "deny",
+   "command_s": 6.054,
+   "effective_s": 5.367,
+   "ok": true,
+   "arrivals_after_command": 100
+  },
+  {
+   "cycle": 7,
+   "mode": "allow",
+   "command_s": 4.044,
+   "effective_s": 3.392,
+   "ok": true,
+   "arrivals_after_command": 86
+  },
+  {
+   "cycle": 8,
+   "mode": "deny",
+   "command_s": 6.052,
+   "effective_s": 5.313,
+   "ok": true,
+   "arrivals_after_command": 99
+  },
+  {
+   "cycle": 8,
+   "mode": "allow",
+   "command_s": 4.047,
+   "effective_s": 3.325,
+   "ok": true,
+   "arrivals_after_command": 88
+  },
+  {
+   "cycle": 9,
+   "mode": "deny",
+   "command_s": 6.047,
+   "effective_s": 5.194,
+   "ok": true,
+   "arrivals_after_command": 96
+  },
+  {
+   "cycle": 9,
+   "mode": "allow",
+   "command_s": 4.047,
+   "effective_s": 3.212,
+   "ok": true,
+   "arrivals_after_command": 89
+  },
+  {
+   "cycle": 10,
+   "mode": "deny",
+   "command_s": 6.056,
+   "effective_s": 5.117,
+   "ok": true,
+   "arrivals_after_command": 95
+  },
+  {
+   "cycle": 10,
+   "mode": "allow",
+   "command_s": 4.046,
+   "effective_s": 3.15,
+   "ok": true,
+   "arrivals_after_command": 91
+  },
+  {
+   "cycle": 11,
+   "mode": "deny",
+   "command_s": 6.05,
+   "effective_s": 5.045,
+   "ok": true,
+   "arrivals_after_command": 94
+  },
+  {
+   "cycle": 11,
+   "mode": "allow",
+   "command_s": 3.053,
+   "effective_s": 3.081,
+   "ok": true,
+   "arrivals_after_command": 72
+  },
+  {
+   "cycle": 12,
+   "mode": "deny",
+   "command_s": 6.081,
+   "effective_s": 5.943,
+   "ok": true,
+   "arrivals_after_command": 107
+  },
+  {
+   "cycle": 12,
+   "mode": "allow",
+   "command_s": 4.047,
+   "effective_s": 3.941,
+   "ok": true,
+   "arrivals_after_command": 73
+  },
+  {
+   "cycle": 13,
+   "mode": "deny",
+   "command_s": 6.057,
+   "effective_s": 5.83,
+   "ok": true,
+   "arrivals_after_command": 104
+  },
+  {
+   "cycle": 13,
+   "mode": "allow",
+   "command_s": 4.05,
+   "effective_s": 3.82,
+   "ok": true,
+   "arrivals_after_command": 76
+  },
+  {
+   "cycle": 14,
+   "mode": "deny",
+   "command_s": 6.067,
+   "effective_s": 5.754,
+   "ok": true,
+   "arrivals_after_command": 102
+  },
+  {
+   "cycle": 14,
+   "mode": "allow",
+   "command_s": 4.054,
+   "effective_s": 3.759,
+   "ok": true,
+   "arrivals_after_command": 77
+  },
+  {
+   "cycle": 15,
+   "mode": "deny",
+   "command_s": 6.053,
+   "effective_s": 5.608,
+   "ok": true,
+   "arrivals_after_command": 99
+  },
+  {
+   "cycle": 15,
+   "mode": "allow",
+   "command_s": 4.058,
+   "effective_s": 3.623,
+   "ok": true,
+   "arrivals_after_command": 79
+  },
+  {
+   "cycle": 16,
+   "mode": "deny",
+   "command_s": 6.064,
+   "effective_s": 5.502,
+   "ok": true,
+   "arrivals_after_command": 99
+  },
+  {
+   "cycle": 16,
+   "mode": "allow",
+   "command_s": 4.052,
+   "effective_s": 3.54,
+   "ok": true,
+   "arrivals_after_command": 80
+  },
+  {
+   "cycle": 17,
+   "mode": "deny",
+   "command_s": 6.066,
+   "effective_s": 5.405,
+   "ok": true,
+   "arrivals_after_command": 96
+  },
+  {
+   "cycle": 17,
+   "mode": "allow",
+   "command_s": 4.052,
+   "effective_s": 3.404,
+   "ok": true,
+   "arrivals_after_command": 83
+  },
+  {
+   "cycle": 18,
+   "mode": "deny",
+   "command_s": 6.067,
+   "effective_s": 5.3,
+   "ok": true,
+   "arrivals_after_command": 94
+  },
+  {
+   "cycle": 18,
+   "mode": "allow",
+   "command_s": 4.063,
+   "effective_s": 3.302,
+   "ok": true,
+   "arrivals_after_command": 85
+  },
+  {
+   "cycle": 19,
+   "mode": "deny",
+   "command_s": 6.066,
+   "effective_s": 5.196,
+   "ok": true,
+   "arrivals_after_command": 92
+  },
+  {
+   "cycle": 19,
+   "mode": "allow",
+   "command_s": 4.062,
+   "effective_s": 3.196,
+   "ok": true,
+   "arrivals_after_command": 87
+  }
+ ]
+}

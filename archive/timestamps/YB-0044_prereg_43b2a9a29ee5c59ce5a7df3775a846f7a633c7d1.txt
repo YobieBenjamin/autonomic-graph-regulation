@@ -1,0 +1,3 @@
+YB-0044 pre-registration commit 43b2a9a29ee5c59ce5a7df3775a846f7a633c7d1
+Repository: YobieBenjamin/safety (private; public snapshot YobieBenjamin/autonomic-graph-regulation)
+Stamped: 2026-10-02T18:08:15Z
