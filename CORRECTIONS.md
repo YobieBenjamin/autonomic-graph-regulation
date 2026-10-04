@@ -295,3 +295,15 @@ Verdicts: all three publishable with fixes. Fable: 0 critical, 0 major; recomput
 ## Voice edit (2026-10-04): final series, author voice pass, no factual change
 
 At the author request, both parts were rewritten to remove AI-style phrasing (stock setups, colon reveals, tidy triplets, it-is-not-X-it-is-Y closers) and restore his irreverent voice. Facts, numbers, intervals, citations and file paths were held fixed. Verification: an automated comparison of every number in the before and after text found none removed and none added except the series markers (Part 1 of 2; a reference to Part 1). The posted drafts in archive/audit/series_final_2026-10-04/ are the voice-edited versions; the audited pre-edit versions remain in git history (commit 6020c80).
+
+## Process findings (2026-10-04, YB-0046 to YB-0048)
+
+| ID | Finding | Resolution |
+|---|---|---|
+| PF-1 | The publish pipeline re-runs experiments; for analyses whose test data already existed it would have run the confirmatory analysis before the timestamp | Gated behind make confirmatory; verified in the sandbox and during the live publish (PROTOCOL rule 14) |
+| PF-2 | YB-0047 dry run crashed after 30 minutes on infinite scores for never-monitored episodes | Lowest-score rule written into the plan before the timestamp; smoke mode added (rule 15) |
+| PF-3 | Code review found the leave-one-task-out test would feed the held-out type unscaled features, biasing it against internal state | Label-free normalisation from the held-out type's derivation episodes, written into the plan before the timestamp (rule 17) |
+| PF-4 | A waiting script would have re-timestamped YB-0046 after its analysis started | Stopped before it could; single timestamp taken before analysis (rule 16) |
+| PF-5 | Hard-linked data copies were tracked in git, doubling uploads; the public snapshot push failed | Copies untracked (hash-identical to YB-0045 data, which remains the public record); failed snapshot commit discarded (rule 17) |
+| PF-6 | The audited final series drafts overstate what internal state adds (YB-0047) | Marked superseded (archive/audit/series_final_2026-10-04/SUPERSEDED.md); claim status updated in docs/RESEARCH_PROGRAM.md |
+| PF-7 | YB-0047 pooled transfer AUROC mixes cross-task miscalibration with ranking | Pre-registered measure reported as is; within-task held-out AUROC reported alongside |

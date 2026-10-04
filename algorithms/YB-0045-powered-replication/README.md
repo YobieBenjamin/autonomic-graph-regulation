@@ -26,3 +26,8 @@ Test: seeds 9, 13, 14 pooled, 1,605 answered, 138 wrong; population = all correc
 ## Deviations
 1. Per-test-seed results were listed as secondary but not computed by the pre-registered code; computed post hoc by tests/posthoc_per_seed.py (docs/posthoc_per_seed.json): seed 9 +0.405 [+0.241, +0.595], seed 13 +0.469 [+0.250, +0.623], seed 14 +0.404 [+0.208, +0.628] (regulator minus judge).
 2. The chain publish failed (sandbox tmpfs too small); results were committed by a re-run publish whose check re-ran the analysis; sandbox tmpfs made configurable.
+
+## Known limitation for reuse (added 2026-10-04)
+AbsOrganism and Probe standardise features per (task type, checkpoint) and fall back to mean 0, sd 1 for a type absent from training. This
+never occurs in YB-0045 (all six types are in training), so no reported result is affected; analyses that hold out a type must supply
+statistics for it (YB-0047 uses label-free statistics from the held-out type's derivation episodes).

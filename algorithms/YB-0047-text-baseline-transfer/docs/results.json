@@ -1,0 +1,351 @@
+{
+ "dry_run": false,
+ "deriv_seeds": [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "10",
+  "11",
+  "12"
+ ],
+ "eval_seeds": [
+  "9",
+  "13",
+  "14"
+ ],
+ "derivation_answered": 5365,
+ "derivation_observations": 9189,
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.001
+ },
+ "text_C": 1.0,
+ "text_cv_auroc": {
+  "0.1": 0.8285,
+  "1.0": 0.8407,
+  "10.0": 0.8195
+ },
+ "eval_answered": 1605,
+ "eval_wrong": 138,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.2477,
+   "recall": 0.6812,
+   "caught": 94,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6912
+  },
+  "probe": {
+   "threshold": 0.2054,
+   "recall": 0.7246,
+   "caught": 100,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7353
+  },
+  "text_trained": {
+   "threshold": 0.1677,
+   "recall": 0.6522,
+   "caught": 90,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6618
+  }
+ },
+ "H1_probe_minus_text": [
+  0.0725,
+  0.0,
+  0.1528
+ ],
+ "H1_supported": false,
+ "H2_regulator_minus_text": [
+  0.029,
+  -0.0448,
+  0.0909
+ ],
+ "H2_supported": false,
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 1021,
+   "wrong": 136,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7628,
+     0.7117,
+     0.8079
+    ],
+    "probe": [
+     0.8151,
+     0.7683,
+     0.8563
+    ],
+    "text_trained": [
+     0.8216,
+     0.7813,
+     0.8585
+    ]
+   }
+  },
+  "96": {
+   "episodes": 893,
+   "wrong": 134,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8157,
+     0.7743,
+     0.8568
+    ],
+    "probe": [
+     0.8322,
+     0.79,
+     0.8735
+    ],
+    "text_trained": [
+     0.8476,
+     0.8103,
+     0.8812
+    ]
+   }
+  },
+  "192": {
+   "episodes": 661,
+   "wrong": 111,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8389,
+     0.7893,
+     0.8801
+    ],
+    "probe": [
+     0.8689,
+     0.832,
+     0.9035
+    ],
+    "text_trained": [
+     0.8589,
+     0.8222,
+     0.8944
+    ]
+   }
+  },
+  "384": {
+   "episodes": 131,
+   "wrong": 39,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7611,
+     0.666,
+     0.8513
+    ],
+    "probe": [
+     0.8397,
+     0.7603,
+     0.9075
+    ],
+    "text_trained": [
+     0.8551,
+     0.7752,
+     0.9155
+    ]
+   }
+  }
+ },
+ "H3_pooled_leave_one_task_out_auroc": {
+  "regulator": [
+   0.4445,
+   0.3921,
+   0.4991
+  ],
+  "probe": [
+   0.6643,
+   0.6165,
+   0.7125
+  ],
+  "text_trained": [
+   0.3839,
+   0.3395,
+   0.4331
+  ]
+ },
+ "H3_supported_probe": true,
+ "H3_supported_regulator": false,
+ "S_transfer_by_task": {
+  "add_hard": {
+   "episodes": 300,
+   "wrong": 0,
+   "label_free_normalisation": true,
+   "derivation_episodes": 3
+  },
+  "count": {
+   "episodes": 300,
+   "wrong": 13,
+   "label_free_normalisation": true,
+   "derivation_episodes": 997,
+   "heldout_auroc": {
+    "regulator": [
+     0.5696,
+     0.4378,
+     0.7102
+    ],
+    "probe": [
+     0.7652,
+     0.6576,
+     0.8674
+    ],
+    "text_trained": [
+     0.71,
+     0.6065,
+     0.8201
+    ]
+   },
+   "in_task_auroc": {
+    "regulator": [
+     0.6607,
+     0.5543,
+     0.7839
+    ],
+    "probe": [
+     0.8657,
+     0.7215,
+     0.97
+    ],
+    "text_trained": [
+     0.7566,
+     0.6317,
+     0.8674
+    ]
+   }
+  },
+  "modpow": {
+   "episodes": 108,
+   "wrong": 31,
+   "label_free_normalisation": true,
+   "derivation_episodes": 382,
+   "heldout_auroc": {
+    "regulator": [
+     0.5471,
+     0.4256,
+     0.6718
+    ],
+    "probe": [
+     0.6975,
+     0.597,
+     0.7913
+    ],
+    "text_trained": [
+     0.4529,
+     0.3121,
+     0.5814
+    ]
+   },
+   "in_task_auroc": {
+    "regulator": [
+     0.8379,
+     0.7496,
+     0.9154
+    ],
+    "probe": [
+     0.855,
+     0.7713,
+     0.9258
+    ],
+    "text_trained": [
+     0.7985,
+     0.6988,
+     0.8892
+    ]
+   }
+  },
+  "mul_easy": {
+   "episodes": 300,
+   "wrong": 0,
+   "label_free_normalisation": true,
+   "derivation_episodes": 67
+  },
+  "mul_hard": {
+   "episodes": 298,
+   "wrong": 36,
+   "label_free_normalisation": true,
+   "derivation_episodes": 986,
+   "heldout_auroc": {
+    "regulator": [
+     0.5521,
+     0.4569,
+     0.6457
+    ],
+    "probe": [
+     0.7154,
+     0.6351,
+     0.8035
+    ],
+    "text_trained": [
+     0.5654,
+     0.48,
+     0.6551
+    ]
+   },
+   "in_task_auroc": {
+    "regulator": [
+     0.5641,
+     0.4652,
+     0.6693
+    ],
+    "probe": [
+     0.669,
+     0.5844,
+     0.7619
+    ],
+    "text_trained": [
+     0.6191,
+     0.5309,
+     0.706
+    ]
+   }
+  },
+  "weekday": {
+   "episodes": 299,
+   "wrong": 58,
+   "label_free_normalisation": true,
+   "derivation_episodes": 991,
+   "heldout_auroc": {
+    "regulator": [
+     0.2907,
+     0.217,
+     0.3736
+    ],
+    "probe": [
+     0.5303,
+     0.4431,
+     0.6239
+    ],
+    "text_trained": [
+     0.5182,
+     0.4372,
+     0.603
+    ]
+   },
+   "in_task_auroc": {
+    "regulator": [
+     0.9012,
+     0.8437,
+     0.9463
+    ],
+    "probe": [
+     0.9034,
+     0.8424,
+     0.9496
+    ],
+    "text_trained": [
+     0.8878,
+     0.8293,
+     0.9367
+    ]
+   }
+  }
+ }
+}

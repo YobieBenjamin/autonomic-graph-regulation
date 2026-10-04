@@ -172,3 +172,22 @@ Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: ac
 - **By design, not a finding:** hold-until-cleared stops every alarmed action (93 of 93), so H1 was nearly guaranteed once reactive blocking lost races. The measured findings for holding are its costs: 16 of 138 correct actions held (14 alarms, 2 release timeouts) and a median 7.4 s delay.
 - **Scope:** precomputed alarm times replayed through open-source OpenShell 0.1.2 on a Mac (Colima, tunnel); no model in the loop; NVIDIA Sentry/BlueField not used.
 
+
+## Claim status after YB-0046 and YB-0047 (2026-10-04; supersedes earlier claim-status sections where they conflict)
+- **Supported (pre-registered secondary analyses of the YB-0045 data):** internal-state monitors predict errors beyond question difficulty
+  (YB-0046: probe minus difficulty +0.181 [+0.090, +0.273]; regulator +0.138 [+0.036, +0.211]; difficulty plus regulator minus difficulty
+  +0.174 [+0.096, +0.247]). The hidden-state probe partly transfers to an unseen task type (YB-0047: pooled AUROC 0.664 [0.617, 0.713]).
+- **Not supported:** that internal state beats a TRAINED reader of the reasoning text in-distribution (YB-0047: probe minus trained text
+  monitor +0.072 [0.000, +0.153]; regulator +0.029 [-0.045, +0.091]; trained text caught 90 of 138 vs probe 100). The margin over the LLM
+  judge (YB-0045) therefore came mainly from training a monitor, not from reading internal state; a question-difficulty score alone beats
+  the judge (75 vs 28 of 138). The telemetry regulator does not transfer to unseen task types (0.445 [0.392, 0.499]).
+- **Theory and position:** docs/THEORY_AND_POSITION.md (principles with evidence status; biology and the hospital kept as architecture and
+  operating method, not as feature claims).
+
+## Claim status after YB-0048 (2026-10-04)
+- **Not supported:** that fusing the four same-stage non-LLM monitors (difficulty, trained text, probe, regulator) beats the best single one
+  (stack minus probe -0.029 [-0.096, +0.044]), or that a transparent NEWS2-style banded score is within 5 points of it (-0.101 [-0.164,
+  +0.015]). The monitors largely catch the same errors.
+- **Descriptive:** the banded score gives a clean graded risk gradient (failure rate 3.6% stable to 66% urgent).
+- **Open:** layering across different stages (pre-answer internal monitor, post-answer review, action hold, human), whose misses may be less
+  correlated.

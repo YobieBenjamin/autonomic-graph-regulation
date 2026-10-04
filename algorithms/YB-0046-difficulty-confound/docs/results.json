@@ -1,0 +1,341 @@
+{
+ "dry_run": false,
+ "deriv_seeds": [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "10",
+  "11",
+  "12"
+ ],
+ "eval_seeds": [
+  "9",
+  "13",
+  "14"
+ ],
+ "derivation_answered": 5365,
+ "derivation_observations": 9189,
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.001
+ },
+ "eval_answered": 1605,
+ "eval_wrong": 138,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.2477,
+   "recall": 0.6812,
+   "caught": 94,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6912
+  },
+  "probe": {
+   "threshold": 0.2054,
+   "recall": 0.7246,
+   "caught": 100,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7353
+  },
+  "difficulty_plus_length": {
+   "threshold": 0.1901,
+   "recall": 0.5435,
+   "caught": 75,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.5515
+  },
+  "difficulty_only": {
+   "threshold": 0.1779,
+   "recall": 0.529,
+   "caught": 73,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.5368
+  },
+  "combined": {
+   "threshold": 0.158,
+   "recall": 0.7174,
+   "caught": 99,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7279
+  },
+  "judge": {
+   "threshold": 0.6,
+   "recall": 0.2029,
+   "caught": 28,
+   "fpr": 0.0702,
+   "fpr_monitorable": 0.1164,
+   "recall_monitorable": 0.2059
+  }
+ },
+ "difficulty_models": {
+  "mul_hard": "lr",
+  "count": "lr",
+  "weekday": "lr",
+  "modpow": "lr",
+  "mul_easy": "rate",
+  "add_hard": "rate"
+ },
+ "H1_regulator_minus_difficulty": [
+  0.1377,
+  0.036,
+  0.2109
+ ],
+ "H1_supported": true,
+ "H2_probe_minus_difficulty": [
+  0.1812,
+  0.0895,
+  0.2727
+ ],
+ "H2_supported": true,
+ "H3_combined_minus_difficulty": [
+  0.1739,
+  0.0956,
+  0.2468
+ ],
+ "H3_supported": true,
+ "S_difficulty_only_vs_with_length": [
+  0.0145,
+  -0.0227,
+  0.0539
+ ],
+ "S_difficulty_minus_judge": [
+  0.3406,
+  0.1898,
+  0.4226
+ ],
+ "S_regulator_minus_judge": [
+  0.4783,
+  0.3071,
+  0.5595
+ ],
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 1021,
+   "wrong": 136,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7628,
+     0.7117,
+     0.8079
+    ],
+    "probe": [
+     0.8151,
+     0.7683,
+     0.8563
+    ],
+    "difficulty_plus_length": [
+     0.8087,
+     0.7709,
+     0.8433
+    ],
+    "combined": [
+     0.8386,
+     0.8007,
+     0.8745
+    ]
+   }
+  },
+  "96": {
+   "episodes": 893,
+   "wrong": 134,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8157,
+     0.7743,
+     0.8568
+    ],
+    "probe": [
+     0.8322,
+     0.79,
+     0.8735
+    ],
+    "difficulty_plus_length": [
+     0.7837,
+     0.7419,
+     0.8219
+    ],
+    "combined": [
+     0.8437,
+     0.8064,
+     0.8777
+    ]
+   }
+  },
+  "192": {
+   "episodes": 661,
+   "wrong": 111,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8389,
+     0.7893,
+     0.8801
+    ],
+    "probe": [
+     0.8689,
+     0.832,
+     0.9035
+    ],
+    "difficulty_plus_length": [
+     0.7412,
+     0.6944,
+     0.7899
+    ],
+    "combined": [
+     0.8415,
+     0.7942,
+     0.8814
+    ]
+   }
+  },
+  "384": {
+   "episodes": 131,
+   "wrong": 39,
+   "auroc_with_ci": {
+    "regulator": [
+     0.7611,
+     0.666,
+     0.8513
+    ],
+    "probe": [
+     0.8397,
+     0.7603,
+     0.9075
+    ],
+    "difficulty_plus_length": [
+     0.5212,
+     0.4228,
+     0.6254
+    ],
+    "combined": [
+     0.7308,
+     0.6242,
+     0.8266
+    ]
+   }
+  }
+ },
+ "S_within_category": {
+  "add_hard": {
+   "episodes": 0,
+   "wrong": 0,
+   "note": "fewer than 10 wrong: not analysed"
+  },
+  "count": {
+   "episodes": 296,
+   "wrong": 13,
+   "in_time_score_auroc_with_ci": {
+    "regulator": [
+     0.6559,
+     0.5346,
+     0.7751
+    ],
+    "probe": [
+     0.8638,
+     0.7138,
+     0.9704
+    ],
+    "difficulty_plus_length": [
+     0.8294,
+     0.6562,
+     0.946
+    ],
+    "combined": [
+     0.7798,
+     0.6229,
+     0.8986
+    ]
+   }
+  },
+  "modpow": {
+   "episodes": 108,
+   "wrong": 31,
+   "in_time_score_auroc_with_ci": {
+    "regulator": [
+     0.8379,
+     0.7496,
+     0.9154
+    ],
+    "probe": [
+     0.855,
+     0.7713,
+     0.9258
+    ],
+    "difficulty_plus_length": [
+     0.5191,
+     0.4044,
+     0.6304
+    ],
+    "combined": [
+     0.8295,
+     0.7492,
+     0.9035
+    ]
+   }
+  },
+  "mul_easy": {
+   "episodes": 23,
+   "wrong": 0,
+   "note": "fewer than 10 wrong: not analysed"
+  },
+  "mul_hard": {
+   "episodes": 298,
+   "wrong": 36,
+   "in_time_score_auroc_with_ci": {
+    "regulator": [
+     0.5641,
+     0.4652,
+     0.6693
+    ],
+    "probe": [
+     0.669,
+     0.5844,
+     0.7619
+    ],
+    "difficulty_plus_length": [
+     0.653,
+     0.5723,
+     0.7275
+    ],
+    "combined": [
+     0.6195,
+     0.5307,
+     0.7136
+    ]
+   }
+  },
+  "weekday": {
+   "episodes": 296,
+   "wrong": 56,
+   "in_time_score_auroc_with_ci": {
+    "regulator": [
+     0.933,
+     0.9029,
+     0.9605
+    ],
+    "probe": [
+     0.9353,
+     0.8931,
+     0.9674
+    ],
+    "difficulty_plus_length": [
+     0.8426,
+     0.7874,
+     0.8957
+    ],
+    "combined": [
+     0.9274,
+     0.8841,
+     0.9618
+    ]
+   }
+  }
+ }
+}

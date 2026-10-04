@@ -35,5 +35,9 @@ Rules every experiment follows. Each rule exists because of a specific failure r
     author chooses. Reports cite server-side or third-party timestamps, never local git times alone. For YB-0035 the
     evidence is GitHub's own push and CI records, preserved in archive/audit/artifacts/c1_github_server_timestamps.json.
     *(third audit C1)*
+14. **Secondary analyses of existing data are gated.** When test data already exists, the confirmatory analysis runs only through an explicit make confirmatory target after the public timestamp; make experiment (called by publish and CI) must exit without analysing. Origin: 2026-10-04, YB-0046 (the publish pipeline would otherwise have run the analysis before the timestamp).
+15. **Smoke test before dry run.** Every analysis has a SMOKE mode that runs every code path on a small slice of non-test data in minutes; it must pass before the full dry run. Origin: 2026-10-04, YB-0047 (a crash surfaced only after a 30-minute dry run).
+16. **One timestamp per plan, taken before analysis.** Automated chains must not re-timestamp after the analysis starts; the chain stops at the first failure and logs each step with UTC times. Origin: 2026-10-04, YB-0046.
+17. **Reused data is referenced, not duplicated, and reused code is checked for silent fallbacks.** Analyses that reuse recordings read a hash-verified local link and do not track a second copy; reused normalisation code is reviewed for unseen-category fallbacks. Origin: 2026-10-04 (duplicated data broke the public push; YB-0045 code silently leaves unseen task types unnormalised, found in YB-0047 review).
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->

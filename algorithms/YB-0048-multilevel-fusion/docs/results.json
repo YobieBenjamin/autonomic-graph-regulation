@@ -1,0 +1,317 @@
+{
+ "dry_run": false,
+ "smoke": false,
+ "deriv_seeds": [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "10",
+  "11",
+  "12"
+ ],
+ "eval_seeds": [
+  "9",
+  "13",
+  "14"
+ ],
+ "derivation_answered": 5365,
+ "derivation_observations": 9189,
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.001
+ },
+ "text_C": 1.0,
+ "stack_weights": {
+  "difficulty": 0.2179,
+  "text": 0.9042,
+  "probe": 0.3163,
+  "regulator": 0.3442
+ },
+ "eval_answered": 1605,
+ "eval_wrong": 138,
+ "monitors": {
+  "difficulty": {
+   "threshold": 0.1901,
+   "recall": 0.5435,
+   "caught": 75,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.5515
+  },
+  "text": {
+   "threshold": 0.1677,
+   "recall": 0.6522,
+   "caught": 90,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6618
+  },
+  "probe": {
+   "threshold": 0.2054,
+   "recall": 0.7246,
+   "caught": 100,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7353
+  },
+  "regulator": {
+   "threshold": 0.2477,
+   "recall": 0.6812,
+   "caught": 94,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.6912
+  },
+  "stack": {
+   "threshold": 0.1656,
+   "recall": 0.6957,
+   "caught": 96,
+   "fpr": 0.0995,
+   "fpr_monitorable": 0.165,
+   "recall_monitorable": 0.7059
+  },
+  "hospital_banded": {
+   "threshold": 2.0,
+   "recall": 0.6232,
+   "caught": 86,
+   "fpr": 0.0641,
+   "fpr_monitorable": 0.1062,
+   "recall_monitorable": 0.6324
+  },
+  "judge": {
+   "threshold": 0.6,
+   "recall": 0.2029,
+   "caught": 28,
+   "fpr": 0.0702,
+   "fpr_monitorable": 0.1164,
+   "recall_monitorable": 0.2059
+  }
+ },
+ "H1_stack_minus_probe": [
+  -0.029,
+  -0.0959,
+  0.0435
+ ],
+ "H1_supported": false,
+ "H2_hospital_minus_probe": [
+  -0.1014,
+  -0.1644,
+  0.0152
+ ],
+ "H2_noninferior_at_minus_0_05": false,
+ "H3_overlap_of_caught_errors": {
+  "difficulty|text": {
+   "both": 71,
+   "only_first": 4,
+   "only_second": 19
+  },
+  "difficulty|probe": {
+   "both": 68,
+   "only_first": 7,
+   "only_second": 32
+  },
+  "difficulty|regulator": {
+   "both": 68,
+   "only_first": 7,
+   "only_second": 26
+  },
+  "probe|text": {
+   "both": 81,
+   "only_first": 19,
+   "only_second": 9
+  },
+  "probe|regulator": {
+   "both": 84,
+   "only_first": 16,
+   "only_second": 10
+  },
+  "regulator|text": {
+   "both": 81,
+   "only_first": 13,
+   "only_second": 9
+  }
+ },
+ "H3_caught_by_any_component": 117,
+ "S_stack_minus_judge": [
+  0.4928,
+  0.3381,
+  0.5734
+ ],
+ "S_hospital_minus_judge": [
+  0.4203,
+  0.2658,
+  0.5194
+ ],
+ "S_banded_levels": {
+  "stable 0": {
+   "episodes": 634,
+   "wrong": 23,
+   "failure_rate": 0.0363
+  },
+  "watch 1-2": {
+   "episodes": 207,
+   "wrong": 27,
+   "failure_rate": 0.1304
+  },
+  "concern 3-5": {
+   "episodes": 78,
+   "wrong": 19,
+   "failure_rate": 0.2436
+  },
+  "urgent 6-12": {
+   "episodes": 102,
+   "wrong": 67,
+   "failure_rate": 0.6569
+  }
+ },
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 1021,
+   "wrong": 136,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.8087,
+     0.7709,
+     0.8433
+    ],
+    "text": [
+     0.8216,
+     0.7813,
+     0.8585
+    ],
+    "probe": [
+     0.8151,
+     0.7683,
+     0.8563
+    ],
+    "regulator": [
+     0.7628,
+     0.7117,
+     0.8079
+    ],
+    "stack": [
+     0.8518,
+     0.8139,
+     0.883
+    ],
+    "hospital_banded": [
+     0.7986,
+     0.7574,
+     0.8425
+    ]
+   }
+  },
+  "96": {
+   "episodes": 893,
+   "wrong": 134,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.7837,
+     0.7419,
+     0.8219
+    ],
+    "text": [
+     0.8476,
+     0.8103,
+     0.8812
+    ],
+    "probe": [
+     0.8322,
+     0.79,
+     0.8735
+    ],
+    "regulator": [
+     0.8157,
+     0.7743,
+     0.8568
+    ],
+    "stack": [
+     0.8706,
+     0.8377,
+     0.8987
+    ],
+    "hospital_banded": [
+     0.8044,
+     0.757,
+     0.8467
+    ]
+   }
+  },
+  "192": {
+   "episodes": 661,
+   "wrong": 111,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.7412,
+     0.6944,
+     0.7899
+    ],
+    "text": [
+     0.8589,
+     0.8222,
+     0.8944
+    ],
+    "probe": [
+     0.8689,
+     0.832,
+     0.9035
+    ],
+    "regulator": [
+     0.8389,
+     0.7893,
+     0.8801
+    ],
+    "stack": [
+     0.8802,
+     0.8461,
+     0.9099
+    ],
+    "hospital_banded": [
+     0.8212,
+     0.7743,
+     0.8639
+    ]
+   }
+  },
+  "384": {
+   "episodes": 131,
+   "wrong": 39,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.5212,
+     0.4228,
+     0.6254
+    ],
+    "text": [
+     0.8551,
+     0.7752,
+     0.9155
+    ],
+    "probe": [
+     0.8397,
+     0.7603,
+     0.9075
+    ],
+    "regulator": [
+     0.7611,
+     0.666,
+     0.8513
+    ],
+    "stack": [
+     0.8763,
+     0.8048,
+     0.9385
+    ],
+    "hospital_banded": [
+     0.8087,
+     0.7243,
+     0.8811
+    ]
+   }
+  }
+ }
+}

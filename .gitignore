@@ -26,3 +26,8 @@ data/agr/layers_LH_seed*/
 data/agr/hs_seed*/
 data/agr/prefix_*_seed*.jsonl
 archive/audit/papers_inbox/*.pdf
+
+# YB-0046 to YB-0048 reuse YB-0045 recordings via local hard links; the record is algorithms/YB-0045-powered-replication/data (hash-identical)
+algorithms/YB-0046-difficulty-confound/data/
+algorithms/YB-0047-text-baseline-transfer/data/
+algorithms/YB-0048-multilevel-fusion/data/

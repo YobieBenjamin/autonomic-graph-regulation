@@ -1,0 +1,184 @@
+{
+ "dry_run": true,
+ "deriv_seeds": [
+  "2",
+  "3"
+ ],
+ "eval_seeds": [
+  "10"
+ ],
+ "derivation_answered": 268,
+ "derivation_observations": 476,
+ "probe_selected": {
+  "layer": 23,
+  "C": 0.001
+ },
+ "text_C": 10.0,
+ "text_cv_auroc": {
+  "0.1": 0.6044,
+  "1.0": 0.697,
+  "10.0": 0.7219
+ },
+ "eval_answered": 136,
+ "eval_wrong": 13,
+ "monitors": {
+  "regulator": {
+   "threshold": 0.3574,
+   "recall": 0.6154,
+   "caught": 8,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.6154
+  },
+  "probe": {
+   "threshold": 0.1253,
+   "recall": 0.7692,
+   "caught": 10,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.7692
+  },
+  "text_trained": {
+   "threshold": 0.1105,
+   "recall": 0.8462,
+   "caught": 11,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.8462
+  }
+ },
+ "H1_probe_minus_text": [
+  -0.0769,
+  -0.4167,
+  0.2727
+ ],
+ "H1_supported": false,
+ "H2_regulator_minus_text": [
+  -0.2308,
+  -0.4615,
+  0.0529
+ ],
+ "H2_supported": false,
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 87,
+   "wrong": 13,
+   "auroc_with_ci": {
+    "regulator": [
+     0.789,
+     0.68,
+     0.8929
+    ],
+    "probe": [
+     0.737,
+     0.5217,
+     0.9018
+    ],
+    "text_trained": [
+     0.8597,
+     0.7416,
+     0.9507
+    ]
+   }
+  },
+  "96": {
+   "episodes": 78,
+   "wrong": 13,
+   "auroc_with_ci": {
+    "regulator": [
+     0.6556,
+     0.4516,
+     0.8501
+    ],
+    "probe": [
+     0.8249,
+     0.6572,
+     0.971
+    ],
+    "text_trained": [
+     0.9077,
+     0.8157,
+     0.9756
+    ]
+   }
+  },
+  "192": {
+   "episodes": 53,
+   "wrong": 10,
+   "auroc_with_ci": {
+    "regulator": [
+     0.8512,
+     0.6868,
+     0.9798
+    ],
+    "probe": [
+     0.8651,
+     0.7234,
+     0.9744
+    ],
+    "text_trained": [
+     0.8767,
+     0.7575,
+     0.9694
+    ]
+   }
+  }
+ },
+ "H3_pooled_leave_one_task_out_auroc": {
+  "regulator": [
+   0.5037,
+   0.3085,
+   0.6822
+  ],
+  "probe": [
+   0.5005,
+   0.3022,
+   0.7039
+  ],
+  "text_trained": [
+   0.5121,
+   0.3213,
+   0.7054
+  ]
+ },
+ "H3_supported_probe": false,
+ "H3_supported_regulator": false,
+ "S_transfer_by_task": {
+  "add_hard": {
+   "episodes": 25,
+   "wrong": 0,
+   "label_free_normalisation": false,
+   "derivation_episodes": 0
+  },
+  "count": {
+   "episodes": 25,
+   "wrong": 1,
+   "label_free_normalisation": true,
+   "derivation_episodes": 50
+  },
+  "modpow": {
+   "episodes": 11,
+   "wrong": 4,
+   "label_free_normalisation": true,
+   "derivation_episodes": 18
+  },
+  "mul_easy": {
+   "episodes": 25,
+   "wrong": 0,
+   "label_free_normalisation": true,
+   "derivation_episodes": 4
+  },
+  "mul_hard": {
+   "episodes": 25,
+   "wrong": 1,
+   "label_free_normalisation": true,
+   "derivation_episodes": 50
+  },
+  "weekday": {
+   "episodes": 25,
+   "wrong": 7,
+   "label_free_normalisation": true,
+   "derivation_episodes": 50
+  }
+ }
+}

@@ -1,0 +1,253 @@
+{
+ "dry_run": true,
+ "smoke": true,
+ "deriv_seeds": [
+  "2",
+  "3"
+ ],
+ "eval_seeds": [
+  "10"
+ ],
+ "derivation_answered": 268,
+ "derivation_observations": 476,
+ "probe_selected": {
+  "layer": 23,
+  "C": 0.001
+ },
+ "text_C": 1.0,
+ "stack_weights": {
+  "difficulty": 0.3206,
+  "text": 0.3616,
+  "probe": 0.1697,
+  "regulator": -0.0834
+ },
+ "eval_answered": 136,
+ "eval_wrong": 13,
+ "monitors": {
+  "difficulty": {
+   "threshold": 0.1382,
+   "recall": 0.5385,
+   "caught": 7,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.5385
+  },
+  "text": {
+   "threshold": 0.1051,
+   "recall": 0.8462,
+   "caught": 11,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.8462
+  },
+  "probe": {
+   "threshold": 0.1253,
+   "recall": 0.7692,
+   "caught": 10,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.7692
+  },
+  "regulator": {
+   "threshold": 0.3574,
+   "recall": 0.6154,
+   "caught": 8,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.6154
+  },
+  "stack": {
+   "threshold": 0.1375,
+   "recall": 0.8462,
+   "caught": 11,
+   "fpr": 0.0976,
+   "fpr_monitorable": 0.1622,
+   "recall_monitorable": 0.8462
+  },
+  "hospital_banded": {
+   "threshold": 2.0,
+   "recall": 0.8462,
+   "caught": 11,
+   "fpr": 0.0894,
+   "fpr_monitorable": 0.1486,
+   "recall_monitorable": 0.8462
+  }
+ },
+ "H1_stack_minus_probe": [
+  0.0769,
+  -0.2,
+  0.4003
+ ],
+ "H1_supported": false,
+ "H2_hospital_minus_probe": [
+  0.0769,
+  -0.2857,
+  0.3573
+ ],
+ "H2_noninferior_at_minus_0_05": false,
+ "H3_overlap_of_caught_errors": {
+  "difficulty|text": {
+   "both": 7,
+   "only_first": 0,
+   "only_second": 4
+  },
+  "difficulty|probe": {
+   "both": 5,
+   "only_first": 2,
+   "only_second": 5
+  },
+  "difficulty|regulator": {
+   "both": 4,
+   "only_first": 3,
+   "only_second": 4
+  },
+  "probe|text": {
+   "both": 9,
+   "only_first": 1,
+   "only_second": 2
+  },
+  "probe|regulator": {
+   "both": 7,
+   "only_first": 3,
+   "only_second": 1
+  },
+  "regulator|text": {
+   "both": 8,
+   "only_first": 0,
+   "only_second": 3
+  }
+ },
+ "H3_caught_by_any_component": 12,
+ "S_banded_levels": {
+  "stable 0": {
+   "episodes": 51,
+   "wrong": 2,
+   "failure_rate": 0.0392
+  },
+  "watch 1-2": {
+   "episodes": 14,
+   "wrong": 0,
+   "failure_rate": 0.0
+  },
+  "concern 3-5": {
+   "episodes": 11,
+   "wrong": 3,
+   "failure_rate": 0.2727
+  },
+  "urgent 6-12": {
+   "episodes": 11,
+   "wrong": 8,
+   "failure_rate": 0.7273
+  }
+ },
+ "S_per_checkpoint_auroc": {
+  "48": {
+   "episodes": 87,
+   "wrong": 13,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.7646,
+     0.587,
+     0.9117
+    ],
+    "text": [
+     0.8503,
+     0.7344,
+     0.9463
+    ],
+    "probe": [
+     0.737,
+     0.5217,
+     0.9018
+    ],
+    "regulator": [
+     0.789,
+     0.68,
+     0.8929
+    ],
+    "stack": [
+     0.8493,
+     0.6997,
+     0.9568
+    ],
+    "hospital_banded": [
+     0.8087,
+     0.6424,
+     0.9506
+    ]
+   }
+  },
+  "96": {
+   "episodes": 78,
+   "wrong": 13,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.7769,
+     0.6241,
+     0.9179
+    ],
+    "text": [
+     0.8876,
+     0.7941,
+     0.9598
+    ],
+    "probe": [
+     0.8249,
+     0.6572,
+     0.971
+    ],
+    "regulator": [
+     0.6556,
+     0.4516,
+     0.8501
+    ],
+    "stack": [
+     0.9006,
+     0.8144,
+     0.9681
+    ],
+    "hospital_banded": [
+     0.8704,
+     0.736,
+     0.9772
+    ]
+   }
+  },
+  "192": {
+   "episodes": 53,
+   "wrong": 10,
+   "auroc_with_ci": {
+    "difficulty": [
+     0.7453,
+     0.5579,
+     0.91
+    ],
+    "text": [
+     0.8698,
+     0.7411,
+     0.9632
+    ],
+    "probe": [
+     0.8651,
+     0.7234,
+     0.9744
+    ],
+    "regulator": [
+     0.8512,
+     0.6868,
+     0.9798
+    ],
+    "stack": [
+     0.8791,
+     0.7541,
+     0.9736
+    ],
+    "hospital_banded": [
+     0.8895,
+     0.751,
+     0.9858
+    ]
+   }
+  }
+ }
+}
