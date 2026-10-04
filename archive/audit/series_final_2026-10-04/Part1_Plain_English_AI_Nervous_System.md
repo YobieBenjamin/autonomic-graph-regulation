@@ -138,11 +138,12 @@ I'd rather know that than pretend otherwise.
 The catch: a warning has to arrive in time
 
 Next I tested the watchdog's warnings against a real safety tool. NVIDIA
-just released one called OpenShell. Think of it as a locked room for an
-AI agent, with a list of what it's allowed to do. It's a good idea, but
-it has a blind spot: if the AI is allowed to make a payment, OpenShell
-lets the payment through even if the AI calculated the amount wrong. It
-controls what the AI may do, not whether its thinking is right.
+recently released one called OpenShell. Think of it as a locked room for
+an AI agent, with a list of what it's allowed to do. It's a good idea,
+but it has a blind spot: if the AI is allowed to make a payment,
+OpenShell lets the payment through even if the AI calculated the amount
+wrong. It controls what the AI may do, not whether its thinking is
+right.
 
 So I replayed my watchdog's warnings into it to see if they could stop
 bad actions. With its alarm level fixed in advance, the watchdog warned
@@ -254,12 +255,11 @@ Keeping myself honest
 
 Several of my early results didn't hold up, and I retracted them
 publicly. One test failed to repeat before a bigger, better one
-confirmed the result. The work has been checked nine times by AI
+confirmed the result. The work has been checked eleven times by AI
 reviewers, most recently by three AI systems from three different
-companies (one of them, OpenAI's gpt-oss-120b, is not independent of
-this work, because it is the judge in my experiments), and then every
-source I cite was checked against the actual paper. Every correction is
-public. No human expert has reviewed it yet. I'd welcome that.
+companies at once: Anthropic's Claude Fable, OpenAI's GPT-5.5 and Z.ai's
+GLM. Every source I cite was read in full. Every correction is public.
+No human expert has reviewed it yet. I'd welcome that.
 
 Coming up in Part 2
 

@@ -1,17 +1,17 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Second, independent audit of the final drafts by GLM via the Z.ai API or gpt-oss-120b via LM Studio. GLM cannot read
+'''Second, independent audit of the final drafts blog drafts by GLM-5.3-flash (Zhipu AI) GLM via the Z.ai API or gpt-oss-120b via LM Studio. GLM cannot read
 the repository, so this script inlines a self-contained evidence bundle (the committed result files behind every number, with
 per-episode rows removed) and both drafts, and asks for a strict JSON report.
 Runs against the Z.ai API (LM Studio could not load the glm5next architecture on 2026-10-02). The API key is read at runtime
 from the macOS Keychain (service zai-api-key) and is never printed or written. Overrides: GLM_URL, GLM_MODEL.
-Usage from the repo root: .venv/bin/python archive/audit/multi_audit.py [zai|lmstudio] [--build-only]
-Outputs: archive/audit/final_audit_<glm|gptoss>_* (ninth audit); the series audit uses multi_audit_series.py'''
+Usage from the repo root: .venv/bin/python archive/audit/glm_audit.py [--build-only]
+Outputs: archive/audit/glm_audit_prompt_v10.txt, blog_v10_audit_glm_raw.txt, blog_v10_audit_glm_2026-10-02.json'''
 import json, os, subprocess, sys, time, urllib.request, urllib.error
-D = 'archive/audit/blog_drafts_final_2026-10-03/'
+D = 'archive/audit/series_final_2026-10-04/'
 PROVIDER = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else 'zai'
-TAG = {'zai': 'glm', 'lmstudio': 'gptoss'}[PROVIDER]
+TAG = {'zai': 'glmmed', 'lmstudio': 'gptoss'}[PROVIDER]
 def j(p, drop=()):
     x = json.load(open(p))
     for k in drop: x.pop(k, None)
@@ -65,8 +65,8 @@ Output ONE JSON object and nothing else (no markdown fences, no prose before or 
    "quote": "<exact words from the draft, at most 25 words>", "issue": "<what is wrong>",
    "evidence": "<which evidence item, or UNVERIFIABLE>", "fix": "<concrete replacement wording>"}]}'''
 prompt = INSTR + '\n\n=== EVIDENCE ===\n' + '\n'.join('[%s] %s' % (k, v) for k, v in EV.items()) + '\n[Other records] ' + EXTRA
-prompt += '\n\n=== DRAFT 1: plain-English ===\n' + open(D + 'post_plain_linkedin.md').read() + '\n\n=== DRAFT 2: technical ===\n' + open(D + 'post_technical_v11.md').read()
-open('archive/audit/multi_audit_prompt_final.txt', 'w').write(prompt)
+prompt += '\n\n=== DRAFT 1: plain-English ===\n' + open(D + 'Part1_Plain_English_AI_Nervous_System.md').read() + '\n\n=== DRAFT 2: technical ===\n' + open(D + 'Part2_Technical_AI_Nervous_System.md').read()
+open('archive/audit/multi_audit_prompt_series.txt', 'w').write(prompt)
 print('prompt characters', len(prompt), '(about', len(prompt) // 4, 'tokens)', flush=True)
 if '--build-only' in sys.argv: raise SystemExit(0)
 if PROVIDER == 'zai':
@@ -74,21 +74,21 @@ if PROVIDER == 'zai':
     KEY = subprocess.run(['security', 'find-generic-password', '-s', 'zai-api-key', '-w'], capture_output=True, text=True).stdout.strip()
     if not KEY: raise SystemExit('No key in the Keychain under service zai-api-key')
     HDR = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + KEY}
-    req = dict(model=MODEL, temperature=0, max_tokens=40000, reasoning_effort='high', messages=[dict(role='user', content=prompt)])
+    req = dict(model=MODEL, temperature=0, max_tokens=40000, reasoning_effort='low', messages=[dict(role='user', content=prompt)])
 else:
     URL = 'http://localhost:1234/v1/chat/completions'; MODEL = 'openai/gpt-oss-120b'; HDR = {'Content-Type': 'application/json'}
-    req = dict(model=MODEL, temperature=0, max_tokens=40000, reasoning_effort='high', messages=[dict(role='user', content=prompt)])
+    req = dict(model=MODEL, temperature=0, max_tokens=40000, reasoning_effort='low', messages=[dict(role='user', content=prompt)])
 t0 = time.time()
 try:
     r = json.load(urllib.request.urlopen(urllib.request.Request(URL, data=json.dumps(req).encode(), headers=HDR), timeout=7200))
 except urllib.error.HTTPError as e:
     raise SystemExit('API error %s: %s' % (e.code, e.read().decode()[:600]))
 out = r['choices'][0]['message']['content']
-open('archive/audit/final_audit_%s_raw.txt' % TAG, 'w').write(out)
+open('archive/audit/series_audit2_%s_raw.txt' % TAG, 'w').write(out)
 s = out[out.find('{'): out.rfind('}') + 1]
 try:
     rep = json.loads(s); rep['_meta'] = dict(model=r.get('model', MODEL), endpoint=URL, seconds=round(time.time() - t0), usage=r.get('usage'))
 except Exception as e:
     rep = dict(parse_error=str(e), seconds=round(time.time() - t0))
-json.dump(rep, open('archive/audit/final_audit_%s_2026-10-03.json' % TAG, 'w'), indent=1)
+json.dump(rep, open('archive/audit/series_audit2_%s_2026-10-04.json' % TAG, 'w'), indent=1)
 print(json.dumps({k: rep.get(k) for k in ('verdict', 'claims_checked', 'claims_verified', 'parse_error')}), 'findings', len(rep.get('findings', [])))

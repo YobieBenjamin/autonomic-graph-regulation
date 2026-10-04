@@ -26,7 +26,7 @@ Rule for the published series: every citation must have been read in full text. 
 | 18 | Byrnes 2022, Intro to Brain-Like-AGI Safety (blog series) | https://www.alignmentforum.org/s/HzcM2dkCq7fwXBej8 (dates: sjbyrnes.com/agi.html, published Jan-May 2022, revised July 2024) | full text (series pages) | brain-like AGI safety |
 | 19 | Royal College of Physicians 2017, NEWS2 | https://www.rcp.ac.uk/media/a4ibkkbf/news2-final-report_0_0.pdf | full text (pipeline) | early-warning score template |
 | 20 | Petrie & Aarne 2025, flexHEG | https://arxiv.org/abs/2506.03409 | full text (pipeline); author list per arXiv listing | guarantee processor with access to accelerator data paths |
-| 21 | NVIDIA 2026, Open Agent Safety Platform press release (28 Sep 2026) | NVIDIA press release, mirrored in full at telecomtv.com and finviz.com | full text (release text) | OpenShell open source and broadly available; Sentry a reference design on BlueField-4; the millisecond-quarantine claim is NVIDIA's (stated by Jensen Huang in launch coverage), not benchmarked |
+| 21 | NVIDIA 2026, Open Agent Safety Platform press release (28 Sep 2026) | NVIDIA press release, mirrored in full at telecomtv.com and finviz.com | full text (release text) | OpenShell open source and broadly available; Sentry a reference design on BlueField-4; the millisecond-quarantine claim is NVIDIA's (NVIDIA agent-safety page, nvidia.com/en-us/solutions/ai/agent-safety; also stated by Jensen Huang in launch coverage), not benchmarked |
 
 ## Verified to exist but NOT cited (full text not available to us)
 

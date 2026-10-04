@@ -45,18 +45,78 @@
   "citation": "Aron & Poldrack 2006",
   "url": "https://www.jneurosci.org/content/jneuro/26/9/2424.full.pdf",
   "claim": "right IFC and STN in stopping; hyperdirect implementation not established; SSRT ~200 ms",
-  "status": "FETCH_FAILED",
+  "status": "FULLTEXT_READ_DIRECT",
   "error": "HTTP Error 403: Forbidden",
-  "passages": []
+  "passages": [
+   {
+    "page": 2424,
+    "claim": "right IFC and STN active during stopping",
+    "text": "Stopping significantly activated right IFC and STN"
+   },
+   {
+    "page": 2424,
+    "claim": "started response can be stopped in about 120 ms",
+    "text": "already-initiated responses can be stopped in as little as 120 ms"
+   },
+   {
+    "page": 2426,
+    "claim": "SSRT about 190 ms",
+    "text": "Table 1: SSRT (ms) 187.4 (13.1) and 189.3 (35.6)"
+   },
+   {
+    "page": 2432,
+    "claim": "hyperdirect route tentatively proposed",
+    "text": "We tentatively suggest that inhibition ... is implemented via the hyperdirect pathway"
+   },
+   {
+    "page": 2424,
+    "claim": "not established",
+    "text": "Future research is required to establish whether ... hyperdirect"
+   }
+  ],
+  "pipeline_fetch": "FAILED (HTTP 403, automated download blocked)",
+  "read_on": "2026-10-04",
+  "doi": "10.1523/JNEUROSCI.4682-05.2006",
+  "method": "journal PDF read in full (10 pages) by the research assistant web fetch"
  },
  {
   "id": "yeung2004",
   "citation": "Yeung, Botvinick & Cohen 2004",
-  "url": "https://www.ece.uvic.ca/~bctill/papers/learning/Yeung_etal_2004a.pdf",
+  "url": "https://doi.org/10.1037/0033-295X.111.4.931",
   "claim": "ERN peaks about 100 ms after error; ACC generator",
-  "status": "FETCH_FAILED",
+  "status": "FULLTEXT_READ_DIRECT",
   "error": "HTTP Error 404: Not Found",
-  "passages": []
+  "passages": [
+   {
+    "page": 931,
+    "claim": "most likely generator anterior cingulate cortex",
+    "text": "The most likely neural generator of the ERN is anterior cingulate cortex"
+   },
+   {
+    "page": 932,
+    "claim": "begins around the error",
+    "text": "begins around the time of incorrect responses, often slightly before"
+   },
+   {
+    "page": 932,
+    "claim": "peaks roughly 100 ms later",
+    "text": "peaks roughly 100 ms thereafter"
+   },
+   {
+    "page": 931,
+    "claim": "explicit error report takes several hundred ms",
+    "text": "detected 79% of their errors, taking an average of about 700 ms"
+   },
+   {
+    "page": 932,
+    "claim": "reviews original reports and source localisation",
+    "text": "Dipole modeling has consistently located its neural source in medial frontal cortex"
+   }
+  ],
+  "pipeline_fetch": "FAILED (HTTP 404 from the pipeline host)",
+  "read_on": "2026-10-04",
+  "copy_read": "author-hosted PDF (ece.uvic.ca), later 404 to another checker",
+  "method": "full text read by the research assistant web fetch"
  },
  {
   "id": "matthias2004",

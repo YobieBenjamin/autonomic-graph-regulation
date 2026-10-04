@@ -3,8 +3,8 @@ Exists, and Stopping the Action in Time
 
 *Part 2 of 2, the evidence: why a transformer cannot police itself,
 three pre-registered monitoring tests, a pre-registered OpenShell
-experiment, nine audits, a verified citation registry and the case for a
-stack of gates. Every claim points to a public file.*
+experiment, eleven audits, a verified citation registry and the case for
+a stack of gates. Every claim points to a public file.*
 
 *By Yobie Benjamin and AI. I came up with the ideas and directed the
 work; code, experiments, analyses and drafts were produced by me
@@ -131,7 +131,7 @@ only if it can act before the point of no return.
     (OpenTimestamps anchored in Bitcoin plus RFC 3161 tokens from
     FreeTSA and DigiCert,
     github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/scripts/timestamp_prereg.sh);
-    thirteen process rules, each traced to a finding
+    thirteen process rules, seven of them traced to a logged finding
     (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/PROTOCOL.md).
 
 4\. The regulator and the probe
@@ -412,7 +412,7 @@ trusted alone.
 
 10\. Audits and corrections
 
-Nine audits. The first seven were fresh, read-only Claude sessions,
+Eleven audits. The first seven were fresh, read-only Claude sessions,
 separate from the authoring session; later audits could read earlier
 findings. Findings: 38 (3 critical), 25 (2), 30 (1), 23 (1), 11 (0), 20
 (1), 15 (1). The eighth, the first to cover YB-0044, was run twice,
@@ -432,8 +432,22 @@ independent here, since it is also the judge in these experiments and
 wrote some of the code; its output was malformed JSON, and most of its
 findings were incorrect, so only those confirmed against the files were
 adopted. Claude found a fabricated example, two dropped fixes, an
-overstated per-set claim and a wrong citation, all corrected. Prompts,
-evidence bundle and all reports:
+overstated per-set claim and a wrong citation, all corrected. The tenth
+(Claude Opus 5.5, with repository access, on these drafts) found no
+wrong number and no critical issue; it led to rebuilding the citation
+registry so that every cited paper was read in full. The eleventh ran
+three auditors from three companies at once on the corrected drafts:
+Claude Fable 5.1 and GPT-5.5 (through OpenAI's Codex), both with
+repository access, each returned publishable with fixes, with no wrong
+number and no critical finding, and their fixes are applied; Z.ai's GLM,
+given the drafts and an evidence bundle, returned publishable with fixes
+(78 claims checked, 66 verified, 13 minor findings). One, a loosely
+dated phrase, was adopted; eleven were figures its bundle did not
+contain, each verified in the repository by the other two auditors; and
+one flagged a real July 2026 arXiv paper as possibly fabricated because
+it could not recognise it. GLM's high-effort run had not returned after
+45 minutes; the result used is from a low-effort run. Prompts, evidence
+bundle and all reports:
 github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/archive/audit/
 Retracted along the way: early earliness claims (alarms that fired on
 most correct answers), a reasoning-trace claim, a proposition about GPU

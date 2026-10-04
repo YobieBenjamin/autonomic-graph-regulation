@@ -13,9 +13,9 @@
 The safety system must not be a transformer, must not contain one, and must not rely on a transformer's account of
 itself; otherwise it inherits the same statistical failure modes (contamination). It is an **external organism** that
 interacts with transformers only through a narrow interface (sensory transducers in, effectors out), like the vagus nerve.
-- **No LLM in the safety loop**: no LLM judges or transformer monitors. The regulator is deterministic graph dynamics in C.
-- **Illiterate by design**: the regulator never processes text or meaning, only numeric signals, so it cannot be
-  jailbroken or prompt-injected.
+- **No LLM in the safety loop**: no LLM judges or transformer monitors. The regulator is a deterministic, non-transformer function of numeric telemetry.
+- **Illiterate by design**: the regulator never processes text or meaning, only numeric signals (text-blind by construction).
+  Robustness to adversarial manipulation of the telemetry is untested; earlier wording that it cannot be jailbroken was retracted (F23).
 - **Effectors, not arguments**: throttle, pause, require a human, halt.
 - (LLMs are still used as research tooling to write and review code; never as part of the safety model.)
 

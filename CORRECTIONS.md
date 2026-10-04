@@ -255,11 +255,11 @@ Every literature citation in the published posts (32, including three added duri
 | CV-2 | Wang et al. 2022 proposed self-consistency for accuracy, not detection | REWORD: adapted as a disagreement signal |
 | CV-3 | Byrnes cited without year; a blog series | FIX: Byrnes, 2022, blog series |
 | CV-4 | flexHEG cited without authors | FIX: Petrie and Aarne, 2025 |
-| CV-5 | Sparrow 2007 presented without its critics | ADD: Champagne and Tonkens 2015; Robillard 2018 |
+| CV-5 | Sparrow 2007 presented without its critics | ADD: Champagne and Tonkens 2015; Robillard 2018 (both removed from the series 2026-10-04, full text unavailable; see CITATIONS.md) |
 | CV-6 | ERN 100 ms timing not in the Gehring 1993 abstract | ADD: Yeung, Botvinick and Cohen 2004 |
 | CV-7 | Orgad et al. 2024: hidden-state detectors generalise poorly | ADD to limitations |
 | CV-8 | Sentry is a reference design, not a shipping product | REWORD |
-| CV-9 | Ninth-audit fixes confirmed by primary sources: Nieuwenhuis 2001 (unaware errors), Aron and Poldrack 2006 full text (hyperdirect stop not established) | Confirmed |
+| CV-9 | Ninth-audit fixes confirmed by primary sources: Nieuwenhuis 2001 (unaware errors), Aron and Poldrack 2006 full text (hyperdirect stop not established) | Confirmed (Nieuwenhuis later removed from the series 2026-10-04, full text unavailable; Aron direct-read evidence added to fulltext_verification.json) |
 
 ## Tenth audit (2026-10-04): Audit 1 of the final two-part series, Claude Opus 5.5 against the repository
 
@@ -274,3 +274,20 @@ Report: archive/audit/final_series_audit1_opus_2026-10-04.md. Verdict: publishab
 | A10-T3..T15 | minor | Unsourced critics clause; Byrnes revision date; unattributed Swiss cheese name; compute-cost wording; first fresh test wording; arm A computed; ninth audit covered previous drafts; Fixed vs Disclosed; timestamps from YB-0042 on; 1,031 reached a checkpoint; four deviations; power figures; YB-0015 link | FIX or REWORD |
 | A10-R2..R8 | minor | Audit counts, YB-0042 deviation count and count discrepancy, stale research-program lines, NVIDIA attribution, run-1 token count, stale audit-script text | FIX (R3 documented, cause not established) |
 | A10-R9 | minor | Posted drafts untracked | FIX: archive/audit/series_final_2026-10-04/ committed |
+
+## Eleventh audit (2026-10-04): Audit 2 of the final series, three auditors from three companies at once
+
+Prompt: archive/audit/series_audit2_prompt.txt. Reports: series_audit2_fable_2026-10-04.md (Claude Fable 5.1, repository access), series_audit2_gpt55_2026-10-04.md (GPT-5.5 via OpenAI Codex CLI on the ChatGPT subscription, repository access, session record confirms model gpt-5.5), series_audit2_glmmed_2026-10-04.json (GLM-5.3-flash, Z.ai, evidence bundle, low reasoning effort; the high-effort run had not returned after 45 minutes).
+
+Verdicts: all three publishable with fixes. Fable: 0 critical, 0 major; recomputed YB-0044 and YB-0045 from raw files; all 28 public paths exist; all Audit 1 fixes landed except one partial. GPT-5.5: 0 Part 1 findings; 2 major on the evidence chain. GLM: 78 checked, 66 verified, 13 minor.
+
+| ID | Source | Finding | Resolution |
+|---|---|---|---|
+| A11-1 | GPT-5.5 T1/R1 | Aron and Yeung recorded as FETCH_FAILED in the committed evidence while the registry says read in full | FIX: direct-read passages with pages added to fulltext_verification.json |
+| A11-2 | GPT-5.5 T2 | Retracted cannot-be-jailbroken wording still in docs/RESEARCH_PROGRAM.md, which Part 2 cites | FIX: text-blind by construction; telemetry attacks untested (F23) |
+| A11-3 | Fable P1/T1 | Audit count stale (nine) | FIX: eleven, with tenth and eleventh summarised in Part 2 |
+| A11-4 | Fable T2 | Thirteen process rules each traced to a finding (only seven are) | FIX |
+| A11-5 | Fable R1-R4 | CV-5 and CV-9 reversals unnoted; stale script header; two attributions for the millisecond claim; audit files untracked | FIX (Fable R2 claim that gpt-oss-120b never ran in LM Studio is incorrect; it did) |
+| A11-6 | GLM G1 | just released (OpenShell) loosely dated | FIX: recently released |
+| A11-7 | GLM G2-G12 | Eleven figures not in its bundle | NO CHANGE: each present in the repository and recomputed by Fable and Opus |
+| A11-8 | GLM G13 | arXiv:2607.21433 possibly fabricated | NO CHANGE: real (read in full; confirmed live by Fable) |

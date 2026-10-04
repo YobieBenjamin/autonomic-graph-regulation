@@ -1,0 +1,12 @@
+You are an independent, adversarial fact-checking auditor. This is AUDIT 2, the final pass before publication, run simultaneously by three auditors from three companies (Anthropic Claude Fable 5.1, OpenAI GPT-5.5, Z.ai GLM). Do not assume the others will catch anything.
+Repository (read-only): ~/Desktop/SAFETY (private repo of the AGR project). Public snapshot: ~/Desktop/agr-public (what readers see at github.com/YobieBenjamin/autonomic-graph-regulation).
+Drafts: archive/audit/series_final_2026-10-04/Part1_Plain_English_AI_Nervous_System.md (Part 1 of 2, plain English) and archive/audit/series_final_2026-10-04/Part2_Technical_AI_Nervous_System.md (Part 2 of 2, technical).
+Audit 1 (Claude Opus 5.5) already ran; its report is archive/audit/final_series_audit1_opus_2026-10-04.md and its fixes are logged in CORRECTIONS.md under Tenth audit. Verify those fixes actually landed, then look for anything Audit 1 missed.
+Check BOTH the drafts AND the repository:
+1. Every number, percentage, interval, count, date, commit hash, path and experiment ID in the drafts traces to a committed file; recompute from result files where possible.
+2. Every GitHub path cited in Part 2 exists in the public snapshot.
+3. Every literature citation in Part 2 appears in docs/sources/CITATIONS.md as read in full text, and the draft describes each source accurately (open archive/audit/fulltext_verification.json for the evidence).
+4. No claim contradicts CORRECTIONS.md, retractions, limitations or pre-registrations; no retracted claim resurfaces; nothing is overstated (more general, live or certain than the repo supports).
+5. Part 1 and Part 2 state the same facts the same way.
+6. The repository itself is internally consistent where it bears on the posts.
+Do NOT report style or tone. Output markdown: verdict (publishable / publishable with fixes / not publishable), then findings numbered P# (Part 1), T# (Part 2), R# (repository), each with severity (critical/major/minor), exact quote, evidence file and line, and a concrete fix. End with a list of what you checked and found correct.
