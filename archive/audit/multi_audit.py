@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Second, independent audit of the v10 blog drafts by GLM-5.3-flash (Zhipu AI) running locally in LM Studio. GLM cannot read
+'''Second, independent audit of the final drafts blog drafts by GLM-5.3-flash (Zhipu AI) GLM via the Z.ai API or gpt-oss-120b via LM Studio. GLM cannot read
 the repository, so this script inlines a self-contained evidence bundle (the committed result files behind every number, with
 per-episode rows removed) and both drafts, and asks for a strict JSON report.
 Runs against the Z.ai API (LM Studio could not load the glm5next architecture on 2026-10-02). The API key is read at runtime
@@ -29,7 +29,7 @@ EV = {
  'Derivation sizes': j('archive/audit/artifacts/derivation_sizes.json'),
  'Judge timing': j('archive/audit/artifacts/judge_timing.json'),
 }
-EXTRA = ('Facts from other committed records (treat as evidence): seven earlier audits found 38 (3 critical), 25 (2), 30 (1), '
+EXTRA = ('Facts from other committed records (treat as evidence): eight earlier audits found 38 (3 critical), 25 (2), 30 (1), '
  '23 (1), 11 (0), 20 (1) and 15 (1) findings (CORRECTIONS.md). YB-0031: the regulator lost a pre-registered race to the judge, '
  '4 vs 12 of 47; on finished answers self-consistency AUROC 0.982, judge 0.947, earlier regulator 0.890. Answer-token confidence '
  'AUROC 0.366 [0.304, 0.433] on a fresh test; 27 of 36 errors at top-1 probability >= 0.9 in an early study. '

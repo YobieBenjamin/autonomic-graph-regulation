@@ -25,3 +25,4 @@ data/agr/episodes_LH_seed*.jsonl
 data/agr/layers_LH_seed*/
 data/agr/hs_seed*/
 data/agr/prefix_*_seed*.jsonl
+archive/audit/papers_inbox/*.pdf

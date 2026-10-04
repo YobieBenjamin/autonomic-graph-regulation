@@ -205,7 +205,7 @@ archive/audit/blog_v8_audit_2026-10-01.md: 1 critical, 7 major, 7 minor. Every f
 
 **Claude** (fresh read-only session with repository access; archive/audit/blog_v10_audit_claude_2026-10-02.md): 3 critical, 8 major, 12 minor; every number verified by recomputation.
 **GLM-5.3-flash** (Z.ai; first non-Claude auditor; given the drafts plus an evidence bundle of committed results, no repository access; archive/audit/glm_audit.py, glm_audit_prompt_v10.txt, blog_v10_audit_glm_2026-10-02.json, blog_v10_audit_glm_response.json): 86 claims checked, 71 verified, 15 findings (1 major, 14 minor); no wrong number found.
-**How GLM was run:** LM Studio could not load the local GGUF (unknown architecture glm5next in llama.cpp 2.14.0, latest stable and beta); run 1 via the Z.ai API returned an empty answer because 17,908 reasoning tokens exceeded its 16,000-token budget (confirmed from run 2 usage); run 2 (reasoning effort high, 40,000-token budget) completed.
+**How GLM was run:** LM Studio could not load the local GGUF (unknown architecture glm5next in llama.cpp 2.14.0, latest stable and beta); run 1 via the Z.ai API returned an empty answer because 17,908 reasoning tokens (that count is from run 2; the run-1 cause is inferred) exceeded its 16,000-token budget (confirmed from run 2 usage); run 2 (reasoning effort high, 40,000-token budget) completed.
 
 | ID | Severity | Finding | Resolution |
 |---|---|---|---|
@@ -228,7 +228,7 @@ archive/audit/blog_v8_audit_2026-10-01.md: 1 critical, 7 major, 7 minor. Every f
 
 ## Ninth audit (2026-10-03): the final drafts (LinkedIn plain-English version and technical v11); three auditors, three companies
 
-**Claude** (repository access; archive/audit/final_audit_claude_2026-10-03.md): every number verified; P1 critical; P2-P5, T1-T3 major; 14 minor.
+**Claude** (repository access; archive/audit/final_audit_claude_2026-10-03.md): every number verified; P1 critical; P2-P5, T1-T3 major; 16 minor.
 **GLM-5.3-flash** (Z.ai; evidence bundle; archive/audit/final_audit_glm_2026-10-03.json): publishable with fixes; 74 checked, 64 verified; 1 major (same sentence as Claude P4), 9 minor bundle gaps; no wrong number.
 **gpt-oss-120b** (OpenAI open-weight, local; same prompt and bundle; archive/audit/final_audit_gptoss_raw.txt): returned malformed JSON (recovered leniently); verdict not publishable; 57 checked, 22 verified; most findings incorrect (for example, called the probe count of 100 unsupported and an AUROC below 0.5 not below chance). **Not independent:** it is the judge in the experiments and wrote some code. Only findings confirmed against the files were adopted (93 vs 94; median for the 7.4 s delay), both also raised by Claude.
 Prompt and bundle: archive/audit/multi_audit.py, multi_audit_prompt_final.txt.
@@ -260,3 +260,17 @@ Every literature citation in the published posts (32, including three added duri
 | CV-7 | Orgad et al. 2024: hidden-state detectors generalise poorly | ADD to limitations |
 | CV-8 | Sentry is a reference design, not a shipping product | REWORD |
 | CV-9 | Ninth-audit fixes confirmed by primary sources: Nieuwenhuis 2001 (unaware errors), Aron and Poldrack 2006 full text (hyperdirect stop not established) | Confirmed |
+
+## Tenth audit (2026-10-04): Audit 1 of the final two-part series, Claude Opus 5.5 against the repository
+
+Report: archive/audit/final_series_audit1_opus_2026-10-04.md. Verdict: publishable with fixes; no critical findings; every experimental number matched a committed file (YB-0044 recomputed from per-episode files); all 22 public paths exist.
+
+| ID | Severity | Finding | Resolution |
+|---|---|---|---|
+| A10-T1 | major | Yeung 2004 registry URL returns 404 to readers; claims beyond timing unrecorded | FIX: DOI as primary URL; registry records the five claims read in the full text on 2026-10-04 |
+| A10-T2 | major | Registry listed Logan, Farquhar, Chiba below full text although read in full | FIX: registry rebuilt with true access levels; 11 non-full-text papers moved to a not-cited list |
+| A10-R1 | major | Full-text verification evidence uncommitted; registry and evidence disagreed on Aron and Yeung | FIX: fulltext_verify.py, fulltext_verification.json, sort_inbox.py and the inbox README committed (PDFs git-ignored); Aron and Yeung recorded as read directly |
+| A10-P1..P4 | minor | Per-seed range applied to regulator only; gpt-oss-120b non-independence missing in Part 1; four pre-registered experiments not three; leftover "AI cannot be one of them" | FIX |
+| A10-T3..T15 | minor | Unsourced critics clause; Byrnes revision date; unattributed Swiss cheese name; compute-cost wording; first fresh test wording; arm A computed; ninth audit covered previous drafts; Fixed vs Disclosed; timestamps from YB-0042 on; 1,031 reached a checkpoint; four deviations; power figures; YB-0015 link | FIX or REWORD |
+| A10-R2..R8 | minor | Audit counts, YB-0042 deviation count and count discrepancy, stale research-program lines, NVIDIA attribution, run-1 token count, stale audit-script text | FIX (R3 documented, cause not established) |
+| A10-R9 | minor | Posted drafts untracked | FIX: archive/audit/series_final_2026-10-04/ committed |

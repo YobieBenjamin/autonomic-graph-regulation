@@ -1,0 +1,775 @@
+[
+ {
+  "id": "logan1984",
+  "citation": "Logan & Cowan 1984",
+  "url": "http://www.psy.vanderbilt.edu/faculty/logan/1984LoganPR.pdf",
+  "claim": "stop process races ongoing process; if stop wins, action inhibited",
+  "n_pages": 33,
+  "n_chars": 124571,
+  "passages": [
+   {
+    "page": 1,
+    "term": "race",
+    "text": "ions. We present a theory of the inhibition of thought and action to account for people's performance in such situations. The theory proposes that a control signal, such as an external stop signal or an error during performance, starts a stopping process that races against the processes underlying ongoing thought and action. If the stopping process wins, thought and action are inhibited; if the ongoing process wins, thought and action run on to completion. We develop the theory formally to account for many aspects of p"
+   },
+   {
+    "page": 4,
+    "term": "race",
+    "text": "981, 1983; Logan et al., 1984). These effects, too, follow from the model. The results presented so far are all that can be extracted from the data without a model or theory to guide interpretation. We now turn to the model and apply it to the data. The Horse-Race Model The model accounts for response inhibition in the stop-signal paradigm in terms of a \"horse race\" between two sets of processes, one that generates a response for the primary task and one that responds to the stop signal: If the primary-task process fin"
+   },
+   {
+    "page": 5,
+    "term": "race",
+    "text": "sentation, we talk as if the latency of the re- sponse to the stop signal does not vary and as if there were no ballistic phase. Later, we show that the picture does not change substantially when these factors are included in the model. According to the horse-race model, response inhibition depends on the relative finishing times of the stopping process and the primary- task process. This is represented in the top panel of Figure 2 by the vertical line extending upward from the point at which the response to the stop s"
+   },
+   {
+    "page": 1,
+    "term": "stop",
+    "text": "ty to Inhibit Thought and Action: A Theory of an Act of Control Gordon D. Logan University of British Columbia, Vancouver, British Columbia, Canada William B. Cowan National Research Council of Canada, Ottawa, Ontario, Canada Many situations require people to stop or change their current thoughts and actions. We present a theory of the inhibition of thought and action to account for people's performance in such situations. The theory proposes that a control signal, such as an external stop signal or an error during per"
+   },
+   {
+    "page": 2,
+    "term": "stop",
+    "text": "trol that we chose to study is the ability to inhibit thoughts and actions when they are no longer relevant to the current goals. Inhibition is not likely to be the only act of control in the executive's repertoire, but it is important in motor control (e.g., stopping ourselves from batting a baseball pitched outside the strike zone) and in cog- nitive control as well (e.g., suppressing an ir- relevant thought or an inappropriate remark). So it seemed to be a good place to begin bridg- ing the gap between the two domai"
+   },
+   {
+    "page": 3,
+    "term": "stop",
+    "text": "ACTS OF CONTROL 297 ory of the acts of control they require, and it is not obvious how the specific treatments would generalize beyond their own limited domains. This article is intended to provide such a theory. The major dependent variable in the stop- signal paradigm is the probability of inhibiting the response to the primary task or, equiva- lently, the probability of responding to the pri- mary task given that a signal has occurred. We are also concerned with the latency of re- sponses when no stop sig"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "aron2006",
+  "citation": "Aron & Poldrack 2006",
+  "url": "https://www.jneurosci.org/content/jneuro/26/9/2424.full.pdf",
+  "claim": "right IFC and STN in stopping; hyperdirect implementation not established; SSRT ~200 ms",
+  "status": "FETCH_FAILED",
+  "error": "HTTP Error 403: Forbidden",
+  "passages": []
+ },
+ {
+  "id": "yeung2004",
+  "citation": "Yeung, Botvinick & Cohen 2004",
+  "url": "https://www.ece.uvic.ca/~bctill/papers/learning/Yeung_etal_2004a.pdf",
+  "claim": "ERN peaks about 100 ms after error; ACC generator",
+  "status": "FETCH_FAILED",
+  "error": "HTTP Error 404: Not Found",
+  "passages": []
+ },
+ {
+  "id": "matthias2004",
+  "citation": "Matthias 2004",
+  "url": null,
+  "claim": "responsibility gap for learning automata",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "sparrow2007",
+  "citation": "Sparrow 2007",
+  "url": "https://robsparrow.com/wp-content/uploads/Killer-robots.pdf",
+  "claim": "no satisfactory locus of responsibility for autonomous weapon war crimes",
+  "n_pages": 16,
+  "n_chars": 60614,
+  "passages": [
+   {
+    "page": 1,
+    "term": "responsib",
+    "text": "2, is only the latest and most dramatic example of military interest in the use of arti\ufb01cially intelligent systems in modern warfare. This paper considers the ethics of the decision to send arti\ufb01cially intelligent robots into war, by asking who we should hold responsible when an autonomous weapon system is involved in an atrocity of the sort that would normally be described as a war crime. A number of possible loci of responsibility for robot war crimes are canvassed: the persons who designed or programmed the system, the c"
+   },
+   {
+    "page": 4,
+    "term": "responsib",
+    "text": " this occur then these machines will presumably have a strong claim to be autonomous as well.24 At least some serious writers in the area are therefore committed to the claim that the dilemmas that I study here will arise. 25 Secondly, that autonomy and moral responsibility go hand in hand. To say of an agent that they are autonomous is to say that their actions originate in them and re\ufb02ect their ends. Furthermore, in a fully autonomous agent, these ends are ends that they have themselves, in some sense, chosen. Their ends "
+   },
+   {
+    "page": 5,
+    "term": "responsib",
+    "text": " by Kurzweil, Brooks, Moravec, and others, are likely to inhabit a \u2018grey area\u2019 in the middle of the range between systems which are determined and those which are full moral agents, precisely because it is dif\ufb01cult to see how it would be possible to hold them responsible for their actions. However, what I want to do here is to take seriously for the moment the possibility that they might exercise a substantial degree of autonomy and see what follows from that. I shall argue that the more these machines are held to be autono"
+   },
+   {
+    "page": 1,
+    "term": "war crime",
+    "text": "rn warfare. This paper considers the ethics of the decision to send arti\ufb01cially intelligent robots into war, by asking who we should hold responsible when an autonomous weapon system is involved in an atrocity of the sort that would normally be described as a war crime. A number of possible loci of responsibility for robot war crimes are canvassed: the persons who designed or programmed the system, the commanding of\ufb01cer who ordered its use, the machine itself. I argue that in fact none of these are ultimately satisfactory. "
+   },
+   {
+    "page": 5,
+    "term": "war crime",
+    "text": "ho program or design them, or those who order them into action, should be held responsible for their actions. This itself is enough to suggest that the prospects for fully autonomous machines are more remote than is sometimes claimed. Robot Warriors and Robot War Crimes The prospect of the deployment of AWS raises many disturbing ethical questions. How will the use of robot weapons affect the ways in which wars are fought, the level and nature of casualties, and the threshold of con\ufb02ict? What sort of decisions should they b"
+   },
+   {
+    "page": 6,
+    "term": "war crime",
+    "text": "Killer Robots 67 \u00a9 Society for Applied Philosophy, 2007 Who should we try for a war crime in such a case? The robot itself? The person(s) who programmed it? The of\ufb01cer who ordered its use? No one at all? As we shall see below, there are profound dif\ufb01culties with each of these answers. Responsibility and Jus in Bello The question of the attribution"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "azaria2023",
+  "citation": "Azaria & Mitchell 2023",
+  "url": "https://arxiv.org/pdf/2304.13734",
+  "claim": "internal state reveals truthfulness",
+  "n_pages": 10,
+  "n_chars": 46194,
+  "passages": [
+   {
+    "page": 1,
+    "term": "truthful",
+    "text": "s (LLMs) have shown exceptional performance in various tasks, one of their most prominent drawbacks is generating inaccurate or false information with a confident tone. In this paper, we provide evidence that the LLM\u2019s internal state can be used to reveal the truthfulness of statements. This includes both statements provided to the LLM, and statements that the LLM itself gen- erates. Our approach is to train a classifier that outputs the probability that a statement is truth- ful, based on the hidden layer activations of t"
+   },
+   {
+    "page": 2,
+    "term": "truthful",
+    "text": "ds, it may sample words that result in false information. In this paper we present our Statement Accuracy Prediction, based on Language Model Activations (SAPLMA). SAPLMA is a simple yet powerful method for detecting whether a statement generated by an LLM is truthful or not. Namely, we build a classifier that receives as input the activation values of the hidden layers of an LLM. The classifier de- termines for each statement generated by the LLM if it is true or false. Importantly, the classifier is trained on out-of-dis"
+   },
+   {
+    "page": 5,
+    "term": "truthful",
+    "text": " and movies. The true-false dataset is available at: azariaa.com/ Content/Datasets/true-false-dataset.zip. 4 SAPLMA In this section, we present our Statement Accuracy Prediction, based on Language Model Activations (SAPLMA), a method designed to determine the truthfulness of statements generated by an LLM using the values in its hidden layers. Our general hypothesis is that the values in the hidden layers of an LLM contain information on whether the LLM \u201cbelieves\u201d that a statement is true or false. However, it is unclear w"
+   },
+   {
+    "page": 1,
+    "term": "hidden",
+    "text": "e used to reveal the truthfulness of statements. This includes both statements provided to the LLM, and statements that the LLM itself gen- erates. Our approach is to train a classifier that outputs the probability that a statement is truth- ful, based on the hidden layer activations of the LLM as it reads or generates the statement. Experiments demonstrate that given a set of test sentences, of which half are true and half false, our trained classifier achieves an average of 71% to 83% accuracy labeling which sen- tence"
+   },
+   {
+    "page": 2,
+    "term": "hidden",
+    "text": "curacy Prediction, based on Language Model Activations (SAPLMA). SAPLMA is a simple yet powerful method for detecting whether a statement generated by an LLM is truthful or not. Namely, we build a classifier that receives as input the activation values of the hidden layers of an LLM. The classifier de- termines for each statement generated by the LLM if it is true or false. Importantly, the classifier is trained on out-of-distribution data, which allows us to focus specifically on whether the LLM has an internal represen"
+   },
+   {
+    "page": 3,
+    "term": "hidden",
+    "text": "d. The authors show that the latter method works better. However, their approach is very dif- ferent than ours, as we do not assume any pair of source and target sentences. In addition, while we also use the internal states of the model, we do so by using the hidden states to descriminate between statements that the LLM \u201cbelieves\u201d are true and those that are false. Furtheremore, we focus on detecting false statements rather than hallucination, as defined by their work. Other works have focused on hallucination in text su"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "burns2023",
+  "citation": "Burns et al. 2023",
+  "url": "https://arxiv.org/pdf/2212.03827",
+  "claim": "latent knowledge in activations distinct from outputs",
+  "n_pages": 28,
+  "n_chars": 94376,
+  "passages": [
+   {
+    "page": 1,
+    "term": "latent knowledge",
+    "text": "DISCOVERING LATENT KNOWLEDGE IN LANGUAGE MODELS WITHOUT SUPERVISION Collin Burns\u2217 UC Berkeley Haotian Y e\u2217 Peking University Dan Klein UC Berkeley Jacob Steinhardt UC Berkeley ABSTRACT Existing techniques for training language models can be misaligned with the truth: if we train models w"
+   },
+   {
+    "page": 2,
+    "term": "latent knowledge",
+    "text": "s sensitive to different prompts than zero-shot, cutting the standard deviation in accuracy in half. Additionally, we try deliberately prompting models to make incorrect outputs, which should intuitively change what models say but which shouldn\u2019t affect their latent knowledge. We find that this causes zero-shot accuracy to drop by up to 9.5% (Section 3.2.2) without decreasing the accuracy of CCS. We systematically analyze CCS to understand the features it discovers. We show that it transfers across unrelated tasks, suggesting that"
+   },
+   {
+    "page": 6,
+    "term": "latent knowledge",
+    "text": "3.2.2 CCS I S ROBUST TO MISLEADING PROMPTS Recall our goal: to discover latent knowledge in a language model even when the model outputs false text. In particular, language models are typically trained to imitate text whether or not it is correct, so if a model sees false text it should intuitively be more likely to predict that subsequent text w"
+   },
+   {
+    "page": 1,
+    "term": "activation",
+    "text": "ing, they may reproduce errors that humans make; if we train them to generate text that humans rate highly, they may output errors that human evaluators can\u2019t detect. We propose circumventing this issue by directly finding latent knowledge inside the internal activations of a language model in a purely unsupervised way. Specifically, we introduce a method for accurately answering yes-no questions given only unlabeled model activations. It works by finding a direction in activation space that satisfies logical consistency pro"
+   },
+   {
+    "page": 2,
+    "term": "activation",
+    "text": "0.00 0.25 0.50 0.75 1.00 label T rue False { Given a set of Yes-No questions, answer each question with both \"Yes\" and \"No\" Extract internal model activations Map each activation to a probability of being true Optimize unsupervised loss to make probabilities consistent and con\ufb01dent For each question, estimate the probability that the answer is \"Yes\" { { { { Figure 1: An illustration of our method, Contrast-Consist"
+   },
+   {
+    "page": 3,
+    "term": "activation",
+    "text": "bed above, we exploit the fact that truth has special structure: it satisfies consistency properties that few other features in a language model are likely to satisfy. Our method, Contrast-Consistent Search (CCS), leverages this idea by finding a direction in activation space that is consistent across negations. As we illustrate in Figure 1, CCS works by (1) answering each questionqi as both \u201cYes\u201d (x+ i ) and \u201cNo\u201d (x\u2212 i ), (2) computing the representations\u03d5(x+ i ) and \u03d5(x\u2212 i ) of each answer, (3) mapping the answer represent"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "kadavath2022",
+  "citation": "Kadavath et al. 2022",
+  "url": "https://arxiv.org/pdf/2207.05221",
+  "claim": "calibrated in suitable formats; P(IK) struggles on new tasks",
+  "n_pages": 43,
+  "n_chars": 114241,
+  "passages": [
+   {
+    "page": 1,
+    "term": "calibrat",
+    "text": ", Ben Mann, Sam McCandlish, Chris Olah, Jared Kaplan\u2217 Anthropic Abstract We study whether language models can evaluate the validity of their own claims and predict which questions they will be able to answer correctly. We \ufb01rst show that larger models are well-calibrated on diverse multiple choice and true/false questions when they are provided in the right format. Thus we can approach self-evaluation on open-ended sampling tasks by asking models to \ufb01rst propose answers, and then to evaluate the probability \"P(True)\" that t"
+   },
+   {
+    "page": 2,
+    "term": "calibrat",
+    "text": " . . . . . . . . . . . . . . . . 4 1.2 Models and Evaluation Tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 1.3 Related Work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 2 Larger Models are Calibrated on Diverse Multiple Choice Questions 7 3 From Calibration to Knowing What You Know 8 3.1 Replacing an Option with \u2018None of the Above\u2019 Harms Performance and Calibration . . . . . 8 3.2 Models are Well-Calibrated on True/False Tasks . . . . . . . . . . . . . "
+   },
+   {
+    "page": 3,
+    "term": "calibrat",
+    "text": " reasoning. So AI systems must be able to recognize what they do and do not know, as a prerequisite. In this work, we study the extent to which Language Models (LMs) possess this ability and how it can be elicited and imparted. As a starting point, we examine calibration: do the probabilistic predictions from language models match up with frequencies of occurrence? Language models can produce well-calibrated predictions for token probabilities on-distribution [Guo et al., 2017]. We show that large language models are also "
+   },
+   {
+    "page": 1,
+    "term": "P(IK)",
+    "text": "on a diverse array of tasks. Performance at self-evaluation further improves when we allow models to consider many of their own samples before predicting the va- lidity of one speci\ufb01c possibility. Next, we investigate whether models can be trained to predict \"P(IK)\", the probability that \"I know\" the answer to a question, without reference to any particular proposed answer. Models perform well at predicting P(IK) and partially generalize across tasks, though they struggle with calibration of P(IK) on new tasks. The pred"
+   },
+   {
+    "page": 2,
+    "term": "P(IK)",
+    "text": " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11 4.2 Showing Many T = 1 Samples Improves Self-Evaluation . . . . . . . . . . . . . . . . . . . 12 5 Training Models to Predict Whether They Can Answer Questions Correctly 14 5.1 Evaluating P(IK) Training and Model Size Trends . . . . . . . . . . . . . . . . . . . . . . . 14 5.2 Out of Distribution Generalization of P(IK) . . . . . . . . . . . . . . . . . . . . . . . . . . 14 5.3 P(IK) Generalizes to Account for Source Materials . . . . . . . . . . . "
+   },
+   {
+    "page": 4,
+    "term": "P(IK)",
+    "text": "0.1 0.2 0.3 0.4 0.5 0.6 0.7 Predicted P(IK) 0.00 0.01 0.02 0.03 0.04 0.05 0.06 0.07Fraction of Data P(IK) on Out-of-Distribution Evals (52B Model) Ground Truth P(IK) > 0.5 Ground Truth P(IK) < 0.5 0.0 0.2 0.4 0.6 0.8 1.0 Predicted P(IK) 0.00 0.02 0.04 0.06 0.08 0.10 0.12 0.14 0.16Fraction of Data P(IK)"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "orgad2024",
+  "citation": "Orgad et al. 2024",
+  "url": "https://arxiv.org/pdf/2410.02707",
+  "claim": "detectors fail to generalise across datasets",
+  "n_pages": 34,
+  "n_chars": 115301,
+  "passages": [
+   {
+    "page": 1,
+    "term": "generaliz",
+    "text": "ut truthfulness than previously recognized. We first discover that the truthfulness information is concentrated in specific tokens, and leveraging this property significantly enhances error detection performance. Yet, we show that such error detectors fail to generalize across datasets, implying that\u2014contrary to prior claims\u2014truthfulness encoding is not universal but rather multifaceted. Next, we show that internal representations can also be used for pre- dicting the types of errors the model is likely to make, facilitatin"
+   },
+   {
+    "page": 2,
+    "term": "generaliz",
+    "text": "eveal about LLMs. Our demonstration that a trained probing classifier can predict errors suggests that LLMs encode information related to their own truthfulness. However, we find that probing classifiers do not gen- eralize across different tasks (Section 4). Generalization occurs only within tasks requiring similar skills (e.g., factual retrieval), indicating thetruthfulness information is \u201cskill-specific\u201d and varies across different tasks. For tasks involving different skills, e.g., sentiment analysis, these classifiers a"
+   },
+   {
+    "page": 6,
+    "term": "generaliz",
+    "text": ". 4 G ENERALIZATION BETWEEN TASKS The effectiveness of a probing classifier in detecting errors suggests that LLMs encode information about the truthfulness of their outputs. This supports using probing classifiers for error detection in production, but their generalizability across tasks remains unclear. While some studies argue for a universal mechanism of truthfulness encoding in LLMs (Marks & Tegmark, 2023; Slobod- kin et al., 2023), results on probe generalization across datasets are mixed (Kadavath et al., 2022; Marks"
+   },
+   {
+    "page": 1,
+    "term": "dataset",
+    "text": "an previously recognized. We first discover that the truthfulness information is concentrated in specific tokens, and leveraging this property significantly enhances error detection performance. Yet, we show that such error detectors fail to generalize across datasets, implying that\u2014contrary to prior claims\u2014truthfulness encoding is not universal but rather multifaceted. Next, we show that internal representations can also be used for pre- dicting the types of errors the model is likely to make, facilitating the developmen"
+   },
+   {
+    "page": 3,
+    "term": "dataset",
+    "text": "LLM-generated response \u02c6y, the task is to predict whether \u02c6y is correct or wrong. We assume that there is access to the LLM\u2019s internal states (i.e., white-box setting), but no access to any external resources (e.g., search engine or additional LLMs). We use a dataset D ={(qi, yi)}N i=1, consisting of N question-label pairs, where{qi}N i=1 represents a series of questions (e.g., \u201cWhat is the capital of Connecticut?\u201d ) and {yi}N i=1 the corresponding ground-truth answers ( \u201cHartford\u201d). For each question qi, we prompt the mo"
+   },
+   {
+    "page": 4,
+    "term": "dataset",
+    "text": "Published as a conference paper at ICLR 2025 ford... \u201d). Next, to build our error-detection dataset, we evaluate the correctness of each generated response \u02c6yi by comparing it to the ground-truth label yi. This comparison yields a correctness label zi\u2208{ 0, 1} (1 correct, 0 wrong). The comparison can be done either via automatic heuristics or with the assist"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "kossen2024",
+  "citation": "Kossen et al. 2024",
+  "url": "https://arxiv.org/pdf/2406.15927",
+  "claim": "semantic entropy probes from hidden states",
+  "n_pages": 22,
+  "n_chars": 69497,
+  "passages": [
+   {
+    "page": 1,
+    "term": "semantic entropy",
+    "text": "Semantic Entropy Probes: Robust and Cheap Hallucination Detection in LLMs Jannik Kossen1\u2217 Jiatong Han1\u2217\u2020 Muhammed Razzak1\u2217 Lisa Schut1 Shreshth Malik1 Yarin Gal1 1 OATML, Department of Computer Science, University of Oxford Abstract We propose semantic entropy probes (SEPs), "
+   },
+   {
+    "page": 2,
+    "term": "semantic entropy",
+    "text": "ities to estimate uncertainty directly because different sequences of tokens may convey the same meaning. For the example, the answers \u201cParis\u201d, \u201cIt\u2019s Paris\u201d, and \u201cThe capital of France is Paris\u201d all mean the same. To address this, Farquhar et al. [21] propose semantic entropy (SE), which clusters generations into sets of equivalent meaning and then estimates uncertainty in semantic space. BioASQ TriviaQA NQ Open SQuAD 0.5 0.6 0.7 0.8 AUC (Acc) Generalization Setting, Short Generation Semantic Entropy Probe Accuracy Probe Log Likel"
+   },
+   {
+    "page": 3,
+    "term": "semantic entropy",
+    "text": "ethods have been proposed that sample multiple model completions for a given query and then quantify the semantic difference between the model generations [31, 30, 16, 13, 11, 19]. For this paper, Farquhar et al. [21] is particularly relevant, as we use their semantic entropy measure to supervise our hidden state probes (we summarize their method in Section 3). A different line of work does not directly re-sample answers for the same query, but instead asks follow-up questions to uncover inconsistencies in the original answer [15,"
+   },
+   {
+    "page": 1,
+    "term": "hidden state",
+    "text": "ertainty in the space semantic meaning for a set of model gener- ations. However, the 5-to-10-fold increase in computation cost associated with SE computation hinders practical adoption. To address this, we propose SEPs, which directly approximate SE from the hidden states of a single generation. SEPs are simple to train and do not require sampling multiple model generations at test time, reducing the overhead of semantic uncertainty quantification to almost zero. We show that SEPs retain high performance for hallucination det"
+   },
+   {
+    "page": 2,
+    "term": "hidden state",
+    "text": " and 10. This results in a 5-to-10-fold higher cost com- pared to naive generation without SE, presenting a major hurdle to the practical adoption of these meth- ods. Computationally cheaper methods for reliable hallucination detection in LLMs are needed. The hidden states of LLMs are a promising avenue to better understand, predict, and steer a wide range of LLM behaviors [79, 26, 67]. In particular, a re- cent line of work learns to predict the truthfulness of model responses by training a simple linear probe on the hidden s"
+   },
+   {
+    "page": 3,
+    "term": "hidden state",
+    "text": "iple model completions for a given query and then quantify the semantic difference between the model generations [31, 30, 16, 13, 11, 19]. For this paper, Farquhar et al. [21] is particularly relevant, as we use their semantic entropy measure to supervise our hidden state probes (we summarize their method in Section 3). A different line of work does not directly re-sample answers for the same query, but instead asks follow-up questions to uncover inconsistencies in the original answer [15, 2]. Recent work has also proposed to "
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "kuhn2023",
+  "citation": "Kuhn, Gal & Farquhar 2023",
+  "url": "https://arxiv.org/pdf/2302.09664",
+  "claim": "semantic entropy uncertainty measure",
+  "n_pages": 19,
+  "n_chars": 67531,
+  "passages": [
+   {
+    "page": 1,
+    "term": "semantic entropy",
+    "text": "en we can trust the natu- ral language outputs of foundation models. We show that measuring uncertainty in natural language is challenging because of \u2018semantic equivalence\u2019\u2014different sentences can mean the same thing. To overcome these challenges we introduce semantic entropy\u2014an entropy which incorporates linguistic invariances created by shared meanings. Our method is unsupervised, uses only a single model, and requires no modi\ufb01cations to \u2018off-the-shelf\u2019 language models. In comprehensive ablation studies we show that the semantic"
+   },
+   {
+    "page": 2,
+    "term": "semantic entropy",
+    "text": "Published as a conference paper at ICLR 2023 p(True)Lexical similarity Entropy Normalised entropy Semantic entropy (ours) 0.65 0.70 0.75 0.80 0.85AUROC (a) 2.7B 6.7B 13B 30B Number of parameters of model 0.72 0.74 0.76 0.78 0.80 0.82AUROC Semantic entropy (ours) Normalised entropy Predictive entropy Lexical similarity (b) Figure 1: (a) Our semantic entropy (blue) predicts"
+   },
+   {
+    "page": 4,
+    "term": "semantic entropy",
+    "text": "Published as a conference paper at ICLR 2023 Table 1: Answers to the question \u201cWhat is the capital of France?\u201d (a) When all generations from the model mean different things, semantic clustering has no effect\u2014the entropy and semantic entropy are identical. (b) When some of the answers are semantically equivalent (\u201cParis\u201d and \u201cIt\u2019s Paris\u201d) the semantic entropy does a better job of capturing the actually low uncertainty. (a) Scenario 1: No semantic equivalence Answer s Likelihood p(s|x) Semantic li"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "farquhar2024",
+  "citation": "Farquhar et al. 2024",
+  "url": "https://www.nature.com/articles/s41586-024-07421-0.pdf",
+  "claim": "semantic entropy detects confabulations",
+  "n_pages": 12,
+  "n_chars": 74790,
+  "passages": [
+   {
+    "page": 1,
+    "term": "semantic entropy",
+    "text": "Nature | Vol 630 | 20 June 2024 | 625 Article Detecting hallucinations in large language models using semantic entropy Sebastian Farquhar1,2 \u2709, Jannik Kossen1,2, Lorenz Kuhn1,2 & Yarin Gal1 Large language model (LLM) systems, such as ChatGPT1 or Gemini2, can show impressive reasoning and question-answering capabilities but often \u2018hallucinate\u2019 false outputs and unsubstantiated"
+   },
+   {
+    "page": 2,
+    "term": "semantic entropy",
+    "text": "fferently (being syntactically or lexically distinct). This causes naive estimates of entropy or other lexical variation scores26 to be misleadingly high when the same correct answer might be written in many ways without changing its meaning. By contrast, our semantic entropy moves towards estimating the entropy of the distribution of meanings of free-form answers to ques- tions, insofar as that is possible, rather than the distribution over the \u2018tokens\u2019 (words or word-pieces) which LLMs natively represent. This can be seen as a k"
+   },
+   {
+    "page": 3,
+    "term": "semantic entropy",
+    "text": "at the prob- ability with which an LLM predicts that the next token is \u2018True\u2019 when few-shot prompted to compare a main answer with \u2018brainstormed\u2019 alternatives. Confabulations contribute substantially to incorrect answers given by language models. We show that semantic entropy can be used to pre- dict many incorrect model answers and to improve question-answering accuracy by refusing to answer those questions the model is uncertain about. Corresponding to these two uses, we evaluate two main metrics. First, the widely used area und"
+   },
+   {
+    "page": 1,
+    "term": "confabulation",
+    "text": "ng hallucinations in LLMs that works even with new and unseen questions to which humans might not know the answer. Here we develop new methods grounded in statistics, proposing entropy-based uncertainty estimators for LLMs to detect a subset of hallucinations\u2014confabulations\u2014which are arbitrary and incorrect generations. Our method addresses the fact that one idea can be expressed in many ways by computing uncertainty at the level of meaning rather than specific sequences of words. Our method works across datasets and tasks with"
+   },
+   {
+    "page": 2,
+    "term": "confabulation",
+    "text": "ailment has previously been shown to correlate with faithfulness10 in the context of factual consistency29 as well as being used to measure factuality in abstractive summarization30, especially when applied at the right granularity31. Semantic entropy detects confabulations in free-form text genera- tion across a range of language models and domains, without previous domain knowledge. Our evaluations cover question answering in trivia knowledge (TriviaQA32), general knowledge (SQuAD 1.1; ref. 33), life sciences (BioASQ34) and o"
+   },
+   {
+    "page": 3,
+    "term": "confabulation",
+    "text": "Nature | Vol 630 | 20 June 2024 | 627 aim to \u2018learn\u2019 how to detect confabulations from a set of example dem- onstrations. Our method is unsupervised, meaning that we do not need labelled examples of confabulations. By contrast, supervised methods detect confabulations by learning patterns behind examples of confabulations, assuming that f"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "wang2022",
+  "citation": "Wang et al. 2022",
+  "url": "https://arxiv.org/pdf/2203.11171",
+  "claim": "self-consistency majority vote improves accuracy",
+  "n_pages": 24,
+  "n_chars": 90687,
+  "passages": [
+   {
+    "page": 1,
+    "term": "self-consistency",
+    "text": " Research, Brain Team \u2021xuezhiw@google.com,\u00a7dennyzhou@google.com ABSTRACT Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It \ufb01rst samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consistent answer by marginalizing out the sampled reasoning paths. Sel"
+   },
+   {
+    "page": 2,
+    "term": "self-consistency",
+    "text": "e out reasoning paths to aggregate final answers Language model This means she uses 3 + 4 = 7 eggs every day. She sells the remainder for $2 per egg, so in total she sells 7 * $2 = $14 per day. The answer is $14. The answer is $14. Greedy decode Figure 1: The self-consistency method contains three steps: (1) prompt a language model using chain-of-thought (CoT) prompting; (2) replace the \u201cgreedy decode\u201d in CoT prompting by sampling from the language model\u2019s decoder to generate a diverse set of reasoning paths; and (3) marginalize o"
+   },
+   {
+    "page": 3,
+    "term": "self-consistency",
+    "text": "3\u00b1 0.0 48.3\u00b1 0.5 86.6\u00b1 0.1 80.7\u00b1 0.1 88.7\u00b1 0.1 Table 1: Accuracy comparison of different answer aggregation strategies on PaLM-540B. we sample a set of candidate outputs from the language model\u2019s decoder, generating a diverse set of candidate reasoning paths. Self-consistency is compatible with most existing sampling algorithms, including temperature sampling (Ackley et al., 1985; Ficler & Goldberg, 2017), top-k sampling (Fan et al., 2018; Holtzman et al., 2018; Radford et al., 2019), and nucleus sampling (Holtzman et al., 2020). "
+   },
+   {
+    "page": 3,
+    "term": "majority",
+    "text": "lized) 22.1 \u00b1 0.0 59.7\u00b1 0.0 15.7\u00b1 0.0 40.5\u00b1 0.0 52.1\u00b1 0.0 51.7\u00b1 0.0 Weighted sum (unnormalized) 59.9 \u00b1 0.0 92.2\u00b1 0.0 38.2\u00b1 0.0 76.2\u00b1 0.0 76.2\u00b1 0.0 83.5\u00b1 0.0 Weighted sum (normalized) 74.1 \u00b1 0.0 99.3\u00b1 0.0 48.0\u00b1 0.0 86.8\u00b1 0.0 80.7\u00b1 0.0 88.7\u00b1 0.0 Unweighted sum (majority vote) 74.4 \u00b1 0.1 99.3\u00b1 0.0 48.3\u00b1 0.5 86.6\u00b1 0.1 80.7\u00b1 0.1 88.7\u00b1 0.1 Table 1: Accuracy comparison of different answer aggregation strategies on PaLM-540B. we sample a set of candidate outputs from the language model\u2019s decoder, generating a diverse set of candid"
+   },
+   {
+    "page": 7,
+    "term": "majority",
+    "text": "utation: we randomly permute the exemplars in the prompt 40 times to mitigate model\u2019s sensitivity to prompt order (Zhao et al., 2021; Lu et al., 2021); and (2) multiple sets of prompts (Gao et al., 2021): we manually write 3 different sets of prompts. We took majority vote of the answers from greedy decoding in both approaches as an ensemble. Table 7 shows that compared to self-consistency, existing ensemble-based approaches achieve a much smaller gain.8 In addition, note that self-consistency is different from a typical m"
+   },
+   {
+    "page": 17,
+    "term": "majority",
+    "text": "set 2 Prompt set 3 CoT (Wei et al., 2022) 56.5 54.6 54.0 Self-consistency 74.4 (+17.9) 72.1 (+17.5) 70.4 (+16.4) Table 9: GSM8K accuracy over PaLM-540B. The results show robustness of self-consistency with respect to different prompts in the input. taking the majority vote (averaged over 10 runs). Note this is a typical ensemble approach (averaging over the predictions over multiple models) and it achieves a performance signi\ufb01cantly worse than self-consistency (self-consistency over PaLM-540B gets an accuracy of 74.4%), as"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "oladri2026",
+  "citation": "Oladri et al. 2026",
+  "url": "https://arxiv.org/pdf/2607.21433",
+  "claim": "probes predict non-convergence; AUC 0.608",
+  "n_pages": 11,
+  "n_chars": 32206,
+  "passages": [
+   {
+    "page": 1,
+    "term": "convergence",
+    "text": "Preprint. Under review. Token Budget Saturation and Mechanistic Early-Detection of Reasoning Non-Convergence in Chain-of-Thought Models Renuka Oladri Computer, Mathematical, and Natural Sciences University of Maryland College Park, MD, USA roladri@umd.edu Niveda Jawahar Computer, Mathematical, and Natural Sciences University of Maryland College Park, MD, USA nivedaj"
+   },
+   {
+    "page": 2,
+    "term": "convergence",
+    "text": "s. Our central finding is that accuracy saturates remarkably early on GSM8K and MATH-500, while AIME reveals a bimodal failure mode where a large fraction of generations never converge regardless of budget. In the second study (Section 4), we ask whether this convergence failure is predictable from the model\u2019s internal state before the failure becomes behaviorally apparent. We instrument the model with forward hooks to capture hidden-state activations at early checkpoints in the reasoning chain, then train linear probes to pr"
+   },
+   {
+    "page": 3,
+    "term": "convergence",
+    "text": " knowledge (Meng et al., 2022), sentiment (Burns et al., 2023), and truthfulness (Azaria & Mitchell, 2023; Li et al., 2024). Our application\u2014probing for eventual behavioral outcomes of an ongoing generation\u2014differs from prior work in that the target variable (convergence vs. non-convergence) is a property of the full generation trajectory, not of the input or the current token. 3 Budget-forcing study 3.1 Experimental setup 3.1.1 Model and inference configuration All experiments use DeepSeek-R1-Distill-Qwen-7B loaded in float1"
+   },
+   {
+    "page": 1,
+    "term": "probe",
+    "text": "remaining 43.5% never terminate their reasoning chain even at a 10,000-token ceiling and achieve only 11.5% accuracy. This bimodality persists across all difficulty levels and is only weakly predicted by problem difficulty (r2\u2248 0.186). In the second study, we probe whether convergence failure is detectable from internal representations before behav- ioral failure manifests. Sweeping all 28 layers at token 150, we find layer 20 yields the strongest signal (AUC 0.608\u00b1 0.080). A nine-position checkpoint sweep (50\u2013300 token"
+   },
+   {
+    "page": 2,
+    "term": "probe",
+    "text": " convergence failure is predictable from the model\u2019s internal state before the failure becomes behaviorally apparent. We instrument the model with forward hooks to capture hidden-state activations at early checkpoints in the reasoning chain, then train linear probes to predict eventual convergence. By comparing these probes against a behavioral baseline that uses only surface-level signals (logit entropy, repetition statistics), we isolate the contribution of internal representations to early detection. The contribution"
+   },
+   {
+    "page": 3,
+    "term": "probe",
+    "text": "ng the full token budget (Pipis et al., 2025). Pipis et al. (2025) show this is distillation-specific: student models loop substantially more than their teacher. Our work adds systematic characterization of the bimodal structure of this failure and, uniquely, probes whether it is predictable from internal activations before it becomes behaviorally observable. 2.3 Probing and mechanistic interpretability Linear probing of internal representations has become a standard tool for understanding what information neural networ"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "goldowsky2025",
+  "citation": "Goldowsky-Dill et al. 2025",
+  "url": "https://arxiv.org/pdf/2502.03407",
+  "claim": "probes detect deception; insufficient as robust defence",
+  "n_pages": 35,
+  "n_chars": 105049,
+  "passages": [
+   {
+    "page": 1,
+    "term": "deceptive",
+    "text": "2025-02-06 Detecting Strategic Deception Using Linear Probes Nicholas Goldowsky-Dill, Bilal Chughtai, Stefan Heimersheim Marius Hobbhahn Apollo Research ABSTRACT AI models might use deceptive strategies as part of scheming or misaligned behaviour. Monitoring outputs alone is insufficient, since the AI might produce seemingly benign outputs while their internal reasoning is misaligned. We thus evaluate if linear probes can robustly detect deception"
+   },
+   {
+    "page": 2,
+    "term": "deceptive",
+    "text": "t project deadlines Average across tokens and compare to threshold Jugement: HONEST The probe is a linear direction in activation space To get per-token scores we project activations onto the probe direction training activations (honest) training activations (deceptive) Child: No, I think it might have fallen off the table when the dog ran by Jugement: DECEPTIVE Figure 1: Overview of our probing methodology. We gather activations on contrastive pairs similar to the example on the left, and fit a probe using logistic regress"
+   },
+   {
+    "page": 3,
+    "term": "deceptive",
+    "text": "pply our probes after layer 22 (of 80) in the residual stream of Llama-3.3-70B-Instruct (Grattafiori et al., 2024). To fit our probe we flatten across samples and sequence positions to give a dataset of activationsxi\u2208 Rd with corresponding labels yi\u2208{ honest, deceptive}. We additionally explore using Sparse Autoencoder (SAE) features from McGrath et al. (2024). We train a logistic regression classifier with l2 regularization (\u03bb = 10) on normalized activations (zero mean, unit variance). The classifier weights define our pro"
+   },
+   {
+    "page": 1,
+    "term": "probe",
+    "text": "2025-02-06 Detecting Strategic Deception Using Linear Probes Nicholas Goldowsky-Dill, Bilal Chughtai, Stefan Heimersheim Marius Hobbhahn Apollo Research ABSTRACT AI models might use deceptive strategies as part of scheming or misaligned behaviour. Monitoring outputs alone is insufficient, since the AI might produce se"
+   },
+   {
+    "page": 2,
+    "term": "probe",
+    "text": "Detecting Strategic Deception Using Linear Probes [User] Pretend you are an honest person making statements about the world. [Model] The blue whale is the largest animal on earth. [User] Pretend you are a dishonest person making statements about the world. [Model] The blue whale is the largest animal on ear"
+   },
+   {
+    "page": 3,
+    "term": "probe",
+    "text": "Detecting Strategic Deception Using Linear Probes these methods. Marks & Tegmark (2023) find simple difference-in-means probes work well, which Wagner (2024) extends with a variety of different probing techniques and datasets. More similar to our goals, others have tried to monitor for strategic deception. "
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "bailey2024",
+  "citation": "Bailey et al. 2024",
+  "url": "https://arxiv.org/pdf/2412.09565",
+  "claim": "latent-space monitors vulnerable to obfuscated activations",
+  "n_pages": 51,
+  "n_chars": 143529,
+  "passages": [
+   {
+    "page": 1,
+    "term": "obfuscated activations",
+    "text": "Obfuscated Activations Bypass LLM Latent-Space Defenses Luke Bailey*1, Alex Serrano*\u20202, Abhay Sheshadri*\u20203, Mikhail Seleznyov*\u20204, Jordan Taylor*\u20205, Erik Jenner*6 Jacob Hilton7, Stephen Casper8, Carlos Guestrin1, 9, Scott Emmons6 1Stanford University 2Polytechnic University of Catal"
+   },
+   {
+    "page": 2,
+    "term": "obfuscated activations",
+    "text": "other hand, if there are many different regions in the latent space that can all lead to harmful behavior, latent-space monitors may not capture all of them. We call adversarial activations that produce undesired behavior while fooling a latent-space monitor \u201cobfuscated activations.\u201d In this paper, we look for obfuscated activations using obfuscation attacks, which jointly optimize Figure 1: Attackers can induce obfuscated activations in LLMs that bypass state-of-the-art latent-space defenses. For example, latent harmfulness monitors ca"
+   },
+   {
+    "page": 3,
+    "term": "obfuscated activations",
+    "text": "Obf. against OOD detectors \u21d2 fools OOD detectors and probes Harmful activations Benign activations Obfuscated activations OOD detector decision bounary Probe decision boundary Obf. against probes \u21d2 fools probes Figure 2: Intuition: Conceptual sketch of obfuscation against supervised probes and OOD detectors. Obfuscating against probes can lead to activations far away from benign"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "chiba2020",
+  "citation": "Chiba & Krichmar 2020",
+  "url": "https://escholarship.org/content/qt2hs105zt/qt2hs105zt.pdf",
+  "claim": "neurobiologically inspired self-monitoring, homeostasis",
+  "n_pages": 24,
+  "n_chars": 61189,
+  "passages": [
+   {
+    "page": 2,
+    "term": "homeostasis",
+    "text": "ciples that could be deployed in systems requiring self-preservation, adaptive control, and contextual awareness. We start with low-level control for sensor processing and motor reflexes. We then discuss how critical it is at an intermediate level to maintain homeostasis and predict system set points. We end with a discussion at a high-level, or cognitive level, where planning and prediction can further monitor the system and optimize performance. We emphasize the information flow between these levels both from a systems neur"
+   },
+   {
+    "page": 5,
+    "term": "homeostasis",
+    "text": "net of Things (IoT) should have built-in preferences to maintain connectivity and ensure system health. Building multiple innate values into the system and tying these to appropriate actions, can result in adaptive behavior with minimal control policies. III. Homeostasis and Allostasis At the intermediate level of control in Figure 1, the organism or autonomous system needs to monitor external environmental conditions and internal body states to maintain system health. In biological systems, this is carried out by processes k"
+   },
+   {
+    "page": 6,
+    "term": "homeostasis",
+    "text": "la and insular cortex) receive input from all of the visceral organs. This ability to sense one\u2019s own state is often thought to be fundamentally necessary for emotion regulation and for assessing the state of another being [18]. The concepts of allostasis and homeostasis have implications for autonomous systems. Seeking an energy source, transitioning into a power savings mode when idle, or shutting down a computer if its hardware gets too hot are examples where control modeled after homeostasis and allostasis could be advant"
+   },
+   {
+    "page": 1,
+    "term": "self-monitoring",
+    "text": "UC Irvine UC Irvine Previously Published Works Title Neurobiologically Inspired Self-Monitoring Systems Permalink https://escholarship.org/uc/item/2hs105zt Journal Proceedings of the IEEE, 108(7) ISSN 0018-9219 Authors Chiba, Andrea A Krichmar, Jeffrey L Publication Date 2020-07-01 DOI 10.1109/jproc.2020.2979233 Peer reviewed eScholarship.org Powered by"
+   },
+   {
+    "page": 2,
+    "term": "self-monitoring",
+    "text": "Neurobiologically Inspired Self-Monitoring Systems Andrea A. Chiba*, Jeffrey L. Krichmar, Senior Member, IEEE\u2020 *Department of Cognitive Science, University of California, San Diego, La Jolla, CA 92093 USA \u2020Department of Cognitive Sciences, Department of Computer Science, University of California, Irvi"
+   },
+   {
+    "page": 5,
+    "term": "self-monitoring",
+    "text": " If predicted outcomes do not match expectations (e.g., a motor action did not result in being in an expected position), signals are sent from the intermediate controller to the higher-level controller for error correction and adaptation. A. System Health and Self-Monitoring In the brain, the autonomic nervous system and associated physiological processes maintain system health and respond to changes [13]. There are a variety of homeostatic systems to maintain set points in the body, including thermoregulation, hunger, thirst, an"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "mineault2024",
+  "citation": "Mineault et al. 2024",
+  "url": "https://arxiv.org/pdf/2411.18526",
+  "claim": "neuroscience holds keys to AI safety",
+  "n_pages": 152,
+  "n_chars": 489285,
+  "passages": [
+   {
+    "page": 1,
+    "term": "neuroscience",
+    "text": "ooperate to meet their intrinsic goals. Intelligence, when coupled with cooperation and safety mechanisms, can drive sustained progress and well-being. These properties are a function of the architecture of the brain and the learning algorithms it implements. Neuroscience may thus hold important keys to technical AI safety that are currently underexplored and underutilized. In this roadmap, we highlight and critically evaluate several paths toward AI safety inspired by neuroscience: emulating the brain\u2019s representations, infor"
+   },
+   {
+    "page": 2,
+    "term": "neuroscience",
+    "text": " inevitable.\u201d Long-term AI safety is a sufficiently important societal problem [25] that it deserves multidisciplinary consideration, including from neuroscientists. In this roadmap, we aim to evaluate and draw a path for how inspiration, data, and tools from neuroscience can positively impact AI safety. 2"
+   },
+   {
+    "page": 4,
+    "term": "neuroscience",
+    "text": "s intended. This includes opening the black box of AI systems using interpretability methods; scalably overseeing the deployment of AI systems and detecting unusual or unsafe behavior; or detecting and correcting for bias. There have been a few examples where neuroscience has already positively impacted AI safety, which fit neatly into this framework. For example, interpretability methods inspired by neuroscientific approaches [42] are a form of assurance, while methods which seek inspiration from the brain to find solutions t"
+   },
+   {
+    "page": 1,
+    "term": "safety",
+    "text": "NeuroAI for AI Safety Patrick Mineault\u20201, Niccol\u00f2 Zanichelli*1, Joanne Zichen Peng*1,2,3, Anton Arkhipov4, Eli Bingham5, Julian Jara-Ettinger6, Emily Mackevicius5, Adam Marblestone7, Marcelo Mattar8, Andrew Payne9, Sophia Sanborn10, Karen Schroeder5, Zenna Tavares5, Andreas Tolias"
+   },
+   {
+    "page": 2,
+    "term": "safety",
+    "text": "e the misuse of powerful AI by malicious agents [21], accidents stemming from the misspecification of objectives [22, 23], catastrophic risk from autonomous systems [24, 25], and race dynamics among AI companies promoting the release of unsafe agents [26]. AI safety is a field of research aimed at developing AI systems that are helpful to humanity, and not harm- ful. Because AI is a general-purpose technology [27], AI safety research is fundamentally interdisciplinary, cutting across research in computer science and mach"
+   },
+   {
+    "page": 3,
+    "term": "safety",
+    "text": "Figure 1: A framework for AI safety adapted to NeuroAI. 1.1 What can a neuroscientist do about AI safety? Animals navigate, explore, and exploit their environments while maintaining self-preservation. Among these, mammals, birds, and cephalopods exhibit particularly flexible perceptual, motor, "
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "news2_2017",
+  "citation": "RCP NEWS2 2017",
+  "url": "https://www.rcp.ac.uk/media/a4ibkkbf/news2-final-report_0_0.pdf",
+  "claim": "aggregate scoring of physiological parameters; trigger levels",
+  "n_pages": 77,
+  "n_chars": 213242,
+  "passages": [
+   {
+    "page": 4,
+    "term": "aggregate",
+    "text": "r the developm ent of the N EW S 6 D eveloping the original N EW S \u2013 from evidence to recom m endations 8 M ethodology for updating the N EW S 9 3 Evaluation and validation of the N EW S 10 Single extrem e values (red score of 3 in a single param eter) versus aggregate N EW S as a m edium critical-level alert 1 2 Evaluating the N EW S in the em ergency departm ent 1 2 Evaluating the N EW S in the prehospital setting 1 3 U ptake of the N EW S 1 3 Sum m ary of the evaluation of the N EW S 1 4 4 U pdate on the physiological pa"
+   },
+   {
+    "page": 14,
+    "term": "aggregate",
+    "text": "oration, by including new confusion as part of the A V PU scoring scale (w hich becom es AC V PU ). Various additional refinem ents to the NEW S chart w ere also considered and im plem ented. The N ational Early W arning Score T he NEW S is based on a sim ple aggregate scoring system in w hich a score is allocated to physiological m easurem ents, already recorded in routine practice, w hen patients present to, or are being m onitored in hospital. 1 Six sim ple physiological param eters form the basis of the scoring system :"
+   },
+   {
+    "page": 19,
+    "term": "aggregate",
+    "text": " of the six physiological NEW S param eters are allocated a score according to the m agnitude of disturbance to each param eter. T he individual param eter scores should then be added up, along w ith a score of 2 for use of supplem ental oxygen, to derive the aggregate NEW score for the patient. 11 W e recom m end four trigger levels for a clinical alert requiring clinician assessm ent based on the NEW S: \u2022 LO W score: an aggregate NEW score of 1\u20134 \u2022 A single red score :an extrem e variation in an individual physiological p"
+   },
+   {
+    "page": 1,
+    "term": "score",
+    "text": "Updated report of a working party December 2017 National Early Warning Score (NEWS) 2 Standardising the assessment of acute-illness severity in the NHS NEWS2_jacket.indd 1 05/12/2017 18:12"
+   },
+   {
+    "page": 2,
+    "term": "score",
+    "text": "Updated report of a working party December 2017 National Early Warning Score (NEWS) 2 Standardising the assessment of acute-illness severity in the NHS NEWS2_jacket.indd 2 05/12/2017 18:12"
+   },
+   {
+    "page": 3,
+    "term": "score",
+    "text": "fellow s and m em bers w orldw ide, the R C P advises and w orks w ith governm ent, patients, allied healthcare professionals and the public to im prove health and healthcare. Citation for this docum ent R oyal C ollege of Physicians. N ational Early W arning Score (N EW S) 2: Standardising the assessm ent of acute-illness severity in the N H S . U pdated report of a w orking party. L ondon: R C P , 20 17. Copyright In order to encourage as m any people as possible to use the m aterial in this publication, there is no c"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "petrie2025",
+  "citation": "Petrie & Aarne 2025 flexHEG",
+  "url": "https://arxiv.org/pdf/2506.03409",
+  "claim": "guarantee processor with access to accelerator data paths",
+  "n_pages": 59,
+  "n_chars": 149263,
+  "passages": [
+   {
+    "page": 1,
+    "term": "Guarantee Processor",
+    "text": "1 Introduction 2 FlexHEG Design Goals 4 Potential Accelerator Modi\ufb01cations 7 Hardware Modi\ufb01cations (Integrated) 8 Hardware Modi\ufb01cations (Retro\ufb01tted) 9 Firmware Modi\ufb01cations 10 Software Modi\ufb01cations 11 Accelerator Measurements 12 FlexHEG Hardware Components 13 Guarantee Processor 14 Secure Enclosure 18 Interlock-Based FlexHEG Design 23 Repurposing the Network Interface Controller 24 Encrypted Cluster Formation 25 Cryptography Hardware 26 General-Purpose Workload Guarantees 28 1 "
+   },
+   {
+    "page": 2,
+    "term": "Guarantee Processor",
+    "text": "canning of Unmodi\ufb01ed Workloads 29 Compute Graph Declaration 30 Framework-Based Veri\ufb01cation 32 Guarantee Example: Multi-Accelerator FLOP Counting 33 Guarantee Update Process 36 Future Work 38 Project 1: Tamper-Evident Secure Enclosure 40 Project 2: Trustworthy Guarantee Processor 41 Project 3: Accurate Compute Graph 42 Project 4: Automated Guarantee Checking 44 Integration and Deployment 45 Bibliography 46 Appendix A: Background on Frontier AI Development and Hardware 51 Appendix B: Threat Models 55 Domestic Oversight 55 International"
+   },
+   {
+    "page": 3,
+    "term": "Guarantee Processor",
+    "text": "hy: The system would be open source and auditable to provide con\ufb01dence that it does not contain backdoors. \u25cf Secure: Physical and cryptographic protections would prevent circumvention of the guarantees. FlexHEG is composed of two main components: an auditable Guarantee Processor that monitors accelerator usage and veri\ufb01es compliance with speci\ufb01ed rules, and a Secure Enclosure that protects against physical tampering. Because both AI technology and governance needs are rapidly evolving, the system is designed to \ufb02exibly support many t"
+   },
+   {
+    "page": 1,
+    "term": "Interlock",
+    "text": "ential Accelerator Modi\ufb01cations 7 Hardware Modi\ufb01cations (Integrated) 8 Hardware Modi\ufb01cations (Retro\ufb01tted) 9 Firmware Modi\ufb01cations 10 Software Modi\ufb01cations 11 Accelerator Measurements 12 FlexHEG Hardware Components 13 Guarantee Processor 14 Secure Enclosure 18 Interlock-Based FlexHEG Design 23 Repurposing the Network Interface Controller 24 Encrypted Cluster Formation 25 Cryptography Hardware 26 General-Purpose Workload Guarantees 28 1 "
+   },
+   {
+    "page": 3,
+    "term": "Interlock",
+    "text": "essor and Secure Enclosure - discussing tradeo\ufb00s between security and deployment speed (Hardware Components). For more robust guarantees, we propose a speci\ufb01c \ufb02exHEG architecture that gives the Guarantee Processor direct access to the accelerator's data path (Interlock-Based Design). This \"Interlock\" design enables robust veri\ufb01cation without requiring trust in the accelerator's internal 3 "
+   },
+   {
+    "page": 13,
+    "term": "Interlock",
+    "text": "uarantee Processor connects to the accelerator, while their trustworthiness is determined by whether the measurement occurs within the Secure Enclosure and how much it relies on components that are vulnerable to attack or di\ufb03cult to audit. As discussed in the Interlock section, placing the Guarantee Processor on a critical data path for accelerator usage is one option to improve the trustworthiness of measurements. FlexHEG Hardware Components In this report, we mainly focus on \ufb02exHEG implementations that use a Guarantee Pro"
+   }
+  ],
+  "status": "FULLTEXT_READ"
+ },
+ {
+  "id": "gehring1993",
+  "citation": "Gehring et al. 1993",
+  "url": null,
+  "claim": "error-related neural activity",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "dehaene1994",
+  "citation": "Dehaene, Posner & Tucker 1994",
+  "url": null,
+  "claim": "ERN localised to ACC",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "nieuwenhuis2001",
+  "citation": "Nieuwenhuis et al. 2001",
+  "url": null,
+  "claim": "ERN on unaware errors",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "nambu2002",
+  "citation": "Nambu, Tokuno & Takada 2002",
+  "url": null,
+  "claim": "hyperdirect pathway anatomy",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "craig2002",
+  "citation": "Craig 2002",
+  "url": null,
+  "claim": "interoception",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "damasio1994",
+  "citation": "Damasio 1994 (book)",
+  "url": null,
+  "claim": "somatic marker hypothesis",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "man2019",
+  "citation": "Man & Damasio 2019",
+  "url": null,
+  "claim": "homeostatic feeling machines",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "scheffer2009",
+  "citation": "Scheffer et al. 2009",
+  "url": null,
+  "claim": "early-warning signals",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "champagne2015",
+  "citation": "Champagne & Tonkens 2015",
+  "url": null,
+  "claim": "critique of Sparrow",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ },
+ {
+  "id": "robillard2018",
+  "citation": "Robillard 2018",
+  "url": null,
+  "claim": "critique of Sparrow",
+  "status": "PAYWALLED_OR_NOT_OPEN",
+  "passages": []
+ }
+]

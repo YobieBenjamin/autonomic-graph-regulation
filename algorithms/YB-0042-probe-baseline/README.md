@@ -1,7 +1,7 @@
 # YB-0042 · The regulator versus a hidden-state probe (and a second fresh replication against the LLM judge)
 
 **Status:** pre-registered (docs/PREREGISTRATION.md, with the full analysis code and a dry run, docs/dryrun.json), before
-any YB-0042 recording exists. **Results (seed 8): H1 not distinguishable (the probe matches the regulator); H2 not replicated (regulator vs judge interval includes zero).** Two deviations disclosed below.
+any YB-0042 recording exists. **Results (seed 8): H1 not distinguishable (the probe matches the regulator); H2 not replicated (regulator vs judge interval includes zero).** Four deviations disclosed below.
 **Reproduce:** `SANDBOX_MEM=12g SANDBOX_TIMEOUT=14400 sandbox/run.sh algorithms/YB-0042-probe-baseline all` (dry run: `DRY_RUN=1`).
 
 ## Plain English
@@ -36,3 +36,6 @@ agr/test_hstap_alignment.py verifies alignment and that the telemetry is unchang
 2. **Training-set size.** The chain recorded 600 episodes per derivation seed (100 per question type), 1,800 in total (1,609 answered; 1,031 with hidden-state snapshots, 2,779 observations). YB-0035 derivation seeds were 4,800, 600 and 600 recorded (5,367 answered), so the reduction is entirely in seed 2 (corrected per sixth audit m4; archive/audit/artifacts/derivation_sizes.json). The pre-registration did not state the size. Both monitors trained on the same data, so H1 is a fair comparison, but H2 had less power than YB-0035.
 3. **Contention:** two logged windows, both during derivation recordings (a 22 s git push in seed 2; a background-priority document conversion in seed 3); see data/agr/contention_windows.txt.
 4. **Seed-8 counts:** 600 recorded, 535 answered, 40 wrong; results.json reports 340 test episodes because of deviation 1 (archive/audit/artifacts/derivation_sizes.json).
+
+
+**Known count discrepancy (tenth audit, R3):** derivation episodes with hidden-state snapshots are 1,031 in this README and docs/results.json but 1,027 in derivation_sizes.json; seed-8 monitorable episodes are 340 in one file and 339 in another. The cause is not established; no reported comparison depends on the difference.
