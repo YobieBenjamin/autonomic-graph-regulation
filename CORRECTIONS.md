@@ -291,3 +291,7 @@ Verdicts: all three publishable with fixes. Fable: 0 critical, 0 major; recomput
 | A11-6 | GLM G1 | just released (OpenShell) loosely dated | FIX: recently released |
 | A11-7 | GLM G2-G12 | Eleven figures not in its bundle | NO CHANGE: each present in the repository and recomputed by Fable and Opus |
 | A11-8 | GLM G13 | arXiv:2607.21433 possibly fabricated | NO CHANGE: real (read in full; confirmed live by Fable) |
+
+## Voice edit (2026-10-04): final series, author voice pass, no factual change
+
+At the author request, both parts were rewritten to remove AI-style phrasing (stock setups, colon reveals, tidy triplets, it-is-not-X-it-is-Y closers) and restore his irreverent voice. Facts, numbers, intervals, citations and file paths were held fixed. Verification: an automated comparison of every number in the before and after text found none removed and none added except the series markers (Part 1 of 2; a reference to Part 1). The posted drafts in archive/audit/series_final_2026-10-04/ are the voice-edited versions; the audited pre-edit versions remain in git history (commit 6020c80).
