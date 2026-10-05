@@ -191,3 +191,12 @@ Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: ac
 - **Descriptive:** the banded score gives a clean graded risk gradient (failure rate 3.6% stable to 66% urgent).
 - **Open:** layering across different stages (pre-answer internal monitor, post-answer review, action hold, human), whose misses may be less
   correlated.
+
+## Claim status after YB-0049 (2026-10-05)
+- **Supported (pre-registered, new stage-2 data):** layering checks at different stages beats the best pre-answer check at an equal
+  false-alarm budget (layered minus probe +0.167 [+0.092, +0.250]; 123 vs 100 of 138, with fewer false alarms).
+- **Descriptive, and important:** post-answer self-consistency alone caught 124 of 138 (AUROC 0.965); the layered system did not catch more
+  than it (not pre-registered). Self-consistency resamples the monitored model, so the strongest detector here is built on the model's own
+  outputs, measured by outside code. It acts only after the answer and costs seconds (median 8.2 s).
+- **Refined principle P1:** the model must never be the judge of its own output; its disagreement with itself, computed by external code,
+  is a legitimate signal for a post-answer layer behind a hold gate.
