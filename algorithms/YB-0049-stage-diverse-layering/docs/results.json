@@ -1,0 +1,75 @@
+{
+ "dry_run": false,
+ "smoke": false,
+ "synthetic_stage2": false,
+ "deriv_seeds": [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "10",
+  "11",
+  "12"
+ ],
+ "eval_seeds": [
+  "9",
+  "13",
+  "14"
+ ],
+ "probe_selected": {
+  "layer": 18,
+  "C": 0.001
+ },
+ "eval_answered": 1605,
+ "eval_wrong": 138,
+ "never_monitored": 584,
+ "layered": {
+  "caught": 123,
+  "recall": 0.8913,
+  "fpr": 0.0695,
+  "stage1_alpha": 0.05,
+  "delta": 0.75
+ },
+ "probe_alone": {
+  "caught": 100,
+  "recall": 0.7246,
+  "fpr": 0.0995
+ },
+ "selfcons_alone": {
+  "caught": 124,
+  "fpr": 0.0886,
+  "auroc": 0.9652
+ },
+ "H1_layered_minus_probe": [
+  0.1667,
+  0.0922,
+  0.25
+ ],
+ "H1_supported": true,
+ "H2_probe_missed_errors": 38,
+ "H2_caught_by_stage2": 28,
+ "H3_jaccard_probe_selfcons": 0.697,
+ "H3_reference_jaccard_probe_text_YB0048": 0.7431,
+ "S_stage2_errors_without_checkpoint": 2,
+ "S_review_seconds": {
+  "median": 8.227,
+  "p90": 20.696
+ },
+ "S_allocation_sensitivity": {
+  "0.025": {
+   "recall": 0.8768,
+   "fpr": 0.0477,
+   "tau1": 0.5653,
+   "delta": 0.75
+  },
+  "0.075": {
+   "recall": 0.9203,
+   "fpr": 0.0927,
+   "tau1": 0.261,
+   "delta": 0.75
+  }
+ }
+}

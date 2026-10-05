@@ -31,3 +31,6 @@ archive/audit/papers_inbox/*.pdf
 algorithms/YB-0046-difficulty-confound/data/
 algorithms/YB-0047-text-baseline-transfer/data/
 algorithms/YB-0048-multilevel-fusion/data/
+algorithms/YB-0049-stage-diverse-layering/data/*.npz
+algorithms/YB-0049-stage-diverse-layering/data/seed*_LH.jsonl.gz
+algorithms/YB-0049-stage-diverse-layering/data/prefix_judge_abs_*

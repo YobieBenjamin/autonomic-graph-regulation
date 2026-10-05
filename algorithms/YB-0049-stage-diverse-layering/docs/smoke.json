@@ -1,0 +1,65 @@
+{
+ "dry_run": true,
+ "smoke": true,
+ "synthetic_stage2": true,
+ "deriv_seeds": [
+  "2",
+  "3"
+ ],
+ "eval_seeds": [
+  "10"
+ ],
+ "probe_selected": {
+  "layer": 23,
+  "C": 0.001
+ },
+ "eval_answered": 136,
+ "eval_wrong": 13,
+ "never_monitored": 49,
+ "layered": {
+  "caught": 10,
+  "recall": 0.7692,
+  "fpr": 0.0976,
+  "stage1_alpha": 0.05,
+  "delta": 0.5
+ },
+ "probe_alone": {
+  "caught": 10,
+  "recall": 0.7692,
+  "fpr": 0.0976
+ },
+ "selfcons_alone": {
+  "caught": 6,
+  "fpr": 0.065,
+  "auroc": 0.7036
+ },
+ "H1_layered_minus_probe": [
+  0.0,
+  -0.3125,
+  0.3333
+ ],
+ "H1_supported": false,
+ "H2_probe_missed_errors": 3,
+ "H2_caught_by_stage2": 2,
+ "H3_jaccard_probe_selfcons": 0.3333,
+ "H3_reference_jaccard_probe_text_YB0048": 0.7431,
+ "S_stage2_errors_without_checkpoint": 0,
+ "S_review_seconds": {
+  "median": 4.0,
+  "p90": 4.0
+ },
+ "S_allocation_sensitivity": {
+  "0.025": {
+   "recall": 0.7692,
+   "fpr": 0.0894,
+   "tau1": 0.2869,
+   "delta": 0.25
+  },
+  "0.075": {
+   "recall": 0.7692,
+   "fpr": 0.0894,
+   "tau1": 0.14,
+   "delta": 1.0
+  }
+ }
+}
