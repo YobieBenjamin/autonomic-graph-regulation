@@ -6,7 +6,9 @@ Pre-registered test: does a two-stage alarm (hidden-state probe before the answe
 YB-0045 recordings via a hash-verified local link (not tracked); stage-2 recordings in data/selfcons_yb0049_seed*.jsonl (tracked).
 
 ## Results (confirmatory; plan committed 1ec19a9, RFC 3161 timestamp 23:18:49 UTC 2026-10-04, anchored in Bitcoin; stage-2 recording
-23:18 UTC to 07:39 UTC 2026-10-05 with a clean pause and resume at 00:05 to 03:43 UTC, no re-timestamp; analysis 07:47 UTC)
+23:18 UTC to 07:39 UTC 2026-10-05 with a manual clean stop at about 00:05 UTC (battery at 20%, before the 12% guard threshold;
+the guard never fired) and a resume at 03:43 UTC, no re-timestamp; analysis 07:47 UTC. Evidence: docs/run_logs/ (chain49.log, rec49.log,
+resume_yb0049.log). Per-review wall-clock times were not recorded; the summed review_seconds, 4.71 h, match the two recording windows.)
 H1 SUPPORTED: layered (probe at 5% plus self-consistency at d >= 0.75) caught 123 of 138 at 6.95% false alarms vs probe alone 100 at 9.95%;
 layered minus probe +0.167 [+0.092, +0.250]. H2: stage 2 caught 28 of the 38 errors the probe missed. H3: Jaccard overlap probe vs
 self-consistency 0.697 (probe vs text in YB-0048: 0.743). Descriptive: self-consistency alone caught 124 at 8.86% false alarms (AUROC

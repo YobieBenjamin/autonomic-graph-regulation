@@ -307,3 +307,17 @@ At the author request, both parts were rewritten to remove AI-style phrasing (st
 | PF-5 | Hard-linked data copies were tracked in git, doubling uploads; the public snapshot push failed | Copies untracked (hash-identical to YB-0045 data, which remains the public record); failed snapshot commit discarded (rule 17) |
 | PF-6 | The audited final series drafts overstate what internal state adds (YB-0047) | Marked superseded (archive/audit/series_final_2026-10-04/SUPERSEDED.md); claim status updated in docs/RESEARCH_PROGRAM.md |
 | PF-7 | YB-0047 pooled transfer AUROC mixes cross-task miscalibration with ranking | Pre-registered measure reported as is; within-task held-out AUROC reported alongside |
+
+## Twelfth audit (2026-10-05): series v4 and YB-0046 to YB-0049, three auditors from three companies
+Prompt: archive/audit/series_audit3_prompt.txt. Reports: series_audit3_fable_2026-10-05.md (Claude Fable 5.1, repository access), series_audit3_gpt55_2026-10-05.md (GPT-5.5 via Codex, repository access), series_audit3_glm_* (GLM, evidence bundle, low effort). All three: publishable with fixes; no critical findings; every number traced or recomputed (Fable and GPT-5.5 recomputed YB-0049 from the 1,605 raw reviews).
+
+| ID | Source | Finding | Resolution |
+|---|---|---|---|
+| A12-1 | Fable P1/T1 | 5 ms monitor cost stated without "assumed" (regression from earlier drafts) | FIX in both parts |
+| A12-2 | GPT-5.5 P1, GLM G2 | Part 1 attributed 75 to difficulty alone; 75 is difficulty plus length, difficulty alone 73 | FIX |
+| A12-3 | all three | YB-0049 resume, end and analysis times rested on uncommitted /tmp logs; pause was manual, guard never fired | FIX: run logs committed under docs/run_logs for YB-0046 to YB-0049; README states manual stop |
+| A12-4 | Fable P2/T2 | 124 described as "as many as" 123; "same recall" | FIX: one more; nearly the same |
+| A12-5 | Fable P3, P4, P6, T4, T5; GPT-5.5 T3 | Overstated transfer and "every check beat the judge" wording; probe vs text transfer not pre-registered; triage descriptive | FIX: probe only; tested comparisons named; descriptive labels |
+| A12-6 | Fable P5, T3, T6, T7; R2 to R5 | 6,000 vs 5,800; banded table covers 1,021 monitored episodes; YB-0046 start-time evidence; 120 vs 190 ms; YB-0048 README time; stale theory next steps; protocol rule 13 wording; uncommitted logs | FIX |
+| A12-7 | GPT-5.5 P2/T2 | "Not yet audited" stale after this audit | FIX: twelve audits; human review still pending |
+| A12-8 | GLM G1, G3, G4 | Eleven-audit count unsupported; YB-0046 to YB-0049 numbers absent; OpenShell provenance | NO CHANGE: bundle gaps (all eleven audits in this file; numbers recomputed by the other two auditors; OpenShell confirmed from NVIDIA's release) |

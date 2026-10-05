@@ -1,0 +1,3 @@
+RUN_CONFIRMATORY=1 python3 tests/experiment.py
+{"eval_answered": 1605, "eval_wrong": 138, "H1_regulator_minus_difficulty": [0.1377, 0.036, 0.2109], "H1_supported": true, "H2_probe_minus_difficulty": [0.1812, 0.0895, 0.2727], "H2_supported": true, "H3_combined_minus_difficulty": [0.1739, 0.0956, 0.2468], "H3_supported": true}
+CONF46_EXIT=0

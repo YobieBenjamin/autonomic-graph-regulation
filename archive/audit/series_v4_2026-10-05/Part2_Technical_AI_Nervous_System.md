@@ -54,10 +54,16 @@ YB-0049:
   **\#**   **Principle**               **Status**       **Evidence**
 
   P1       The model never judges its  Established      Every outside-code
-           own output; outside code    here; refined    monitor beat the LLM
-           checks                                       judge (YB-0046); the
-                                                        strongest detector is the
-                                                        model's self-disagreement
+           own output; outside code    here; refined    monitor caught more
+           checks                                       errors than the LLM
+                                                        judge; the gap was tested
+                                                        for difficulty,
+                                                        regulator, probe, stack
+                                                        and banded score
+                                                        (YB-0045, YB-0046,
+                                                        YB-0048); the strongest
+                                                        detector is the model's
+                                                        self-disagreement
                                                         measured by outside code
                                                         (YB-0049)
 
@@ -127,9 +133,10 @@ YB-0049:
 
 Checkpoints t ∈ {48, 96, 192, 384} tokens exist only while the model is
 still reasoning. With t_clock(t) the wall-clock time at t, D the time
-the answer is emitted and c the monitor's compute cost (5 ms for
-internal-state and text monitors, measured per call for the judge, 0 for
-metadata baselines), an alarm counts only if:
+the answer is emitted and c the monitor's compute cost (a fixed 5 ms
+charge for internal-state and text monitors, assumed and never measured;
+measured per call for the judge; 0 for metadata baselines), an alarm
+counts only if:
 
 > alarm at t ⇔ s(t) \> τ and t_clock(t) + c ≤ D
 >
@@ -289,8 +296,9 @@ github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/PROTOCOL.md).
 Plan commit fe4ad29; RFC 3161: FreeTSA 18:29:48 UTC, DigiCert 18:29:50
 UTC; analysis started 18:29:59 UTC
 (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0046-difficulty-confound/docs/PREREGISTRATION.md,
-results.json alongside). The rebuilt regulator, probe and judge
-reproduce YB-0045 exactly (94, 100, 28).
+with results.json alongside and the start-time record in
+docs/run_logs/). The rebuilt regulator, probe and judge reproduce
+YB-0045 exactly (94, 100, 28).
 
   ---------------------------------- ------------------ ------------------
   **Monitor**                        **In time (of      **False alarms**
@@ -428,7 +436,8 @@ of the same moment miss the same errors. 117 of 138 errors were caught
 by at least one component; 21 by none. Two descriptive results survive:
 the stack ranks best at every checkpoint (AUROC 0.852, 0.871, 0.880,
 0.876 vs the probe's 0.815, 0.832, 0.869, 0.840), and the banded score
-is a clean triage gradient:
+is a clean triage gradient (descriptive; the 1,021 episodes that reached
+a checkpoint, 136 of them wrong):
 
   -------------------------- -------------- -------------- ---------------
   **Banded level**           **Episodes**   **Wrong**      **Failure
@@ -448,9 +457,12 @@ is a clean triage gradient:
 Plan commit 1ec19a9; RFC 3161: FreeTSA and DigiCert 23:18:49 UTC on 4
 October 2026; OpenTimestamps proof anchored in Bitcoin. Unlike YB-0046
 to YB-0048, stage 2 is new data, recorded only after the timestamp:
-1,605 reviews between 23:18 UTC and 07:39 UTC, with one clean pause for
-battery and a resume that verified the plan against the timestamped
-commit and did not re-timestamp
+1,605 reviews between 23:18 UTC and 07:39 UTC, with one manual clean
+stop at 20% battery (the 12% guard never fired) and a resume that
+verified the plan against the timestamped commit and did not
+re-timestamp; run logs in docs/run_logs/ (the review records carry
+durations, not wall-clock times; their sum, 4.71 h, matches the two
+recording windows)
 (github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/algorithms/YB-0049-stage-diverse-layering/docs/;
 recorder
 github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/agr/selfcons_yb0049.py;
@@ -514,9 +526,9 @@ externally, is a legitimate post-answer signal. The review costs a
 median 8.2 s (90th percentile 20.7 s), so it needs a hold gate; it is
 the only layer that sees the 584 answered episodes that finish before
 the first checkpoint (it caught 2 errors there); and the layered system
-reached the same recall with fewer false alarms (6.95% vs 8.86%).
-Exploratory allocation sensitivity: a 2.5% stage-1 budget gives 121
-caught at 4.8% false alarms, 7.5% gives 127 at 9.3%.
+reached nearly the same recall (123 vs 124) with fewer false alarms
+(6.95% vs 8.86%). Exploratory allocation sensitivity: a 2.5% stage-1
+budget gives 121 caught at 4.8% false alarms, 7.5% gives 127 at 9.3%.
 
 10\. YB-0044: the warning meets real enforcement
 
@@ -560,8 +572,9 @@ biological and clinical analogue
     Seconds, so it sits behind a hold gate.
 
 -   **Gate:** hold irreversible actions until cleared. Analogue: the
-    stop process racing the go process (Logan and Cowan, 1984); stopping
-    in as little as about 120 ms (Aron and Poldrack, 2006).
+    stop process racing the go process (Logan and Cowan, 1984);
+    stop-signal reaction times near 190 ms, and as fast as about 120 ms
+    (Aron and Poldrack, 2006).
 
 -   **Human:** authorisation for lethal or irreversible actions, by
     someone who can be held accountable (the responsibility gap,
@@ -610,10 +623,12 @@ archive.
     fresh. YB-0049's stage-2 data are new, but its test episodes and
     stage-1 results were known.
 
--   **Not yet independently audited:** the eleven audits (Anthropic,
-    OpenAI and Z.ai models) covered earlier drafts and the YB-0035 to
-    YB-0045 results; this version and YB-0046 to YB-0049 have not been
-    audited. No human expert review yet.
+-   **Audits:** twelve so far. The twelfth (Claude Fable 5.1 and
+    GPT-5.5, both with repository access, and GLM with an evidence
+    bundle) covered this version and YB-0046 to YB-0049; all three
+    returned publishable with fixes, with no wrong number and no
+    critical finding, and the fixes are applied (CORRECTIONS.md, A12-1
+    to A12-8). No human expert review yet.
 
 -   **Untested:** open prose, intent-type failures, adversarial
     manipulation of activations, live agents, deployment-speed
@@ -648,17 +663,20 @@ github.com/YobieBenjamin/autonomic-graph-regulation/blob/main/docs/sources/CITAT
 
 -   **Holds:** the model should never judge its own output; layers at
     different stages beat the best pre-answer check; internal state sees
-    more than question difficulty and transfers better than text; timing
-    decides whether a warning protects anyone; a hospital-style score is
-    a good triage tool.
+    more than question difficulty, and the probe (not the telemetry
+    regulator) kept working on an unseen task type where the trained
+    text monitor did not (a comparison that was not pre-registered);
+    timing decides whether a warning protects anyone; a hospital-style
+    score gives a clean triage gradient (descriptive).
 
 -   **Did not hold:** internal state beating a trained text reader on
     familiar tasks; my telemetry features beating a standard probe;
     same-stage layering beating the best single check; stage-diverse
     layering beating self-consistency alone (a tie, descriptive).
 
--   **Next:** an independent audit of these four results and of this
-    post, then the scale-up.
+-   **Next:** YB-0050, a powered decider on fresh test sets for the
+    close calls (internal state vs a trained text reader; layered vs
+    self-consistency alone), then the scale-up.
 
 -   **Then, at scale:** eight theories with pass criteria, models,
     compute (roughly 1,000 to 2,000 GPU-hours) and people:

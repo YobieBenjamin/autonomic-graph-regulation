@@ -110,9 +110,11 @@ numbers, long strings, dates far in the future. You don't need to look
 inside an AI to know that 401,445 times 290,110 is harder than 574 times
 88.
 
-So I built a check that only looks at how hard the question is. It never
-touches the AI at all. It caught 75 of the 138 mistakes. That alone beat
-the big AI judge by a mile, which tells you the judge was a pushover.
+So I built a check that only looks at how hard the question is, plus how
+long the AI has been thinking. It never looks inside the AI at all. It
+caught 75 of the 138 mistakes, and 73 on difficulty alone. That alone
+beat the big AI judge by a mile, which tells you the judge was a
+pushover.
 
 But the inside readers still beat the difficulty check. And when I added
 the inside reading on top of the difficulty check, it caught more than
@@ -135,14 +137,15 @@ Test failed.
 Then I tried something harder. I trained the checks on some kinds of
 problems and tested them on a kind they had never seen. The standard
 inside reader still worked, though less well than on problems it knew.
-The trained word reader fell apart. That's the real edge of looking
-inside: it handles surprises better. And surprises are exactly what
-safety is about.
+The trained word reader mostly failed on the new kind. And none of the
+checks could handle calendar dates once they hadn't trained on them.
+That's the real edge of looking inside: it handles surprises better. And
+surprises are exactly what safety is about.
 
 One more piece of humble pie. My own 120 "vital signs" didn't beat the
-standard inside reader in any test, and they didn't handle new kinds of
-problems at all. The body and the hospital are a great blueprint for how
-to build the system. They didn't give me better measurements.
+standard inside reader in any test, and they mostly failed on new kinds
+of problems. The body and the hospital are a great blueprint for how to
+build the system. They didn't give me better measurements.
 
 Test 3: do layers beat one check?
 
@@ -189,8 +192,9 @@ layer caught 28. Test passed. Layers work when they look at different
 moments.
 
 Then the twist. The ask-it-again check, all by itself, caught 124.
-That's as many as both layers together. On these problems, the strongest
-single check I've found is watching whether the AI agrees with itself.
+That's one more than both layers together, 124 to 123. On these
+problems, the strongest single check I've found is watching whether the
+AI agrees with itself.
 
 Doesn't that break my first rule? Not quite, and the difference matters.
 I'm not asking the AI whether its answer is right. That's the defendant
@@ -201,8 +205,9 @@ telling you something, whatever he says.
 The ask-it-again check has two catches. It only works after the answer
 exists, and it's slow: about 8 seconds in a typical case, about 20 in a
 slow one. So the action has to wait for it. The inside reader warns
-while the AI is still thinking, in a few thousandths of a second. Fast
-and early, plus slow and strong. That's the pairing.
+while the AI is still thinking. I charged it 5 thousandths of a second
+per check. I haven't measured the real number yet, but the math is tiny.
+Fast and early, plus slow and strong. That's the pairing.
 
 Being right too late
 
@@ -265,7 +270,7 @@ The chip idea
 
 Long term, I want the inside-reading check to run on its own small chip,
 sitting next to the AI's chip. Not an AI. A simple, boring, fixed piece
-of hardware the AI's software can't touch. The math is tiny: about 6,000
+of hardware the AI's software can't touch. The math is tiny: about 5,800
 multiplications for each word the AI writes. That's nothing by chip
 standards.
 
@@ -278,12 +283,13 @@ It's a design, not a product.
 What I'm sure of, and what I'm not
 
 Sure, for this AI and these kinds of questions: the AI should never be
-its own judge. Every check I built that runs as outside code beat the AI
-judge, even the dumb difficulty check. Also sure: reading the inside
-sees more than question difficulty, and it handles new kinds of problems
-better than reading the words. Also sure: layers at different moments
-beat the best inside check on its own. And timing decides whether a
-warning protects anyone.
+its own judge. Every check I built that runs as outside code caught more
+mistakes than the AI judge, even the dumb difficulty check, and where I
+tested the gap, it held. Also sure: reading the inside sees more than
+question difficulty, and the standard inside reader kept working on a
+new kind of problem where reading the words did not. Also sure: layers
+at different moments beat the best inside check on its own. And timing
+decides whether a warning protects anyone.
 
 Not sure: whether reading the inside beats a well-trained word reader on
 familiar problems. It didn't here. Not sure: whether layers beat the
@@ -293,13 +299,13 @@ this holds on other AI models, everyday writing or real products.
 Keeping myself honest
 
 Several of my early results didn't survive, and I retracted them in
-public. Earlier drafts of this post were checked eleven times by AI
-reviewers from three companies, and every source I cite was read in
-full. My four newest tests haven't been through outside review yet.
-That's coming. My own process slipped in a few places too, like a setup
-that could have run a test before its time stamp. I caught those before
-they did damage, and every one is logged in public. No human expert has
-reviewed any of this yet. I'd welcome that.
+public. This work has now been checked twelve times by AI reviewers from
+three companies, including all four new tests, and every source I cite
+was read in full. The latest check found no wrong numbers, plus some
+wording I had pushed too far. I fixed it. My own process slipped in a
+few places too, like a setup that could have run a test before its time
+stamp. I caught those before they did damage, and every one is logged in
+public. No human expert has reviewed any of this yet. I'd welcome that.
 
 Who did what
 
@@ -316,8 +322,8 @@ Who did what
 -   **My research assistant:** Claude, from Anthropic. It helped write
     the code, run the experiments, draft the text and review the work.
 
--   **Outside reviewers on earlier drafts:** Claude Fable and Opus
-    (Anthropic), GPT-5.5 (OpenAI) and GLM (Z.ai).
+-   **Outside reviewers:** Claude Fable and Opus (Anthropic), GPT-5.5
+    (OpenAI) and GLM (Z.ai).
 
 -   **The hardware:** one MacBook. No cluster, no data center.
 

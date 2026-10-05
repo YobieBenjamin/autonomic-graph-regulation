@@ -1,0 +1,59 @@
+{
+ "verdict": "publishable_with_fixes",
+ "claims_checked": 52,
+ "claims_verified": 44,
+ "findings": [
+  {
+   "id": "G1",
+   "severity": "major",
+   "draft": "plain",
+   "quote": "Earlier drafts of this post were checked eleven times by AI reviewers from three companies",
+   "issue": "The evidence states there were eight earlier audits (and lists only seven finding-counts). The technical draft repeats 'the eleven audits'. The count 11 is not supported and conflicts with the evidence.",
+   "evidence": "Other records: 'eight earlier audits found 38 (3 critical), 25 (2), 30 (1), 23 (1), 11 (0), 20 (1) and 15 (1) findings (CORRECTIONS.md)'",
+   "fix": "Replace 'eleven' with 'eight' in both drafts (or reconcile the CORRECTIONS.md audit count and state that number consistently)."
+  },
+  {
+   "id": "G2",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "So I built a check that only looks at how hard the question is. It never touches the AI at all. It caught 75 of the 138 mistakes.",
+   "issue": "The technical draft reports difficulty-only caught 73 of 138; 75 is the difficulty+length monitor. The plain draft attributes 75 to the difficulty check alone, inconsistent with the technical draft.",
+   "evidence": "Draft 2 section 6 table (difficulty only 73; difficulty + length 75); YB-0046 result not in evidence section (UNVERIFIABLE against evidence)",
+   "fix": "Change to 'It caught 73 of the 138 mistakes' (or say 'the difficulty check, with a length feature, caught 75')."
+  },
+  {
+   "id": "G3",
+   "severity": "major",
+   "draft": "technical",
+   "quote": "Plan commit fe4ad29; RFC 3161: FreeTSA 18:29:48 UTC",
+   "issue": "All quantitative results for YB-0046, YB-0047, YB-0048 and YB-0049 (e.g. difficulty 73, text monitor 90, stack 96, banded 86, layered 123, self-consistency 124, AUROCs 0.965/0.982, review timing 8.2 s / 20.7 s, token timing 14.4 ms over 442,306 tokens, the 4 October 2026 timestamps) are central to the draft's conclusions but no result record covers them in the evidence; they are unverifiable here. They are internally consistent between the two drafts.",
+   "evidence": "UNVERIFIABLE (evidence contains only YB-0031/0033/0034/0035, 0042, 0044, 0045, model sizes, judge timing)",
+   "fix": "Supply the committed result files for YB-0046 to YB-0049 (and the token-timing artifact) as evidence before publication, or mark these numbers as pending verification."
+  },
+  {
+   "id": "G4",
+   "severity": "minor",
+   "draft": "plain",
+   "quote": "NVIDIA recently released a safety tool called OpenShell",
+   "issue": "The evidence confirms OpenShell 0.1.2 was used on Colima but does not confirm the vendor or that NVIDIA 'recently released' it; the technical draft calls it an open-source sandbox paired within NVIDIA's platform, which is a slightly different claim.",
+   "evidence": "UNVERIFIABLE",
+   "fix": "Soften to 'OpenShell, an open-source sandbox that ships as part of NVIDIA's Open Agent Safety Platform' or verify the release attribution."
+  }
+ ],
+ "_meta": {
+  "model": "glm-5.3-flash",
+  "endpoint": "https://api.z.ai/api/paas/v4/chat/completions",
+  "seconds": 155,
+  "usage": {
+   "completion_tokens": 5878,
+   "completion_tokens_details": {
+    "reasoning_tokens": 5041
+   },
+   "prompt_tokens": 19940,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "total_tokens": 25818
+  }
+ }
+}

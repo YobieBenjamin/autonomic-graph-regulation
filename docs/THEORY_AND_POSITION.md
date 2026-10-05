@@ -1,4 +1,4 @@
-# The AGR theory and position (v1, 2026-10-04)
+# The AGR theory and position (v2, 2026-10-05; v1 2026-10-04)
 
 Every claim below carries an evidence status. **Established (here)**: supported by a pre-registered test on our data. **Narrow**: supported, but
 only for one model and synthetic tasks. **Open**: tested and not supported, or untested. **Proposal**: an engineering design not yet built.
@@ -32,7 +32,7 @@ specific biology-inspired measurements (P7) are not supported and are not claime
 | L1 Interoceptive monitor | Error-related negativity (about 100 ms) | Continuous vital-signs monitor | Hidden state or telemetry (probe) | milliseconds | Score per token |
 | L2 Context monitors | Prefrontal appraisal | Nurse reading the chart | Question difficulty, trained text-prefix classifier | milliseconds | Score per checkpoint |
 | L3 Early-warning score | Autonomic integration | NEWS2 aggregate score | Bands from L1 and L2 combined into one level: stable, watch, concern, urgent | milliseconds | Escalation level |
-| L4 Gate | Stop signal (about 190 ms) | Hold the procedure | Escalation level plus action type (permission system such as OpenShell; out-of-band enforcement such as Sentry) | must beat commit time | Allow, hold, block |
+| L4 Gate | Stop signal (stop-signal reaction time near 190 ms, as fast as about 120 ms) | Hold the procedure | Escalation level plus action type (permission system such as OpenShell; out-of-band enforcement such as Sentry) | must beat commit time | Allow, hold, block |
 | L5 Review | Deliberate reflection | Senior physician review | Finished answer (self-consistency, LLM judge) | seconds | Second opinion on held actions |
 | L6 Human | Conscious decision | Consultant sign-off | Everything above | minutes | Authorise irreversible or lethal actions; accountable |
 
@@ -62,6 +62,5 @@ combination stopped every alarmed wrong action only in hold-until-cleared mode, 
 races. "The coupling works" is true for hold mode as a design property; it is not yet shown live, at deployment speed or on NVIDIA hardware.
 
 ## 6. Next tests
-- YB-0048 (now, existing data): does a NEWS2-style multi-signal score beat its best single component, and do the signals catch different
-  errors? Tests P4 and P5.
+- YB-0050 (laptop): a powered decider on fresh test sets for the close calls: internal state vs a trained text reader, and layered vs self-consistency alone.
 - Scale-up T1 to T8 (docs/SCALE_UP_PROPOSAL.md), including a chip prototype for P6 and T7, and adversarial tests (T8).
