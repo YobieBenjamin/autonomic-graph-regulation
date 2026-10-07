@@ -34,3 +34,7 @@ algorithms/YB-0048-multilevel-fusion/data/
 algorithms/YB-0049-stage-diverse-layering/data/*.npz
 algorithms/YB-0049-stage-diverse-layering/data/seed*_LH.jsonl.gz
 algorithms/YB-0049-stage-diverse-layering/data/prefix_judge_abs_*
+
+# YB-0050 reuses the YB-0045 recordings (seeds 2-14) via local hard links; new test seeds 15-26 are tracked here
+algorithms/YB-0050-powered-decider/data/*seed[2-9][_.]*
+algorithms/YB-0050-powered-decider/data/*seed1[0-4][_.]*
