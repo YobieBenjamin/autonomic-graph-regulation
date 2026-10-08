@@ -1,0 +1,650 @@
+{
+ "note": "EXPLORATORY: YB-0050 test seeds 15-26 reused as derivation data; selection only, not evidence",
+ "episodes": 6457,
+ "wrong": 530,
+ "correct": 5927,
+ "table": {
+  "probe": {
+   "fa_0.1": {
+    "caught": 363,
+    "recall": 0.6849,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 229,
+    "recall": 0.4321,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 159,
+    "recall": 0.3,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 105,
+    "recall": 0.1981,
+    "fpr": 0.0049
+   }
+  },
+  "text": {
+   "fa_0.1": {
+    "caught": 335,
+    "recall": 0.6321,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 217,
+    "recall": 0.4094,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 152,
+    "recall": 0.2868,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 100,
+    "recall": 0.1887,
+    "fpr": 0.0049
+   }
+  },
+  "stack": {
+   "fa_0.1": {
+    "caught": 360,
+    "recall": 0.6792,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 226,
+    "recall": 0.4264,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 150,
+    "recall": 0.283,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 109,
+    "recall": 0.2057,
+    "fpr": 0.0049
+   }
+  },
+  "banded": {
+   "fa_0.1": {
+    "caught": 315,
+    "recall": 0.5943,
+    "fpr": 0.0695
+   },
+   "fa_0.02": {
+    "caught": 190,
+    "recall": 0.3585,
+    "fpr": 0.0175
+   },
+   "fa_0.01": {
+    "caught": 100,
+    "recall": 0.1887,
+    "fpr": 0.0079
+   },
+   "fa_0.005": {
+    "caught": 69,
+    "recall": 0.1302,
+    "fpr": 0.0024
+   }
+  },
+  "difficulty": {
+   "fa_0.1": {
+    "caught": 271,
+    "recall": 0.5113,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 103,
+    "recall": 0.1943,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 71,
+    "recall": 0.134,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 37,
+    "recall": 0.0698,
+    "fpr": 0.0049
+   }
+  },
+  "self_consistency": {
+   "fa_0.1": {
+    "caught": 498,
+    "recall": 0.9396,
+    "fpr": 0.0869
+   },
+   "fa_0.02": {
+    "caught": 279,
+    "recall": 0.5264,
+    "fpr": 0.0105
+   },
+   "fa_0.01": {
+    "caught": 0,
+    "recall": 0.0,
+    "fpr": 0.0
+   },
+   "fa_0.005": {
+    "caught": 0,
+    "recall": 0.0,
+    "fpr": 0.0
+   }
+  },
+  "sc_tiebreak_probe": {
+   "fa_0.1": {
+    "caught": 503,
+    "recall": 0.9491,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 380,
+    "recall": 0.717,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 271,
+    "recall": 0.5113,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 176,
+    "recall": 0.3321,
+    "fpr": 0.0049
+   }
+  },
+  "sc_tiebreak_stack": {
+   "fa_0.1": {
+    "caught": 502,
+    "recall": 0.9472,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 367,
+    "recall": 0.6925,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 276,
+    "recall": 0.5208,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 165,
+    "recall": 0.3113,
+    "fpr": 0.0049
+   }
+  },
+  "rank_mean_sc_stack": {
+   "fa_0.1": {
+    "caught": 454,
+    "recall": 0.8566,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 308,
+    "recall": 0.5811,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 258,
+    "recall": 0.4868,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 184,
+    "recall": 0.3472,
+    "fpr": 0.0047
+   }
+  },
+  "logit_sc_plus_nonllm": {
+   "fa_0.1": {
+    "caught": 504,
+    "recall": 0.9509,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 380,
+    "recall": 0.717,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 295,
+    "recall": 0.5566,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 180,
+    "recall": 0.3396,
+    "fpr": 0.0049
+   }
+  },
+  "logit_nonllm_only": {
+   "fa_0.1": {
+    "caught": 366,
+    "recall": 0.6906,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 226,
+    "recall": 0.4264,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 148,
+    "recall": 0.2792,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 106,
+    "recall": 0.2,
+    "fpr": 0.0049
+   }
+  },
+  "probe_per_task": {
+   "fa_0.1": {
+    "caught": 38,
+    "recall": 0.0717,
+    "fpr": 0.0788
+   },
+   "fa_0.02": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   },
+   "fa_0.01": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   },
+   "fa_0.005": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   }
+  },
+  "stack_per_task": {
+   "fa_0.1": {
+    "caught": 32,
+    "recall": 0.0604,
+    "fpr": 0.0788
+   },
+   "fa_0.02": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   },
+   "fa_0.01": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   },
+   "fa_0.005": {
+    "caught": 18,
+    "recall": 0.034,
+    "fpr": 0.0015
+   }
+  },
+  "sc_tb_stack_per_task": {
+   "fa_0.1": {
+    "caught": 463,
+    "recall": 0.8736,
+    "fpr": 0.0999
+   },
+   "fa_0.02": {
+    "caught": 334,
+    "recall": 0.6302,
+    "fpr": 0.0199
+   },
+   "fa_0.01": {
+    "caught": 263,
+    "recall": 0.4962,
+    "fpr": 0.01
+   },
+   "fa_0.005": {
+    "caught": 205,
+    "recall": 0.3868,
+    "fpr": 0.0049
+   }
+  }
+ },
+ "partial_auroc_to_1pct": {
+  "probe": 0.182,
+  "text": 0.1751,
+  "stack": 0.1864,
+  "banded": 0.1495,
+  "difficulty": 0.0676,
+  "self_consistency": 0.2516,
+  "sc_tiebreak_probe": 0.3312,
+  "sc_tiebreak_stack": 0.3121,
+  "rank_mean_sc_stack": 0.3477,
+  "logit_sc_plus_nonllm": 0.3388,
+  "logit_nonllm_only": 0.1855,
+  "probe_per_task": 0.032,
+  "stack_per_task": 0.0331,
+  "sc_tb_stack_per_task": 0.3596
+ },
+ "burden_at_1pct_fa": {
+  "probe": {
+   "precision": [
+    0.2334,
+    0.2022,
+    0.2694
+   ],
+   "alarms_per_million": [
+    12854.9,
+    12116.1643,
+    13378.7345
+   ],
+   "false_per_true": 3.28
+  },
+  "text": {
+   "precision": [
+    0.2254,
+    0.1866,
+    0.2613
+   ],
+   "alarms_per_million": [
+    12722.8,
+    11897.3433,
+    13299.2171
+   ],
+   "false_per_true": 3.44
+  },
+  "stack": {
+   "precision": [
+    0.2231,
+    0.1924,
+    0.2664
+   ],
+   "alarms_per_million": [
+    12685.1,
+    11901.0332,
+    13365.3923
+   ],
+   "false_per_true": 3.48
+  },
+  "banded": {
+   "precision": [
+    0.1938,
+    0.154,
+    0.2716
+   ],
+   "alarms_per_million": [
+    9737.3,
+    4569.6374,
+    11782.8777
+   ],
+   "false_per_true": 4.16
+  },
+  "difficulty": {
+   "precision": [
+    0.1197,
+    0.0889,
+    0.1499
+   ],
+   "alarms_per_million": [
+    11194.5,
+    10493.4535,
+    11550.7403
+   ],
+   "false_per_true": 7.36
+  },
+  "self_consistency": {
+   "precision": [
+    NaN,
+    0.3385,
+    0.4202
+   ],
+   "alarms_per_million": [
+    0.0,
+    0.0,
+    15204.4752
+   ],
+   "false_per_true": null
+  },
+  "sc_tiebreak_probe": {
+   "precision": [
+    0.3416,
+    0.3151,
+    0.3996
+   ],
+   "alarms_per_million": [
+    14968.1,
+    14121.8396,
+    16299.5263
+   ],
+   "false_per_true": 1.93
+  },
+  "sc_tiebreak_stack": {
+   "precision": [
+    0.3457,
+    0.2849,
+    0.4026
+   ],
+   "alarms_per_million": [
+    15062.4,
+    13514.1251,
+    16361.0654
+   ],
+   "false_per_true": 1.89
+  },
+  "rank_mean_sc_stack": {
+   "precision": [
+    0.3306,
+    0.3078,
+    0.3569
+   ],
+   "alarms_per_million": [
+    14722.8,
+    14017.7821,
+    15173.8675
+   ],
+   "false_per_true": 2.02
+  },
+  "logit_sc_plus_nonllm": {
+   "precision": [
+    0.3609,
+    0.3221,
+    0.3972
+   ],
+   "alarms_per_million": [
+    15420.9,
+    14249.8975,
+    16267.9855
+   ],
+   "false_per_true": 1.77
+  },
+  "logit_nonllm_only": {
+   "precision": [
+    0.2208,
+    0.1898,
+    0.2552
+   ],
+   "alarms_per_million": [
+    12647.4,
+    11929.9882,
+    13130.3585
+   ],
+   "false_per_true": 3.53
+  },
+  "probe_per_task": {
+   "precision": [
+    0.1843,
+    0.1005,
+    0.3833
+   ],
+   "alarms_per_million": [
+    1842.9,
+    951.7507,
+    2911.6172
+   ],
+   "false_per_true": 4.43
+  },
+  "stack_per_task": {
+   "precision": [
+    0.1843,
+    0.093,
+    0.378
+   ],
+   "alarms_per_million": [
+    1842.9,
+    967.2157,
+    2836.7845
+   ],
+   "false_per_true": 4.43
+  },
+  "sc_tb_stack_per_task": {
+   "precision": [
+    0.3349,
+    0.3132,
+    0.3651
+   ],
+   "alarms_per_million": [
+    14817.2,
+    14110.0633,
+    15378.016
+   ],
+   "false_per_true": 1.99
+  }
+ },
+ "recall_ci_at_1pct": {
+  "probe": [
+   0.3,
+   0.2472,
+   0.3585
+  ],
+  "text": [
+   0.2868,
+   0.2248,
+   0.3463
+  ],
+  "stack": [
+   0.283,
+   0.2327,
+   0.3554
+  ],
+  "banded": [
+   0.1887,
+   0.1356,
+   0.2362
+  ],
+  "difficulty": [
+   0.134,
+   0.0956,
+   0.1729
+  ],
+  "self_consistency": [
+   0.0,
+   0.0,
+   0.5614
+  ],
+  "sc_tiebreak_probe": [
+   0.5113,
+   0.449,
+   0.6499
+  ],
+  "sc_tiebreak_stack": [
+   0.5208,
+   0.3909,
+   0.6567
+  ],
+  "rank_mean_sc_stack": [
+   0.4868,
+   0.4356,
+   0.5379
+  ],
+  "logit_sc_plus_nonllm": [
+   0.5566,
+   0.4596,
+   0.6437
+  ],
+  "logit_nonllm_only": [
+   0.2792,
+   0.2298,
+   0.3347
+  ],
+  "probe_per_task": [
+   0.034,
+   0.0199,
+   0.0506
+  ],
+  "stack_per_task": [
+   0.034,
+   0.0199,
+   0.0499
+  ],
+  "sc_tb_stack_per_task": [
+   0.4962,
+   0.4467,
+   0.5584
+  ]
+ },
+ "conjunction_grid": {
+  "stack_q0.80_and_d>=0.25": {
+   "recall": 0.817,
+   "fpr": 0.1078,
+   "caught": 433
+  },
+  "stack_q0.80_and_d>=0.50": {
+   "recall": 0.7906,
+   "fpr": 0.0493,
+   "caught": 419
+  },
+  "stack_q0.80_and_d>=0.75": {
+   "recall": 0.6774,
+   "fpr": 0.025,
+   "caught": 359
+  },
+  "stack_q0.80_and_d>=1.00": {
+   "recall": 0.4585,
+   "fpr": 0.0091,
+   "caught": 243
+  },
+  "stack_q0.90_and_d>=0.25": {
+   "recall": 0.6717,
+   "fpr": 0.0668,
+   "caught": 356
+  },
+  "stack_q0.90_and_d>=0.50": {
+   "recall": 0.6585,
+   "fpr": 0.0353,
+   "caught": 349
+  },
+  "stack_q0.90_and_d>=0.75": {
+   "recall": 0.5755,
+   "fpr": 0.0191,
+   "caught": 305
+  },
+  "stack_q0.90_and_d>=1.00": {
+   "recall": 0.3943,
+   "fpr": 0.0074,
+   "caught": 209
+  },
+  "stack_q0.95_and_d>=0.25": {
+   "recall": 0.5585,
+   "fpr": 0.0391,
+   "caught": 296
+  },
+  "stack_q0.95_and_d>=0.50": {
+   "recall": 0.5509,
+   "fpr": 0.0238,
+   "caught": 292
+  },
+  "stack_q0.95_and_d>=0.75": {
+   "recall": 0.4849,
+   "fpr": 0.0135,
+   "caught": 257
+  },
+  "stack_q0.95_and_d>=1.00": {
+   "recall": 0.334,
+   "fpr": 0.0059,
+   "caught": 177
+  }
+ }
+}
