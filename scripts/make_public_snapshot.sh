@@ -22,6 +22,8 @@ ORIGIN_SHA=$(git ls-remote origin -h refs/heads/main | cut -c1-40)
 
 mkdir -p "$PUB"
 [ -d "$PUB/.git" ] || git -C "$PUB" init -q -b main
+# Build on top of whatever the public repository already has (another machine may have pushed), so the push is a fast-forward.
+if git -C "$PUB" remote get-url origin > /dev/null 2>&1; then git -C "$PUB" fetch -q origin && git -C "$PUB" reset -q --hard origin/main; fi
 find "$PUB" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git archive "$SRC" | tar -x -C "$PUB"
 rm -rf "$PUB/docs/book" "$PUB/.github/workflows/mine.yml"

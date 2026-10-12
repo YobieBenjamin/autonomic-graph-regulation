@@ -1,0 +1,15 @@
+{
+ "episodes": 6457,
+ "wrong": 530,
+ "C2": {
+  "caught_1pct": 299,
+  "caught_0p5pct": 178,
+  "distinct_top2pct": 129
+ },
+ "C4": {
+  "caught_1pct": 314,
+  "caught_0p5pct": 239,
+  "distinct_top2pct": 129
+ },
+ "top2pct_size": 129
+}

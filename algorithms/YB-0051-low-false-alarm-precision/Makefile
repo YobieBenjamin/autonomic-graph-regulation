@@ -8,9 +8,20 @@ build: src/libcore.so
 src/libcore.so: src/vitals.c src/hpa.c src/layergraph.c
 	gcc -O2 -Wall -Wextra -Werror -shared -fPIC -o $@ $^ -lm
 test: build
-	python3 -m py_compile src/*.py explore/*.py
+	python3 -m py_compile src/*.py explore/*.py tests/*.py
+	python3 tests/test_candidates.py
+	python3 tests/c4_check.py
+smoke: build
+	SMOKE=1 python3 tests/score_test.py
+	SMOKE=1 python3 tests/experiment.py
+dryrun: build
+	DRY_RUN=1 python3 tests/score_test.py
+	DRY_RUN=1 python3 tests/experiment.py
+confirmatory: build
+	RUN_CONFIRMATORY=1 python3 tests/score_test.py
+	RUN_CONFIRMATORY=1 python3 tests/experiment.py
 experiment: build
-	@echo "YB-0051: no confirmatory experiment yet (exploratory stage)"
+	python3 tests/experiment.py
 explore: build
 	python3 explore/dump_scores.py
 	python3 explore/levers.py

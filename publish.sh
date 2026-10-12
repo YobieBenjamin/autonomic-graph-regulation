@@ -50,4 +50,5 @@ fi
 echo "Published: https://github.com/$OWNER/$REPO"
 
 # mirror sync: keep the second local copy (~/safety) identical to GitHub after every publish
-[ -d "$HOME/safety/.git" ] && git -C "$HOME/safety" pull -q --ff-only || echo "warning: mirror ~/safety not synced"
+# pull from this local copy (same commits just pushed; avoids re-downloading large data over the network), then refresh origin refs
+[ -d "$HOME/safety/.git" ] && git -C "$HOME/safety" pull -q --ff-only "$PWD" main && git -C "$HOME/safety" fetch -q origin || echo "warning: mirror ~/safety not synced"
