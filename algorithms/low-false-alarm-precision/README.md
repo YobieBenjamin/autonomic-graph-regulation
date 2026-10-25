@@ -57,4 +57,6 @@ Errors caught (of 541) at each false-alarm budget:
 
 ## Files
 tests/candidates.py, tests/score_test.py, tests/experiment.py (frozen, timestamped); docs/results.json; docs/c4_derivation_check.json;
-data/test_scores.npz; data/selfcons_yb0051_seed27-38.jsonl; data/seed27-38 recordings; agr/selfcons_yb0051.py; agr/yb0051_chain.sh.
+data/test_scores.npz; data/selfcons_yb0051_seed27-38.jsonl; data/seed27-38 recordings; agr/selfcons_yb0051.py; agr/low-false-alarm-precision-chain.sh.
+
+The recorder and its data files keep their old names (agr/selfcons_yb0051.py, data/selfcons_yb0051_seed*.jsonl) on purpose: the timestamped plan froze the recorder and the analysis that reads them, byte for byte and at their paths.

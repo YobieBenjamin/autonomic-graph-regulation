@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-SUBSTRATE-ENTROPY-PROPOSITION-RETRACTED: the substrate entropy included answer tokens; Proposition 2 is RETRACTED. Re-windowing open.
 
 **Status:** tested · **Verdict:** ❌ negative. GPU/CPU power carries no failure signal (AUROC 0.40, CI 0.26–0.56); timing none either; reasoning-phase substrate signals do (0.75). Transformers have no metabolism.
-**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/YB-0018-metabolic-vitals all`).
+**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/metabolic-vitals all`).
 
 ## 1. Plain English
 In a body, stress changes metabolism: heart rate, breathing and energy use rise. We asked whether a transformer is the same: when it is about to get an answer wrong, does the GPU work harder? We measured the Mac's GPU and CPU power about eight times a second while the patient model answered 240 machine-graded questions.

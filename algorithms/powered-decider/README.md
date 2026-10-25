@@ -10,8 +10,8 @@ disagreement with itself is used only as a signal measured by outside code; the 
 and, for irreversible acts, a human.
 
 ## Run
-One command on the Mac: `agr/yb0050_start.sh` (waits for AC power; `--now` to skip). Progress: /tmp/chain50.log, copied to
-agr/yb0050_chain_progress.log. Analysis targets: `make smoke`, `make dryrun`, `make confirmatory` (only after the public timestamp).
+One command on the Mac: `agr/powered-decider-start.sh` (waits for AC power; `--now` to skip). Progress: /tmp/chain50.log, copied to
+agr/powered-decider-chain-progress.log. Analysis targets: `make smoke`, `make dryrun`, `make confirmatory` (only after the public timestamp).
 
 ## Code
 src/decider.py (alarm rules, one paired bootstrap for every comparison, burden arithmetic, operation counts; new), tests/experiment.py
@@ -19,9 +19,11 @@ src/decider.py (alarm rules, one paired bootstrap for every comparison, burden a
 docs/src_hashes.txt. Recorders: agr/recorder.py (unchanged), agr/selfcons_yb0050.py (agr/selfcons_yb0049.py with only seeds and file
 names changed).
 
+The recorder and its data files keep their old names (agr/selfcons_yb0050.py, data/selfcons_yb0050_seed*.jsonl) on purpose: the timestamped plan froze the recorder and the analysis that reads them, byte for byte and at their paths.
+
 ## Data
 Derivation: EXPERIMENT-POWERED-REPLICATION recordings, seeds 2 to 14, through hash-verified local hard links (not tracked; the record is
-algorithms/YB-0045-powered-replication/data). Test: seeds 15 to 26 and their self-consistency reviews, packed into data/ by the chain
+algorithms/powered-replication/data). Test: seeds 15 to 26 and their self-consistency reviews, packed into data/ by the chain
 (tracked).
 
 ## Results (confirmatory; plan committed 64150a4, RFC 3161 timestamps 04:06:46 and 04:06:47 UTC 2026-10-06 (FreeTSA, DigiCert);
@@ -47,7 +49,7 @@ Test: seeds 15 to 26, 7,200 episodes, 6,457 answered, 530 wrong (743 never answe
 1. Battery stop: on 2026-10-06 the Mac was unplugged; the battery guard stopped the chain at 20:57 UTC (12%), but the self-consistency
    recorder ignored SIGINT inside MLX and kept running unsupervised. It was stopped cleanly by SIGTERM at about 21:46 UTC and the chain
    resumed at 21:46 UTC from the timestamped plan (RESUME_AFTER_TIMESTAMP; plan and recorders unchanged; the recorder resumes from
-   complete records). The guard (agr/battery_guard_yb0050.sh) was patched to escalate SIGINT, then SIGTERM, then SIGKILL. Concurrent
+   complete records). The guard (agr/battery-guard-powered-decider.sh) was patched to escalate SIGINT, then SIGTERM, then SIGKILL. Concurrent
    conditions during part of the run are recorded in the environment snapshots.
 2. The automated results publish failed on a network timeout (HTTP 408) after the results commit 310c89a; the push was retried with a
    larger HTTP buffer. No analysis was re-run.

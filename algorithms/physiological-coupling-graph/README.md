@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-TOPOLOGY-WINDOW-COUNT-PROXY: topology features include the number of windows, a proxy for reasoning length; results pending a rerun without it (open).
 
 **Status:** tested · **Verdict:** graph topology carries signal ✅ (95% CI above chance, barely); adds information beyond raw signals ❌ not at this node count.
-**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/YB-0009-physiological-coupling-graph all`).
+**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/physiological-coupling-graph all`).
 
 ## 1. Plain English
 In medicine, network physiology looks not only at each vital sign but at how they move together: heart, breathing and brain rhythms couple and decouple as the body changes state. Here each vital sign of the patient transformer (uncertainty, confidence, margin, token timing, and their moment-to-moment variability) is a node, and an edge links two signals by how strongly they move together, allowing small time lags. For every stretch of 24 tokens we get a small graph, and we read its shape: how tightly it is knit (algebraic connectivity), how evenly organized (spectral entropy), how much total coupling, and how much that coupling itself fluctuates over time (graph-HRV).

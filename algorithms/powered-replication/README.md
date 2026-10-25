@@ -1,9 +1,9 @@
 # EXPERIMENT-POWERED-REPLICATION · Powered replication of the in-time comparison with the LLM judge
 
 **Status:** pre-registered (docs/PREREGISTRATION.md, analysis code, dry run docs/dryrun.json) before any test recording. **Result: EXPERIMENT-POWERED-REGULATOR-BEATS-JUDGE supported**, regulator minus judge +0.478 [+0.307, +0.560].
-**Reproduce:** SANDBOX_MEM=16g SANDBOX_TIMEOUT=21600 sandbox/run.sh algorithms/YB-0045-powered-replication all (dry run: DRY_RUN=1).
+**Reproduce:** SANDBOX_MEM=16g SANDBOX_TIMEOUT=21600 sandbox/run.sh algorithms/powered-replication all (dry run: DRY_RUN=1).
 
-Training data matched to EXPERIMENT-CORRECTED-REALTIME-RACE (10 seeds, about 5,350 answered); three fresh test seeds (9, 13, 14; about 120 wrong answers); false-alarm population identical in prose and code (all answered test episodes; verified in the dry run). Primary: regulator minus LLM judge, in-time recall, lower 95% bound > 0. Chain: agr/yb0045_chain.sh.
+Training data matched to EXPERIMENT-CORRECTED-REALTIME-RACE (10 seeds, about 5,350 answered); three fresh test seeds (9, 13, 14; about 120 wrong answers); false-alarm population identical in prose and code (all answered test episodes; verified in the dry run). Primary: regulator minus LLM judge, in-time recall, lower 95% bound > 0. Chain: agr/powered-replication-chain.sh.
 
 ## Results (pre-registered analysis, run unchanged; docs/results.json)
 Test: seeds 9, 13, 14 pooled, 1,605 answered, 138 wrong; population = all correct answered test episodes (582 short correct episodes included). Derivation: 5,365 answered (9,189 observations).

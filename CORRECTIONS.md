@@ -166,7 +166,7 @@ Independent, read-only audit (archive/audit/blog_v4_audit_2026-10-01.md). Verdic
 
 | ID | Finding | How found | Resolution |
 |---|---|---|---|
-| REVIEW-RAW-RECORDINGS-COMMITTED | The YB-0042 chain publish committed 4,810 raw per-episode recordings (about 466 MB) under data/agr: new filenames were not covered by .gitignore | Found by the three-copy verification before any public upload completed (public stayed at b7d526d) | FIX: untracked (files kept locally and in private history; packed copies under algorithms/YB-0042-probe-baseline/data are the record); .gitignore extended; snapshot pipeline now aborts on raw recordings |
+| REVIEW-RAW-RECORDINGS-COMMITTED | The EXPERIMENT-PROBE-BASELINE chain publish committed 4,810 raw per-episode recordings (about 466 MB) under data/agr: new filenames were not covered by .gitignore | Found by the three-copy verification before any public upload completed (public stayed at b7d526d) | FIX: untracked (files kept locally and in private history; packed copies under algorithms/probe-baseline/data are the record); .gitignore extended; snapshot pipeline now aborts on raw recordings |
 
 ## Sixth audit (2026-10-01): the v6 blog drafts, including the first audit of EXPERIMENT-PROBE-BASELINE and the NVIDIA section
 

@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-WARNING-SCORE-NOT-PREREGISTERED: retrospective, not truly pre-registered (pre-registration committed minutes before results on thrice-used data); EXPERIMENT-VITAL-CRITICAL-SLOWING-TREND changed. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: question type (0.764) and length (0.796) exceed its AUROC (0.725). REVIEW-LEVEL-ORDERING-SMALL-GROUPS: 'perfectly ordered' rests on groups of 17, 8 and 2.
 
 **Status:** tested · **Verdict (pre-registered, commit cb72e92):** EXPERIMENT-EARLY-WARNING-SCORE-PREDICTS ✅ predicts failure (AUROC 0.725, CI 0.587–0.857); EXPERIMENT-EARLY-WARNING-LEVELS-ORDERED ✅ levels perfectly ordered (stable 5.8%, watch 11.8%, concern 75%, urgent 100% failure rate); EXPERIMENT-EARLY-WARNING-MATCHES-BLACK-BOX ✅ not significantly worse than the black-box deep organism; EXPERIMENT-EARLY-WARNING-RISING-TRAJECTORY ❌ scores do not rise over reasoning (but failures fail to settle while successes do).
-**Reproduce:** `make` here (sandbox: `sandbox/run.sh algorithms/YB-0030-ai-ews-v1 all`). Methodology: docs/AI_EWS_METHODOLOGY.md.
+**Reproduce:** `make` here (sandbox: `sandbox/run.sh algorithms/ai-early-warning-score all`). Methodology: docs/AI_EWS_METHODOLOGY.md.
 
 ## 1. Plain English
 Hospitals do not ask a patient whether they feel fine; they score a handful of vital signs against normal ranges, add the points, and act on the level: stable, watch, concern, urgent. We built the same thing for a transformer. Seven internal vital signs (never its words) are each scored 0 to 3 by how far they sit outside the model's own healthy range; the points add up to a score from 0 to 21 that anyone can read and explain.

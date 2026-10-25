@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-REASONING-TRACE-CLAIM-RETRACTED: RETRACTED 'the reasoning trace detects errors and is not contaminated': the tier-2 features used the whole generation and the answer segment; no reasoning-only feature was tested. Re-test open.
 
 **Status:** tested · **Verdict:** gospel premise ✅ confirmed; contamination hypothesis ❌ not supported for reasoning-phase substrate signals; physical timing ⚠️ weak once question type is controlled.
-**Reproduce:** `make` in this folder (or `sandbox/run.sh algorithms/YB-0015-contamination-test all` from the repo root).
+**Reproduce:** `make` in this folder (or `sandbox/run.sh algorithms/contamination-test all` from the repo root).
 
 ## 1. Plain English
 The author's thesis: watching a transformer's output fails, because the output always sounds confident ('gospel') whether it is right or wrong, so safety must come from internal vital signs. This experiment asked a stricter question: are the transformer's own internal statistics (how uncertain it is, token by token) trustworthy, or contaminated by the same confidence problem? And do physical signals (timing, effort) catch what the internal statistics miss?

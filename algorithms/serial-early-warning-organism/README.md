@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-LENGTH-CONTROL-NOT-REPRODUCIBLE: the length-only control is now reproducible (archive/audit/artifacts/). REVIEW-LAYER-TAP-ONE-STEP-LATE applies. The eureka flag was not accepted (look-ahead), as stated below.
 
 **Status:** tested · **Pre-registered EUREKA flag: true — NOT ACCEPTED.** A post-hoc validity check found look-ahead leakage in the pre-registered checkpoint design (checkpoints at fractions of the *total* reasoning length reveal that length, which a real-time monitor cannot know). Length alone catches 15/46 errors in time, more than the LLM judge (9/46). The serial organism's 29/46 is about double the length-only control, suggesting real signal beyond length, but this design cannot prove it. Confirmation requires EXPERIMENT-CLEAN-REALTIME-RACE (absolute-time checkpoints, length-only control, fresh seed).
-**Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/YB-0032-serial-early-warning-organism all`; dry run with `DRY_RUN=1`.
+**Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/serial-early-warning-organism all`; dry run with `DRY_RUN=1`.
 
 ## 1. Plain English
 Hospitals judge a patient's vitals against what is normal at that stage of care, measured again and again. We trained the organism the same way: on the model's internal vitals at 25%, 50%, 75% and 100% of each reasoning trace (about 19,000 observations), with 'normal' defined per stage. On 600 fresh questions it caught 29 of 46 wrong answers before the answer was emitted, against 9 for a 120-billion-parameter AI judge and 3 for the same organism trained only on finished reasoning, at the same false-alarm rate. That looked like the breakthrough.

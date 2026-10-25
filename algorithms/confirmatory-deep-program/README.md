@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-SETTLING-DRIVEN-BY-WEEKDAY: EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE (failure to settle) is driven by the day-of-week questions. REVIEW-SILENT-SLIP-TEST-SET-THRESHOLD: EXPERIMENT-CONFIRMATORY-SILENT-SLIPS used a test-set threshold; 'silent slip' is defined by question type. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: its AUROC (0.89) exceeds question type (0.80) and length (0.73). REVIEW-LAYER-TAP-ONE-STEP-LATE applies.
 
 **Status:** tested · **EUREKA: false** (pre-registered, commit b177662). EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY real-time superiority ❌ inferior to the LLM judge. EXPERIMENT-CONFIRMATORY-ACCURACY accuracy: deep organism 0.89, **not distinguishable from the LLM judge**, inferior to self-consistency. EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE AI-EWS v2 levels ❌ not fully ordered. **EXPERIMENT-CONFIRMATORY-SILENT-SLIPS silent slips ✅ (60% caught). EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE failure to settle ✅ (p = 0.0007).**
-**Reproduce:** `SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/YB-0031-confirmatory-deep-program all` (about 1 hour).
+**Reproduce:** `SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/confirmatory-deep-program all` (about 1 hour).
 
 ## 1. Plain English
 This was the test built to make a breakthrough undeniable: every model, band and threshold was fitted on 4,800 episodes, then judged exactly once on 600 fresh ones that no analysis had ever seen, against the strongest behavior monitors, with false-alarm rates matched in advance.

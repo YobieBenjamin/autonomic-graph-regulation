@@ -3,7 +3,7 @@
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-HPA-VARIANCE-RATIO-MISSTATED: 'variance 9-10x lower' is a coefficient-of-variation ratio (about 3.7x above resting level) and the drive correlates with length; REVIEW-TOKEN-COST-MISATTRIBUTED: 290 ns/token is the HPA regulator only (the competing regulators cost 2-4 ms per check); REVIEW-HPA-THEOREM-WORDING: wording.
 
 **Status:** tested · **Verdict:** theorems EXPERIMENT-HPA-POSITIVITY-THEOREM to EXPERIMENT-HPA-UNIQUE-RESTING-LEVEL ✅ proved and confirmed; author's trend prediction ✅ confirmed (rho 0.75 and 0.92; variance 9–10× lower); discrimination ⚠️ lower than raw signals (the price of stability).
-**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/YB-0017-hpa-axis-organism all`).
+**Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/hpa-axis-organism all`).
 
 ## 1. Plain English
 The body does not react to every flicker of danger. The hypothalamus, pituitary and adrenal glands (the HPA axis) form a chain: a stress signal releases CRH, CRH releases ACTH, ACTH releases cortisol, and cortisol slowly builds up and then switches the first two off (negative feedback). That makes the stress response graded, stable and self-limiting.

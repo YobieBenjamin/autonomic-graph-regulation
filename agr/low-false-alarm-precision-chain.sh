@@ -2,18 +2,24 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-# EXPERIMENT-LOW-FALSE-ALARM-PRECISION chain (one command, resumable; start it with agr/yb0051_start.sh). Copy of agr/yb0050_chain.sh; changes: algorithm folder,
+# EXPERIMENT-LOW-FALSE-ALARM-PRECISION chain (one command, resumable; start it with agr/low-false-alarm-precision-start.sh). Copy of agr/powered-decider-chain.sh; changes: algorithm folder,
 # test seeds 27-38, 8-sample review recorder run seed by seed, a 2-episode real-model review smoke on derivation seed 2 before the
 # timestamp, and an AC-power check before every seed (lesson of the EXPERIMENT-POWERED-DECIDER battery stop). Never re-timestamps (rule 16).
+# Names: the folders, scripts, data files, /tmp logs and done markers used here carry the experiments' descriptive names
+# (2026-10 rename, which retired the YB numbers), except the plan-frozen recorders and their data files (see "Kept name").
+# Each log or marker was renamed in its writer and its reader together.
 export PATH=$HOME/.lmstudio/bin:/usr/local/bin:/opt/homebrew/bin:/Applications/Docker.app/Contents/Resources/bin:$PATH
-# Registered name: EXPERIMENT-LOW-FALSE-ALARM-PRECISION (old ID YB-0051 is kept because code matches on it)
-cd "$(dirname "$0")/.."; D=algorithms/YB-0051-low-false-alarm-precision; L=/tmp/chain51.log; P=$D/docs/PREREGISTRATION.md
+# EXPERIMENT-LOW-FALSE-ALARM-PRECISION: the paths below use its descriptive folder name (2026-10 rename, which retired the YB numbers)
+cd "$(dirname "$0")/.."; D=algorithms/low-false-alarm-precision; L=/tmp/chain51.log; P=$D/docs/PREREGISTRATION.md
+# Kept name: selfcons_yb0051.py (old file name kept on purpose). The experiment's timestamped plan froze the recorder
+# and the analysis that reads its data, byte for byte and at their paths (recorded exception, resolved in a later step).
 SEEDS="27 28 29 30 31 32 33 34 35 36 37 38"; FROZEN="$P agr/selfcons_yb0051.py agr/recorder.py $D/tests/candidates.py $D/tests/score_test.py $D/tests/experiment.py"
-say() { echo "[$(date -u +%F' '%H:%M:%S)] $*" >> $L; cp $L agr/yb0051_chain_progress.log 2>/dev/null; }
+say() { echo "[$(date -u +%F' '%H:%M:%S)] $*" >> $L; cp $L agr/low-false-alarm-precision-chain-progress.log 2>/dev/null; }
 ac() { if ! pmset -g batt | grep -q 'AC Power'; then say "WAITING_FOR_AC_POWER $1"; until pmset -g batt | grep -q 'AC Power'; do sleep 60; done; say ON_AC_POWER; fi; }
 say START
 if ls $P.*.tsr >/dev/null 2>&1 && git diff --quiet HEAD -- $FROZEN; then say RESUME_AFTER_TIMESTAMP; else
   SANDBOX_MEM=12g SANDBOX_TIMEOUT=1800 sandbox/run.sh $D test > /tmp/t51.log 2>&1 || { say STOP unit tests failed; exit 1; }; say TESTS_OK
+  # Kept name: selfcons_yb0051_smoke_seed*.jsonl (old name kept: frozen by the plan, see the note above).
   rm -f data/agr/selfcons_yb0051_smoke_seed2.jsonl
   SMOKE_SEED=2 .venv/bin/python agr/selfcons_yb0051.py --limit 2 > /tmp/scs51.log 2>&1 || { say STOP review smoke failed; exit 1; }
   .venv/bin/python -c "import json; R=[json.loads(l) for l in open('data/agr/selfcons_yb0051_smoke_seed2.jsonl')]; assert len(R)==2 and all(len(r['answers'])==8 and r['review_seconds_k8']>=r['review_seconds_k4']>0 for r in R)" || { say STOP review smoke output wrong; exit 1; }; say REVIEW_SMOKE_OK
@@ -37,9 +43,11 @@ done
 say SELFCONS_START
 for S in $SEEDS; do
   a=$(.venv/bin/python -c "import json; print(sum(1 for l in open('data/agr/episodes_LH_seed$S.jsonl') if json.loads(l)['answered']))")
+  # Kept name: selfcons_yb0051_seed*.jsonl (old name kept: frozen by the plan, see the note above).
   o=data/agr/selfcons_yb0051_seed$S.jsonl; n=$( [ -f $o ] && wc -l < $o | tr -d ' ' || echo 0)
   if [ "$a" != "$n" ]; then
     ac "before review of seed $S"
+    # Kept name: selfcons_yb0051.py (old name kept: frozen by the plan, see the note above).
     .venv/bin/python agr/selfcons_yb0051.py --seed $S > /tmp/sc51_$S.log 2>&1 || { say "STOP self-consistency recorder failed on seed $S"; exit 1; }
     n=$(wc -l < $o | tr -d ' ')
   fi
@@ -48,8 +56,8 @@ for S in $SEEDS; do
 done
 .venv/bin/python - <<'PY' >> $L 2>&1 || { say STOP packing failed; exit 1; }
 import json, gzip, os, numpy as np
-D = 'algorithms/YB-0051-low-false-alarm-precision/data'
-for S in [str(s) for s in range(27, 39)]:   # same packing as agr/yb0050_chain.sh (no shift)
+D = 'algorithms/low-false-alarm-precision/data'
+for S in [str(s) for s in range(27, 39)]:   # same packing as agr/powered-decider-chain.sh (no shift)
     src = 'data/agr/episodes_LH_seed%s.jsonl' % S; R = [json.loads(l) for l in open(src)]
     assert all('toks' in r for r in R), 'fixed recorder required'
     with gzip.open(os.path.join(D, 'seed%s_LH.jsonl.gz' % S), 'wt') as f: f.write(open(src).read())

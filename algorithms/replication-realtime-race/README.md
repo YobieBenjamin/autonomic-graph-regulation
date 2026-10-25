@@ -1,7 +1,7 @@
 # EXPERIMENT-REPLICATION-REALTIME-RACE · Frozen replication of EXPERIMENT-CLEAN-REALTIME-RACE on a fresh test set (seed 6)
 
 **Status:** tested · **Replicated** (pre-registration c8cec65): EXPERIMENT-EUREKA-REPLICATION-CRITERION and EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS hold; EXPERIMENT-POOLED-SEEDS-ESTIMATE (pooled estimate) was not computed by this analysis and was completed in EXPERIMENT-CORRECTED-REALTIME-RACE. Superseded by the corrected re-analysis in EXPERIMENT-CORRECTED-REALTIME-RACE (telemetry synchronization and statistics fixed), where seed 6 is a secondary test set and the result again holds.
-**Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/YB-0034-replication-realtime-race all`; EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS: `... robust`.
+**Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/replication-realtime-race all`; EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS: `... robust`.
 
 ## 1. Plain English
 To check that EXPERIMENT-CLEAN-REALTIME-RACE's result was not luck, we re-ran the identical experiment, same code and same training data, on 600 new questions. The regulator again caught about twice as many wrong answers in time as the 120-billion-parameter AI judge, and more than the length-only monitor, also when every monitor was held to exactly the same false-alarm rate.

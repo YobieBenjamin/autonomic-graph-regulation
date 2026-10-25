@@ -5,8 +5,8 @@
 token t is stored[t+1] (verified: agr/verify_realignment.py, /tmp/determinism.log). Reasoning segment only, norm channels
 log1p-scaled, float16. Also writes realignment_manifest.json with per-seed counts.'''
 import json, os, sys, numpy as np
-# Registered name: EXPERIMENT-CORRECTED-REALTIME-RACE (old ID YB-0035 is kept because code matches on it)
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); OUT = os.path.join(ROOT, 'algorithms', 'YB-0035-corrected-realtime-race', 'data')
+# EXPERIMENT-CORRECTED-REALTIME-RACE: the paths below use its descriptive folder name (2026-10 rename, which retired the YB numbers)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); OUT = os.path.join(ROOT, 'algorithms', 'corrected-realtime-race', 'data')
 man = {}
 for seed in sys.argv[1:]:
     R = [json.loads(l) for l in open(os.path.join(ROOT, 'data', 'agr', 'episodes_L_seed' + seed + '.jsonl'))]; arrs, shard, sizes, bad = {}, 0, [], 0

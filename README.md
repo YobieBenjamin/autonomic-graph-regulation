@@ -11,7 +11,7 @@ python3 miner/test_miner.py  # offline end-to-end miner test against a mock API 
 
 | Path | Purpose |
 |---|---|
-| `algorithms/YB-XXXX-*/` | One self-contained algorithm: `src/` (C core + Python), `tests/`, `docs/results.json`, `README.md` |
+| `algorithms/<name>/` | One self-contained algorithm, its folder named after the experiment (EXPERIMENT-POWERED-REPLICATION lives in `algorithms/powered-replication/`): `src/` (C core + Python), `tests/`, `docs/results.json`, `README.md` |
 | `LEDGER.md` | Every attempt and its result, including failures |
 | `HYPOTHESES.md` | Backlog the miner draws from; add ideas here |
 | `miner/mine.py` | Orchestrator: claim → generate → compile/test in sandbox → repair loop → promote or record failure |

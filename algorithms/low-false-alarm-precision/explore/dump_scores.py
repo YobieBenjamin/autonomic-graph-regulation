@@ -52,6 +52,9 @@ def main():
     SC = {}
     if not DRY:
         for S in TEST:
+            # Input: the EXPERIMENT-POWERED-DECIDER review recording for seed S (its test seeds are derivation data here).
+            # Kept name: selfcons_yb0050_seed*.jsonl (old file name kept on purpose). The experiment's timestamped plan froze the recorder
+            # and the analysis that reads its data, byte for byte and at their paths (recorded exception, resolved in a later step).
             p = 'data/selfcons_yb0050_seed%s.jsonl' % S
             if not os.path.exists(p): print('self-consistency recordings missing for seed', S); return
             for l in open(p): d = json.loads(l); SC[100000 * int(S) + d['idx']] = d

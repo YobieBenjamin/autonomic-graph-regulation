@@ -15,6 +15,8 @@ Usage: ./mine [--max N]      env: LOCAL_ONLY=1, CLOUD_MODEL, CLOUD_DAILY_TOKENS,
 '''
 import json, os, re, sys, time, shutil, subprocess, threading, datetime, urllib.request
 from concurrent.futures import ThreadPoolExecutor
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'miner'))
+import names   # miner/names.py: descriptive hypothesis names (EXPERIMENT-...), the same rules the miner uses
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 E = os.environ.get
@@ -26,8 +28,8 @@ CFG = dict(local_url=E('LOCAL_URL', 'http://localhost:1234/v1'), local_model=E('
            cloud_repairs=int(E('MAX_CLOUD_REPAIRS', '1')), publish=E('PUBLISH', '1') == '1')
 HYP, LEDGER = os.path.join(ROOT, 'HYPOTHESES.md'), os.path.join(ROOT, 'LEDGER.md')
 RUNS, WORK = os.path.join(ROOT, 'orchestrator', 'runs'), os.path.join(ROOT, 'miner', 'sandbox')
-# Registered name: EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER (old ID YB-0002 is kept because code matches on it)
-REF = os.path.join(ROOT, 'algorithms', 'YB-0002-bounded-homeostasis-wrapper')
+# Reference implementation (style and src/mlp.py): EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER, in its descriptive folder.
+REF = os.path.join(ROOT, 'algorithms', 'bounded-homeostasis-wrapper')
 os.makedirs(RUNS, exist_ok=True); os.makedirs(WORK, exist_ok=True)
 LOCK, PUBLOCK = threading.RLock(), threading.Lock()
 LOCAL_SEM, SANDBOX_SEM = threading.Semaphore(CFG['local_conc']), threading.Semaphore(CFG['sandbox_conc'])
@@ -233,19 +235,32 @@ honestly. Reply with ONLY JSON: {\"verdict\": \"accept\" | \"revise\" | \"reject
 
 
 def claim():
+    """Take the first open hypothesis and mark it in-progress. Returns (name, block) or None.
+
+    The ID is the hypothesis's descriptive catalog name from its heading ("## EXPERIMENT-...: title"). An open
+    hypothesis added by hand without one is named first from its title (names.ensure_named), so it enters the catalog
+    (HYPOTHESES.md, synced into LABELS.md) under a descriptive name, never a number. A hypothesis whose folder already
+    exists under algorithms/ is skipped: its folder name comes from its name, so mining it would overwrite that folder."""
     with LOCK:
-        text = open(HYP).read()
+        text, given = names.ensure_named(open(HYP).read(), ROOT)
+        for g in given: log('named', hid=g)
         for block in re.split('(?m)^(?=## )', text):
-            if block.startswith('## ') and 'status: open' in block:
-                open(HYP, 'w').write(text.replace(block, block.replace('status: open', 'status: in-progress', 1)))
-                return block.split()[1], block
+            hid = names.parse_heading(block)[0] if block.startswith('## ') else None
+            if not hid or 'status: open' not in block:
+                continue
+            if os.path.exists(os.path.join(ROOT, 'algorithms', names.folder_for(hid))):
+                continue
+            open(HYP, 'w').write(text.replace(block, block.replace('status: open', 'status: in-progress', 1)))
+            return hid, block
     return None
 
 
 def set_status(hid, status):
     with LOCK:
         text = open(HYP).read()
-        text = re.sub('(## ' + re.escape(hid) + ' [^' + NL + ']*' + NL + ')status: [a-z-]+', lambda m: m.group(1) + 'status: ' + status, text)
+        # the heading is "## NAME: title" (or "## NAME (extension): ..."); the lookahead keeps a name from also
+        # matching the heading of a longer name that starts with it
+        text = re.sub('(## ' + re.escape(hid) + '(?=[ :(])[^' + NL + ']*' + NL + ')status: [a-z-]+', lambda m: m.group(1) + 'status: ' + status, text)
         open(HYP, 'w').write(text)
 
 
@@ -313,8 +328,9 @@ def repair(box, out, role):
 
 
 def mine(hid, block):
-    name = block.splitlines()[0].split(' — ', 1)[-1].strip()
-    slug = hid + '-' + re.sub('[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
+    name = names.parse_heading(block)[1]          # the title after "## NAME: "
+    # work folder and final folder: the name in lowercase without its prefix (EXPERIMENT-CORTISOL-INTEGRATOR -> cortisol-integrator)
+    slug = names.folder_for(hid)
     box = os.path.join(WORK, slug); st = dict(design='-', impl='-', repairs=0, review='-'); t0 = time.time()
     resume = E('RESUME') == '1' and all(os.path.exists(os.path.join(box, x)) for x in ['docs/DESIGN.md'] + [q[0] for q in PLAN])
     if not resume:
@@ -359,7 +375,11 @@ def mine(hid, block):
 def finish(hid, name, box, status, headline, st, promote=False):
     if promote:
         for so in __import__('glob').glob(os.path.join(box, 'src', '*.so')): os.remove(so)
-        dest = os.path.join(ROOT, 'algorithms', os.path.basename(box)); shutil.rmtree(dest, ignore_errors=True); shutil.move(box, dest)
+        dest = os.path.join(ROOT, 'algorithms', os.path.basename(box))
+        if os.path.exists(dest):   # never overwrite an existing experiment folder (claim() skips these; this is a second guard)
+            promote, status = False, 'not promoted: algorithms/' + os.path.basename(box) + ' already exists'
+        else:
+            shutil.move(box, dest)
     set_status(hid, 'tested' if promote else 'failed'); ledger(hid, name, status, headline, st); log('finished', hid=hid, status=status, **st)
     if promote and CFG['publish']:
         with PUBLOCK:

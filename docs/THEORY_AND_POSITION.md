@@ -63,5 +63,5 @@ races. "The coupling works" is true for hold mode as a design property; it is no
 
 ## 6. Next tests
 - EXPERIMENT-POWERED-DECIDER (done, 2026-10-07): close calls settled (EXPERIMENT-PRINCIPLE-INTEROCEPTION supported narrow; EXPERIMENT-PRINCIPLE-LAYERING layered vs review alone not supported); scaling measured: every non-LLM check costs at most 0.34% of inference, self-consistency 392%; the binding limit is precision at realistic error base rates (at a 1% error rate, about 14 false alarms per true one at a 10% false-alarm budget; probe 30% recall at 23% precision at a 1% budget).
-- YB-0051 (laptop, planned): precision at low false-alarm rates (docs: algorithms/YB-0051-low-false-alarm-precision/docs/PREREGISTRATION.md, draft).
+- EXPERIMENT-LOW-FALSE-ALARM-PRECISION (laptop, planned): precision at low false-alarm rates (docs: algorithms/low-false-alarm-precision/docs/PREREGISTRATION.md, draft).
 - Scale-up EXPERIMENT-SCALE-UP-GENERALITY to EXPERIMENT-SCALE-UP-ADVERSARIAL-ROBUSTNESS (docs/SCALE_UP_PROPOSAL.md), including a chip prototype for EXPERIMENT-PRINCIPLE-SEPARATE-SUBSTRATE and EXPERIMENT-SCALE-UP-COMPACT-TELEMETRY, and adversarial tests (EXPERIMENT-SCALE-UP-ADVERSARIAL-ROBUSTNESS).

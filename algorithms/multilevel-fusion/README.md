@@ -3,7 +3,7 @@
 Pre-registered secondary analysis of the EXPERIMENT-POWERED-REPLICATION recordings. Does combining question difficulty, a trained text monitor, a hidden-state probe and the telemetry regulator beat the best of them, as a learned stack and as a transparent NEWS2-style banded score? Plan: docs/PREREGISTRATION.md. Code: src/fusion.py, tests/experiment.py.
 
 ## Data
-This analysis reads the YB-0045 recordings through a local hard-linked copy in data/ (not tracked in git). The record is algorithms/YB-0045-powered-replication/data; every file is SHA-256 identical (checked 2026-10-04).
+This analysis reads the EXPERIMENT-POWERED-REPLICATION recordings through a local hard-linked copy in data/ (not tracked in git). The record is algorithms/powered-replication/data; every file is SHA-256 identical (checked 2026-10-04).
 
 ## Results (confirmatory, 2026-10-04; plan committed 4a1e395 and timestamped 20:10:55 UTC (RFC 3161), analysis started 20:10:56 UTC (docs/run_logs/chain48.log))
 EXPERIMENT-STACK-BEATS-PROBE NOT supported: stack minus probe -0.029 [-0.096, +0.044] (stack 96, probe 100 of 138). EXPERIMENT-BANDED-SCORE-NON-INFERIOR NOT non-inferior: hospital banded minus probe

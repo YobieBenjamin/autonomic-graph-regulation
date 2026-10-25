@@ -1,22 +1,30 @@
 #!/usr/bin/env bash
+# Names: the folders, scripts, data files, /tmp logs and done markers used here carry the experiments' descriptive names
+# (2026-10 rename, which retired the YB numbers), except the plan-frozen recorders and their data files (see "Kept name").
+# Each log or marker was renamed in its writer and its reader together.
 export PATH=/usr/local/bin:/opt/homebrew/bin:/Applications/Docker.app/Contents/Resources/bin:$PATH
-# Registered name: EXPERIMENT-STAGE-DIVERSE-LAYERING (old ID YB-0049 is kept because code matches on it)
-cd ~/Desktop/SAFETY; D=algorithms/YB-0049-stage-diverse-layering; L=/tmp/chain49.log; P=$D/docs/PREREGISTRATION.md
+# EXPERIMENT-STAGE-DIVERSE-LAYERING: the paths below use its descriptive folder name (2026-10 rename, which retired the YB numbers)
+cd ~/Desktop/SAFETY; D=algorithms/stage-diverse-layering; L=/tmp/chain49.log; P=$D/docs/PREREGISTRATION.md
 say() { echo "[$(date -u +%H:%M:%S)] $*" >> $L; }
 say START
+# Kept name: selfcons_yb0049.py (old file name kept on purpose). The experiment's timestamped plan froze the recorder
+# and the analysis that reads its data, byte for byte and at their paths (recorded exception, resolved in a later step).
 if ls $D/docs/PREREGISTRATION.md.*.tsr >/dev/null 2>&1 && git diff --quiet HEAD -- $P agr/selfcons_yb0049.py; then say RESUME_AFTER_TIMESTAMP; else
 SANDBOX_MEM=12g SANDBOX_TIMEOUT=1800 sandbox/run.sh $D test > /tmp/t49.log 2>&1 || { say STOP unit tests failed; exit 1; }; say TESTS_OK
 SANDBOX_MEM=16g SANDBOX_TIMEOUT=3600 sandbox/run.sh $D smoke > /tmp/s49.log 2>&1; [ $? -eq 0 ] && [ -s $D/docs/smoke.json ] || { say STOP smoke failed; exit 1; }; say SMOKE_OK
 SANDBOX_MEM=28g SANDBOX_TIMEOUT=10800 sandbox/run.sh $D dryrun > /tmp/d49.log 2>&1; [ $? -eq 0 ] && [ -s $D/docs/dryrun.json ] || { say STOP dry run failed; exit 1; }; say DRYRUN_OK
+# Kept name: selfcons_yb0049.py (old name kept: frozen by the plan, see the note above).
 SANDBOX_MEM=28g ./publish.sh 'EXPERIMENT-STAGE-DIVERSE-LAYERING stage-diverse layering: pre-registration, stage-2 recorder (agr/selfcons_yb0049.py), analysis, tests, smoke and dry run (synthetic stage 2)' > /tmp/pub49.log 2>&1 || { say STOP publish failed; exit 1; }
 git diff --quiet HEAD -- $P agr/selfcons_yb0049.py || { say STOP plan or recorder differs from commit; exit 1; }; say COMMITTED $(git log --oneline -1 | cut -c1-7)
 scripts/timestamp_prereg.sh $P > /tmp/ts49.log 2>&1
 [ $(grep -c 'Verification: OK' /tmp/ts49.log) -ge 2 ] || { say STOP timestamp not verified; exit 1; }; say TIMESTAMPED $(grep -o '[0-9][0-9]:[0-9][0-9]:[0-9][0-9] 2026' /tmp/ts49.log | head -1)
 fi
 say STAGE2_RECORDING_START
+# Kept name: selfcons_yb0049.py (old name kept: frozen by the plan, see the note above).
 .venv/bin/python agr/selfcons_yb0049.py > /tmp/rec49.log 2>&1 || { say STOP stage-2 recorder failed; exit 1; }
 for S in 9 13 14; do
   a=$(.venv/bin/python -c "import json; print(sum(1 for l in open('data/agr/episodes_LH_seed$S.jsonl') if json.loads(l)['answered']))")
+  # Kept name: selfcons_yb0049_seed*.jsonl (old name kept: frozen by the plan, see the note above).
   n=$(wc -l < data/agr/selfcons_yb0049_seed$S.jsonl | tr -d ' ')
   [ "$a" = "$n" ] || { say "STOP seed $S incomplete: $n of $a"; exit 1; }; say "SEED_${S}_COMPLETE $n of $a"
   cp data/agr/selfcons_yb0049_seed$S.jsonl $D/data/
