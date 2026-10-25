@@ -69,13 +69,13 @@ res = dict(dry_run=DRY, derivation_answered=len(Rd), derivation_wrong=int(yd.sum
            test_wrong_with_any_checkpoint=int(sum(1 for i, r in enumerate(Rt) if y[i] and checkpoints(r))), race=race, best_behavior=best_b, best_length_control=best_c,
            # Registered name: EXPERIMENT-CLEAN-RACE-ORGANISM-WINS (old ID H1 is kept because code matches on it)
            H1=dict(organism_minus_best_behavior=d_b, organism_minus_best_length=d_c, holds=bool(d_b[1] is not None and d_b[1] > 0 and d_c[1] > 0)),
-           # Registered name: EXPERIMENT-CLEAN-RACE-SCORE-BEATS-LENGTH (old ID H2 is kept because code matches on it)
+           # Registered name: EXPERIMENT-CLEAN-RACE-SCORE-VERSUS-LENGTH (old ID H2 is kept because code matches on it)
            H2=dict(aiews_minus_best_length=d_e, holds=bool(d_e[1] is not None and d_e[1] > 0)),
            # Registered name: EXPERIMENT-CLEAN-RACE-LENGTH-FREE-TYPES (old ID H3 is kept because code matches on it)
            H3=dict(length_free_types=lenfree, wrong_in_subset=int((sub & (y == 1)).sum()), organism_minus_best_behavior=d3, holds=bool(d3[1] is not None and d3[1] > 0)),
            per_checkpoint_auroc={m: {str(t): (round(float(auroc(np.array(yck[t]), np.array(perck[m][t]))), 4) if 0 < sum(yck[t]) < len(yck[t]) else None) for t in T} for m in names},
            per_checkpoint_n={str(t): [int(sum(yck[t])), len(yck[t])] for t in T},
            silent_slip_recall_in_time={m: round(float(fired[m][slip & (y == 1)].mean()), 4) if (slip & (y == 1)).any() else None for m in names})
-res['EUREKA'] = (not DRY) and res['H1']['holds']
+res['EUREKA'] = (not DRY) and res['H1']['holds']  # EXPERIMENT-CLEAN-RACE-ORGANISM-WINS (old: H1) is this results key
 os.makedirs('docs', exist_ok=True); out = 'docs/dryrun.json' if DRY else 'docs/results.json'
 json.dump(res, open(out, 'w'), indent=1, default=J); print(json.dumps(res, indent=1, default=J)[:2500])

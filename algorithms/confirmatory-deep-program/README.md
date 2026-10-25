@@ -2,7 +2,7 @@
 
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-SETTLING-DRIVEN-BY-WEEKDAY: EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE (failure to settle) is driven by the day-of-week questions. REVIEW-SILENT-SLIP-TEST-SET-THRESHOLD: EXPERIMENT-CONFIRMATORY-SILENT-SLIPS used a test-set threshold; 'silent slip' is defined by question type. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: its AUROC (0.89) exceeds question type (0.80) and length (0.73). REVIEW-LAYER-TAP-ONE-STEP-LATE applies.
 
-**Status:** tested · **EUREKA: false** (pre-registered, commit b177662). EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY real-time superiority ❌ inferior to the LLM judge. EXPERIMENT-CONFIRMATORY-ACCURACY accuracy: deep organism 0.89, **not distinguishable from the LLM judge**, inferior to self-consistency. EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE AI-EWS v2 levels ❌ not fully ordered. **EXPERIMENT-CONFIRMATORY-SILENT-SLIPS silent slips ✅ (60% caught). EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE failure to settle ✅ (p = 0.0007).**
+**Status:** tested · **EUREKA: false** (pre-registered, commit b177662). EXPERIMENT-CONFIRMATORY-ORGANISM-VERSUS-JUDGE real-time superiority ❌ inferior to the LLM judge. EXPERIMENT-CONFIRMATORY-ACCURACY accuracy: deep organism 0.89, **not distinguishable from the LLM judge**, inferior to self-consistency. EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE AI-EWS v2 levels ❌ not fully ordered. **EXPERIMENT-CONFIRMATORY-SILENT-SLIPS silent slips ✅ (60% caught). EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE failure to settle ✅ (p = 0.0007).**
 **Reproduce:** `SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/confirmatory-deep-program all` (about 1 hour).
 
 ## 1. Plain English
@@ -20,7 +20,7 @@ Deep organism, race rules and AI-EWS as in EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM,
 **Proposition 1 (EXPERIMENT-VITAL-FAILURE-TO-SETTLE closed form).** For three equal-length plateaus a, b, c, EXPERIMENT-VITAL-FAILURE-TO-SETTLE = c − a. *Proof:* the first and last thirds are exactly the first and last plateaus. ∎ Tested (3, 2, 1 gives −2).
 **Proposition 2 (EXPERIMENT-VITAL-FAILURE-TO-SETTLE no look-ahead).** EXPERIMENT-VITAL-FAILURE-TO-SETTLE on a prefix reads only tokens before the checkpoint. Tested.
 **Proposition 3 (AI-EWS v2 bounds and monotonicity).** With 8 vitals, 0 ≤ S ≤ 24 and S is non-decreasing in each vital's risky direction (as EXPERIMENT-AI-EARLY-WARNING-SCORE, Propositions 1-2). Tested.
-**Matched false alarms (EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY).** In-time score m_i = max over checkpoints whose alarm finishes before the deadline; threshold = 90th percentile of m_i on seed-3 correct episodes, so at most about 10% of correct episodes receive any in-time alarm. Paired bootstrap over wrong episodes (1000, seed 0).
+**Matched false alarms (EXPERIMENT-CONFIRMATORY-ORGANISM-VERSUS-JUDGE).** In-time score m_i = max over checkpoints whose alarm finishes before the deadline; threshold = 90th percentile of m_i on seed-3 correct episodes, so at most about 10% of correct episodes receive any in-time alarm. Paired bootstrap over wrong episodes (1000, seed 0).
 Other statistics: AUROC with bootstrap CIs; paired AUROC bootstrap; slip recall bootstrap; one-sided Mann-Whitney for EXPERIMENT-VITAL-FAILURE-TO-SETTLE in the direction learned on seed 2.
 
 ## 4. Code map
@@ -39,14 +39,14 @@ The command above regenerates docs/results.json from data/ (deterministic featur
 Data fingerprints (SHA-256 prefix): layers_seed2_0.npz 6b241b7133cefde7; layers_seed2_1.npz 106a41cfe3544508; layers_seed2_2.npz 8fbf5acfa88df464; layers_seed2_3.npz 40df3794a0f0225d; layers_seed2_4.npz f22b41d2bb328028; layers_seed2_5.npz 95966943c68a619a; layers_seed3_0.npz 9f0aeb8621ba5ef9; monitors_judge.jsonl.gz f57499d32a582ae9; monitors_selfcons.jsonl.gz 912e73e5e9762508; prefix_judge.jsonl.gz 31e76a0fd329c6a0; prefix_selfcons.jsonl.gz 7854dbfe9eed3714; seed2_L.jsonl.gz 51802ba63f25bc92; seed3_L.jsonl.gz 173b29eef25be3fb; 
 
 ## 6. Results (derivation: 4,293 answered, 309 wrong; test: 544 answered, 47 wrong)
-**EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY, real-time race at matched false alarms:** deep organism 4/47 in time (8.5%, FPR 10.1%, 0.9 s to spare, 2.1 ms per check); LLM judge on prefixes 12/47 (25.5%, FPR 9.9%, 1.6 s to spare, 1.4 s per check); self-consistency on prefixes 0/47; AI-EWS v2 9/47 (19.1%, FPR 4.4%). Deep minus judge: −0.170 [−0.319, −0.021].
+**EXPERIMENT-CONFIRMATORY-ORGANISM-VERSUS-JUDGE, real-time race at matched false alarms:** deep organism 4/47 in time (8.5%, FPR 10.1%, 0.9 s to spare, 2.1 ms per check); LLM judge on prefixes 12/47 (25.5%, FPR 9.9%, 1.6 s to spare, 1.4 s per check); self-consistency on prefixes 0/47; AI-EWS v2 9/47 (19.1%, FPR 4.4%). Deep minus judge: −0.170 [−0.319, −0.021].
 **EXPERIMENT-CONFIRMATORY-ACCURACY, accuracy (complete reasoning), AUROC:** self-consistency 0.982 [0.972, 0.990]; LLM judge 0.947 [0.908, 0.980]; **deep organism 0.890 [0.826, 0.938]**; AI-EWS v2 0.776 [0.702, 0.847]; answer confidence 0.366 [0.304, 0.433]. Deep minus judge −0.057 [−0.131, +0.012]; deep minus self-consistency −0.092 [−0.157, −0.042].
 **EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE, AI-EWS v2 levels:** stable 27/484 (5.6%), watch 8/38 (21.1%), concern 9/14 (64.3%), urgent 3/8 (37.5%).
 **EXPERIMENT-CONFIRMATORY-SILENT-SLIPS, silent slips (multiplication and modular power):** 15 of 25 caught at 10% FPR (60%), CI [40%, 80%].
 **EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE, failure to settle:** EXPERIMENT-VITAL-FAILURE-TO-SETTLE median −0.087 on wrong vs −0.179 on correct answers (settling is weaker on failures), one-sided p = 0.00069.
 
 ## 7. Verdict
-- **No eureka.** EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY fails: the deep organism is inferior to the LLM judge at raising in-time alarms on partial reasoning. EXPERIMENT-REALTIME-RACE's exploratory lead did not replicate.
+- **No eureka.** EXPERIMENT-CONFIRMATORY-ORGANISM-VERSUS-JUDGE fails: the deep organism is inferior to the LLM judge at raising in-time alarms on partial reasoning. EXPERIMENT-REALTIME-RACE's exploratory lead did not replicate.
 - **EXPERIMENT-CONFIRMATORY-ACCURACY:** the organism is statistically tied with a 6x larger LLM judge on accuracy (up from 0.765 in EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM with 9x more training data) and inferior to self-consistency.
 - **EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE fails** on ordering (urgent below concern, 8 cases); the score still discriminates (0.78) and its lower three levels are ordered.
 - **EXPERIMENT-CONFIRMATORY-SILENT-SLIPS and EXPERIMENT-CONFIRMATORY-FAILURE-TO-SETTLE hold:** silent slips are now detectable (60%), and failure to settle is a confirmed, biologically shaped signature.

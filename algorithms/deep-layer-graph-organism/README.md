@@ -2,7 +2,7 @@
 
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED: RETRACTED the earliness claim (56% false alarms). REVIEW-DEEP-FEATURE-COUNT-WRONG: the deep regulator has 314 features (not about 302). REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: question type (0.764) and length (0.796) exceed its AUROC (0.765). REVIEW-DEEP-PROPOSITION-TEST-INEXACT: Proposition 3 test coverage. REVIEW-LAYER-TAP-ONE-STEP-LATE: telemetry was one token late (stale, not future); see EXPERIMENT-CORRECTED-REALTIME-RACE.
 
-**Status:** tested · **Verdict (pre-registered, commit 5c9b9fb):** EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS deeper helps ⚠️ positive but not significant (+0.045, CI −0.13 to +0.22); EXPERIMENT-DEEP-ORGANISM-SUPERIORITY vs best behavior ❌ inferior to self-consistency, but **no longer distinguishable from the LLM judge**; EXPERIMENT-DEEP-ORGANISM-EARLINESS earliness ✅ (median 331 tokens, 4.65 s before the answer); EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY ❌. First silent slips caught (2 of 3 modular-power errors).
+**Status:** tested · **Verdict (pre-registered, commit 5c9b9fb):** EXPERIMENT-DEEP-VERSUS-TOKEN-ORGANISM deeper helps ⚠️ positive but not significant (+0.045, CI −0.13 to +0.22); EXPERIMENT-DEEP-ORGANISM-VERSUS-BEHAVIOR vs best behavior ❌ inferior to self-consistency, but **no longer distinguishable from the LLM judge**; EXPERIMENT-DEEP-ORGANISM-EARLINESS earliness ✅ (median 331 tokens, 4.65 s before the answer); EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY ❌. First silent slips caught (2 of 3 modular-power errors).
 **Reproduce:** `make` here (sandbox: `sandbox/run.sh algorithms/deep-layer-graph-organism all`).
 
 ## 1. Plain English
@@ -30,7 +30,7 @@ Network physiology on the transformer's own depth: layers as organs, co-fluctuat
 |---|---|
 | src/layergraph.c | Compiled core: lagged coupling graph for k layers, Laplacian spectrum (Jacobi), spectral modularity |
 | src/deep.py | Log scaling, deep features, trend extrapolation, frozen DeepOrganism, online alarm |
-| src/vitals.c, src/hpa.c, src/agr.py, src/hpa.py, src/flagship.py | Shared cores and the token-level organism (EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP) for EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS |
+| src/vitals.c, src/hpa.c, src/agr.py, src/hpa.py, src/flagship.py | Shared cores and the token-level organism (EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP) for EXPERIMENT-DEEP-VERSUS-TOKEN-ORGANISM |
 | tests/test_core.py | 5 tests: C = NumPy reference on 24 nodes, Proposition 2, Proposition 3, answer blindness, prefix consistency |
 | tests/experiment.py | Pre-registered analysis; writes docs/results.json and docs/scores_seed1.json |
 | ../../agr/layertap.py, ../../agr/pack_layers.py | Telemetry tap and packing (reasoning segment only) |
@@ -53,13 +53,13 @@ Errors caught by type (deep / shallow): day of week 10/10 vs 8/10; modular power
 EXPERIMENT-DEEP-ORGANISM-EARLINESS: 12 errors detected; median lead 331 tokens (4,650 ms); 100% before the answer.
 
 ## 7. Verdict against the pre-registered rules
-- **EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS (deeper helps): not supported at 95%.** Point estimate +0.045 and +2 errors caught, but the interval includes 0.
-- **EXPERIMENT-DEEP-ORGANISM-SUPERIORITY: inferior to self-consistency** (CI entirely below 0). Versus the LLM judge the interval now includes 0 (not distinguishable), where the shallow organism was inferior.
+- **EXPERIMENT-DEEP-VERSUS-TOKEN-ORGANISM (deeper helps): not supported at 95%.** Point estimate +0.045 and +2 errors caught, but the interval includes 0.
+- **EXPERIMENT-DEEP-ORGANISM-VERSUS-BEHAVIOR: inferior to self-consistency** (CI entirely below 0). Versus the LLM judge the interval now includes 0 (not distinguishable), where the shallow organism was inferior.
 - **EXPERIMENT-DEEP-ORGANISM-EARLINESS: holds.** **EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY: fails.**
 - Qualitative change: depth caught the first silent slips (2 of 3 modular-power errors) while losing both letter-count errors; the error profile shifted rather than simply improving.
 
 ## 8. Interpretation and limitations
-Direction supports the author's depth hypothesis; magnitude is not yet decisive. With 21 held-out errors and 314 features trained on 36 seed-0 errors, statistical power is the binding constraint; the deep program (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE to EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE) is pre-planned with about 5,000 training episodes. Silent arithmetic slips remain largely invisible to passive layer dynamics, which motivates the active probe (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE) and the possibility-race graph (EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE). One patient model, one task family.
+Direction supports the author's depth hypothesis; magnitude is not yet decisive. With 21 held-out errors and 314 features trained on 36 seed-0 errors, statistical power is the binding constraint; the deep program (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE, EXPERIMENT-EXPERT-ASSEMBLY-CONNECTOME and EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE) is pre-planned with about 5,000 training episodes. Silent arithmetic slips remain largely invisible to passive layer dynamics, which motivates the active probe (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE) and the possibility-race graph (EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE). One patient model, one task family.
 Prior art: layer-wise probing and logit-lens analyses, functional connectivity and network neuroscience, spectral modularity (Newman, 2006).
 
 ## Deviations from the pre-registration

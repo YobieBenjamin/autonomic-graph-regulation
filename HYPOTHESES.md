@@ -61,7 +61,7 @@ foundation: HPA axis, allostatic load, negative feedback
 hypothesis: a slow leaky integrator of accumulated surprise with negative feedback gives earlier and steadier warning than instantaneous thresholds, with fewer false alarms.
 
 ## EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP: Flagship: vitals vs behavior monitoring (pre-registered)
-status: tested (EXPERIMENT-FLAGSHIP-ORGANISM-SUPERIORITY inferior on verifiable tasks; EXPERIMENT-FLAGSHIP-ALARM-EARLINESS earliness confirmed)
+status: tested (EXPERIMENT-FLAGSHIP-ORGANISM-VERSUS-BEHAVIOR inferior on verifiable tasks; EXPERIMENT-FLAGSHIP-ALARM-EARLINESS earliness confirmed)
 foundation: the core thesis
 hypothesis: on identical episodes, autonomic vitals beat output-based behavior monitoring on lead time and on failures whose outputs look normal.
 
@@ -167,7 +167,7 @@ foundation: EXPERIMENT-WEIGHTED-HUNCH-FIELD plus B (parallel appraisal of the sa
 hypothesis: combining internal physiology (A) with independent situational appraisal (B) in a seeded stochastic hunch field yields calibrated graded warnings (ok, watch, concern, urgent) that turn earlier than either alone, with proper-scoring-rule calibration on held-out trajectories.
 
 ## EXPERIMENT-AI-EARLY-WARNING-SCORE: AI-EWS v1: derivation and internal validation (retrospective, pre-registered)
-status: tested (EXPERIMENT-EARLY-WARNING-SCORE-PREDICTS to EXPERIMENT-EARLY-WARNING-MATCHES-BLACK-BOX hold, EXPERIMENT-EARLY-WARNING-RISING-TRAJECTORY fails)
+status: tested (EXPERIMENT-EARLY-WARNING-SCORE-PREDICTS, EXPERIMENT-EARLY-WARNING-LEVELS-ORDERED and EXPERIMENT-EARLY-WARNING-MATCHES-BLACK-BOX hold, EXPERIMENT-EARLY-WARNING-RISING-TRAJECTORY fails)
 foundation: docs/AI_EWS_METHODOLOGY.md (NEWS2 template)
 data: derivation = seed-0 episodes with layer telemetry (EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM); validation = held-out seed-1 episodes; outcome = wrong answer.
 vitals used in v1 (available in recorded data): EXPERIMENT-VITAL-REASONING-ENTROPY entropy, EXPERIMENT-VITAL-TOKEN-MARGIN margin, EXPERIMENT-VITAL-LAYER-VARIABILITY layer HRV, EXPERIMENT-VITAL-LAYER-SYNCHRONY layer synchrony (expert-graph lambda_2), EXPERIMENT-VITAL-ROUTER-ENTROPY router entropy, EXPERIMENT-VITAL-CRITICAL-SLOWING-TREND critical-slowing trend (lag-1 autocorrelation and variance slope of entropy), EXPERIMENT-VITAL-CORTISOL-LOAD HPA cortisol peak. All over the reasoning segment only.
@@ -180,7 +180,7 @@ foundation: EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM (organism trained only on compl
 hypothesis: an organism and AI-EWS bands trained on reasoning prefixes (25/50/75%) raise in-time alarms at matched false-alarm rates at least as often as the LLM judge on prefixes; must be pre-registered and tested on a fresh seed.
 
 ## EXPERIMENT-CLEAN-REALTIME-RACE: Clean real-time race: absolute-time checkpoints and a length-only control
-status: tested — EUREKA (EXPERIMENT-CLEAN-RACE-ORGANISM-WINS, EXPERIMENT-CLEAN-RACE-LENGTH-FREE-TYPES hold; robust at equal FPR; EXPERIMENT-CLEAN-RACE-SCORE-BEATS-LENGTH fails)
+status: tested, EUREKA (EXPERIMENT-CLEAN-RACE-ORGANISM-WINS, EXPERIMENT-CLEAN-RACE-LENGTH-FREE-TYPES hold; robust at equal FPR; EXPERIMENT-CLEAN-RACE-SCORE-VERSUS-LENGTH fails)
 foundation: EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM (fractional checkpoints leaked total reasoning length; length alone beat the LLM judge)
 design: checkpoints at absolute token counts known in real time (as run: t in {48, 96, 192, 384}); stage feature = tokens so far; organism and AI-EWS trained on the same absolute-time serial observations; competitors: LLM judge and self-consistency on the same prefixes, and a pre-registered length-so-far control; fresh seed; matched false alarms; compute time counted. Eureka only if the organism beats both the best behavior monitor and the length-so-far control (both paired CIs above 0).
 
@@ -251,7 +251,7 @@ severity of consequences in the world; grave-outcome prevention needs the regula
 status: open (after EXPERIMENT-PROBE-BASELINE)
 hypothesis: combining the regulator (fast) and an LLM reviewer (slow) under commit-point policies stops more wrong
 answers before commitment, at an acceptable cost in delay and false holds, than either monitor alone.
-test: replay recorded episodes (EXPERIMENT-CLEAN-REALTIME-RACE to EXPERIMENT-CORRECTED-REALTIME-RACE, EXPERIMENT-PROBE-BASELINE) with each monitor at its measured latency distribution;
+test: replay recorded episodes (EXPERIMENT-CLEAN-REALTIME-RACE, EXPERIMENT-REPLICATION-REALTIME-RACE and EXPERIMENT-CORRECTED-REALTIME-RACE, EXPERIMENT-PROBE-BASELINE) with each monitor at its measured latency distribution;
 sweep hold budgets (tokens or seconds before the answer is released) and policies (regulator-only fallback, reviewer
 hold, conservative-wins conflict rule). Report: wrong answers stopped before commitment, correct answers delayed or held,
 added latency (median and tail), and verdicts that arrive too late (counted, never discarded). Pre-register before running.

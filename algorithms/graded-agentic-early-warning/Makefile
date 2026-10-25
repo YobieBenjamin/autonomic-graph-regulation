@@ -5,6 +5,6 @@
 all: test
 # The test message names the experiment by its descriptive name (2026-10 rename, which retired the YB numbers).
 test:
-	@test -s docs/PREREGISTRATION.md && echo 'EXPERIMENT-GRADED-AGENTIC-EARLY-WARNING: pre-registration only; no code and no tests yet (audit F36)'
+	@test -s docs/PREREGISTRATION.md && echo 'EXPERIMENT-GRADED-AGENTIC-EARLY-WARNING: pre-registration only; no code and no tests yet (audit finding REVIEW-MISSING-LEDGER-ROWS)'
 experiment:
 	@echo environment not yet built

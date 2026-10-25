@@ -1,10 +1,10 @@
 /* Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed. | SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE) | Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 */
-/* YB-0009 core: physiological coupling graph over sliding windows (network-physiology style).
+/* EXPERIMENT-PHYSIOLOGICAL-COUPLING-GRAPH core: physiological coupling graph over sliding windows (network-physiology style).
  * X: T x k multichannel vitals (row-major). For each window of length w (stride s), edge weight between channels
  * i,j = max over lags 0..L of |Pearson corr(x_i(t), x_j(t+lag))| (lag in either direction). Graph -> normalized
  * Laplacian; per window we output: [0] algebraic connectivity lambda_2, [1] spectral entropy of the Laplacian
  * eigenvalues, [2] total coupling (sum of edge weights), [3] largest eigenvalue. Returns number of windows (or -1).
- * The eigensolver is the cyclic Jacobi method reused from YB-0001. */
+ * The eigensolver is the cyclic Jacobi method reused from EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR. */
 #include <math.h>
 #include <stdlib.h>
 

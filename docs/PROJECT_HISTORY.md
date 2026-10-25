@@ -13,7 +13,7 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
    (5/5 slow poisoning caught, 0/5 false alarms).
 2. **Repository.** Private permanent repo YobieBenjamin/safety. First upload through the browser with SHA-256
    verification of every file; GitHub rejects dotfiles and `.github/` via the uploader, so those used the editor.
-3. **EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER Bounded Homeostatic Wrapper.** Proved confinement theorems EXPERIMENT-BASELINE-CONFINEMENT-THEOREM to EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM; worst-case attacker drags an
+3. **EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER Bounded Homeostatic Wrapper.** Proved confinement theorems EXPERIMENT-BASELINE-CONFINEMENT-THEOREM, EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM and EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM; worst-case attacker drags an
    unbounded monitor 768-5954 Mahalanobis units with zero flags, BHW caps it at B + eta*tau. Energy + BHW:
    detection 1.1% -> 43% with 0/10 false alarms. Closed-form budget calibration (EXPERIMENT-STATIONARY-BUDGET-CALIBRATION/EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION) fails in 64-D -> EXPERIMENT-DRIFT-BUDGET-CALIBRATION.
 4. **Moved to the Mac.** gh CLI logged in as YobieBenjamin alongside an existing account; clone at ~/safety with
@@ -77,7 +77,7 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
 - Anthropic API key in Keychain, then a supervised pilot (`./mine --max 1`) to measure real cloud-token cost per algorithm.
 - Decide the single miner of record: local orchestrator (`./mine`) vs GitHub `mine.yml`; running both would compete for hypotheses.
 - Ingest the book so hypotheses derive from its chapters (not yet provided).
-- Open hypotheses: EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR to EXPERIMENT-DRIFT-BUDGET-CALIBRATION. Novelty claims still need a systematic literature search.
+- Open hypotheses: EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR, EXPERIMENT-IMMUNE-NEGATIVE-SELECTION, EXPERIMENT-SCALABLE-TRANSFORMER-HEAT-TRACE, EXPERIMENT-AMYGDALA-LOW-ROAD-BREAKER and EXPERIMENT-DRIFT-BUDGET-CALIBRATION. Novelty claims still need a systematic literature search.
 
 ## Lessons
 - Keep negative results; they redirect the search (EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR -> EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER -> EXPERIMENT-DRIFT-BUDGET-CALIBRATION).

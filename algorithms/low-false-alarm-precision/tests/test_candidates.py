@@ -49,7 +49,7 @@ def test_experiment_end_to_end_on_synthetic():
         os.chdir(tmp); import experiment; importlib.reload(experiment); assert experiment.main() == 0
         # Registered name: EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL (old ID H1 is kept because code matches on it)
         r = json.load(open('docs/smoke.json')); assert r['episodes'] == 1500 and set(r['H1']) >= {'estimate_ci', 'supported'}
-        assert r['table']['C2']['fa_0.01']['fpr'] <= 0.01 + 1e-9
+        assert r['table']['C2']['fa_0.01']['fpr'] <= 0.01 + 1e-9  # EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old: C2), the key the frozen analysis writes
     finally:
         os.chdir(old); os.environ.pop('SMOKE')
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
 
 > **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-HPA-VARIANCE-RATIO-MISSTATED: 'variance 9-10x lower' is a coefficient-of-variation ratio (about 3.7x above resting level) and the drive correlates with length; REVIEW-TOKEN-COST-MISATTRIBUTED: 290 ns/token is the HPA regulator only (the competing regulators cost 2-4 ms per check); REVIEW-HPA-THEOREM-WORDING: wording.
 
-**Status:** tested · **Verdict:** theorems EXPERIMENT-HPA-POSITIVITY-THEOREM to EXPERIMENT-HPA-UNIQUE-RESTING-LEVEL ✅ proved and confirmed; author's trend prediction ✅ confirmed (rho 0.75 and 0.92; variance 9–10× lower); discrimination ⚠️ lower than raw signals (the price of stability).
+**Status:** tested · **Verdict:** theorems EXPERIMENT-HPA-POSITIVITY-THEOREM, EXPERIMENT-HPA-BOUNDEDNESS-THEOREM and EXPERIMENT-HPA-UNIQUE-RESTING-LEVEL ✅ proved and confirmed; author's trend prediction ✅ confirmed (rho 0.75 and 0.92; variance 9 to 10× lower); discrimination ⚠️ lower than raw signals (the price of stability).
 **Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/hpa-axis-organism all`).
 
 ## 1. Plain English
@@ -39,7 +39,7 @@ State x = (H, A, C) ≥ 0 (CRH, ACTH, cortisol); stress drive S(t) ≥ 0; feedba
 | data/episodes.jsonl.gz | Same 480 episodes as EXPERIMENT-CONTAMINATION-TEST (SHA-256 begins a5b60ae4691a635c) |
 
 ## 5. Repeatable proof
-EXPERIMENT-HPA-POSITIVITY-THEOREM to EXPERIMENT-HPA-UNIQUE-RESTING-LEVEL are proved above and checked numerically by `make test` (C equals the independent reference to 1e-9). `make` regenerates docs/results.json identically from the data file (deterministic ODE, fixed calibration split, bootstrap seed 0).
+EXPERIMENT-HPA-POSITIVITY-THEOREM, EXPERIMENT-HPA-BOUNDEDNESS-THEOREM and EXPERIMENT-HPA-UNIQUE-RESTING-LEVEL are proved above and checked numerically by `make test` (C equals the independent reference to 1e-9). `make` regenerates docs/results.json identically from the data file (deterministic ODE, fixed calibration split, bootstrap seed 0).
 
 ## 6. Results (428 answered episodes, 36 wrong; AUROC without question-type control)
 | Stress channel | Organism peak cortisol | Organism final cortisol | Raw accumulated drive | Spearman rho (organism vs raw) | Variation (CV) organism / raw |

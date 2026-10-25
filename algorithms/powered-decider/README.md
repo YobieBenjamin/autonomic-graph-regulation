@@ -29,11 +29,11 @@ algorithms/powered-replication/data). Test: seeds 15 to 26 and their self-consis
 ## Results (confirmatory; plan committed 64150a4, RFC 3161 timestamps 04:06:46 and 04:06:47 UTC 2026-10-06 (FreeTSA, DigiCert);
 recording 04:30 to 12:02 UTC, self-consistency 12:02 UTC 2026-10-06 to 07:53 UTC 2026-10-07, analysis 07:54 to 08:08 UTC; docs/results.json)
 Test: seeds 15 to 26, 7,200 episodes, 6,457 answered, 530 wrong (743 never answered; 2,315 answered before the first checkpoint).
-- EXPERIMENT-LAYERED-BEATS-SELF-CONSISTENCY NOT SUPPORTED: layered minus self-consistency alone -0.055 [-0.078, -0.032] (469 vs 498 of 530 at 10% false alarms). On this
+- EXPERIMENT-LAYERED-VERSUS-SELF-CONSISTENCY NOT SUPPORTED: layered minus self-consistency alone -0.055 [-0.078, -0.032] (469 vs 498 of 530 at 10% false alarms). On this
   data the model's own self-disagreement carries the layered system; giving half the budget to the probe costs catches.
 - EXPERIMENT-POWERED-PROBE-BEATS-TEXT SUPPORTED: probe minus trained text +0.053 [+0.018, +0.089] (363 vs 335). Sensitivity with never-answered episodes counted as
   failures: -0.013 [-0.032, +0.012] (not supported), so the in-distribution advantage holds only for answered episodes.
-- EXPERIMENT-NON-LLM-STACK-NON-INFERIOR NOT SUPPORTED: non-LLM stack minus self-consistency -0.260 [-0.301, -0.213] (360 vs 498), far outside the 0.10 margin. Excluding
+- EXPERIMENT-NON-LLM-STACK-INFERIORITY-TEST NOT SUPPORTED: non-LLM stack minus self-consistency -0.260 [-0.301, -0.213] (360 vs 498), far outside the 0.10 margin. Excluding
   the model's self-disagreement costs about 26 points of recall at a 10% false-alarm budget on this data.
 - EXPERIMENT-MONITOR-COST-SHARE (cost, pooled wall-clock share of inference): difficulty 0.003%, probe 0.004%, text 0.02%, regulator 0.31%, non-LLM stack 0.34%
   (all pass the 1% bar); self-consistency 392%, layered 392%, gated layered 214% (fail). Analytic: probe 2.7e-7 of inference operations.

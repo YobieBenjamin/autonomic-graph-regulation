@@ -17,10 +17,10 @@ At a 1% error rate that is about 1.6 false alarms per real catch, down from 2.6.
 |---|---|---|---|
 | EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL (primary): recall EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE minus probe at 1% false alarms | +0.250 (339 vs 204 caught) | [+0.170, +0.327] | SUPPORTED |
 | EXPERIMENT-COMBINATION-PRECISION-TARGET: precision of EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE at 1% false alarms, 1% error base rate >= 0.33 | 0.389 (1.57 false per true) | [0.362, 0.414] | SUPPORTED |
-| EXPERIMENT-MORE-REVIEW-SAMPLES-HELP: recall EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=8 minus EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=4 at 1% false alarms | +0.074 (387 vs 347 caught) | [-0.058, +0.168] | NOT SUPPORTED |
+| EXPERIMENT-REVIEW-SAMPLE-COUNT-EFFECT: recall EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=8 minus EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=4 at 1% false alarms | +0.074 (387 vs 347 caught) | [-0.058, +0.168] | NOT SUPPORTED |
 
 Pre-declared consequences: EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL, combining self-disagreement with non-LLM internal-state scores is the measured way to raise recall at
-low false-alarm rates. EXPERIMENT-COMBINATION-PRECISION-TARGET, two or fewer false alarms per true one at a 1% error base rate is reachable on this task set. EXPERIMENT-MORE-REVIEW-SAMPLES-HELP, the
+low false-alarm rates. EXPERIMENT-COMBINATION-PRECISION-TARGET, two or fewer false alarms per true one at a 1% error base rate is reachable on this task set. EXPERIMENT-REVIEW-SAMPLE-COUNT-EFFECT, the
 tie-break, not more samples, is where the resolution comes from; k = 4 stays the default.
 
 ## Secondary (descriptive, not hypothesis tests)

@@ -1,8 +1,8 @@
 # EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP · Flagship: autonomic vitals vs behavior monitoring (pre-registered)
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED: RETRACTED the earliness claim ('alarms 4.5 s before the answer, 100% of detections'); the online alarm also fires on 89.3% of correct answers. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: on this test set question type alone (AUROC 0.764) and length alone (0.796) exceed the regulator (0.72). REVIEW-AD-HOC-COUNTS-UNSAVED: the per-type breakdown (10/12 struggle, 0/9 slips) is now reproducible (archive/audit/artifacts/). Superseded by EXPERIMENT-CLEAN-REALTIME-RACE to EXPERIMENT-CORRECTED-REALTIME-RACE.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED: RETRACTED the earliness claim ('alarms 4.5 s before the answer, 100% of detections'); the online alarm also fires on 89.3% of correct answers. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: on this test set question type alone (AUROC 0.764) and length alone (0.796) exceed the regulator (0.72). REVIEW-AD-HOC-COUNTS-UNSAVED: the per-type breakdown (10/12 struggle, 0/9 slips) is now reproducible (archive/audit/artifacts/). Superseded by EXPERIMENT-CLEAN-REALTIME-RACE, EXPERIMENT-REPLICATION-REALTIME-RACE and EXPERIMENT-CORRECTED-REALTIME-RACE.
 
-**Status:** tested · **Verdict (pre-registered rules):** EXPERIMENT-FLAGSHIP-ORGANISM-SUPERIORITY superiority ❌ **inferior** to the best behavior monitor; EXPERIMENT-FLAGSHIP-ALARM-EARLINESS earliness ✅ confirmed (alarms a median 291 tokens, about 4.5 s, before the answer exists); EXPERIMENT-FLAGSHIP-COMPLEMENTARITY complementarity ❌.
+**Status:** tested · **Verdict (pre-registered rules):** EXPERIMENT-FLAGSHIP-ORGANISM-VERSUS-BEHAVIOR superiority ❌ **inferior** to the best behavior monitor; EXPERIMENT-FLAGSHIP-ALARM-EARLINESS earliness ✅ confirmed (alarms a median 291 tokens, about 4.5 s, before the answer exists); EXPERIMENT-FLAGSHIP-COMPLEMENTARITY complementarity ❌.
 **Reproduce:** `make` in this folder (sandbox: `sandbox/run.sh algorithms/vitals-vs-behavior-flagship all`). Pre-registration: docs/PREREGISTRATION.md, commit bd83719, pushed before any analysis.
 
 ## 1. Plain English
@@ -38,7 +38,7 @@ entropy, median and IQR from seed-0 correct episodes; score = peak cortisol. Pro
 **Behavior monitors.** EXPERIMENT-LLM-JUDGE-MONITOR: LLM judge probability (gpt-oss-120b, temperature 0, sees question, full reasoning and
 answer). EXPERIMENT-SELF-CONSISTENCY-MONITOR: self-consistency, fraction of 4 temperature-0.8 re-samples whose answer differs. EXPERIMENT-ANSWER-CONFIDENCE-MONITOR: 1 − min top-1
 probability over answer tokens (output confidence).
-**Decision rule (EXPERIMENT-FLAGSHIP-ORGANISM-SUPERIORITY).** Δ_B = AUROC(O) − AUROC(B). Paired bootstrap: resample episodes with replacement (1000, seed 0),
+**Decision rule (EXPERIMENT-FLAGSHIP-ORGANISM-VERSUS-BEHAVIOR).** Δ_B = AUROC(O) − AUROC(B). Paired bootstrap: resample episodes with replacement (1000, seed 0),
 compute Δ_B on each resample, take the 2.5 and 97.5 percentiles. Superior iff the lower bound > 0; inferior iff the
 upper bound < 0; otherwise not distinguishable. Pairing is valid because both monitors score the same episodes.
 **Lemma 3 (bootstrap sanity).** If two monitors give identical scores, every resampled Δ = 0, so the interval is [0, 0].
@@ -82,7 +82,7 @@ EXPERIMENT-FLAGSHIP-ALARM-EARLINESS: 10 errors detected at the frozen threshold;
 Data fingerprints (SHA-256 prefix): monitors_judge.jsonl.gz d3d2c1dd3ba9dc18; monitors_selfcons.jsonl.gz 772ba0ca0af1575b; seed0.jsonl.gz a5b60ae4691a635c; seed1.jsonl.gz 3f88c87f32afb00b; 
 
 ## 7. Verdict against the pre-registered rules
-- **EXPERIMENT-FLAGSHIP-ORGANISM-SUPERIORITY (superiority): inferior.** The best behavior monitor (EXPERIMENT-SELF-CONSISTENCY-MONITOR) beats O; the paired CI lies entirely below 0. O is also inferior to EXPERIMENT-LLM-JUDGE-MONITOR. O is superior only to the output-confidence monitor EXPERIMENT-ANSWER-CONFIDENCE-MONITOR.
+- **EXPERIMENT-FLAGSHIP-ORGANISM-VERSUS-BEHAVIOR (superiority): inferior.** The best behavior monitor (EXPERIMENT-SELF-CONSISTENCY-MONITOR) beats O; the paired CI lies entirely below 0. O is also inferior to EXPERIMENT-LLM-JUDGE-MONITOR. O is superior only to the output-confidence monitor EXPERIMENT-ANSWER-CONFIDENCE-MONITOR.
 - **EXPERIMENT-FLAGSHIP-ALARM-EARLINESS (earliness): holds.** Every detected error was flagged before the answer existed (median 291 tokens, 4.5 s).
 - **EXPERIMENT-FLAGSHIP-COMPLEMENTARITY (complementarity): fails.** O adds nothing measurable to EXPERIMENT-SELF-CONSISTENCY-MONITOR.
 - The organism generalizes (held-out AUROC 0.72, CI above 0.5), consistent with EXPERIMENT-CONTAMINATION-TEST.

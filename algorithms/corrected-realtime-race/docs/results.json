@@ -104,7 +104,7 @@
   }
  },
  "sensitivity_seed7_incl_unanswered": {
-  "label": "SENSITIVITY (REVIEW-UNANSWERED-EPISODES-EXCLUDED): seed 7 incl. never-answered as failures",
+  "label": "SENSITIVITY (F5): seed 7 incl. never-answered as failures",
   "episodes": 600,
   "wrong": 105,
   "monitorable_wrong": 105,

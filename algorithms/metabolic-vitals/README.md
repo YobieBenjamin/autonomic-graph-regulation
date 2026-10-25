@@ -13,7 +13,7 @@ It does not. The GPU drew the same power whether the answer turned out right or 
 For the on-GPU biobrain product this is decisive: coupling a regulator to power rails, thermals or clocks will not work. The biobrain die needs a telemetry port into the accelerator's activations and logits.
 
 ## 2. Theory
-Independence Principle, tier 0 (physical/metabolic): the most independent signals, because a transformer cannot narrate or fake physics. EXPERIMENT-CONTAMINATION-TEST found token timing weak; this experiment tests true power. Pre-registered before analysis: **EXPERIMENT-POWER-PREDICTS-WRONG-ANSWERS** GPU power/energy features predict wrong answers within question type (95% CI lower bound > 0.5); **EXPERIMENT-METABOLIC-BEYOND-TIMING** they add beyond timing features.
+Independence Principle, tier 0 (physical/metabolic): the most independent signals, because a transformer cannot narrate or fake physics. EXPERIMENT-CONTAMINATION-TEST found token timing weak; this experiment tests true power. Pre-registered before analysis: **EXPERIMENT-POWER-AS-ERROR-SIGNAL** GPU power/energy features predict wrong answers within question type (95% CI lower bound > 0.5); **EXPERIMENT-POWER-VERSUS-TIMING-FEATURES** they add beyond timing features.
 
 ## 3. Mathematics and proofs
 Power samples (t_i, P_i), about every 117 ms, stamped on the same monotonic clock as the tokens and taken within the episode window.
@@ -47,8 +47,8 @@ Data fingerprint: SHA-256 of data/episodes_power.jsonl.gz begins **d50cfdf3c9a4e
 Mean GPU power: 11.01 W on correct answers, 10.09 W on wrong answers.
 
 ## 7. Verdict
-- **EXPERIMENT-POWER-PREDICTS-WRONG-ANSWERS fails:** metabolic features do not predict failure (CI includes 0.5; point estimate below chance).
-- **EXPERIMENT-METABOLIC-BEYOND-TIMING fails:** metabolic + timing does not beat timing.
+- **EXPERIMENT-POWER-AS-ERROR-SIGNAL fails:** metabolic features do not predict failure (CI includes 0.5; point estimate below chance).
+- **EXPERIMENT-POWER-VERSUS-TIMING-FEATURES fails:** metabolic + timing does not beat timing.
 - **Adding weak signals hurts:** all three (0.595) is worse than substrate alone (0.748), so only validated channels should enter the organism.
 - **Design consequence:** tier 0 is uninformative for fixed-compute transformers. The organism's senses must come from reasoning-phase substrate signals, and a hardware biobrain needs an activation/logit telemetry port, not power sensing. Tier 0 may revive for adaptive-compute models (early exit, variable depth): a future hypothesis.
 

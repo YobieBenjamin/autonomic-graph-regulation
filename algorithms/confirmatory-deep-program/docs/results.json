@@ -4,7 +4,7 @@
  "test_answered": 544,
  "test_wrong": 47,
  "deviation": [
-  "hunch field (EXPERIMENT-WEIGHTED-HUNCH-FIELD) listed as a monitor but not implemented; no hypothesis depends on it"
+  "hunch field (YB-0027) listed as a monitor but not implemented; no hypothesis depends on it"
  ],
  "H1_realtime_race": {
   "monitors": {

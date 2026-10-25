@@ -41,7 +41,7 @@ def ci(s, yy=None):
     return [round(float(auroc(yy, s)), 4), round(float(np.percentile(b, 2.5)), 4), round(float(np.percentile(b, 97.5)), 4)]
 res = dict(derivation_answered=len(R2), derivation_wrong=int(y2.sum()), test_answered=len(R3), test_wrong=int(y.sum()),
            deviation=['hunch field (EXPERIMENT-WEIGHTED-HUNCH-FIELD) listed as a monitor but not implemented; no hypothesis depends on it'])
-# ---- EXPERIMENT-CONFIRMATORY-REALTIME-SUPERIORITY: real-time race at matched 10% false alarms ----
+# ---- EXPERIMENT-CONFIRMATORY-ORGANISM-VERSUS-JUDGE: real-time race at matched 10% false alarms ----
 M = {m: np.full(len(R3), -np.inf) for m in ('deep_organism', 'judge_prefix', 'selfcons_prefix', 'aiews_v2')}; spare = {m: {} for m in M}; ctime = {m: [] for m in M}
 for i, r in enumerate(R3):
     for f in F:
@@ -65,8 +65,9 @@ for _ in range(1000):
 d1 = [round(float(a[w].mean() - b[w].mean()), 4), round(float(np.percentile(dd, 2.5)), 4), round(float(np.percentile(dd, 97.5)), 4)]
 res['H1_realtime_race'] = dict(monitors=race, best_behavior=best, deep_minus_best_recall=d1, verdict='SUPERIOR' if d1[1] > 0 else ('inferior' if d1[2] < 0 else 'not distinguishable'))
 # ---- EXPERIMENT-CONFIRMATORY-ACCURACY: accuracy (full answers) ----
-res['H2_accuracy'] = dict(auroc=dict(deep_organism=ci(od), llm_judge=ci(B1), self_consistency=ci(B2), answer_confidence=ci(B3), aiews_v2=ci(S)),
-                          deep_minus_judge=paired_diff(y, od, B1), deep_minus_selfcons=paired_diff(y, od, B2))
+# Variable names: EXPERIMENT-LLM-JUDGE-MONITOR (old: B1), EXPERIMENT-SELF-CONSISTENCY-MONITOR (old: B2), EXPERIMENT-ANSWER-CONFIDENCE-MONITOR (old: B3)
+res['H2_accuracy'] = dict(auroc=dict(deep_organism=ci(od), llm_judge=ci(B1), self_consistency=ci(B2), answer_confidence=ci(B3), aiews_v2=ci(S)),  # EXPERIMENT-LLM-JUDGE-MONITOR (old: B1), EXPERIMENT-SELF-CONSISTENCY-MONITOR (old: B2), EXPERIMENT-ANSWER-CONFIDENCE-MONITOR (old: B3)
+                          deep_minus_judge=paired_diff(y, od, B1), deep_minus_selfcons=paired_diff(y, od, B2))  # EXPERIMENT-LLM-JUDGE-MONITOR (old: B1), EXPERIMENT-SELF-CONSISTENCY-MONITOR (old: B2)
 for k in ('deep_minus_judge', 'deep_minus_selfcons'):
     d = res['H2_accuracy'][k]; res['H2_accuracy'][k + '_verdict'] = 'superior' if d[1] > 0 else ('inferior' if d[2] < 0 else 'not distinguishable')
 # ---- EXPERIMENT-CONFIRMATORY-TRANSPARENT-SCORE: AI-EWS v2 ----

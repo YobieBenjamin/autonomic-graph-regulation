@@ -82,7 +82,7 @@ work = tempfile.mkdtemp(); repo = os.path.join(work, 'safety')
 shutil.copytree(SRC, repo, ignore=shutil.ignore_patterns('.venv', '.git', '*.so', 'sandbox_*', 'state.json'))
 shutil.rmtree(os.path.join(repo, 'miner', 'sandbox'), ignore_errors=True)
 # Fixture isolation: the live research backlog evolves (the MLP-testbed hypotheses from
-# EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR to EXPERIMENT-DRIFT-BUDGET-CALIBRATION were deferred when the program
+# EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR, EXPERIMENT-IMMUNE-NEGATIVE-SELECTION, EXPERIMENT-SCALABLE-TRANSFORMER-HEAT-TRACE, EXPERIMENT-AMYGDALA-LOW-ROAD-BREAKER and EXPERIMENT-DRIFT-BUDGET-CALIBRATION were deferred when the program
 # refocused on the biological thesis). This test needs EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR and
 # EXPERIMENT-IMMUNE-NEGATIVE-SELECTION open, so reset them in the throwaway copy only. Headings are found by name.
 _hp = os.path.join(repo, 'HYPOTHESES.md'); _h = open(_hp).read()

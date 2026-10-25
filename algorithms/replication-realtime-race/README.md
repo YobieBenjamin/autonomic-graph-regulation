@@ -7,7 +7,7 @@
 To check that EXPERIMENT-CLEAN-REALTIME-RACE's result was not luck, we re-ran the identical experiment, same code and same training data, on 600 new questions. The regulator again caught about twice as many wrong answers in time as the 120-billion-parameter AI judge, and more than the length-only monitor, also when every monitor was held to exactly the same false-alarm rate.
 
 ## 2-5. Theory, mathematics, code and repeatable proof
-Identical to EXPERIMENT-CLEAN-REALTIME-RACE (code copied unchanged except test-seed file names); the equal-false-alarm check (tests/exploratory_equal_fpr.py, make target `robust`) was pre-registered here as EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS. The audit findings for EXPERIMENT-CLEAN-REALTIME-RACE (REVIEW-LAYER-TAP-ONE-STEP-LATE, REVIEW-UNANSWERED-EPISODES-EXCLUDED, REVIEW-FALSE-ALARM-CAP-EXCEEDED to REVIEW-BOOTSTRAP-IGNORED-THRESHOLD-UNCERTAINTY) apply equally; they are fixed in EXPERIMENT-CORRECTED-REALTIME-RACE.
+Identical to EXPERIMENT-CLEAN-REALTIME-RACE (code copied unchanged except test-seed file names); the equal-false-alarm check (tests/exploratory_equal_fpr.py, make target `robust`) was pre-registered here as EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS. The audit findings for EXPERIMENT-CLEAN-REALTIME-RACE (REVIEW-LAYER-TAP-ONE-STEP-LATE, REVIEW-UNANSWERED-EPISODES-EXCLUDED, REVIEW-FALSE-ALARM-CAP-EXCEEDED, REVIEW-MONITORABLE-FALSE-ALARMS-UNREPORTED, REVIEW-BOOTSTRAP-IGNORED-THRESHOLD-UNCERTAINTY) apply equally; they are fixed in EXPERIMENT-CORRECTED-REALTIME-RACE.
 Data fingerprints (SHA-256 prefix): seed6_L.jsonl.gz b9a9de7b0b9db107; layers_seed6_0.npz 0499d24b535a98bd; prefix_judge_abs_s6.jsonl.gz 7488a1b2ae97d115; prefix_selfcons_abs_s6.jsonl.gz 5b90f9c1d2877c6d; 
 
 ## 6. Results (537 answered, 43 wrong)

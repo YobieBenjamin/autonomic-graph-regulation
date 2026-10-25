@@ -143,7 +143,7 @@ framed as a clinical early-warning system.
 
 ## Disclosures added after the third audit (2026-09-30)
 - **Inputs (REVIEW-REGULATOR-SEES-TYPE-AND-LENGTH):** besides layer telemetry, the regulator receives the question type and the elapsed token count (its features are normalized per type and checkpoint). In open-ended use the type may be unknown. A baseline using only type and elapsed length catches 9/40 on seed 7 vs the regulator's 23/40 (EXPERIMENT-CORRECTED-REALTIME-RACE docs/exploratory_audit3.json).
-- **Design history (REVIEW-LOST-RACE-OMITTED):** the corrected real-time design followed a pre-registered race the regulator lost (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM: 4/47 vs the judge's 12/47) and a design rejected for look-ahead (EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM). EXPERIMENT-CLEAN-REALTIME-RACE to EXPERIMENT-CORRECTED-REALTIME-RACE are the redesign, so the confirmatory value rests on the fresh test sets after it.
+- **Design history (REVIEW-LOST-RACE-OMITTED):** the corrected real-time design followed a pre-registered race the regulator lost (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM: 4/47 vs the judge's 12/47) and a design rejected for look-ahead (EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM). EXPERIMENT-CLEAN-REALTIME-RACE, EXPERIMENT-REPLICATION-REALTIME-RACE and EXPERIMENT-CORRECTED-REALTIME-RACE are the redesign, so the confirmatory value rests on the fresh test sets after it.
 - **Authorship (REVIEW-AI-AUTHORSHIP-UNDISCLOSED):** see README.md, Authorship and AI assistance.
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->
@@ -198,5 +198,5 @@ Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: ac
 - **Descriptive, and important:** post-answer self-consistency alone caught 124 of 138 (AUROC 0.965); the layered system did not catch more
   than it (not pre-registered). Self-consistency resamples the monitored model, so the strongest detector here is built on the model's own
   outputs, measured by outside code. It acts only after the answer and costs seconds (median 8.2 s).
-- **Refined principle EXPERIMENT-PRINCIPLE-INDEPENDENCE:** the model must never be the judge of its own output; its disagreement with itself, computed by external code,
+- **Refined principle GOAL-INDEPENDENCE-PRINCIPLE:** the model must never be the judge of its own output; its disagreement with itself, computed by external code,
   is a legitimate signal for a post-answer layer behind a hold gate.

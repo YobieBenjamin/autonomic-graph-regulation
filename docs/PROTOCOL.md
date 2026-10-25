@@ -13,7 +13,7 @@ Rules every experiment follows. Each rule exists because of a specific failure r
    its output is committed. *(REVIEW-VERIFICATION-CLAIMED-BEFORE-CHECK, REVIEW-EUREKA-WORDING-OVERSTATED)*
 5. **Early-warning claims face mandatory controls.** Monitors are compared at matched (at most 10%) false-alarm rates
    with thresholds re-set in every bootstrap resample, and must beat question-type and length-only baselines, with
-   never-answered episodes as a pre-declared sensitivity analysis. *(REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED, REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED, REVIEW-UNANSWERED-EPISODES-EXCLUDED, REVIEW-FALSE-ALARM-CAP-EXCEEDED to REVIEW-BOOTSTRAP-IGNORED-THRESHOLD-UNCERTAINTY, REVIEW-BASELINES-BEAT-EARLY-ORGANISMS)*
+   never-answered episodes as a pre-declared sensitivity analysis. *(REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED, REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED, REVIEW-UNANSWERED-EPISODES-EXCLUDED, REVIEW-FALSE-ALARM-CAP-EXCEEDED, REVIEW-MONITORABLE-FALSE-ALARMS-UNREPORTED, REVIEW-BOOTSTRAP-IGNORED-THRESHOLD-UNCERTAINTY, REVIEW-BASELINES-BEAT-EARLY-ORGANISMS)*
 6. **No information from the future.** Features, normalization and checkpoints use only what a real-time monitor
    could know at that moment. *(EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM look-ahead)*
 7. **Run alone, and record the environment.** Recordings and timed monitors run with no other heavy job

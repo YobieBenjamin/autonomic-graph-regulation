@@ -1,7 +1,7 @@
 # AGR scale-up proposal: internal-state error monitoring beyond one model and one laptop
 
 Status: DRAFT, 2026-10-04. Section 2 is filled in from EXPERIMENT-DIFFICULTY-CONFOUND and EXPERIMENT-TEXT-BASELINE-TRANSFER results. Every theory below gets its own pre-registration,
-fresh test sets, public timestamps and the same audit trail as EXPERIMENT-CORRECTED-REALTIME-RACE to EXPERIMENT-TEXT-BASELINE-TRANSFER.
+fresh test sets, public timestamps and the same audit trail as EXPERIMENT-CORRECTED-REALTIME-RACE, EXPERIMENT-PROBE-BASELINE, EXPERIMENT-OPENSHELL-GATING, EXPERIMENT-POWERED-REPLICATION, EXPERIMENT-DIFFICULTY-CONFOUND and EXPERIMENT-TEXT-BASELINE-TRANSFER.
 
 ## 1. What the laptop phase established, and what it cannot
 Established (one model, gpt-oss-20b; six synthetic, machine-gradable task types; four checkpoints up to 384 tokens):
@@ -75,7 +75,7 @@ an adversarial red team for EXPERIMENT-SCALE-UP-ADVERSARIAL-ROBUSTNESS; an indep
 
 ## 5. Phasing
 1. Phase A (laptop, now): EXPERIMENT-DIFFICULTY-CONFOUND and EXPERIMENT-TEXT-BASELINE-TRANSFER; second model family (Qwen3-VL-30B-A3B) and one dense 8B model on the Mac.
-2. Phase B (cloud): EXPERIMENT-SCALE-UP-GENERALITY to EXPERIMENT-SCALE-UP-UNSEEN-TASK-TRANSFER on 6 models and 5 task families.
+2. Phase B (cloud): EXPERIMENT-SCALE-UP-GENERALITY, EXPERIMENT-SCALE-UP-BEYOND-DIFFICULTY, EXPERIMENT-SCALE-UP-INTERNALS-BEAT-TEXT and EXPERIMENT-SCALE-UP-UNSEEN-TASK-TRANSFER on 6 models and 5 task families.
 3. Phase C: EXPERIMENT-SCALE-UP-OPEN-PROSE (prose) and EXPERIMENT-SCALE-UP-COMPACT-TELEMETRY (bandwidth).
 4. Phase D: EXPERIMENT-SCALE-UP-LIVE-GATING (live agents) and EXPERIMENT-SCALE-UP-ADVERSARIAL-ROBUSTNESS (adversarial), with hardware partner access.
 

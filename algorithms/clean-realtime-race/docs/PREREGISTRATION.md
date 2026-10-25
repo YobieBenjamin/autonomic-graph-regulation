@@ -1,11 +1,11 @@
-# EXPERIMENT-CLEAN-REALTIME-RACE pre-registration: clean real-time race (absolute-time checkpoints, length controls)
+# YB-0033 pre-registration: clean real-time race (absolute-time checkpoints, length controls)
 
-Committed before seed 5 exists and before any EXPERIMENT-CLEAN-REALTIME-RACE analysis.
+Committed before seed 5 exists and before any YB-0033 analysis.
 
 ## Why
-EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM's checkpoints sat at fractions (25/50/75%) of the total reasoning length, which a real-time monitor cannot
+YB-0032's checkpoints sat at fractions (25/50/75%) of the total reasoning length, which a real-time monitor cannot
 know; checkpoint position leaked that length, and length alone caught 15/46 errors in time (more than the LLM judge).
-EXPERIMENT-CLEAN-REALTIME-RACE removes every source of future information and adds length-only competitors.
+YB-0033 removes every source of future information and adds length-only competitors.
 
 ## Data
 - **Derivation:** seeds 2, 3 and 4 (all previously analyzed; used only for training), answered episodes.
@@ -19,11 +19,11 @@ Absolute token counts t in T = {48, 96, 192, 384}. A checkpoint exists for an ep
 total reasoning length is used anywhere (features, normalization, stage labels, checkpoint placement).
 
 ## Monitors (all scored at every existing checkpoint)
-- **Organism (A-organism):** EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM deep features of the first t tokens plus log t; normalization per (question type, t)
+- **Organism (A-organism):** YB-0019 deep features of the first t tokens plus log t; normalization per (question type, t)
   from derivation statistics; one L2 logistic model (C = 0.1) over all derivation serial observations at the same T.
 - **AI-EWS v4:** AI-EWS v2 vitals (8) on the first t tokens; bands per checkpoint t from derivation correct episodes
   still reasoning at t; directions learned on derivation data at t = 384 (or the largest t with enough episodes).
-- **Length controls:** EXPERIMENT-LENGTH-CONTROL-STILL-REASONING = t (still reasoning at token t); EXPERIMENT-LENGTH-CONTROL-TYPE-PERCENTILE = derivation percentile of t among episodes of the same
+- **Length controls:** C1 = t (still reasoning at token t); C2 = derivation percentile of t among episodes of the same
   question type (how unusually long this reasoning already is for its type).
 - **Behavior:** LLM judge (gpt-oss-120b) on the question + first t tokens; self-consistency (2 continuations from the
   first t tokens, disagreement); both with measured compute time, run alone.
@@ -32,10 +32,10 @@ total reasoning length is used anywhere (features, normalization, stage labels, 
 In-time score = max over checkpoints whose alarm finishes before the answer is emitted (compute time included; clock =
 the seed-5 recording's per-token latencies). Each monitor's threshold: at most 10% of seed-5 correct episodes receive any
 in-time alarm.
-- **EXPERIMENT-CLEAN-RACE-ORGANISM-WINS (EUREKA criterion):** in-time recall, organism minus best behavior monitor, CI > 0 **and** organism minus best
+- **H1 (EUREKA criterion):** in-time recall, organism minus best behavior monitor, CI > 0 **and** organism minus best
   length control, CI > 0. EUREKA only if both hold.
-- **EXPERIMENT-CLEAN-RACE-SCORE-BEATS-LENGTH:** AI-EWS v4 in-time recall minus best length control, CI > 0.
-- **EXPERIMENT-CLEAN-RACE-LENGTH-FREE-TYPES:** organism in-time recall minus best behavior monitor on errors from types where length has no signal in
+- **H2:** AI-EWS v4 in-time recall minus best length control, CI > 0.
+- **H3:** organism in-time recall minus best behavior monitor on errors from types where length has no signal in
   derivation data (within-type length AUROC < 0.6 on seeds 2-4), CI lower bound > 0 (reported with n).
 - Reported: per-checkpoint AUROC of every monitor, seconds to spare, compute per check, silent-slip recall.
 All outcomes reported. Engineering rule: the full analysis is dry-run on derivation data with stand-in monitor scores

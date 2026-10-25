@@ -3,7 +3,7 @@
 export PATH=$HOME/.nvm/versions/node/v22.17.1/bin:/usr/local/bin:/opt/homebrew/bin:/Applications/Docker.app/Contents/Resources/bin:$PATH
 cd ~/Desktop/SAFETY; L=/tmp/audit12.log; say() { echo "[$(date -u +%H:%M:%S)] $*" >> $L; }
 : > $L; say START
-SANDBOX_MEM=28g ./publish.sh 'Series v4 (four results, EXPERIMENT-DIFFICULTY-CONFOUND to EXPERIMENT-STAGE-DIVERSE-LAYERING) for the twelfth audit; EXPERIMENT-STAGE-DIVERSE-LAYERING records; resume and battery scripts' > /tmp/pub_a12.log 2>&1 || { say STOP publish failed; exit 1; }; say COMMITTED $(git log --oneline -1 | cut -c1-7)
+SANDBOX_MEM=28g ./publish.sh 'Series v4 (four results, EXPERIMENT-DIFFICULTY-CONFOUND, EXPERIMENT-TEXT-BASELINE-TRANSFER, EXPERIMENT-MULTILEVEL-FUSION and EXPERIMENT-STAGE-DIVERSE-LAYERING) for the twelfth audit; EXPERIMENT-STAGE-DIVERSE-LAYERING records; resume and battery scripts' > /tmp/pub_a12.log 2>&1 || { say STOP publish failed; exit 1; }; say COMMITTED $(git log --oneline -1 | cut -c1-7)
 scripts/make_public_snapshot.sh >> /tmp/pub_a12.log 2>&1 && say SNAPSHOT_OK || { say STOP snapshot failed; exit 1; }
 P=$(cat archive/audit/series_audit3_prompt.txt); TOK=$(security find-generic-password -s claude-code-oauth-token -w 2>/dev/null)
 ( env -u ANTHROPIC_API_KEY CLAUDE_CODE_OAUTH_TOKEN=$TOK claude -p "$P" --model claude-fable-5-1 --permission-mode plan --allowedTools 'Read,Grep,Glob' --add-dir $HOME/Desktop/agr-public --max-turns 300 --output-format text > /tmp/a12_fable.md 2> /tmp/a12_fable.err; say FABLE_EXIT=$? ) &

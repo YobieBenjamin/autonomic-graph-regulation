@@ -1,6 +1,6 @@
 # EXPERIMENT-REALTIME-RACE · The real-time race: who warns before the answer, counting their own compute time?
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** The exploratory matched-false-alarm lead did not replicate on fresh data (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM); the question was settled by EXPERIMENT-CLEAN-REALTIME-RACE to EXPERIMENT-CORRECTED-REALTIME-RACE. REVIEW-LAYER-TAP-ONE-STEP-LATE applies to its telemetry.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** The exploratory matched-false-alarm lead did not replicate on fresh data (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM); the question was settled by EXPERIMENT-CLEAN-REALTIME-RACE, EXPERIMENT-REPLICATION-REALTIME-RACE and EXPERIMENT-CORRECTED-REALTIME-RACE. REVIEW-LAYER-TAP-ONE-STEP-LATE applies to its telemetry.
 
 **Status:** tested · **Verdict:** pre-registered rule ⚠️ flawed (it declared an organism win without controlling false alarms: the organism alarmed on 66% of correct answers). Exploratory at matched 10% false alarms: the deep organism caught 11 of 21 wrong answers in time vs 6 for the LLM judge (+0.24, CI −0.05 to +0.52, not significant) at about 700x less compute.
 **Reproduce:** `make` here (sandbox), then `PYTHONPATH=.:src python3 tests/exploratory_matched_fpr.py` for the exploratory analysis.

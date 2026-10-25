@@ -1,8 +1,8 @@
 """Layer 3 observer: signal families, risk scoring, signed observer assertions.
 
 This package does not import the hardware lane. It implements the wire contract
-in ``hardware/docs/LANES.md`` independently and is tested against reference
-values produced by the gate (see ``tests/vectors.json``).
+in ``hardware-and-silicon/docs/LANES.md`` independently and is tested against reference
+values produced by the gate (see ``observer/tests/test_contract.py``).
 """
 
 from .observer import SafetyObserver
