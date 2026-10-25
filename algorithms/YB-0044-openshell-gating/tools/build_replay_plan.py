@@ -1,12 +1,12 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 replay plan. Reuses YB-0045 code and data unchanged: regulator fitted on the YB-0045 derivation seeds; alarm
+'''EXPERIMENT-OPENSHELL-GATING replay plan. Reuses EXPERIMENT-POWERED-REPLICATION code and data unchanged: regulator fitted on the EXPERIMENT-POWERED-REPLICATION derivation seeds; alarm
 threshold FROZEN from 5-fold cross-fitted derivation scores (at most 10% of derivation correct episodes alarmed), never set on
-test labels. For each selected test episode (YB-0045 seeds 9, 13, 14, answered): D = answer emission time (s from start of
+test labels. For each selected test episode (EXPERIMENT-POWERED-REPLICATION seeds 9, 13, 14, answered): D = answer emission time (s from start of
 generation) and t_alarm = earliest checkpoint time + 5 ms with score above the threshold that is still before D, else null.
 Selection: all wrong answers plus an equal number of correct answers drawn uniformly (numpy seed 44). Writes docs/replay_plan.json.
-Run in the sandbox with the YB-0045 folder at /src45 (read-only) and this folder at /work.'''
+Run in the sandbox with the EXPERIMENT-POWERED-REPLICATION folder at /src45 (read-only) and this folder at /work.'''
 import json, sys, numpy as np
 sys.path.insert(0, '/tmp/s45/src'); sys.path.insert(0, '/tmp/s45/tests')
 import experiment as E

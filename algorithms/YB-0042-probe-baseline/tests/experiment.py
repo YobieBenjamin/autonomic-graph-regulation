@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0042 analysis (pre-registered; see docs/PREREGISTRATION.md). Derivation: seeds 2-4 re-recorded with telemetry and
+'''EXPERIMENT-PROBE-BASELINE analysis (pre-registered; see docs/PREREGISTRATION.md). Derivation: seeds 2-4 re-recorded with telemetry and
 hidden states in the same pass. Test: fresh seed 8. Exits cleanly if seed 8 is absent. DRY_RUN=1 runs the full pipeline
 on synthetic data (docs/dryrun.json).'''
 import json, gzip, os, sys, numpy as np
@@ -119,6 +119,6 @@ def main():
     out = 'docs/dryrun.json' if DRY else 'docs/results.json'
     json.dump(res, open(out, 'w'), indent=1, default=lambda o: o.item() if hasattr(o, 'item') else str(o))
     print(json.dumps({k: res[k] for k in ('probe_selected', 'test_answered', 'test_wrong', 'H1_regulator_minus_probe', 'H1_verdict')}, default=str))
-    if 'H2_replicated' in res: print('H2', res['H2_regulator_minus_judge'], 'replicated' if res['H2_replicated'] else 'not replicated')
+    if 'H2_replicated' in res: print('EXPERIMENT-PROBE-STUDY-JUDGE-REPLICATION', res['H2_regulator_minus_judge'], 'replicated' if res['H2_replicated'] else 'not replicated')
 
 if __name__ == '__main__': main()

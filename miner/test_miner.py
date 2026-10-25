@@ -28,12 +28,14 @@ class API(BaseHTTPRequestHandler):
         b = json.loads(self.rfile.read(int(self.headers['content-length']))); SEEN.append(b)
         last = b['messages'][-1]['content']
         if 'haiku' in b['model']:
+            # Registered name: EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR (old ID YB-0003 is kept because code matches on it)
             out = {'novelty': 1, 'feasibility': 1, 'duplicate_of': None, 'reason': 'mock low'} if 'HYPOTHESIS YB-0003:' in last \
                   else {'novelty': 8, 'feasibility': 8, 'duplicate_of': None, 'reason': 'mock ok'}
         elif 'Propose' in last:
             out = {'hypotheses': [{'name': 'Mock proposal ' + str(i), 'foundation': 'f', 'hypothesis': 'h', 'test': 't'} for i in range(2)]}
         elif 'make all failed' in last:
             out = {'files': {'tests/test_core.py': GOOD_TEST}, 'summary': 'repaired'}
+        # Registered name: EXPERIMENT-IMMUNE-NEGATIVE-SELECTION (old ID YB-0004 is kept because code matches on it)
         elif 'Algorithm ID YB-0004.' in last:
             out = {'files': algo(BAD_TEST), 'summary': 'first try'}
         else:
@@ -47,8 +49,8 @@ srv = HTTPServer(('127.0.0.1', 0), API); threading.Thread(target=srv.serve_forev
 work = tempfile.mkdtemp(); repo = os.path.join(work, 'safety')
 shutil.copytree(SRC, repo, ignore=shutil.ignore_patterns('.venv', '.git', '*.so', 'sandbox_*', 'state.json'))
 shutil.rmtree(os.path.join(repo, 'miner', 'sandbox'), ignore_errors=True)
-# Fixture isolation: the live research backlog evolves (e.g. YB-0003..0007 deferred when the program refocused on the
-# biological thesis). This test needs YB-0003 and YB-0004 open, so reset them in the throwaway copy only.
+# Fixture isolation: the live research backlog evolves (e.g. EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR..0007 deferred when the program refocused on the
+# biological thesis). This test needs EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR and EXPERIMENT-IMMUNE-NEGATIVE-SELECTION open, so reset them in the throwaway copy only.
 import re as _re
 _hp = os.path.join(repo, 'HYPOTHESES.md'); _h = open(_hp).read()
 for _hid in ('YB-0003', 'YB-0004'):

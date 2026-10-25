@@ -20,10 +20,10 @@ def test_T1_T2_bound_holds_under_worst_case_attack():
     for eta in (0.01, 0.05, 0.2):
         m = mon(eta=eta); T = int(5 * m.B / (eta * m.tau)) + 50
         out = m.run(worst_case_attack(m, T, "budgeted"), "budgeted")
-        assert out["drift"].max() <= m.B + eta * m.tau + 1e-9          # T1
+        assert out["drift"].max() <= m.B + eta * m.tau + 1e-9          # EXPERIMENT-BASELINE-CONFINEMENT-THEOREM
         acc = ~out["flag"]; S = worst_case_attack(m, T, "budgeted")
         dist = np.sqrt(np.einsum("ij,jk,ik->i", S - m.mu0, m.P, S - m.mu0))
-        assert dist[acc].max() <= m.tau + m.B + eta * m.tau + 1e-9      # T2
+        assert dist[acc].max() <= m.tau + m.B + eta * m.tau + 1e-9      # EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM
         assert out["frozen"][-1]
 
 def test_T3_alarm_step_matches_theory():

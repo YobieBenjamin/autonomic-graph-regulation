@@ -1,9 +1,9 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0051 EXPLORATORY lever comparison at low false-alarm rates (not confirmatory; the data are the YB-0050 test seeds, now derivation).
+'''EXPERIMENT-LOW-FALSE-ALARM-PRECISION EXPLORATORY lever comparison at low false-alarm rates (not confirmatory; the data are the EXPERIMENT-POWERED-DECIDER test seeds, now derivation).
 Candidates that learn anything from labels are cross-fitted (5 folds by episode), so no episode is scored by a rule fitted on it.
-Writes docs/explore.json. Every number here is a hypothesis generator for the YB-0051 pre-registration, never a result.'''
+Writes docs/explore.json. Every number here is a hypothesis generator for the EXPERIMENT-LOW-FALSE-ALARM-PRECISION pre-registration, never a result.'''
 import json, sys, numpy as np
 sys.path.insert(0, 'src')
 from decider import single, bootstrap, burden_table
@@ -48,7 +48,7 @@ def pauc(v, cap=0.01):
     return round(float(np.trapezoid(t2, f2) / cap), 4)
 rules = {k: single(fin(v)) for k, v in S.items()}
 pt, bs = bootstrap(rules, y, caps=(0.10, 0.02, 0.01, 0.005), n=1000)
-res = dict(note='EXPLORATORY: YB-0050 test seeds 15-26 reused as derivation data; selection only, not evidence', episodes=N, wrong=int(y.sum()),
+res = dict(note='EXPLORATORY: EXPERIMENT-POWERED-DECIDER test seeds 15-26 reused as derivation data; selection only, not evidence', episodes=N, wrong=int(y.sum()),
            correct=int((y == 0).sum()), table={k: {('fa_%g' % c): dict(caught=int(round(pt[(k, c)][0] * y.sum())), recall=round(pt[(k, c)][0], 4), fpr=round(pt[(k, c)][1], 4)) for c in (0.10, 0.02, 0.01, 0.005)} for k in S},
            partial_auroc_to_1pct={k: pauc(v) for k, v in S.items()},
            burden_at_1pct_fa={k: burden_table(pt, bs, k, 0.01)['p=0.01'] for k in S}, recall_ci_at_1pct={k: burden_table(pt, bs, k, 0.01)['recall'] for k in S},

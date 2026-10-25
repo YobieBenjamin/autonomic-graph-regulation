@@ -10,6 +10,7 @@ while ! grep -q R2_PUBLISHED /tmp/yb0034_chain.log 2>/dev/null; do sleep 60; don
 git stash list >/dev/null; echo "Reproducibility audit started $(date -u +%FT%TZ) at commit $(git rev-parse --short HEAD)" > $OUT
 for d in algorithms/YB-00*/; do
   n=$(basename $d); [ -f $d/docs/results.json ] || { echo "$n: no results.json (skipped)" >> $OUT; continue; }
+  # Registered name: EXPERIMENT-REPLICATION-REALTIME-RACE (old ID YB-0034 is kept because code matches on it)
   case $n in YB-0034*) echo "$n: skipped (in progress)" >> $OUT; continue;; esac
   t0=$(date +%s); SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh $d all > /tmp/repro_$n.log 2>&1; rc=$?
   ch=$(git status --porcelain -- $d/docs | wc -l | tr -d ' ')

@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-# YB-0042 chain (usage: agr/yb0042_chain.sh <protocol-commit>). Each stage alone, in order: wait until GitHub has the
+# EXPERIMENT-PROBE-BASELINE chain (usage: agr/yb0042_chain.sh <protocol-commit>). Each stage alone, in order: wait until GitHub has the
 # pre-registration -> both alignment tests -> record seeds 2, 3, 4 (derivation) and 8 (fresh test) with telemetry and
 # hidden states in the same pass -> LLM judge on seed 8 -> pack WITHOUT shift -> analysis in the sandbox -> publish.
 cd "$(dirname "$0")/.."; export PATH=$HOME/.lmstudio/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
@@ -21,6 +21,7 @@ lms server status 2>&1 | grep -q 'is running' || lms server start --port 1234 >/
 lms load openai/gpt-oss-120b --context-length 65536 --gpu max -y --identifier local-strong >/dev/null 2>&1
 EPISODES_FILE=data/agr/episodes_LH_seed8.jsonl ALL_EPISODES=1 CKPT=abs SEED=8 .venv/bin/python agr/prefix_monitors.py judge > /tmp/yb42_judge8.log 2>&1; log 'judge on seed 8 done'
 lms unload local-strong >/dev/null 2>&1
+# Registered name: EXPERIMENT-PROBE-BASELINE (old ID YB-0042 is kept because code matches on it)
 D=algorithms/YB-0042-probe-baseline/data
 .venv/bin/python - <<'PY' >> $LOG 2>&1
 import json, gzip, os, numpy as np
@@ -42,5 +43,5 @@ with gzip.open(os.path.join(D, 'prefix_judge_abs_s8.jsonl.gz'), 'wt') as f: f.wr
 PY
 log 'packed'
 SANDBOX_MEM=12g SANDBOX_TIMEOUT=14400 sandbox/run.sh algorithms/YB-0042-probe-baseline all > /tmp/yb42_analysis.log 2>&1; log "ANALYSIS EXIT=$?"
-./publish.sh 'YB-0042 probe baseline: raw results per pre-registration (interpretation pending)' > /tmp/yb42_publish.log 2>&1; log "PUBLISH EXIT=$?"
+./publish.sh 'EXPERIMENT-PROBE-BASELINE probe baseline: raw results per pre-registration (interpretation pending)' > /tmp/yb42_publish.log 2>&1; log "PUBLISH EXIT=$?"
 git -C ~/safety pull -q; log YB0042_ALL_DONE

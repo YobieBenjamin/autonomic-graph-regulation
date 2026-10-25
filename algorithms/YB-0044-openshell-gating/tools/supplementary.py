@@ -1,10 +1,10 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 supplementary analysis (POST HOC, written in response to the eighth audit; not pre-registered). From the mock
+'''EXPERIMENT-OPENSHELL-GATING supplementary analysis (POST HOC, written in response to the eighth audit; not pre-registered). From the mock
 service's own arrival log (docs/mock_service_log.jsonl, Mac clock): (1) when the live runs started relative to the RFC 3161
 pre-registration timestamp (2026-10-02 18:08:17 UTC); (2) stalls between successive episode start signals per arm (gaps over
-60 s); (3) H2 sensitivity: arm-B wins whose alarm-to-commit gap is shorter than the fastest isolated block (4.99 s,
+60 s); (3) EXPERIMENT-REACTIVE-BLOCK-LOSES-RACES sensitivity: arm-B wins whose alarm-to-commit gap is shorter than the fastest isolated block (4.99 s,
 docs/reload_timing.json) are re-counted as losses, since a leftover block from the previous episode may explain them.
 Writes docs/supplementary.json.'''
 import json, datetime as dt, numpy as np

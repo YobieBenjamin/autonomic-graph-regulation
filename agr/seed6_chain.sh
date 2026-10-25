@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-# YB-0033 test-set collection (seed 5): record -> judge at absolute checkpoints (alone) -> self-consistency (alone).
+# EXPERIMENT-CLEAN-REALTIME-RACE test-set collection (seed 5): record -> judge at absolute checkpoints (alone) -> self-consistency (alone).
 cd "$(dirname "$0")/.."; export PATH=$HOME/.lmstudio/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 log() { echo "$(date +%H:%M) $1" >> /tmp/seed6_chain.log; }
 .venv/bin/python agr/recorder.py 100 800 --layers --seed=6 > /tmp/rec_L6.log 2>&1; log 'seed 6 recorded'

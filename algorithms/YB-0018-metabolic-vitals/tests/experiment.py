@@ -1,10 +1,10 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0018 metabolic vitals (answered episodes; ground truth computed; no LLM judge; within question type).
+'''EXPERIMENT-METABOLIC-VITALS metabolic vitals (answered episodes; ground truth computed; no LLM judge; within question type).
 Pre-registered (2026-09-28, written before the power data were analyzed):
- P1 GPU power/energy features predict wrong answers within question type (AUROC 95% CI lower bound > 0.5);
- P2 metabolic features add beyond timing features (metabolic + timing > timing alone).'''
+ EXPERIMENT-POWER-PREDICTS-WRONG-ANSWERS GPU power/energy features predict wrong answers within question type (AUROC 95% CI lower bound > 0.5);
+ EXPERIMENT-METABOLIC-BEYOND-TIMING metabolic features add beyond timing features (metabolic + timing > timing alone).'''
 import json, os, sys, numpy as np
 sys.path.insert(0, 'src')
 from metab import load, episode_features

@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Hidden-state capture for YB-0042 (probe baseline). Wraps layertap's tapped forward WITHOUT changing it: the wrapper
+'''Hidden-state capture for EXPERIMENT-PROBE-BASELINE (probe baseline). Wraps layertap's tapped forward WITHOUT changing it: the wrapper
 calls layertap._tapped (so the five telemetry channels are computed exactly as before) and keeps the newest token's
 residual-stream output at the selected layers. Alignment is identical to layertap (prompt pass discarded; the reading
 for generated token t comes from the pass over prompt + the first t generated tokens). Values stored as float16.

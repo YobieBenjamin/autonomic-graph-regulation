@@ -1,5 +1,5 @@
 {
- "note": "EXPLORATORY engineering measurement for YB-0044 design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms",
+ "note": "EXPLORATORY engineering measurement for EXPERIMENT-OPENSHELL-GATING design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms",
  "block": {
   "command": {
    "n": 20,

@@ -2,10 +2,11 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-# YB-0051 chain (one command, resumable; start it with agr/yb0051_start.sh). Copy of agr/yb0050_chain.sh; changes: algorithm folder,
+# EXPERIMENT-LOW-FALSE-ALARM-PRECISION chain (one command, resumable; start it with agr/yb0051_start.sh). Copy of agr/yb0050_chain.sh; changes: algorithm folder,
 # test seeds 27-38, 8-sample review recorder run seed by seed, a 2-episode real-model review smoke on derivation seed 2 before the
-# timestamp, and an AC-power check before every seed (lesson of the YB-0050 battery stop). Never re-timestamps (rule 16).
+# timestamp, and an AC-power check before every seed (lesson of the EXPERIMENT-POWERED-DECIDER battery stop). Never re-timestamps (rule 16).
 export PATH=$HOME/.lmstudio/bin:/usr/local/bin:/opt/homebrew/bin:/Applications/Docker.app/Contents/Resources/bin:$PATH
+# Registered name: EXPERIMENT-LOW-FALSE-ALARM-PRECISION (old ID YB-0051 is kept because code matches on it)
 cd "$(dirname "$0")/.."; D=algorithms/YB-0051-low-false-alarm-precision; L=/tmp/chain51.log; P=$D/docs/PREREGISTRATION.md
 SEEDS="27 28 29 30 31 32 33 34 35 36 37 38"; FROZEN="$P agr/selfcons_yb0051.py agr/recorder.py $D/tests/candidates.py $D/tests/score_test.py $D/tests/experiment.py"
 say() { echo "[$(date -u +%F' '%H:%M:%S)] $*" >> $L; cp $L agr/yb0051_chain_progress.log 2>/dev/null; }
@@ -18,7 +19,7 @@ if ls $P.*.tsr >/dev/null 2>&1 && git diff --quiet HEAD -- $FROZEN; then say RES
   .venv/bin/python -c "import json; R=[json.loads(l) for l in open('data/agr/selfcons_yb0051_smoke_seed2.jsonl')]; assert len(R)==2 and all(len(r['answers'])==8 and r['review_seconds_k8']>=r['review_seconds_k4']>0 for r in R)" || { say STOP review smoke output wrong; exit 1; }; say REVIEW_SMOKE_OK
   SANDBOX_MEM=16g SANDBOX_TIMEOUT=3600 sandbox/run.sh $D smoke > /tmp/s51.log 2>&1; [ $? -eq 0 ] && [ -s $D/docs/smoke.json ] || { say STOP smoke failed; exit 1; }; say SMOKE_OK
   SANDBOX_MEM=28g SANDBOX_TIMEOUT=14400 sandbox/run.sh $D dryrun > /tmp/d51.log 2>&1; [ $? -eq 0 ] && [ -s $D/docs/dryrun.json ] || { say STOP dry run failed; exit 1; }; say DRYRUN_OK
-  SANDBOX_MEM=28g ./publish.sh 'YB-0051 precision at low false-alarm rates: pre-registration, candidates, scoring, analysis, tests, 8-sample review recorder, chain, smoke and dry run (synthetic self-consistency)' > /tmp/pub51.log 2>&1 || { say STOP publish failed; exit 1; }
+  SANDBOX_MEM=28g ./publish.sh 'EXPERIMENT-LOW-FALSE-ALARM-PRECISION precision at low false-alarm rates: pre-registration, candidates, scoring, analysis, tests, 8-sample review recorder, chain, smoke and dry run (synthetic self-consistency)' > /tmp/pub51.log 2>&1 || { say STOP publish failed; exit 1; }
   git diff --quiet HEAD -- $FROZEN || { say STOP plan or frozen code differs from commit; exit 1; }; say COMMITTED $(git log --oneline -1 | cut -c1-7)
   scripts/timestamp_prereg.sh $P > /tmp/ts51.log 2>&1
   [ $(grep -c 'Verification: OK' /tmp/ts51.log) -ge 2 ] || { say STOP timestamp not verified; exit 1; }; say TIMESTAMPED
@@ -64,6 +65,6 @@ for S in [str(s) for s in range(27, 39)]:   # same packing as agr/yb0050_chain.s
 PY
 say PACKED
 SANDBOX_MEM=28g SANDBOX_TIMEOUT=14400 sandbox/run.sh $D confirmatory > /tmp/conf51.log 2>&1; [ $? -eq 0 ] && [ -s $D/docs/results.json ] || { say STOP confirmatory failed; exit 1; }; say CONFIRMATORY_OK
-SANDBOX_MEM=28g ./publish.sh 'YB-0051 results, test-seed recordings 27-38 and 8-sample self-consistency' > /tmp/pub51r.log 2>&1 || { say STOP results publish failed; exit 1; }; say RESULTS_COMMITTED $(git log --oneline -1 | cut -c1-7)
+SANDBOX_MEM=28g ./publish.sh 'EXPERIMENT-LOW-FALSE-ALARM-PRECISION results, test-seed recordings 27-38 and 8-sample self-consistency' > /tmp/pub51r.log 2>&1 || { say STOP results publish failed; exit 1; }; say RESULTS_COMMITTED $(git log --oneline -1 | cut -c1-7)
 scripts/make_public_snapshot.sh >> /tmp/pub51r.log 2>&1 && say PUBLIC_SNAPSHOT_OK || say PUBLIC_SNAPSHOT_FAILED
 say DONE

@@ -1,10 +1,10 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 pre-registered analysis. Inputs: docs/replay_plan.json, docs/live_B.jsonl, docs/live_C.jsonl. Episodes whose agent
+'''EXPERIMENT-OPENSHELL-GATING pre-registered analysis. Inputs: docs/replay_plan.json, docs/live_B.jsonl, docs/live_C.jsonl. Episodes whose agent
 did not start (harness failure) are excluded from both arms and counted. Arm A (permission only) is computed: every commit is
-permitted. H1: among wrong answers, prevented share C minus B, paired bootstrap (1,000 resamples, numpy seed 0); supported iff
-the 95% lower bound > 0. H2: among wrong answers with an in-time alarm, share still committed under B; supported iff the 95%
+permitted. EXPERIMENT-HOLD-PREVENTS-MORE-COMMITS: among wrong answers, prevented share C minus B, paired bootstrap (1,000 resamples, numpy seed 0); supported iff
+the 95% lower bound > 0. EXPERIMENT-REACTIVE-BLOCK-LOSES-RACES: among wrong answers with an in-time alarm, share still committed under B; supported iff the 95%
 lower bound > 0.5. Costs: correct commits held (C) or blocked (B); delay of released commits in C. Writes docs/results.json.'''
 import json, os, numpy as np
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

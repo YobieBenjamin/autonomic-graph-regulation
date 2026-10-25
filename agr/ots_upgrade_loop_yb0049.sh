@@ -3,6 +3,7 @@
 cd ~/Desktop/SAFETY; L=/tmp/ots_upgrade.log
 for i in $(seq 1 24); do
   left=0
+  # Registered name: EXPERIMENT-STAGE-DIVERSE-LAYERING (old ID YB-0049 is kept because code matches on it)
   for D in YB-0049-stage-diverse-layering; do
     f=algorithms/$D/docs/PREREGISTRATION.md.ots
     .venv/bin/ots upgrade $f > /dev/null 2>&1

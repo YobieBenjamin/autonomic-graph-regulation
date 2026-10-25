@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Unit tests for the YB-0046 difficulty features (proofs as tests).'''
+'''Unit tests for the EXPERIMENT-DIFFICULTY-CONFOUND difficulty features (proofs as tests).'''
 import sys; sys.path.insert(0, 'src')
 from difficulty import add_carries, mul_carries, features, DifficultyBaseline
 assert add_carries(1, 2) == (0, 0); assert add_carries(5, 5) == (1, 1); assert add_carries(999, 1) == (3, 3); assert add_carries(195, 5) == (2, 2)

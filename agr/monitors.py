@@ -2,10 +2,10 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0012 behavior monitors (trusted host code; frozen per docs/PREREGISTRATION.md). They judge OUTPUTS, as industry
+'''EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP behavior monitors (trusted host code; frozen per docs/PREREGISTRATION.md). They judge OUTPUTS, as industry
 monitors do. Usage: monitors.py judge|selfcons  -> data/agr/monitors_seed1_<mode>.jsonl (resumable).
- judge:    B1, gpt-oss-120b (LM Studio, local) reads question + patient reasoning + answer, returns P(wrong) 0-100, temperature 0.
- selfcons: B2, 4 extra patient samples at temperature 0.8; score = fraction whose answer differs from the original.'''
+ judge:    EXPERIMENT-LLM-JUDGE-MONITOR, gpt-oss-120b (LM Studio, local) reads question + patient reasoning + answer, returns P(wrong) 0-100, temperature 0.
+ selfcons: EXPERIMENT-SELF-CONSISTENCY-MONITOR, 4 extra patient samples at temperature 0.8; score = fraction whose answer differs from the original.'''
 import json, os, re, sys, time, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

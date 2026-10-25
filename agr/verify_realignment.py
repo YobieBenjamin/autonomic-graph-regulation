@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''B2 proof: re-record episodes with the FIXED tap and check new[t] == old_stored[t+1] (the verified one-step shift),
+'''REVIEW-REALIGNED-LAYER-PACKS proof: re-record episodes with the FIXED tap and check new[t] == old_stored[t+1] (the verified one-step shift),
 and that tokens are identical. If this holds, realigning old recordings by one step is exact.'''
 import os, sys, json, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE); sys.path.insert(0, HERE)

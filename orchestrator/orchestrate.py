@@ -26,6 +26,7 @@ CFG = dict(local_url=E('LOCAL_URL', 'http://localhost:1234/v1'), local_model=E('
            cloud_repairs=int(E('MAX_CLOUD_REPAIRS', '1')), publish=E('PUBLISH', '1') == '1')
 HYP, LEDGER = os.path.join(ROOT, 'HYPOTHESES.md'), os.path.join(ROOT, 'LEDGER.md')
 RUNS, WORK = os.path.join(ROOT, 'orchestrator', 'runs'), os.path.join(ROOT, 'miner', 'sandbox')
+# Registered name: EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER (old ID YB-0002 is kept because code matches on it)
 REF = os.path.join(ROOT, 'algorithms', 'YB-0002-bounded-homeostasis-wrapper')
 os.makedirs(RUNS, exist_ok=True); os.makedirs(WORK, exist_ok=True)
 LOCK, PUBLOCK = threading.RLock(), threading.Lock()

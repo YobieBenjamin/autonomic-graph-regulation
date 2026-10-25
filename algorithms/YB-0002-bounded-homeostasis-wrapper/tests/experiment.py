@@ -1,8 +1,8 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-"""YB-0002 evaluation. Wrap two strong baseline detectors (Energy, activation-Mahalanobis)
-with static / unbounded-homeostatic / budgeted (BHW) baselines. B is set by the C1 rule,
+"""EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER evaluation. Wrap two strong baseline detectors (Energy, activation-Mahalanobis)
+with static / unbounded-homeostatic / budgeted (BHW) baselines. B is set by the EXPERIMENT-STATIONARY-BUDGET-CALIBRATION rule,
 not tuned. Deterministic; writes docs/results.json."""
 import os, sys, json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
@@ -26,6 +26,8 @@ T, SEEDS, ETA = 3000, 10, 0.02
 alpha = np.clip((np.arange(T) - 500) / 2000, 0, 1)
 res = {"eta": ETA, "seeds": SEEDS, "detectors": {}}
 for kind, split in (("energy", False), ("act-mahalanobis", False), ("energy", True), ("act-mahalanobis", True)):
+    # Registered name: EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION (old ID C2 is kept because code matches on it)
+    # Registered name: EXPERIMENT-STATIONARY-BUDGET-CALIBRATION (old ID C1 is kept because code matches on it)
     m = BHW(eta=ETA, split=split).fit(feat(Xcal, kind)); kind_label = kind + (" [C2 split-cal]" if split else " [C1]")
     R = {"p": m.p, "tau": m.tau, "B_rule_q0.999": m.B, "bound_T1": m.B + ETA * m.tau}
     agg = {md: {"final500_flag": [], "clean_first500_flag": [], "alarm_alpha": [], "clean_false_alarm": 0}
@@ -56,14 +58,14 @@ for kind, split in (("energy", False), ("act-mahalanobis", False), ("energy", Tr
                  "alarm_step": int(np.argmax(o["frozen"])) + 1 if o["frozen"].any() else None}
     A["budgeted"]["T3_predicted_alarm_step"] = float(m.B / (ETA * 0.99 * m.tau))
     R["worst_case_attack_20000_steps"] = A
-    # C1 calibration check: empirical per-step exceedance of B on long clean unbounded run
+    # EXPERIMENT-STATIONARY-BUDGET-CALIBRATION calibration check: empirical per-step exceedance of B on long clean unbounded run
     long_clean = feat(np.clip(Xte[r.integers(0, len(Xte), 20000)] + r.normal(0, .02, (20000, 64)), 0, 1), kind)
     d = m.run(long_clean, "unbounded")["drift"][500:]
     R["calibration_check"] = {"predicted_exceed_rate": 0.001, "empirical_exceed_rate": float((d > m.B).mean())}
     res["detectors"][kind_label] = R
 
 for k, R in res["detectors"].items():
-    print(f"\n=== {k} (p={R['p']}, B={R['B_rule_q0.999']:.3f}, T1 bound={R['bound_T1']:.3f}) ===")
+    print(f"\n=== {k} (p={R['p']}, B={R['B_rule_q0.999']:.3f}, EXPERIMENT-BASELINE-CONFINEMENT-THEOREM bound={R['bound_T1']:.3f}) ===")
     for md in ("static", "unbounded", "budgeted"): print(f"  {md:10s}", R[md])
     print("  worst-case attack:", R["worst_case_attack_20000_steps"])
     print("  calibration:", R["calibration_check"])

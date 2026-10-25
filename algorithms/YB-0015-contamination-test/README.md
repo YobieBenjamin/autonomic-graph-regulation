@@ -1,6 +1,6 @@
-# YB-0015 · Contamination test: which vital signs may the organism trust?
+# EXPERIMENT-CONTAMINATION-TEST · Contamination test: which vital signs may the organism trust?
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** F3: RETRACTED 'the reasoning trace detects errors and is not contaminated': the tier-2 features used the whole generation and the answer segment; no reasoning-only feature was tested. Re-test open.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-REASONING-TRACE-CLAIM-RETRACTED: RETRACTED 'the reasoning trace detects errors and is not contaminated': the tier-2 features used the whole generation and the answer segment; no reasoning-only feature was tested. Re-test open.
 
 **Status:** tested · **Verdict:** gospel premise ✅ confirmed; contamination hypothesis ❌ not supported for reasoning-phase substrate signals; physical timing ⚠️ weak once question type is controlled.
 **Reproduce:** `make` in this folder (or `sandbox/run.sh algorithms/YB-0015-contamination-test all` from the repo root).
@@ -12,10 +12,10 @@ We gave the patient model (gpt-oss-20b) 480 questions a computer can grade exact
 
 - **The output really is gospel.** 75% of wrong answers (27 of 36) were delivered with at least 90% confidence on every answer token. Anyone watching the output saw a confident answer.
 - **The vital signs during the model's reasoning gave most of them away.** Uncertainty signals recorded while it was thinking, before the confident answer, flagged 59% of the confidently wrong answers at a 10% false-alarm rate, with question type controlled (70% without that control). Internal signals beat output watching, as the thesis predicts, but the substrate signals were less contaminated than feared.
-- **Physical timing was weak.** Once question type is accounted for, timing and effort barely beat a coin flip. A fixed-size transformer spends about the same compute per token, so timing may simply not carry stress; real power draw (YB-0018) is the next test.
+- **Physical timing was weak.** Once question type is accounted for, timing and effort barely beat a coin flip. A fixed-size transformer spends about the same compute per token, so timing may simply not carry stress; real power draw (EXPERIMENT-METABOLIC-VITALS) is the next test.
 
 ## 2. Theory
-Independence Principle (docs/RESEARCH_PROGRAM.md): signals are ranked by independence from the transformer's statistics: tier 0 physical (latency, effort), tier 2 substrate (entropy, probabilities). The contamination hypothesis says tier-2 signals fail exactly when the model is confidently wrong. Pre-registered before data: **P1** a meaningful share of errors is confident and the substrate tier misses them at 10% FPR; **P2** the physical tier catches a meaningful share of what the substrate tier misses.
+Independence Principle (docs/RESEARCH_PROGRAM.md): signals are ranked by independence from the transformer's statistics: tier 0 physical (latency, effort), tier 2 substrate (entropy, probabilities). The contamination hypothesis says tier-2 signals fail exactly when the model is confidently wrong. Pre-registered before data: **EXPERIMENT-CONFIDENT-ERRORS-EVADE-SUBSTRATE** a meaningful share of errors is confident and the substrate tier misses them at 10% FPR; **EXPERIMENT-PHYSICAL-TIER-CATCHES-MISSES** the physical tier catches a meaningful share of what the substrate tier misses.
 
 ## 3. Mathematics and proofs
 **Signals.** For next-token distribution p_t: entropy H_t = −Σ_v p_t(v) log p_t(v); top-1 probability π_t = max_v p_t(v); margin m_t = log p_(1) − log p_(2). Latency ℓ_t = time between tokens t−1 and t (prefill excluded). Effort = number of generated tokens.
@@ -52,9 +52,9 @@ Gospel regime: 27 of 36 errors (75%) had every answer token at p ≥ 0.9.
 At 10% FPR, within type: substrate recall 52.8% overall and **59.3% on confident errors**; physical recall 30.6% overall and 37.0% on confident errors; physical caught 2 of the 17 errors the substrate tier missed (raw: 5 of 15).
 
 ## 7. Verdict on the predictions
-- **P1: partly.** First half holds strongly: most errors are confidently delivered (75%), so output watching is blind to them, which is the author's core premise. Second half fails: reasoning-phase substrate signals catch most confident errors. The answer tokens are contaminated (confident); the reasoning trace is not.
-- **P2: not supported.** Physical timing adds little once question type is controlled (CI includes 0.5; 2 of 17 misses caught).
-- **Implication for the organism:** trust substrate signals from the reasoning phase, not the answer phase; treat timing as weak; test true metabolic power (YB-0018) before discarding tier 0.
+- **EXPERIMENT-CONFIDENT-ERRORS-EVADE-SUBSTRATE: partly.** First half holds strongly: most errors are confidently delivered (75%), so output watching is blind to them, which is the author's core premise. Second half fails: reasoning-phase substrate signals catch most confident errors. The answer tokens are contaminated (confident); the reasoning trace is not.
+- **EXPERIMENT-PHYSICAL-TIER-CATCHES-MISSES: not supported.** Physical timing adds little once question type is controlled (CI includes 0.5; 2 of 17 misses caught).
+- **Implication for the organism:** trust substrate signals from the reasoning phase, not the answer phase; treat timing as weak; test true metabolic power (EXPERIMENT-METABOLIC-VITALS) before discarding tier 0.
 
 ## 8. Limitations and prior art
 36 errors, so confidence intervals are wide. One patient model, one task family (verifiable arithmetic and lookup), greedy decoding. One ~1 minute publish window overlapped recording and episode start times were not yet stored, so affected episodes (~10 of 480, tier 0 only) cannot be identified; the recorder now stamps t_unix. Related work: token-level uncertainty and semantic entropy for error detection (Farquhar et al., 2024); confidence calibration of language models. The new element is the tiered contamination test under the Independence Principle.

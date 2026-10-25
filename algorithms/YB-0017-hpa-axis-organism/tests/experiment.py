@@ -1,8 +1,8 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0017 experiment. The HPA organism receives per-token stress drive computed from the same recorded vitals as
-YB-0015 (answered episodes only; ground truth computed, no LLM judge). Stress drive = positive part of the z-score
+'''EXPERIMENT-HPA-AXIS-ORGANISM experiment. The HPA organism receives per-token stress drive computed from the same recorded vitals as
+EXPERIMENT-CONTAMINATION-TEST (answered episodes only; ground truth computed, no LLM judge). Stress drive = positive part of the z-score
 of a channel against CORRECT calibration episodes (2-fold split by index parity; no leakage).
 Pre-registered (2026-09-28, before analysis), author's prediction: the organism and the raw signals differ in
 variance but trend the same way -> Spearman rho(organism peak cortisol, raw accumulated drive) > 0.7 per tier.

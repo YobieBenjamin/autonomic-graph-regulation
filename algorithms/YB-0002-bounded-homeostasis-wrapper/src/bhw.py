@@ -1,19 +1,19 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-"""YB-0002: Bounded Homeostatic Wrapper (BHW).
+"""EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER: Bounded Homeostatic Wrapper (BHW).
 
 Wraps ANY detector whose score is a Mahalanobis distance of a feature vector s(x)
 from an adaptive baseline mean mu. The baseline adapts (gated EWMA) so the monitor
 tolerates benign slow change, but the total baseline displacement from its trusted
 anchor mu0 is capped by a budget B. Theorems (see README section 3):
 
-  T1  sup_t ||mu_t - mu0||_P <= B + eta*tau            (baseline can never be dragged further)
-  T2  every input ever accepted satisfies ||s - mu0||_P <= tau + B + eta*tau
-  T3  any drift of the baseline beyond B raises DRIFT after >= ceil(B/(eta*tau)) accepted steps
-  C1  (calibration) under a stationary clean stream, D_t^2 ~ approx eta/(2-eta) * chi2_p,
+  EXPERIMENT-BASELINE-CONFINEMENT-THEOREM  sup_t ||mu_t - mu0||_P <= B + eta*tau            (baseline can never be dragged further)
+  EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM  every input ever accepted satisfies ||s - mu0||_P <= tau + B + eta*tau
+  EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM  any drift of the baseline beyond B raises DRIFT after >= ceil(B/(eta*tau)) accepted steps
+  EXPERIMENT-STATIONARY-BUDGET-CALIBRATION  (calibration) under a stationary clean stream, D_t^2 ~ approx eta/(2-eta) * chi2_p,
       so B = sqrt(eta/(2-eta) * chi2_p^{-1}(q)) gives a per-step exceedance rate <= 1-q.
-  C2  (finite-sample correction) mu0 is estimated from n samples, so the true clean mean sits
+  EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION  (finite-sample correction) mu0 is estimated from n samples, so the true clean mean sits
       ~ sqrt(chi2_p^{-1}(q)/n) away in P-norm; B_C2 = B_C1 + that term, with tau and P fit on
       disjoint halves of the calibration set (split calibration). Heuristic; validated empirically.
 """
@@ -29,8 +29,8 @@ MODES = {"static": 0, "unbounded": 1, "budgeted": 2}
 
 
 def budget_rule(eta, p, q=0.999, n=None):
-    """C1: B such that the stationary clean-stream drift D exceeds B with per-step prob ~ 1-q.
-    C2: if n (samples used to estimate mu0) is given, add the mean-estimation error term."""
+    """EXPERIMENT-STATIONARY-BUDGET-CALIBRATION: B such that the stationary clean-stream drift D exceeds B with per-step prob ~ 1-q.
+    EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION: if n (samples used to estimate mu0) is given, add the mean-estimation error term."""
     b = float(np.sqrt(eta / (2 - eta) * chi2.ppf(q, p)))
     return b + (float(np.sqrt(chi2.ppf(q, p) / n)) if n else 0.0)
 

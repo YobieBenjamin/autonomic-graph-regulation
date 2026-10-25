@@ -1,8 +1,8 @@
-# YB-0030 · AI Early Warning Score v1 (NEWS2 template): derivation and internal validation
+# EXPERIMENT-AI-EARLY-WARNING-SCORE · AI Early Warning Score v1 (NEWS2 template): derivation and internal validation
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** F13: retrospective, not truly pre-registered (pre-registration committed minutes before results on thrice-used data); V6 changed. F16: question type (0.764) and length (0.796) exceed its AUROC (0.725). F26: 'perfectly ordered' rests on groups of 17, 8 and 2.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-WARNING-SCORE-NOT-PREREGISTERED: retrospective, not truly pre-registered (pre-registration committed minutes before results on thrice-used data); EXPERIMENT-VITAL-CRITICAL-SLOWING-TREND changed. REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: question type (0.764) and length (0.796) exceed its AUROC (0.725). REVIEW-LEVEL-ORDERING-SMALL-GROUPS: 'perfectly ordered' rests on groups of 17, 8 and 2.
 
-**Status:** tested · **Verdict (pre-registered, commit cb72e92):** H1 ✅ predicts failure (AUROC 0.725, CI 0.587–0.857); H2 ✅ levels perfectly ordered (stable 5.8%, watch 11.8%, concern 75%, urgent 100% failure rate); H3 ✅ not significantly worse than the black-box deep organism; H4 ❌ scores do not rise over reasoning (but failures fail to settle while successes do).
+**Status:** tested · **Verdict (pre-registered, commit cb72e92):** EXPERIMENT-EARLY-WARNING-SCORE-PREDICTS ✅ predicts failure (AUROC 0.725, CI 0.587–0.857); EXPERIMENT-EARLY-WARNING-LEVELS-ORDERED ✅ levels perfectly ordered (stable 5.8%, watch 11.8%, concern 75%, urgent 100% failure rate); EXPERIMENT-EARLY-WARNING-MATCHES-BLACK-BOX ✅ not significantly worse than the black-box deep organism; EXPERIMENT-EARLY-WARNING-RISING-TRAJECTORY ❌ scores do not rise over reasoning (but failures fail to settle while successes do).
 **Reproduce:** `make` here (sandbox: `sandbox/run.sh algorithms/YB-0030-ai-ews-v1 all`). Methodology: docs/AI_EWS_METHODOLOGY.md.
 
 ## 1. Plain English
@@ -14,7 +14,7 @@ On 217 questions it had never seen, the score behaved like a real early-warning 
 Author's principle: judgment has no analog other than the brain and biology; safety should follow hospital early-warning systems (NEWS2), which show graded deterioration trajectories rather than binary verdicts. AI-EWS is the text-blind, transparent version for transformers (docs/AI_EWS_METHODOLOGY.md).
 
 ## 3. Mathematics and proofs
-**Vitals** over the reasoning segment (or a prefix): V1 mean entropy; V2 mean top-1/top-2 log margin; V3 layer HRV (mean over layers of the RMSSD of the log expert-update norm); V4 layer synchrony (mean algebraic connectivity λ₂ of the 24-layer expert coupling graph, YB-0019); V5 mean router entropy; V6 lag-1 autocorrelation of entropy (critical slowing); V7 peak HPA cortisol driven by entropy (YB-0017, calibrated on derivation correct episodes).
+**Vitals** over the reasoning segment (or a prefix): EXPERIMENT-VITAL-REASONING-ENTROPY mean entropy; EXPERIMENT-VITAL-TOKEN-MARGIN mean top-1/top-2 log margin; EXPERIMENT-VITAL-LAYER-VARIABILITY layer HRV (mean over layers of the RMSSD of the log expert-update norm); EXPERIMENT-VITAL-LAYER-SYNCHRONY layer synchrony (mean algebraic connectivity λ₂ of the 24-layer expert coupling graph, EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM); EXPERIMENT-VITAL-ROUTER-ENTROPY mean router entropy; EXPERIMENT-VITAL-CRITICAL-SLOWING-TREND lag-1 autocorrelation of entropy (critical slowing); EXPERIMENT-VITAL-CORTISOL-LOAD peak HPA cortisol driven by entropy (EXPERIMENT-HPA-AXIS-ORGANISM, calibrated on derivation correct episodes).
 **Derivation (cohort: 428 seed-0 answered episodes).** Direction d_j = +1 if failures' mean ≥ successes' mean, else −1 (derivation outcomes only). Bands from derivation correct episodes only: for d_j = +1, (P90, P95, P99); for d_j = −1, (P10, P5, P1).
 **Points** p_j(x) = number of band thresholds crossed in the risky direction ∈ {0, 1, 2, 3}; unmeasurable vitals score 0. **Score** S = Σ_j p_j ∈ [0, 21]. **Levels:** urgent S ≥ 10; concern 7–9; watch 5–6 or any p_j = 3 (red flag); else stable.
 **Proposition 1 (boundedness).** 0 ≤ S ≤ 21. *Proof:* 7 vitals × at most 3 points each. ∎
@@ -43,18 +43,18 @@ Data fingerprints (SHA-256 prefix): deep_organism_scores_seed1.json aeea95f108e1
 | Concern | 8 | 6 | 75% |
 | Urgent | 2 | 2 | 100% |
 
-AUROC of S: 0.725 [0.587, 0.857]. AI-EWS minus deep organism (YB-0019): −0.039 [−0.197, +0.140].
+AUROC of S: 0.725 [0.587, 0.857]. AI-EWS minus deep organism (EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM): −0.039 [−0.197, +0.140].
 Mean score at 25/50/75/100% of reasoning: failures 5.91, 4.95, 4.19, 4.24; successes 3.90, 2.05, 1.64, 1.28. Median slope: failures −2.4, successes −4.0 (Mann-Whitney p = 0.26).
 Derivation directions: risky when high: entropy, layer HRV, layer synchrony, router entropy, cortisol; risky when low: margin, lag-1 autocorrelation.
 Points raised on failures, by vital: margin 32, entropy 21, router entropy 21, cortisol 9, critical slowing 3, layer HRV 2, synchrony 1.
 
 ## 7. Verdict
-- **H1 holds; H2 holds** (perfectly ordered levels); **H3 holds** (transparent 7-vital score on par with the 300-feature black box).
-- **H4 fails as pre-registered** (no rising trajectory). Exploratory observation: the gap widens because successes settle while failures stay elevated.
+- **EXPERIMENT-EARLY-WARNING-SCORE-PREDICTS holds; EXPERIMENT-EARLY-WARNING-LEVELS-ORDERED holds** (perfectly ordered levels); **EXPERIMENT-EARLY-WARNING-MATCHES-BLACK-BOX holds** (transparent 7-vital score on par with the 300-feature black box).
+- **EXPERIMENT-EARLY-WARNING-RISING-TRAJECTORY fails as pre-registered** (no rising trajectory). Exploratory observation: the gap widens because successes settle while failures stay elevated.
 - Decisiveness, uncertainty and routing entropy carry the score; layer HRV, synchrony and critical slowing contribute little in v1.
 
 ## 8. Limitations and prior art
-21 failures; single patient model and task family; initial level cut-points taken from the methodology, not tuned; early-prefix vitals are noisy (short windows). Next: external validation on a different model (Qwen3, a different patient population) and prospective validation in YB-0022. Prior art: NEWS2 (Royal College of Physicians, 2017) and the early-warning-score literature; uncertainty-based error detection in language models.
+21 failures; single patient model and task family; initial level cut-points taken from the methodology, not tuned; early-prefix vitals are noisy (short windows). Next: external validation on a different model (Qwen3, a different patient population) and prospective validation in EXPERIMENT-GRADED-AGENTIC-EARLY-WARNING. Prior art: NEWS2 (Royal College of Physicians, 2017) and the early-warning-score literature; uncertainty-based error detection in language models.
 
 ## Deviations from the pre-registration
 None in the analysis. Operationalized from the methodology: vital direction learned from derivation outcomes only.

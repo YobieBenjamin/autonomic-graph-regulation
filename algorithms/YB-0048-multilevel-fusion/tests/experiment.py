@@ -1,8 +1,8 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0048 analysis (pre-registered; docs/PREREGISTRATION.md): does a multi-level combination of non-LLM monitors beat its best single
-component, and do the components catch different errors? Secondary analysis of YB-0045 recordings. DRY_RUN=1: fit on 2-8, evaluate on 10-12.
+'''EXPERIMENT-MULTILEVEL-FUSION analysis (pre-registered; docs/PREREGISTRATION.md): does a multi-level combination of non-LLM monitors beat its best single
+component, and do the components catch different errors? Secondary analysis of EXPERIMENT-POWERED-REPLICATION recordings. DRY_RUN=1: fit on 2-8, evaluate on 10-12.
 SMOKE=1: 2 training seeds, 1 eval seed, 150 episodes each. Confirmatory run only via make confirmatory (RUN_CONFIRMATORY=1).'''
 import json, gzip, os, sys, numpy as np
 sys.path.insert(0, 'src')
@@ -15,7 +15,7 @@ from fusion import Stack, Bands
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import GroupKFold
 COST, T, DRY = 0.005, (48, 96, 192, 384), os.environ.get('DRY_RUN') == '1'
-TEXT_C = 1.0   # pre-declared: the value YB-0047 selected by derivation-only cross-validation
+TEXT_C = 1.0   # pre-declared: the value EXPERIMENT-TEXT-BASELINE-TRANSFER selected by derivation-only cross-validation
 DERIV = ('2', '3', '4', '5', '6', '7', '8', '10', '11', '12'); TEST = ('9', '13', '14')
 if DRY: DERIV, TEST = ('2', '3', '4', '5', '6', '7', '8'), ('10', '11', '12')
 SMOKE = os.environ.get('SMOKE') == '1'
@@ -47,7 +47,7 @@ def main():
     if not DRY and os.environ.get('RUN_CONFIRMATORY') != '1':
         print('pre-registration stage: the confirmatory analysis runs only via make confirmatory, after the public timestamp'); return
     if not all(os.path.exists('data/seed%s_LH.jsonl.gz' % S) for S in DERIV + TEST):
-        print('YB-0045 recordings not present (public checkout): nothing to analyse'); return
+        print('EXPERIMENT-POWERED-REPLICATION recordings not present (public checkout): nothing to analyse'); return
     Rd, Ld, Hd = [], {}, {}
     for S in DERIV:
         R, L, H = load_seed(S, 100000 * int(S)); Rd += R; Ld.update(L); Hd.update(H)
@@ -59,7 +59,7 @@ def main():
     Rd = [r for r in Rd if r['answered'] and r['idx'] in Ld and all(('last_%d' % t) in Hd.get(r['idx'], {}) for t in checkpoints(r))]
     jobs = [(r, t) for r in Rd for t in checkpoints(r)]; yj = np.array([0 if r['correct'] else 1 for r, _ in jobs]); grp = np.array([r['idx'] for r, _ in jobs])
     X = parallel_features(jobs, Ld, 4); (bl, bc), _ = select(jobs, Hd)
-    # cross-fitted derivation scores of all four components (same GroupKFold(5) as YB-0045)
+    # cross-fitted derivation scores of all four components (same GroupKFold(5) as EXPERIMENT-POWERED-REPLICATION)
     CF = np.zeros((len(jobs), 4))
     for tr, te in GroupKFold(5).split(np.zeros(len(jobs)), yj, grp):
         jt = [jobs[i] for i in tr]
@@ -85,7 +85,7 @@ def main():
                text_C=TEXT_C, stack_weights=dict(zip(NAMES, [round(float(w), 4) for w in ST.lr.coef_[0]])), eval_answered=len(A), eval_wrong=int(y.sum()), monitors=per,
                H1_stack_minus_probe=h1, H1_supported=bool(h1[1] > 0),
                H2_hospital_minus_probe=h2, H2_noninferior_at_minus_0_05=bool(h2[1] > -0.05))
-    # H3 (descriptive): which errors each component catches at its own 10% false-alarm threshold
+    # EXPERIMENT-FUSION-COMPONENT-OVERLAP (descriptive): which errors each component catches at its own 10% false-alarm threshold
     caught = {}
     for n in NAMES:
         v = V[n]; thr = cap_threshold(np.where(np.isfinite(v[y == 0]), v[y == 0], -1e6)); caught[n] = (np.where(np.isfinite(v), v, -1e6) > thr) & (y == 1)

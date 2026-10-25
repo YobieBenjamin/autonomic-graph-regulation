@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0051 EXPLORATORY score dump (not confirmatory). Copy of the YB-0050 analysis up to the scores, on the YB-0050 test seeds 15-26, which are now derivation data for YB-0051 (PROTOCOL rule 2). Writes data/explore_scores.npz. Original docstring follows: YB-0050 analysis (pre-registered; docs/PREREGISTRATION.md): a powered decider for the YB-0047 and YB-0049 close calls, a
+'''EXPERIMENT-LOW-FALSE-ALARM-PRECISION EXPLORATORY score dump (not confirmatory). Copy of the EXPERIMENT-POWERED-DECIDER analysis up to the scores, on the EXPERIMENT-POWERED-DECIDER test seeds 15-26, which are now derivation data for EXPERIMENT-LOW-FALSE-ALARM-PRECISION (PROTOCOL rule 2). Writes data/explore_scores.npz. Original docstring follows: EXPERIMENT-POWERED-DECIDER analysis (pre-registered; docs/PREREGISTRATION.md): a powered decider for the EXPERIMENT-TEXT-BASELINE-TRANSFER and EXPERIMENT-STAGE-DIVERSE-LAYERING close calls, a
 non-inferiority test of a stack with no language-model signal against self-consistency, and the two scaling measurements (cost per
 check as a share of inference; false-alarm burden at realistic error base rates). Fit on derivation seeds 2 to 14; test on NEW seeds
 15 to 26, recorded after the plan is timestamped. DRY_RUN=1: fit on 2-8, evaluate on 10-12 with SYNTHETIC self-consistency scores.
@@ -18,9 +18,9 @@ from decider import single, layered, bootstrap, diff, burden_table, rates, ops_i
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import GroupKFold
 COST, T = 0.005, (48, 96, 192, 384)
-TEXT_C = 1.0          # pre-declared: the value YB-0047 selected by derivation-only cross-validation (also used in YB-0048)
-MARGIN = 0.10         # H3 non-inferiority margin (pre-declared)
-COST_SHARE = 0.01     # H4 pass bar: monitor cost at most 1% of inference
+TEXT_C = 1.0          # pre-declared: the value EXPERIMENT-TEXT-BASELINE-TRANSFER selected by derivation-only cross-validation (also used in EXPERIMENT-MULTILEVEL-FUSION)
+MARGIN = 0.10         # EXPERIMENT-NON-LLM-STACK-NON-INFERIOR non-inferiority margin (pre-declared)
+COST_SHARE = 0.01     # EXPERIMENT-MONITOR-COST-SHARE pass bar: monitor cost at most 1% of inference
 NB = int(os.environ.get('N_BOOT', '2000')); DRY = os.environ.get('DRY_RUN') == '1'
 DERIV = tuple(str(s) for s in range(2, 15)); TEST = tuple(str(s) for s in range(15, 27))
 if DRY: DERIV, TEST = ('2', '3', '4', '5', '6', '7', '8'), ('10', '11', '12')
@@ -65,7 +65,7 @@ def main():
     Rd = [r for r in Rd if r['answered'] and r['idx'] in Ld and all(('last_%d' % t) in Hd.get(r['idx'], {}) for t in checkpoints(r))]
     jobs = [(r, t) for r in Rd for t in checkpoints(r)]; yj = np.array([0 if r['correct'] else 1 for r, _ in jobs]); grp = np.array([r['idx'] for r, _ in jobs])
     X = parallel_features(jobs, Ld, 4); (bl, bc), sel_table = select(jobs, Hd)
-    CF = np.zeros((len(jobs), 4))   # cross-fitted derivation scores of the four components (GroupKFold(5), as YB-0045 and YB-0048)
+    CF = np.zeros((len(jobs), 4))   # cross-fitted derivation scores of the four components (GroupKFold(5), as EXPERIMENT-POWERED-REPLICATION and EXPERIMENT-MULTILEVEL-FUSION)
     for tr, te in GroupKFold(5).split(np.zeros(len(jobs)), yj, grp):
         jt = [jobs[i] for i in tr]
         mods = (DifficultyBaseline(use_t=True).fit(jt), TextMonitor(TEXT_C).fit(jt), Probe(bl, bc).fit(jt, Hd), AbsOrganism().fit_from(X[tr], jt))
@@ -77,7 +77,7 @@ def main():
     ok = lambda r: r['idx'] in L8 and all(('last_%d' % t) in H8.get(r['idx'], {}) for t in checkpoints(r))
     A = [r for r in R8 if r['answered'] and ok(r)]; U = [r for r in R8 if not r['answered'] and ok(r)]
     y = np.array([0 if r['correct'] else 1 for r in A])
-    # score every component at every checkpoint, timing each call (H4)
+    # score every component at every checkpoint, timing each call (EXPERIMENT-MONITOR-COST-SHARE)
     comp, tim = {}, {}
     for r in A + U:
         for t in checkpoints(r):
@@ -94,7 +94,7 @@ def main():
         V['length'] = in_time(R, lambda r, t: LC.c2(r, t), free); V['question_type'] = in_time(R, lambda r, t: QT.get(r['cat'], 0.0), free)
         return V
     V = scores(A)
-    if DRY:   # synthetic self-consistency for pipeline checks only (same generator as YB-0049)
+    if DRY:   # synthetic self-consistency for pipeline checks only (same generator as EXPERIMENT-STAGE-DIVERSE-LAYERING)
         g = np.random.default_rng(7); d = np.where(g.random(len(A)) < 0.45 * y + 0.04, g.choice([0.25, 0.5, 0.75, 1.0], len(A)), 0.0); sec = np.full(len(A), 4.0)
     else:
         miss = [r['idx'] for r in A if r['idx'] not in SC]

@@ -1,8 +1,8 @@
-# YB-0019 · Deep layer-graph organism (24-layer network physiology; repeat of the YB-0012 flagship)
+# EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM · Deep layer-graph organism (24-layer network physiology; repeat of the EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP flagship)
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** F2: RETRACTED the earliness claim (56% false alarms). F12: the deep regulator has 314 features (not about 302). F16: question type (0.764) and length (0.796) exceed its AUROC (0.765). F35: Proposition 3 test coverage. F4: telemetry was one token late (stale, not future); see YB-0035.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED: RETRACTED the earliness claim (56% false alarms). REVIEW-DEEP-FEATURE-COUNT-WRONG: the deep regulator has 314 features (not about 302). REVIEW-BASELINES-BEAT-EARLY-ORGANISMS: question type (0.764) and length (0.796) exceed its AUROC (0.765). REVIEW-DEEP-PROPOSITION-TEST-INEXACT: Proposition 3 test coverage. REVIEW-LAYER-TAP-ONE-STEP-LATE: telemetry was one token late (stale, not future); see EXPERIMENT-CORRECTED-REALTIME-RACE.
 
-**Status:** tested · **Verdict (pre-registered, commit 5c9b9fb):** H0 deeper helps ⚠️ positive but not significant (+0.045, CI −0.13 to +0.22); H1 vs best behavior ❌ inferior to self-consistency, but **no longer distinguishable from the LLM judge**; H2 earliness ✅ (median 331 tokens, 4.65 s before the answer); H3 ❌. First silent slips caught (2 of 3 modular-power errors).
+**Status:** tested · **Verdict (pre-registered, commit 5c9b9fb):** EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS deeper helps ⚠️ positive but not significant (+0.045, CI −0.13 to +0.22); EXPERIMENT-DEEP-ORGANISM-SUPERIORITY vs best behavior ❌ inferior to self-consistency, but **no longer distinguishable from the LLM judge**; EXPERIMENT-DEEP-ORGANISM-EARLINESS earliness ✅ (median 331 tokens, 4.65 s before the answer); EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY ❌. First silent slips caught (2 of 3 modular-power errors).
 **Reproduce:** `make` here (sandbox: `sandbox/run.sh algorithms/YB-0019-deep-layer-graph-organism all`).
 
 ## 1. Plain English
@@ -20,7 +20,7 @@ Network physiology on the transformer's own depth: layers as organs, co-fluctuat
 **Modularity (spectral bipartition).** B = W − d dᵀ/(2m); s = sign of B's leading eigenvector; Q = sᵀBs/(4m), set to 0 when B's top eigenvalue ≤ 0.
 **Proposition 2 (two disjoint equal cliques give Q = 1/2).** For two disconnected cliques of equal total degree, the bipartition along the cliques gives Q = Σ_c [e_c/m − (d_c/2m)²] = 2[1/2 − 1/4] = 1/2, and the leading eigenvector recovers that split. Verified by test (exactly uncorrelated module signals).
 **Proposition 3 (a single module is not split).** For a complete graph with equal weights, B = W − (k−1)²/(k(k−1))·J has no positive eigenvalue for a split that improves Q, so Q = 0. Verified by test.
-**Features (314; earlier reported as about 302, audit F12).** Per layer and channel: mean and RMSSD (layer HRV). Per graph and metric: mean, min, max, std, least-squares trend, and value extrapolated one window past the last (anticipation), plus graph-HRV. Within-type z-scoring (seed-0 statistics); L2 logistic regression C = 0.1; frozen after seed 0.
+**Features (314; earlier reported as about 302, audit REVIEW-DEEP-FEATURE-COUNT-WRONG).** Per layer and channel: mean and RMSSD (layer HRV). Per graph and metric: mean, min, max, std, least-squares trend, and value extrapolated one window past the last (anticipation), plus graph-HRV. Within-type z-scoring (seed-0 statistics); L2 logistic regression C = 0.1; frozen after seed 0.
 **Lemma (answer blindness, prefix consistency).** Features read only tokens before the answer marker; the prefix at the answer equals the full reasoning. Both verified by tests.
 **Action rule.** At checkpoints every 8 tokens, alarm if max(score, score + (score − previous score)) exceeds the frozen 10%-FPR threshold (linear extrapolation one step ahead).
 **Statistics.** Paired bootstrap of AUROC differences (1000, seed 0), exactly as pre-registered.
@@ -30,7 +30,7 @@ Network physiology on the transformer's own depth: layers as organs, co-fluctuat
 |---|---|
 | src/layergraph.c | Compiled core: lagged coupling graph for k layers, Laplacian spectrum (Jacobi), spectral modularity |
 | src/deep.py | Log scaling, deep features, trend extrapolation, frozen DeepOrganism, online alarm |
-| src/vitals.c, src/hpa.c, src/agr.py, src/hpa.py, src/flagship.py | Shared cores and the token-level organism (YB-0012) for H0 |
+| src/vitals.c, src/hpa.c, src/agr.py, src/hpa.py, src/flagship.py | Shared cores and the token-level organism (EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP) for EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS |
 | tests/test_core.py | 5 tests: C = NumPy reference on 24 nodes, Proposition 2, Proposition 3, answer blindness, prefix consistency |
 | tests/experiment.py | Pre-registered analysis; writes docs/results.json and docs/scores_seed1.json |
 | ../../agr/layertap.py, ../../agr/pack_layers.py | Telemetry tap and packing (reasoning segment only) |
@@ -42,24 +42,24 @@ Data fingerprints (SHA-256 prefix): layers_seed0.npz 5a619127e59a8c82; layers_se
 ## 6. Results (217 answered held-out episodes, 21 wrong)
 | Monitor | AUROC [95% CI] | Recall at 10% FPR |
 |---|---|---|
-| B2 self-consistency | 0.980 [0.962, 0.992] | 100% |
-| B1 LLM judge | 0.886 [0.791, 0.957] | 61.9% |
+| EXPERIMENT-SELF-CONSISTENCY-MONITOR self-consistency | 0.980 [0.962, 0.992] | 100% |
+| EXPERIMENT-LLM-JUDGE-MONITOR LLM judge | 0.886 [0.791, 0.957] | 61.9% |
 | **O-deep (24-layer graph)** | **0.765** [0.619, 0.897] | **57.1%** |
-| O-token (YB-0012 organism) | 0.720 [0.570, 0.846] | 47.6% |
-| B3 answer confidence | 0.390 [0.291, 0.505] | 0% |
+| O-token (EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP organism) | 0.720 [0.570, 0.846] | 47.6% |
+| EXPERIMENT-ANSWER-CONFIDENCE-MONITOR answer confidence | 0.390 [0.291, 0.505] | 0% |
 
-Paired differences (O-deep minus): O-token +0.045 [−0.132, +0.219]; B1 −0.122 [−0.259, +0.012]; B2 −0.215 [−0.360, −0.084]; B3 +0.375 [+0.156, +0.587]. H3 (O-deep + B2 minus B2): +0.006 [−0.006, +0.018].
+Paired differences (O-deep minus): O-token +0.045 [−0.132, +0.219]; EXPERIMENT-LLM-JUDGE-MONITOR −0.122 [−0.259, +0.012]; EXPERIMENT-SELF-CONSISTENCY-MONITOR −0.215 [−0.360, −0.084]; EXPERIMENT-ANSWER-CONFIDENCE-MONITOR +0.375 [+0.156, +0.587]. EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY (O-deep + EXPERIMENT-SELF-CONSISTENCY-MONITOR minus EXPERIMENT-SELF-CONSISTENCY-MONITOR): +0.006 [−0.006, +0.018].
 Errors caught by type (deep / shallow): day of week 10/10 vs 8/10; modular power 2/3 vs 0/3; letter count 0/2 vs 2/2; big multiplication 0/5 vs 0/5; small multiplication 0/1 vs 0/1.
-H2: 12 errors detected; median lead 331 tokens (4,650 ms); 100% before the answer.
+EXPERIMENT-DEEP-ORGANISM-EARLINESS: 12 errors detected; median lead 331 tokens (4,650 ms); 100% before the answer.
 
 ## 7. Verdict against the pre-registered rules
-- **H0 (deeper helps): not supported at 95%.** Point estimate +0.045 and +2 errors caught, but the interval includes 0.
-- **H1: inferior to self-consistency** (CI entirely below 0). Versus the LLM judge the interval now includes 0 (not distinguishable), where the shallow organism was inferior.
-- **H2: holds.** **H3: fails.**
+- **EXPERIMENT-DEEP-ORGANISM-DEPTH-HELPS (deeper helps): not supported at 95%.** Point estimate +0.045 and +2 errors caught, but the interval includes 0.
+- **EXPERIMENT-DEEP-ORGANISM-SUPERIORITY: inferior to self-consistency** (CI entirely below 0). Versus the LLM judge the interval now includes 0 (not distinguishable), where the shallow organism was inferior.
+- **EXPERIMENT-DEEP-ORGANISM-EARLINESS: holds.** **EXPERIMENT-DEEP-ORGANISM-COMPLEMENTARITY: fails.**
 - Qualitative change: depth caught the first silent slips (2 of 3 modular-power errors) while losing both letter-count errors; the error profile shifted rather than simply improving.
 
 ## 8. Interpretation and limitations
-Direction supports the author's depth hypothesis; magnitude is not yet decisive. With 21 held-out errors and 314 features trained on 36 seed-0 errors, statistical power is the binding constraint; the deep program (YB-0024 to YB-0026) is pre-planned with about 5,000 training episodes. Silent arithmetic slips remain largely invisible to passive layer dynamics, which motivates the active probe (YB-0024) and the possibility-race graph (YB-0026). One patient model, one task family.
+Direction supports the author's depth hypothesis; magnitude is not yet decisive. With 21 held-out errors and 314 features trained on 36 seed-0 errors, statistical power is the binding constraint; the deep program (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE to EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE) is pre-planned with about 5,000 training episodes. Silent arithmetic slips remain largely invisible to passive layer dynamics, which motivates the active probe (EXPERIMENT-ACTIVE-INTEROCEPTIVE-PROBE) and the possibility-race graph (EXPERIMENT-POSSIBILITY-GRAPH-EVIDENCE). One patient model, one task family.
 Prior art: layer-wise probing and logit-lens analyses, functional connectivity and network neuroscience, spectral modularity (Newman, 2006).
 
 ## Deviations from the pre-registration

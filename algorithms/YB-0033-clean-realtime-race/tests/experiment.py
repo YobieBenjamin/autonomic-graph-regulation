@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0033, exactly per docs/PREREGISTRATION.md (commit 300f037). DRY_RUN=1: derivation subset, seed-4 stand-in test with
+'''EXPERIMENT-CLEAN-REALTIME-RACE, exactly per docs/PREREGISTRATION.md (commit 300f037). DRY_RUN=1: derivation subset, seed-4 stand-in test with
 seeded random stand-in behavior scores; writes docs/dryrun.json; never reads seed 5.'''
 import json, os, sys, time, glob, numpy as np
 sys.path.insert(0, 'src')
@@ -67,8 +67,11 @@ sub = np.array([r['cat'] in lenfree for r in Rt]); d3 = rdiff('organism', best_b
 slip = np.array([r['cat'] in ('mul_easy', 'mul_hard', 'modpow') for r in Rt])
 res = dict(dry_run=DRY, derivation_answered=len(Rd), derivation_wrong=int(yd.sum()), serial_observations=len(jobs), feature_minutes=fmin, test_answered=len(Rt), test_wrong=int(y.sum()),
            test_wrong_with_any_checkpoint=int(sum(1 for i, r in enumerate(Rt) if y[i] and checkpoints(r))), race=race, best_behavior=best_b, best_length_control=best_c,
+           # Registered name: EXPERIMENT-CLEAN-RACE-ORGANISM-WINS (old ID H1 is kept because code matches on it)
            H1=dict(organism_minus_best_behavior=d_b, organism_minus_best_length=d_c, holds=bool(d_b[1] is not None and d_b[1] > 0 and d_c[1] > 0)),
+           # Registered name: EXPERIMENT-CLEAN-RACE-SCORE-BEATS-LENGTH (old ID H2 is kept because code matches on it)
            H2=dict(aiews_minus_best_length=d_e, holds=bool(d_e[1] is not None and d_e[1] > 0)),
+           # Registered name: EXPERIMENT-CLEAN-RACE-LENGTH-FREE-TYPES (old ID H3 is kept because code matches on it)
            H3=dict(length_free_types=lenfree, wrong_in_subset=int((sub & (y == 1)).sum()), organism_minus_best_behavior=d3, holds=bool(d3[1] is not None and d3[1] > 0)),
            per_checkpoint_auroc={m: {str(t): (round(float(auroc(np.array(yck[t]), np.array(perck[m][t]))), 4) if 0 < sum(yck[t]) < len(yck[t]) else None) for t in T} for m in names},
            per_checkpoint_n={str(t): [int(sum(yck[t])), len(yck[t])] for t in T},

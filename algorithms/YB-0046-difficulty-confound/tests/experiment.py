@@ -1,9 +1,9 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0046 analysis (pre-registered; docs/PREREGISTRATION.md): is the internal-state signal more than a difficulty detector?
-Reuses YB-0045 code unchanged (src/ is a verified copy). Real run: fit on YB-0045 derivation seeds, evaluate on YB-0045 test seeds 9, 13, 14
-(previously analysed in YB-0045: a pre-registered SECONDARY analysis, not a fresh test). DRY_RUN=1: fit on seeds 2-8, evaluate on 10-12,
+'''EXPERIMENT-DIFFICULTY-CONFOUND analysis (pre-registered; docs/PREREGISTRATION.md): is the internal-state signal more than a difficulty detector?
+Reuses EXPERIMENT-POWERED-REPLICATION code unchanged (src/ is a verified copy). Real run: fit on EXPERIMENT-POWERED-REPLICATION derivation seeds, evaluate on EXPERIMENT-POWERED-REPLICATION test seeds 9, 13, 14
+(previously analysed in EXPERIMENT-POWERED-REPLICATION: a pre-registered SECONDARY analysis, not a fresh test). DRY_RUN=1: fit on seeds 2-8, evaluate on 10-12,
 never reading test seeds; writes docs/dryrun.json.'''
 import json, gzip, os, sys, numpy as np
 sys.path.insert(0, 'src')
@@ -42,7 +42,7 @@ def boot_auc(y, s, n=1000, seed=0):
     return [round(float(roc_auc_score(y, s)), 4), round(float(np.percentile(a, 2.5)), 4), round(float(np.percentile(a, 97.5)), 4)]
 
 class Stack:
-    '''H3 combined monitor: logistic regression on [difficulty-baseline logit, regulator score], fitted on CROSS-FITTED derivation scores.'''
+    '''EXPERIMENT-COMBINED-BEYOND-DIFFICULTY combined monitor: logistic regression on [difficulty-baseline logit, regulator score], fitted on CROSS-FITTED derivation scores.'''
     def fit(self, d, o, y):
         X = np.c_[np.log(np.clip(d, 1e-6, 1 - 1e-6) / (1 - np.clip(d, 1e-6, 1 - 1e-6))), o]; self.mu, self.sd = X.mean(0), X.std(0) + 1e-9
         self.lr = LogisticRegression(C=1.0, max_iter=5000).fit((X - self.mu) / self.sd, y); return self
@@ -53,7 +53,7 @@ def main():
     if not DRY and os.environ.get('RUN_CONFIRMATORY') != '1':
         print('pre-registration stage: the confirmatory analysis runs only via make confirmatory, after the public timestamp'); return
     if not all(os.path.exists('data/seed%s_LH.jsonl.gz' % S) for S in DERIV + TEST):
-        print('YB-0045 recordings not present (public checkout): nothing to analyse'); return
+        print('EXPERIMENT-POWERED-REPLICATION recordings not present (public checkout): nothing to analyse'); return
     Rd, Ld, Hd = [], {}, {}
     for S in DERIV:
         R, L, H = load_seed(S, 100000 * int(S)); Rd += R; Ld.update(L); Hd.update(H)
@@ -67,7 +67,7 @@ def main():
     X = parallel_features(jobs, Ld, 4); O = AbsOrganism().fit_from(X, jobs)
     (bl, bc), _ = select(jobs, Hd); P = Probe(bl, bc).fit(jobs, Hd)
     DB = DifficultyBaseline(use_t=True).fit(jobs); D0 = DifficultyBaseline(use_t=False).fit(jobs)
-    # cross-fitted derivation scores (same GroupKFold(5) as YB-0045) for the stacker
+    # cross-fitted derivation scores (same GroupKFold(5) as EXPERIMENT-POWERED-REPLICATION) for the stacker
     yj = np.array([0 if r['correct'] else 1 for r, _ in jobs]); grp = np.array([r['idx'] for r, _ in jobs]); cfo, cfd = np.zeros(len(jobs)), np.zeros(len(jobs))
     for tr, te in GroupKFold(5).split(np.zeros(len(jobs)), yj, grp):
         Ot = AbsOrganism().fit_from(X[tr], [jobs[i] for i in tr]); Dt = DifficultyBaseline(use_t=True).fit([jobs[i] for i in tr])

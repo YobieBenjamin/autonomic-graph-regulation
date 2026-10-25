@@ -32,6 +32,7 @@ import json, os, re, shutil, subprocess, sys, threading, datetime, urllib.reques
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HYP, LEDGER = os.path.join(ROOT, 'HYPOTHESES.md'), os.path.join(ROOT, 'LEDGER.md')
 STATE, SANDBOX_DIR = os.path.join(ROOT, 'miner', 'state.json'), os.path.join(ROOT, 'miner', 'sandbox')
+# Registered name: EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER (old ID YB-0002 is kept because code matches on it)
 REF_DIR = os.path.join(ROOT, 'algorithms', 'YB-0002-bounded-homeostasis-wrapper')
 MODEL = os.environ.get('MINER_MODEL', 'claude-sonnet-5')
 TRIAGE_MODEL = os.environ.get('MINER_TRIAGE_MODEL', 'claude-haiku-4-5-20251001')

@@ -7,15 +7,15 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
 
 ## 2026-09-28
 
-1. **Charter and first block (YB-0001).** Built in a cloud container: per-input effective-connectivity graph +
+1. **Charter and first block (EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR).** Built in a cloud container: per-input effective-connectivity graph +
    normalized-Laplacian heat trace as an OOD/adversarial monitor, plus a homeostatic baseline with a drift budget.
    Spectral detector: negative result (AUROC 0.64-0.78, below MSP/energy/Mahalanobis). Drift budget: positive
    (5/5 slow poisoning caught, 0/5 false alarms).
 2. **Repository.** Private permanent repo YobieBenjamin/safety. First upload through the browser with SHA-256
    verification of every file; GitHub rejects dotfiles and `.github/` via the uploader, so those used the editor.
-3. **YB-0002 Bounded Homeostatic Wrapper.** Proved confinement theorems T1-T3; worst-case attacker drags an
+3. **EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER Bounded Homeostatic Wrapper.** Proved confinement theorems EXPERIMENT-BASELINE-CONFINEMENT-THEOREM to EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM; worst-case attacker drags an
    unbounded monitor 768-5954 Mahalanobis units with zero flags, BHW caps it at B + eta*tau. Energy + BHW:
-   detection 1.1% -> 43% with 0/10 false alarms. Closed-form budget calibration (C1/C2) fails in 64-D -> YB-0007.
+   detection 1.1% -> 43% with 0/10 false alarms. Closed-form budget calibration (EXPERIMENT-STATIONARY-BUDGET-CALIBRATION/EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION) fails in 64-D -> EXPERIMENT-DRIFT-BUDGET-CALIBRATION.
 4. **Moved to the Mac.** gh CLI logged in as YobieBenjamin alongside an existing account; clone at ~/safety with
    .venv; macOS 27 SDK linker quirk found and auto-handled; results reproduce bit-for-bit across the cloud
    container, macOS, and the Linux sandbox.
@@ -28,7 +28,7 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
    ANTHROPIC_API_KEY repo secret exists), and CI fixes for Linux runners (caller uid, CPU clamp). History stayed
    linear; nothing was overwritten.
 7. **Local-first hybrid orchestrator (`./mine`).** Docker raised to 32 GB / 12 CPUs; LM Studio gpt-oss-120b as the
-   local model. First fully local attempt at YB-0003 (0 cloud tokens) failed verification: the local model
+   local model. First fully local attempt at EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR (0 cloud tokens) failed verification: the local model
    wrote a good design and all files but hallucinated an API, left a placeholder stub overriding a real function,
    and mis-derived its own closed form (Gini of one active unit among n is (n-1)/n, not (n-1)/(2n-1)).
    Fixes: one file per call, fixed Makefile template, README written after real results, real mlp.py source in
@@ -46,41 +46,41 @@ Every attempt is kept, including failures (see LEDGER.md and archive/).
    a token-capture bug that appended the next Terminal word to valid tokens.
 11. **Independence Principle.** The safety organism must be external, non-transformer and text-blind (cannot be
    jailbroken); signals ranked by contamination (physical < consequence < substrate < words). Patient model
-   gpt-oss-20b (MLX) instrumented by a trusted recorder; YB-0015 contamination test and YB-0017 HPA-axis organism
+   gpt-oss-20b (MLX) instrumented by a trusted recorder; EXPERIMENT-CONTAMINATION-TEST contamination test and EXPERIMENT-HPA-AXIS-ORGANISM HPA-axis organism
    built with pre-registered predictions (including the author's: organism and raw signals trend together, rho > 0.7).
 
-12. **Metabolic vitals (YB-0018): negative.** GPU power and timing carry no failure signal; transformers do fixed compute per token and have no metabolism. Hardware implication: the biobrain needs an activation/logit telemetry port. Organism cost 290 ns per token (28,000x real-time headroom).
-13. **Flagship (YB-0012), pre-registered.** On held-out questions, self-consistency (0.98) and an LLM judge (0.89) beat the organism (0.72); verdict inferior on accuracy. Confirmed: output confidence is inverted (0.39, the gospel premise) and the organism warns 4.5 s before the answer. The organism catches struggle errors (10 of 12) but no silent slips (0 of 9).
-  > **Retracted (see CORRECTIONS.md F1/F2 and F23):** the 4.5 s early warning came from alarms that also fired on most correct answers; "unjailbreakable" is untested and withdrawn.
-14. **Deep 24-layer organism (YB-0019), pre-registered.** 0.765 vs 0.720 (not significant); first silent slips caught; no longer distinguishable from the judge; still behind self-consistency.
-15. **Real-time race (YB-0023), pre-registered.** The pre-registered rule declared an organism win but did not control false alarms (organism alarmed on 66% of correct answers): recorded as a flaw. Exploratory, matched 10% false alarms: deep organism caught 11 of 21 in time vs 6 for the judge (CI includes 0) at about 700x less compute.
-16. **Author's architecture and model of judgment.** Custom brain-optimized chip external to the AI accelerator; dynamic hybrid of a coupled physiological link (A) and a parallel appraisal (B); non-deterministic; decisions as hundreds to thousands of dynamically weighted signals forming a graded hunch (YB-0027 hunch field, YB-0028 critical slowing down, YB-0029 hybrid).
-17. **AI Early Warning Score (AI-EWS).** Author's principle: judgment has no analog but the brain and biology; safety follows hospital early-warning systems (NEWS2). Methodology in docs/AI_EWS_METHODOLOGY.md. YB-0030 (pre-registered): transparent 7-vital score predicts failures (0.725), levels perfectly ordered (5.8% / 11.8% / 75% / 100% failure rate), on par with the black box.
+12. **Metabolic vitals (EXPERIMENT-METABOLIC-VITALS): negative.** GPU power and timing carry no failure signal; transformers do fixed compute per token and have no metabolism. Hardware implication: the biobrain needs an activation/logit telemetry port. Organism cost 290 ns per token (28,000x real-time headroom).
+13. **Flagship (EXPERIMENT-VITALS-VS-BEHAVIOR-FLAGSHIP), pre-registered.** On held-out questions, self-consistency (0.98) and an LLM judge (0.89) beat the organism (0.72); verdict inferior on accuracy. Confirmed: output confidence is inverted (0.39, the gospel premise) and the organism warns 4.5 s before the answer. The organism catches struggle errors (10 of 12) but no silent slips (0 of 9).
+  > **Retracted (see CORRECTIONS.md REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED/REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED and REVIEW-UNJAILBREAKABLE-CLAIM-DROPPED):** the 4.5 s early warning came from alarms that also fired on most correct answers; "unjailbreakable" is untested and withdrawn.
+14. **Deep 24-layer organism (EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM), pre-registered.** 0.765 vs 0.720 (not significant); first silent slips caught; no longer distinguishable from the judge; still behind self-consistency.
+15. **Real-time race (EXPERIMENT-REALTIME-RACE), pre-registered.** The pre-registered rule declared an organism win but did not control false alarms (organism alarmed on 66% of correct answers): recorded as a flaw. Exploratory, matched 10% false alarms: deep organism caught 11 of 21 in time vs 6 for the judge (CI includes 0) at about 700x less compute.
+16. **Author's architecture and model of judgment.** Custom brain-optimized chip external to the AI accelerator; dynamic hybrid of a coupled physiological link (A) and a parallel appraisal (B); non-deterministic; decisions as hundreds to thousands of dynamically weighted signals forming a graded hunch (EXPERIMENT-WEIGHTED-HUNCH-FIELD hunch field, EXPERIMENT-CRITICAL-SLOWING-DOWN critical slowing down, EXPERIMENT-STOCHASTIC-HYBRID-HUNCH-FIELD hybrid).
+17. **AI Early Warning Score (AI-EWS).** Author's principle: judgment has no analog but the brain and biology; safety follows hospital early-warning systems (NEWS2). Methodology in docs/AI_EWS_METHODOLOGY.md. EXPERIMENT-AI-EARLY-WARNING-SCORE (pre-registered): transparent 7-vital score predicts failures (0.725), levels perfectly ordered (5.8% / 11.8% / 75% / 100% failure rate), on par with the black box.
 18. **Operations.** CI failures traced to a legacy miner self-test coupled to the live backlog; fixture isolated. Full logs archived from /tmp (wiped on reboot).
 
-19. **Confirmatory deep program (YB-0031), pre-registered, fresh test set.** No eureka: in-time alarms inferior to the LLM judge (the YB-0023 lead did not replicate). But with 9x more data the organism reached 0.89 (tied with a 6x larger judge), caught 60% of silent slips, and failure to settle was confirmed (p = 0.0007).
+19. **Confirmatory deep program (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM), pre-registered, fresh test set.** No eureka: in-time alarms inferior to the LLM judge (the EXPERIMENT-REALTIME-RACE lead did not replicate). But with 9x more data the organism reached 0.89 (tied with a 6x larger judge), caught 60% of silent slips, and failure to settle was confirmed (p = 0.0007).
 
-20. **Serial-observation organism (YB-0032).** Pre-registered eureka flag came back true (29/46 in time vs judge 9/46), but a post-hoc control showed the fractional checkpoints leak total reasoning length (length alone: 15/46). Not accepted. Serial training genuinely moves accuracy earlier (0.41 to 0.79 AUROC at 25%). Next: YB-0033 with absolute-time checkpoints and a length control.
+20. **Serial-observation organism (EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM).** Pre-registered eureka flag came back true (29/46 in time vs judge 9/46), but a post-hoc control showed the fractional checkpoints leak total reasoning length (length alone: 15/46). Not accepted. Serial training genuinely moves accuracy earlier (0.41 to 0.79 AUROC at 25%). Next: EXPERIMENT-CLEAN-REALTIME-RACE with absolute-time checkpoints and a length control.
 
-21. **EUREKA: YB-0033, clean real-time race.** Pre-registered (300f037), fresh test set, no future information, compute time counted, false alarms matched and then exactly equalized: the text-blind organism caught 28/44 wrong answers before they were emitted vs 13 for a 6x larger LLM judge and 17 for a length-only control. First leak-free, pre-registered result where reading the transformer's physiology beats watching its behavior. Limits: one model, one task family, 44 errors. Next: replication and external validation on a different model.
+21. **EUREKA: EXPERIMENT-CLEAN-REALTIME-RACE, clean real-time race.** Pre-registered (300f037), fresh test set, no future information, compute time counted, false alarms matched and then exactly equalized: the text-blind organism caught 28/44 wrong answers before they were emitted vs 13 for a 6x larger LLM judge and 17 for a length-only control. First leak-free, pre-registered result where reading the transformer's physiology beats watching its behavior. Limits: one model, one task family, 44 errors. Next: replication and external validation on a different model.
 
-22. **Replication (YB-0034).** Frozen replication on fresh seed 6: 24/43 in time vs judge 13 and length 11 (R1, R2 hold; R3 missing, completed in YB-0035).
-23. **Independent audit and deep debug.** A separate read-only Claude Code session audited the repository blind: 38 findings (3 critical). All critical findings were verified independently (telemetry one token late, F4; earliness claims were false-alarm artifacts, F1/F2; the YB-0015 reasoning-trace claim was never tested, F3). Our own finding S1: greedy generation is deterministic within a session but can diverge across sessions under GPU sharing. Everything is logged in CORRECTIONS.md; affected reports carry correction banners.
-24. **Corrected confirmation (YB-0035).** Fixed instruments and statistics, code frozen before new data: the regulator beats the LLM judge and the length control on fresh seed 7 (23/40 vs 11 and 9) and pooled over seeds 5-7 (+32 points vs each). Boundary: not better than length when never-answered episodes count as failures. Vocabulary standardized (docs/GLOSSARY.md; regulator = organism, monitored model = patient, telemetry synchronization = tap alignment).
+22. **Replication (EXPERIMENT-REPLICATION-REALTIME-RACE).** Frozen replication on fresh seed 6: 24/43 in time vs judge 13 and length 11 (EXPERIMENT-EUREKA-REPLICATION-CRITERION, EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS hold; EXPERIMENT-POOLED-SEEDS-ESTIMATE missing, completed in EXPERIMENT-CORRECTED-REALTIME-RACE).
+23. **Independent audit and deep debug.** A separate read-only Claude Code session audited the repository blind: 38 findings (3 critical). All critical findings were verified independently (telemetry one token late, REVIEW-LAYER-TAP-ONE-STEP-LATE; earliness claims were false-alarm artifacts, REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED/REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED; the EXPERIMENT-CONTAMINATION-TEST reasoning-trace claim was never tested, REVIEW-REASONING-TRACE-CLAIM-RETRACTED). Our own finding REVIEW-GREEDY-RUNS-DIVERGED-ACROSS-SESSIONS: greedy generation is deterministic within a session but can diverge across sessions under GPU sharing. Everything is logged in CORRECTIONS.md; affected reports carry correction banners.
+24. **Corrected confirmation (EXPERIMENT-CORRECTED-REALTIME-RACE).** Fixed instruments and statistics, code frozen before new data: the regulator beats the LLM judge and the length control on fresh seed 7 (23/40 vs 11 and 9) and pooled over seeds 5-7 (+32 points vs each). Boundary: not better than length when never-answered episodes count as failures. Vocabulary standardized (docs/GLOSSARY.md; regulator = organism, monitored model = patient, telemetry synchronization = tap alignment).
 
-25. **Second audit (YB-0035 and blog drafts).** No leakage found; 25 findings on interpretation (2 critical: the win holds only before the answer exists, offline the judge is better; YB-0035 never measured confidence). Artifact gaps closed with committed scripts; exploratory fairness checks: equal monitorable false alarms 19 vs 11 (+0.20 [+0.02, +0.43]), frozen threshold 22/40, question-type baseline 6/40.
+25. **Second audit (EXPERIMENT-CORRECTED-REALTIME-RACE and blog drafts).** No leakage found; 25 findings on interpretation (2 critical: the win holds only before the answer exists, offline the judge is better; EXPERIMENT-CORRECTED-REALTIME-RACE never measured confidence). Artifact gaps closed with committed scripts; exploratory fairness checks: equal monitorable false alarms 19 vs 11 (+0.20 [+0.02, +0.43]), frozen threshold 22/40, question-type baseline 6/40.
 
-26. **YB-0045 (powered replication).** Pre-registered; three fresh test seeds; H1 supported: regulator minus judge +0.478 [+0.307, +0.560], holding in each seed (post hoc); the probe still matches the regulator. Seventh audit (first of YB-0045): numbers verified; wording fixed.
-27. **NVIDIA OpenShell set up for YB-0044.** Docker Desktop on macOS lacks Landlock, so OpenShell sandboxes run in a Colima VM confined to the OpenShell gateway (Docker Desktop stays the system default); a reverse SSH tunnel keeps the gateway loopback-only. docs/OPENSHELL_SETUP.md; one command: scripts/openshell_up.sh.
+26. **EXPERIMENT-POWERED-REPLICATION (powered replication).** Pre-registered; three fresh test seeds; EXPERIMENT-POWERED-REGULATOR-BEATS-JUDGE supported: regulator minus judge +0.478 [+0.307, +0.560], holding in each seed (post hoc); the probe still matches the regulator. Seventh audit (first of EXPERIMENT-POWERED-REPLICATION): numbers verified; wording fixed.
+27. **NVIDIA OpenShell set up for EXPERIMENT-OPENSHELL-GATING.** Docker Desktop on macOS lacks Landlock, so OpenShell sandboxes run in a Colima VM confined to the OpenShell gateway (Docker Desktop stays the system default); a reverse SSH tunnel keeps the gateway loopback-only. docs/OPENSHELL_SETUP.md; one command: scripts/openshell_up.sh.
 
 ## Open items
 - Anthropic API key in Keychain, then a supervised pilot (`./mine --max 1`) to measure real cloud-token cost per algorithm.
 - Decide the single miner of record: local orchestrator (`./mine`) vs GitHub `mine.yml`; running both would compete for hypotheses.
 - Ingest the book so hypotheses derive from its chapters (not yet provided).
-- Open hypotheses: YB-0003 to YB-0007. Novelty claims still need a systematic literature search.
+- Open hypotheses: EXPERIMENT-LATERAL-INHIBITION-SPARSITY-AUDITOR to EXPERIMENT-DRIFT-BUDGET-CALIBRATION. Novelty claims still need a systematic literature search.
 
 ## Lessons
-- Keep negative results; they redirect the search (YB-0001 -> YB-0002 -> YB-0007).
+- Keep negative results; they redirect the search (EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR -> EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER -> EXPERIMENT-DRIFT-BUDGET-CALIBRATION).
 - Local models: strong at design prose and mechanical fixes, unreliable at novel math code; never let a model verify its own theorems.
 - Deterministic scaffolding (templates, static gates, sandbox) beats more model calls.
 - Fail closed everywhere; test the failure path, not just the success path.

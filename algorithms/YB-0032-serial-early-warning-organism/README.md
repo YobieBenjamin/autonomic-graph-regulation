@@ -1,8 +1,8 @@
-# YB-0032 · Serial-observation early-warning organism (the NEWS2 method)
+# EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM · Serial-observation early-warning organism (the NEWS2 method)
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** F21: the length-only control is now reproducible (archive/audit/artifacts/). F4 applies. The eureka flag was not accepted (look-ahead), as stated below.
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-LENGTH-CONTROL-NOT-REPRODUCIBLE: the length-only control is now reproducible (archive/audit/artifacts/). REVIEW-LAYER-TAP-ONE-STEP-LATE applies. The eureka flag was not accepted (look-ahead), as stated below.
 
-**Status:** tested · **Pre-registered EUREKA flag: true — NOT ACCEPTED.** A post-hoc validity check found look-ahead leakage in the pre-registered checkpoint design (checkpoints at fractions of the *total* reasoning length reveal that length, which a real-time monitor cannot know). Length alone catches 15/46 errors in time, more than the LLM judge (9/46). The serial organism's 29/46 is about double the length-only control, suggesting real signal beyond length, but this design cannot prove it. Confirmation requires YB-0033 (absolute-time checkpoints, length-only control, fresh seed).
+**Status:** tested · **Pre-registered EUREKA flag: true — NOT ACCEPTED.** A post-hoc validity check found look-ahead leakage in the pre-registered checkpoint design (checkpoints at fractions of the *total* reasoning length reveal that length, which a real-time monitor cannot know). Length alone catches 15/46 errors in time, more than the LLM judge (9/46). The serial organism's 29/46 is about double the length-only control, suggesting real signal beyond length, but this design cannot prove it. Confirmation requires EXPERIMENT-CLEAN-REALTIME-RACE (absolute-time checkpoints, length-only control, fresh seed).
 **Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/YB-0032-serial-early-warning-organism all`; dry run with `DRY_RUN=1`.
 
 ## 1. Plain English
@@ -11,10 +11,10 @@ Hospitals judge a patient's vitals against what is normal at that stage of care,
 Then we checked our own test. To look at '25% of the reasoning', you have to know how long the reasoning will be, which is the future. Wrong answers tend to come with longer reasoning, so a checkpoint placed at 25% quietly tells you the length. Using nothing but that length catches 15 of 46 wrong answers in time. So the headline comparison was contaminated. The organism still doubled the length-only baseline, which is encouraging, but a result a skeptic can explain away is not a eureka. The fix is a clean test with checkpoints at fixed clock times.
 
 ## 2. Theory
-Clinical early-warning scores are built and validated on serial observations with stage-appropriate reference ranges. The organism trained only on complete reasoning (YB-0031) was accurate at the end but weak early; training on serial observations should transfer that accuracy earlier.
+Clinical early-warning scores are built and validated on serial observations with stage-appropriate reference ranges. The organism trained only on complete reasoning (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM) was accurate at the end but weak early; training on serial observations should transfer that accuracy earlier.
 
 ## 3. Mathematics and proofs
-Stages c ∈ {0.25, 0.5, 0.75, 1.0}; prefix length k(c) = max(⌊c · final_start⌋, 2). Serial features x(r, c) = [deep features of the prefix (YB-0019), c]. Normalization per (question type, stage) with derivation statistics; one L2 logistic model (C = 0.1) over all derivation observations. AI-EWS v3: v2 vitals with bands per stage from derivation correct episodes, directions learned at stage 1.0. Race and matched false alarms as YB-0031.
+Stages c ∈ {0.25, 0.5, 0.75, 1.0}; prefix length k(c) = max(⌊c · final_start⌋, 2). Serial features x(r, c) = [deep features of the prefix (EXPERIMENT-DEEP-LAYER-GRAPH-ORGANISM), c]. Normalization per (question type, stage) with derivation statistics; one L2 logistic model (C = 0.1) over all derivation observations. AI-EWS v3: v2 vitals with bands per stage from derivation correct episodes, directions learned at stage 1.0. Race and matched false alarms as EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM.
 **Proposition 1 (no look-ahead in the features).** x(r, c) reads only tokens before k(c) (tested). **Limitation discovered after analysis:** k(c) itself depends on final_start, the total reasoning length, so the checkpoint position leaks future information. Proposition 1 holds for the feature map but not for the checkpoint schedule.
 **Proposition 2 (parallel = serial).** The fork-pool feature computation equals the single-process computation exactly (tested).
 
@@ -32,17 +32,17 @@ Data fingerprints (SHA-256 prefix): layers_seed2_0.npz 6b241b7133cefde7; layers_
 
 ## 6. Results (derivation seeds 2+3: 4,837 answered, 356 wrong, 19,348 serial observations; test seed 4: 530 answered, 46 wrong)
 **Race at matched ~10% false alarms (caught before the answer is emitted):** serial organism 29/46 (63.0%, 1.25 s to spare, 2.2 ms per check); AI-EWS v3 24/46 (52.2%); LLM judge on prefixes 9/46 (19.6%, 1.6 s per check); complete-trained reference 3/46 (6.5%); self-consistency on prefixes 0/46.
-H1 serial minus judge: +0.435 [+0.239, +0.609] (formally SUPERIOR). H2 serial minus reference: +0.565 [+0.413, +0.717] (holds). H3 AI-EWS v3 levels not ordered at every stage (fails); in-time recall CI [0.39, 0.67]. H4 AUROC at 100%: serial 0.839 vs reference 0.819, diff +0.020 [−0.017, +0.071] (no accuracy cost, holds). H5 silent slips in time: 6/17 (35%), CI [0.18, 0.59] (holds).
+EXPERIMENT-SERIAL-ORGANISM-BEATS-BEHAVIOR serial minus judge: +0.435 [+0.239, +0.609] (formally SUPERIOR). EXPERIMENT-SERIAL-TRAINING-HELPS serial minus reference: +0.565 [+0.413, +0.717] (holds). EXPERIMENT-SERIAL-STAGE-LEVELS-ORDERED AI-EWS v3 levels not ordered at every stage (fails); in-time recall CI [0.39, 0.67]. EXPERIMENT-SERIAL-NO-ACCURACY-COST AUROC at 100%: serial 0.839 vs reference 0.819, diff +0.020 [−0.017, +0.071] (no accuracy cost, holds). EXPERIMENT-SERIAL-SLIPS-IN-TIME silent slips in time: 6/17 (35%), CI [0.18, 0.59] (holds).
 Per-stage AUROC (serial / reference): 25% 0.790 / 0.408; 50% 0.839 / 0.707; 75% 0.837 / 0.799; 100% 0.839 / 0.819.
 **Post-hoc validity control (not pre-registered):** reasoning length alone (revealed exactly at the first fractional checkpoint): AUROC 0.773, 15/46 caught in time at 10.1% false alarms; within-type length percentile: AUROC 0.578, 11/46. Within-type length AUROC: count 0.60, modpow 0.48, mul_hard 0.55, weekday 0.55.
 
 ## 7. Verdict
-- **H2 and H4 hold:** serial training transfers the organism's accuracy to partial reasoning (0.41 to 0.79 AUROC at 25%) at no cost at the end. This answers the YB-0031 question: the complete-trained organism's early-warning failure was substantially a training-regime problem.
-- **H1 (EUREKA) formally holds but is not accepted:** the fractional checkpoint schedule leaks total reasoning length, and length alone already beats the judge. The organism's margin over the length-only control (29 vs 15) is suggestive, not proven.
-- H3 fails; H5 holds.
+- **EXPERIMENT-SERIAL-TRAINING-HELPS and EXPERIMENT-SERIAL-NO-ACCURACY-COST hold:** serial training transfers the organism's accuracy to partial reasoning (0.41 to 0.79 AUROC at 25%) at no cost at the end. This answers the EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM question: the complete-trained organism's early-warning failure was substantially a training-regime problem.
+- **EXPERIMENT-SERIAL-ORGANISM-BEATS-BEHAVIOR (EUREKA) formally holds but is not accepted:** the fractional checkpoint schedule leaks total reasoning length, and length alone already beats the judge. The organism's margin over the length-only control (29 vs 15) is suggestive, not proven.
+- EXPERIMENT-SERIAL-STAGE-LEVELS-ORDERED fails; EXPERIMENT-SERIAL-SLIPS-IN-TIME holds.
 
 ## 8. Limitations and next step
-Checkpoints must be placed at times a real-time monitor can know (absolute tokens or wall-clock), stage features must be tokens-so-far rather than fraction-of-total, and a length-only control must be a pre-registered competitor. This is YB-0033, on a fresh seed.
+Checkpoints must be placed at times a real-time monitor can know (absolute tokens or wall-clock), stage features must be tokens-so-far rather than fraction-of-total, and a length-only control must be a pre-registered competitor. This is EXPERIMENT-CLEAN-REALTIME-RACE, on a fresh seed.
 
 ## Deviations from the pre-registration
 None in the analysis. The look-ahead leak is a design flaw in the pre-registration itself, found by a post-hoc control; the EUREKA flag is therefore not accepted.

@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 exploratory engineering measurement (informs the design; not a hypothesis test): how long a hot-reloaded OpenShell
+'''EXPERIMENT-OPENSHELL-GATING exploratory engineering measurement (informs the design; not a hypothesis test): how long a hot-reloaded OpenShell
 network policy takes to take effect on a running sandbox. A client inside sandbox agr-py POSTs to the mock commit service
 every 50 ms. The host alternates policies deny.yaml / allow.yaml (identical except one allow rule) with openshell policy set
 --wait. Ground truth is the mock service's arrival log (Mac clock). Per flip: command duration, and the effective latency =
@@ -42,7 +42,7 @@ cli.terminate()
 def summ(xs):
     xs = [x for x in xs if x is not None]
     return dict(n=len(xs), median=round(statistics.median(xs), 3), min=round(min(xs), 3), max=round(max(xs), 3)) if xs else None
-out = dict(note='EXPLORATORY engineering measurement for YB-0044 design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms',
+out = dict(note='EXPLORATORY engineering measurement for EXPERIMENT-OPENSHELL-GATING design; OpenShell 0.1.2 on Colima (see docs/OPENSHELL_SETUP.md); client every 50 ms',
            block=dict(command=summ([r['command_s'] for r in rows if r['mode'] == 'deny']), effective=summ([r['effective_s'] for r in rows if r['mode'] == 'deny'])),
            unblock=dict(command=summ([r['command_s'] for r in rows if r['mode'] == 'allow']), effective=summ([r['effective_s'] for r in rows if r['mode'] == 'allow'])),
            failures=sum(1 for r in rows if not r['ok']), rows=rows)

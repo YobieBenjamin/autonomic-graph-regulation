@@ -10,7 +10,7 @@ def ep(fs=300, idx=0, cat='x', correct=True):
 def t_checkpoints_only_while_reasoning():
     assert checkpoints(ep(300)) == [48, 96, 192] and checkpoints(ep(40)) == [] and checkpoints(ep(385)) == [48, 96, 192, 384]
 def t_features_independent_of_total_length():
-    '''Same first t tokens, different total length -> identical features (the YB-0032 leak cannot recur).'''
+    '''Same first t tokens, different total length -> identical features (the EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM leak cannot recur).'''
     L = np.abs(g.normal(size=(500, 24, 5))); a, b = ep(200), ep(450)
     assert np.allclose(abs_features(a, L, 96), abs_features(b, L, 96))
 def t_no_look_ahead():

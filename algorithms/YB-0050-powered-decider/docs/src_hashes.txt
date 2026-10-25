@@ -2,7 +2,7 @@
 d219620ae3ed34840cffbe049baecb2571a09900ab09177723d25b1b49a8df72  src/agr.py  identical to ../YB-0048-multilevel-fusion/src/agr.py
 686c27c25735cd9d80c7055404fc3e4a0a65dfef1b5732685c43770effa6116a  src/aiews.py  identical to ../YB-0048-multilevel-fusion/src/aiews.py
 2cf0f4d316bf323d96a535c6afa332ecdf67656030ae2ed4f92a0f9fb880ea8f  src/corrected.py  identical to ../YB-0048-multilevel-fusion/src/corrected.py
-e74027ff4a1cd09dae4bdb3c2b505030013f2bfc59bfe78db79f95f5ccfbea07  src/decider.py  (new in YB-0050)
+e74027ff4a1cd09dae4bdb3c2b505030013f2bfc59bfe78db79f95f5ccfbea07  src/decider.py  (new in EXPERIMENT-POWERED-DECIDER)
 38f7f504b9124b4b9d8b59fa23647945e5165577e4994da9d1f92ab0c7456ebb  src/deep.py  identical to ../YB-0048-multilevel-fusion/src/deep.py
 1190b19942c0c65d82f1a8ae32892e8976295f778f5b947955429ebf78f35fe5  src/difficulty.py  identical to ../YB-0048-multilevel-fusion/src/difficulty.py
 d89047bee1b6f61c791f6ccfb4617307c7e6340ceacf31e7c7723aeeaef3c4e2  src/flagship.py  identical to ../YB-0048-multilevel-fusion/src/flagship.py

@@ -21,7 +21,7 @@
   "intercept": -6.5223
  },
  "H1": {
-  "test": "recall(C2) - recall(probe) at 1% false alarms",
+  "test": "recall(EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE) - recall(probe) at 1% false alarms",
   "estimate_ci": [
    -0.073,
    -0.2427,
@@ -34,7 +34,7 @@
   "supported": false
  },
  "H2": {
-  "test": "precision of C2 at 1% false alarms and a 1% error base rate >= 0.33",
+  "test": "precision of EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE at 1% false alarms and a 1% error base rate >= 0.33",
   "estimate_ci": [
    0.1736,
    0.13,
@@ -43,7 +43,7 @@
   "supported": false
  },
  "H3": {
-  "test": "recall(C1 k=8) - recall(C1 k=4) at 1% false alarms",
+  "test": "recall(EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=8) - recall(EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK k=4) at 1% false alarms",
   "estimate_ci": [
    -0.0511,
    -0.1429,

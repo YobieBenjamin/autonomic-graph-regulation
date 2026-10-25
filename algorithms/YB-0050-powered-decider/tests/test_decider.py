@@ -1,13 +1,13 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Unit tests for YB-0050 decider (proofs as tests).'''
+'''Unit tests for EXPERIMENT-POWERED-DECIDER decider (proofs as tests).'''
 import sys, numpy as np; sys.path.insert(0, 'src')
 from corrected import cap_threshold
 from layered import recall_layered
 from decider import threshold, single, layered, rates, burden, bootstrap, diff, burden_table, ops_probe, ops_inference, NEG
 rng = np.random.default_rng(1)
-# fast threshold equals the YB-0035 reference on continuous, tied, discrete and -inf data, at several caps
+# fast threshold equals the EXPERIMENT-CORRECTED-REALTIME-RACE reference on continuous, tied, discrete and -inf data, at several caps
 for trial in range(300):
     n = int(rng.integers(5, 300)); kind = trial % 4
     v = rng.normal(0, 1, n) if kind == 0 else (rng.integers(0, 5, n).astype(float) if kind == 1 else rng.choice([0, .25, .5, .75, 1.], n))
@@ -17,7 +17,7 @@ for trial in range(300):
         assert np.mean(v > threshold(v, cap)) <= cap + 1e-12
 n = 4000; y = (rng.random(n) < 0.1).astype(int); full = np.arange(n)
 v1 = rng.normal(0, 1, n) + 1.5 * y; v1[:400] = -np.inf; d = np.where(rng.random(n) < 0.5 * y + 0.03, 0.75, 0.0)
-# layered rule with no gate reproduces the YB-0049 layered recall exactly
+# layered rule with no gate reproduces the EXPERIMENT-STAGE-DIVERSE-LAYERING layered recall exactly
 a = layered(v1, d)(full, y, 0.10); assert abs(rates(a, y)[0] - recall_layered(v1, d, y)[0]) < 1e-12
 for cap in (0.10, 0.01):
     assert rates(layered(v1, d)(full, y, cap), y)[1] <= cap + 1e-12

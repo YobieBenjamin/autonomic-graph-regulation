@@ -1,9 +1,9 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0035 corrected real-time race, per docs/PREREGISTRATION.md (committed with this code before seed 7 exists).
-Primary: seed 7 (fixed tap, answered episodes). Sensitivity (F5): seed 7 incl. never-answered as failures.
-Secondary: seeds 5 and 6 re-analysed on realigned data; pooled 5+6+7 (R3). DRY_RUN=1: plumbing check on derivation data.'''
+'''EXPERIMENT-CORRECTED-REALTIME-RACE corrected real-time race, per docs/PREREGISTRATION.md (committed with this code before seed 7 exists).
+Primary: seed 7 (fixed tap, answered episodes). Sensitivity (REVIEW-UNANSWERED-EPISODES-EXCLUDED): seed 7 incl. never-answered as failures.
+Secondary: seeds 5 and 6 re-analysed on realigned data; pooled 5+6+7 (EXPERIMENT-POOLED-SEEDS-ESTIMATE). DRY_RUN=1: plumbing check on derivation data.'''
 import json, os, sys, glob, numpy as np
 sys.path.insert(0, 'src')
 from flagship import load, auroc
@@ -11,7 +11,7 @@ from absrace import T, checkpoints, parallel_features, AbsOrganism, AbsAIEWS, Le
 from corrected import FIXED_COST, in_time_max, first_crossing_spare, evaluate, boot_diff, cap_threshold
 DRY = os.environ.get('DRY_RUN') == '1'; J = lambda o: o.item() if hasattr(o, 'item') else str(o)
 if not DRY and not os.path.exists('data/seed7_L.jsonl.gz'):
-    print('YB-0035: awaiting seed 7 test data (pre-registration stage); nothing to analyse yet.'); sys.exit(0)
+    print('EXPERIMENT-CORRECTED-REALTIME-RACE: awaiting seed 7 test data (pre-registration stage); nothing to analyse yet.'); sys.exit(0)
 def layers(pattern, off=0):
     out = {}
     for p in sorted(glob.glob(pattern)):
@@ -67,7 +67,7 @@ if DRY:
 else:
     L7 = layers('data/layers_seed7_*.npz'); PJ7, PS7 = behavior('7')
     res['primary_seed7'], V7, y7 = analyse(eps('7', 0, L7), L7, PJ7, PS7, 'PRIMARY: seed 7, fixed tap, answered episodes')
-    res['sensitivity_seed7_incl_unanswered'], _, _ = analyse(eps('7', 0, L7, answered_only=False), L7, PJ7, PS7, 'SENSITIVITY (F5): seed 7 incl. never-answered as failures')
+    res['sensitivity_seed7_incl_unanswered'], _, _ = analyse(eps('7', 0, L7, answered_only=False), L7, PJ7, PS7, 'SENSITIVITY (REVIEW-UNANSWERED-EPISODES-EXCLUDED): seed 7 incl. never-answered as failures')
     pool_V, pool_y = [V7], [y7]
     for s in ('5', '6'):
         Ls = layers('data/layers_seed%s_*.npz' % s); PJs, PSs = behavior(s)

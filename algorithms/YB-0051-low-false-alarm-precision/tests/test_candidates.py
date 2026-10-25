@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Unit tests for the YB-0051 candidates and the end-to-end analysis on synthetic data (no recordings needed).'''
+'''Unit tests for the EXPERIMENT-LOW-FALSE-ALARM-PRECISION candidates and the end-to-end analysis on synthetic data (no recordings needed).'''
 import os, sys, json, tempfile, importlib, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, 'src')); sys.path.insert(0, HERE)
@@ -37,6 +37,8 @@ def test_c3_operating_point():
     R = synth(4000, 7); a = c3(R, R, R['d4']); q = np.quantile(neg(R['stack'])[R['y'] == 0], 0.9)
     assert np.array_equal(a, (neg(R['stack']) > q) & (R['d4'] >= 0.75))
 def test_derivation_check_runs():
+    # Registered name: EXPERIMENT-PER-TASK-CALIBRATED-COMBINATION (old ID C4 is kept because code matches on it)
+    # Registered name: EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old ID C2 is kept because code matches on it)
     out = derivation_check(synth(3000, 8)); assert out['C4']['distinct_top2pct'] > 1 and out['C2']['caught_1pct'] >= 0
 def test_experiment_end_to_end_on_synthetic():
     old = os.getcwd(); tmp = tempfile.mkdtemp(); os.makedirs(os.path.join(tmp, 'data')); os.makedirs(os.path.join(tmp, 'docs'))
@@ -45,6 +47,7 @@ def test_experiment_end_to_end_on_synthetic():
     os.environ['SMOKE'] = '1'
     try:
         os.chdir(tmp); import experiment; importlib.reload(experiment); assert experiment.main() == 0
+        # Registered name: EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL (old ID H1 is kept because code matches on it)
         r = json.load(open('docs/smoke.json')); assert r['episodes'] == 1500 and set(r['H1']) >= {'estimate_ci', 'supported'}
         assert r['table']['C2']['fa_0.01']['fpr'] <= 0.01 + 1e-9
     finally:

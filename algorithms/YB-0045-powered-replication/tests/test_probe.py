@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Tests for the YB-0042 probe (src/probe.py), on synthetic hidden states with a planted signal.'''
+'''Tests for the EXPERIMENT-PROBE-BASELINE probe (src/probe.py), on synthetic hidden states with a planted signal.'''
 import sys, numpy as np
 sys.path.insert(0, 'src')
 from probe import feat, Probe, cv_auroc, select, LAYERS

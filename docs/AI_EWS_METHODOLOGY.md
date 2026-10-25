@@ -6,10 +6,10 @@ transformer cannot create judgment calls. Safety therefore follows the template 
 'healthy' but shows a **trajectory** (stable, watch, concern, urgent), so people act before the arrest, not after.
 
 ## Structure (mirrors NEWS2)
-1. **Vital signs** (text-blind, read by the external biobrain): V1 reasoning uncertainty (entropy); V2 decisiveness
-   (top-1 minus top-2 margin); V3 layer HRV (successive-difference variability across layers); V4 layer synchrony
-   (algebraic connectivity of the layer coupling graph); V5 expert-routing decisiveness (router entropy); V6
-   critical-slowing trend (rising variance and lag-1 autocorrelation); V7 accumulated load (HPA cortisol).
+1. **Vital signs** (text-blind, read by the external biobrain): EXPERIMENT-VITAL-REASONING-ENTROPY reasoning uncertainty (entropy); EXPERIMENT-VITAL-TOKEN-MARGIN decisiveness
+   (top-1 minus top-2 margin); EXPERIMENT-VITAL-LAYER-VARIABILITY layer HRV (successive-difference variability across layers); EXPERIMENT-VITAL-LAYER-SYNCHRONY layer synchrony
+   (algebraic connectivity of the layer coupling graph); EXPERIMENT-VITAL-ROUTER-ENTROPY expert-routing decisiveness (router entropy); EXPERIMENT-VITAL-CRITICAL-SLOWING-TREND
+   critical-slowing trend (rising variance and lag-1 autocorrelation); EXPERIMENT-VITAL-CORTISOL-LOAD accumulated load (HPA cortisol).
 2. **Banded scoring 0-3 per vital**, in the risky direction only, relative to the model's own reference distribution
    on healthy (correct/acceptable) episodes of the derivation cohort: 0 within the 10th-90th percentile band; 1 beyond
    the 90th; 2 beyond the 95th; 3 beyond the 99th (for vitals where low is risky, mirrored at 10th/5th/1st).
@@ -27,7 +27,7 @@ transformer cannot create judgment calls. Safety therefore follows the template 
 - **Internal validation**: held-out episodes of the same model: AUROC of S for the outcome, calibration of levels,
   efficiency curve (share of time at watch or above vs share of events caught), lead time distribution.
 - **External validation**: a different model (different 'patient population'), bands re-derived only if pre-registered.
-- **Prospective validation**: live, time-resolved episodes with graded outcomes (YB-0022).
+- **Prospective validation**: live, time-resolved episodes with graded outcomes (EXPERIMENT-GRADED-AGENTIC-EARLY-WARNING).
 
 ## Properties to prove per version
 Monotonicity (more deviation never lowers S), boundedness (0-21), per-point explainability (each point traceable to one

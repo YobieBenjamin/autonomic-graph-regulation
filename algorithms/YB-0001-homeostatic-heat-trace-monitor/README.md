@@ -1,6 +1,6 @@
-# YB-0001 · Homeostatic Heat-Trace Circuit Monitor (H2CM)
+# EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR · Homeostatic Heat-Trace Circuit Monitor (H2CM)
 
-> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** F32: theorem wording and test coverage to be tightened (open).
+> **Corrections (2026-09-30; see [CORRECTIONS.md](../../CORRECTIONS.md)):** REVIEW-HEAT-TRACE-THEOREM-WORDING: theorem wording and test coverage to be tightened (open).
 
 **Status:** tested · **Verdict:** split — spectral detector ❌ negative result; homeostatic drift budget ✅ positive result
 **Run:** `make` (compiles C core, runs 6 unit tests, runs full evaluation, writes `docs/results.json`)
@@ -70,7 +70,7 @@ Slow-drift stream (inputs morph 0–4 → 5–9 over 2000 steps), flag rate on t
 ## 6. Interpretation and honest limitations
 
 - The heat-trace signature is not competitive as a standalone detector here; adding it to activation-Mahalanobis does not help. The permutation invariance that makes it elegant also discards which units fire — often the most informative thing. Kept as a documented negative result.
-- The drift budget is detector-agnostic: it wraps any score with a mean-shifting baseline. It should be re-tested on the strongest baseline (energy / activation-Mahalanobis) and on a transformer — that is hypothesis YB-0002.
+- The drift budget is detector-agnostic: it wraps any score with a mean-shifting baseline. It should be re-tested on the strongest baseline (energy / activation-Mahalanobis) and on a transformer — that is hypothesis EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER.
 - Scale: toy MLP, 8×8 digits, 5 seeds. O(n³) Jacobi per input is fine at n≈70, not at transformer width (would need Lanczos / stochastic trace estimation).
 - Prior art: activation-Mahalanobis OOD (Lee et al., 2018), energy scores (Liu et al., 2020), graph heat-kernel signatures (Sun et al., 2009), CUSUM-style change detection. The novel parts are the per-input effective-connectivity graph as the object of monitoring and the bounded-homeostasis framing of anti-poisoning; neither novelty has been checked against a systematic literature search yet.
 

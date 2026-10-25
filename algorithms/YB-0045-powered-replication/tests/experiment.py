@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0045 analysis (pre-registered; see docs/PREREGISTRATION.md). Derivation: seeds 2-8 and 10-12 except 9, recorded with telemetry and
+'''EXPERIMENT-POWERED-REPLICATION analysis (pre-registered; see docs/PREREGISTRATION.md). Derivation: seeds 2-8 and 10-12 except 9, recorded with telemetry and
 hidden states in the same pass. Test: fresh seeds 9, 13, 14 (pooled). Exits cleanly if any test seed is absent. DRY_RUN=1 runs the full pipeline
 on synthetic data (docs/dryrun.json).'''
 import json, gzip, os, sys, numpy as np

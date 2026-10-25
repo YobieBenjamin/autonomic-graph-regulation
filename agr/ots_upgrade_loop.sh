@@ -3,6 +3,9 @@
 cd ~/Desktop/SAFETY; L=/tmp/ots_upgrade.log
 for i in $(seq 1 24); do
   left=0
+  # Registered name: EXPERIMENT-DIFFICULTY-CONFOUND (old ID YB-0046 is kept because code matches on it)
+  # Registered name: EXPERIMENT-TEXT-BASELINE-TRANSFER (old ID YB-0047 is kept because code matches on it)
+  # Registered name: EXPERIMENT-MULTILEVEL-FUSION (old ID YB-0048 is kept because code matches on it)
   for D in YB-0046-difficulty-confound YB-0047-text-baseline-transfer YB-0048-multilevel-fusion; do
     f=algorithms/$D/docs/PREREGISTRATION.md.ots
     .venv/bin/ots upgrade $f > /dev/null 2>&1

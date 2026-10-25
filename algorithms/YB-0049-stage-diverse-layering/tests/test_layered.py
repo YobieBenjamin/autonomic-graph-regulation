@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Unit tests for YB-0049 layered thresholds (proofs as tests).'''
+'''Unit tests for EXPERIMENT-STAGE-DIVERSE-LAYERING layered thresholds (proofs as tests).'''
 import sys, numpy as np; sys.path.insert(0, 'src')
 from layered import tight, choose, alarm, recall_layered, recall_single, boot
 v0 = np.array([0.1 * k for k in range(10)]); t = tight(v0, 0.10); assert np.mean(v0 > t) <= 0.10 and np.mean(v0 >= t) > 0.10

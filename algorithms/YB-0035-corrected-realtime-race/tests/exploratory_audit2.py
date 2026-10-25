@@ -1,11 +1,11 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''EXPLORATORY (not pre-registered for YB-0035; added after the second audit, findings B6 and B8). Seed 7, answered episodes.
+'''EXPLORATORY (not pre-registered for EXPERIMENT-CORRECTED-REALTIME-RACE; added after the second audit, findings REVIEW-UNEQUAL-MONITORABLE-FALSE-ALARMS and REVIEW-TYPE-BASELINE-MISSING). Seed 7, answered episodes.
 (a) Thresholds equalized among MONITORABLE episodes: each monitor's threshold is the tightest with at most 10% of the correct
-    episodes that have at least one checkpoint alarmed. (b) A question-type baseline C3 (derivation failure rate of the
+    episodes that have at least one checkpoint alarmed. (b) A question-type baseline EXPERIMENT-QUESTION-TYPE-BASELINE (derivation failure rate of the
     episode's question type, known at every checkpoint, zero cost). (c) Frozen thresholds from derivation data (seeds 2-4,
-    5-fold cross-fitted regulator scores; length C1 and type C3 directly) at 10% false alarms on derivation correct episodes;
+    5-fold cross-fitted regulator scores; length EXPERIMENT-LENGTH-CONTROL-STILL-REASONING and type EXPERIMENT-QUESTION-TYPE-BASELINE directly) at 10% false alarms on derivation correct episodes;
     the judge has no derivation runs, so it has no frozen variant. Writes docs/exploratory_audit2.json.'''
 import json, sys, glob, numpy as np
 sys.path.insert(0, 'src')
@@ -54,7 +54,7 @@ for m, fn, cost in (('organism', lambda r, t: O.score(r, L7[r['idx']], t), COST)
         vals.append(in_time_max([(fn(r, t), float(lat[:t].sum()), PJ[(r['idx'], t)]['compute_s'] if cost is None else cost, D) for t in checkpoints(r)]))
     V[m] = np.array(vals)
 ym = y[mon]; Vm = {m: v[mon] for m, v in V.items()}
-res = dict(note='EXPLORATORY; not pre-registered for YB-0035', seed7_answered=len(y), wrong=int(y.sum()), monitorable=int(mon.sum()), monitorable_wrong=int(ym.sum()), monitorable_correct=int((ym == 0).sum()),
+res = dict(note='EXPLORATORY; not pre-registered for EXPERIMENT-CORRECTED-REALTIME-RACE', seed7_answered=len(y), wrong=int(y.sum()), monitorable=int(mon.sum()), monitorable_wrong=int(ym.sum()), monitorable_correct=int((ym == 0).sum()),
            derivation_answered=len(yd), frozen_thresholds_from_derivation=frozen)
 eq = {}
 for m, v in Vm.items():

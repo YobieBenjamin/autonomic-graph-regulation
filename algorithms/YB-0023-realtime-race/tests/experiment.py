@@ -1,9 +1,9 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0023 real-time race, per docs/PREREGISTRATION.md (5c9b9fb) and docs/SPEC_NOTES.md (committed before any run).
-Primary (R2, deadline): recall of wrong answers alarmed before the answer is emitted, compute time included.
-Secondary (R1, information-matched): AUROC per checkpoint, compute time ignored.'''
+'''EXPERIMENT-REALTIME-RACE real-time race, per docs/PREREGISTRATION.md (5c9b9fb) and docs/SPEC_NOTES.md (committed before any run).
+Primary (EXPERIMENT-DEADLINE-REGIME, deadline): recall of wrong answers alarmed before the answer is emitted, compute time included.
+Secondary (EXPERIMENT-INFORMATION-MATCHED-REGIME, information-matched): AUROC per checkpoint, compute time ignored.'''
 import json, os, sys, time, numpy as np
 sys.path.insert(0, 'src')
 from flagship import load, Organism, auroc
@@ -41,6 +41,7 @@ def boot_diff(a, b, n=1000):
     for _ in range(n):
         j = g.choice(w, len(w)); d.append(a[j].mean() - b[j].mean())
     return [round(float(a[w].mean() - b[w].mean()), 4), round(float(np.percentile(d, 2.5)), 4), round(float(np.percentile(d, 97.5)), 4)]
+# Registered name: EXPERIMENT-DEADLINE-REGIME (old ID R2 is kept because code matches on it)
 R2 = {m: dict(recall_before_deadline=round(float(fired[m][y == 1].mean()), 4), false_alarm_rate_any_checkpoint=round(float(fired[m][y == 0].mean()), 4),
               median_seconds_before_answer=round(float(np.median(alarm_lead[m])), 3) if alarm_lead[m] else None,
               median_compute_s=round(float(np.median(np.concatenate([comp[m][f] for f in F]))), 5)) for m in score}

@@ -1,7 +1,7 @@
 # NVIDIA OpenShell on this Mac: setup, issues found, and safeguards (2026-10-01)
 
 Purpose: run NVIDIA OpenShell (the agent sandbox and policy-enforcement runtime of the NVIDIA Open Agent Safety Platform) for
-YB-0044, where an internal-state risk signal gates an agent's tool calls. One command brings it up: scripts/openshell_up.sh
+EXPERIMENT-OPENSHELL-GATING, where an internal-state risk signal gates an agent's tool calls. One command brings it up: scripts/openshell_up.sh
 
 ## Environment
 OpenShell 0.1.2 (Homebrew; local gateway as a launchd service), Colima 0.10.3 (VM type vz, 4 CPU, 8 GB), Colima kernel 6.8.0-117-generic,

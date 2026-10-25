@@ -1,8 +1,8 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0047 analysis (pre-registered; docs/PREREGISTRATION.md). Part A: internal state vs a TRAINED text monitor on the same reasoning prefixes.
-Part B: leave-one-task-out transfer. Secondary analysis of YB-0045 recordings (test seeds 9, 13, 14 previously analysed). DRY_RUN=1 fits on seeds
+'''EXPERIMENT-TEXT-BASELINE-TRANSFER analysis (pre-registered; docs/PREREGISTRATION.md). Part A: internal state vs a TRAINED text monitor on the same reasoning prefixes.
+Part B: leave-one-task-out transfer. Secondary analysis of EXPERIMENT-POWERED-REPLICATION recordings (test seeds 9, 13, 14 previously analysed). DRY_RUN=1 fits on seeds
 2-8 and evaluates on 10-12 only.'''
 import json, gzip, os, sys, numpy as np
 sys.path.insert(0, 'src')
@@ -42,7 +42,7 @@ def main():
     if not DRY and os.environ.get('RUN_CONFIRMATORY') != '1':
         print('pre-registration stage: the confirmatory analysis runs only via make confirmatory, after the public timestamp'); return
     if not all(os.path.exists('data/seed%s_LH.jsonl.gz' % S) for S in DERIV + TEST):
-        print('YB-0045 recordings not present (public checkout): nothing to analyse'); return
+        print('EXPERIMENT-POWERED-REPLICATION recordings not present (public checkout): nothing to analyse'); return
     Rd, Ld, Hd = [], {}, {}
     for S in DERIV:
         R, L, H = load_seed(S, 100000 * int(S)); Rd += R; Ld.update(L); Hd.update(H)
@@ -72,7 +72,7 @@ def main():
             regulator=boot_auc(yt, np.array([O.score(A[i], L8[A[i]['idx']], t) for i in idx])), probe=boot_auc(yt, np.array([P.score(A[i], t, H8) for i in idx])),
             text_trained=boot_auc(yt, np.array([TM.score(A[i], t) for i in idx]))))
     res['S_per_checkpoint_auroc'] = pc
-    # Part B: leave-one-task-out transfer (H3). For each held-out category, refit all three monitors without it; score its evaluation episodes.
+    # Part B: leave-one-task-out transfer (EXPERIMENT-UNSEEN-TASK-TRANSFER). For each held-out category, refit all three monitors without it; score its evaluation episodes.
     lo = {m: np.full(len(A), np.nan) for m in ('regulator', 'probe', 'text_trained')}; cats = sorted(set(r['cat'] for r in A)); detail = {}
     for c in cats:
         tr = [i for i, (r, _) in enumerate(jobs) if r['cat'] != c]; jt = [jobs[i] for i in tr]

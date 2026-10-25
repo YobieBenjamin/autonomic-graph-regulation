@@ -2,9 +2,9 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-# YB-0045 chain (usage: agr/yb0045_chain.sh <protocol-commit>): wait for the pre-registration on GitHub -> alignment tests ->
+# EXPERIMENT-POWERED-REPLICATION chain (usage: agr/yb0045_chain.sh <protocol-commit>): wait for the pre-registration on GitHub -> alignment tests ->
 # record derivation seeds 5 6 7 10 11 12 then fresh test seeds 9 13 14 -> judge on test seeds -> pack (no shift) ->
-# reuse packed seeds 2 3 4 8 from YB-0042 -> analysis in the sandbox -> publish. Each stage alone.
+# reuse packed seeds 2 3 4 8 from EXPERIMENT-PROBE-BASELINE -> analysis in the sandbox -> publish. Each stage alone.
 cd "$(dirname "$0")/.."; export PATH=$HOME/.lmstudio/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 PROTO="$1"; LOG=/tmp/yb45_chain.log; log() { echo "$(date +%H:%M) $1" >> $LOG; }
 [ -n "$PROTO" ] || { echo 'usage: agr/yb0045_chain.sh <protocol-commit>'; exit 1; }
@@ -23,7 +23,9 @@ for S in 9 13 14; do
   EPISODES_FILE=data/agr/episodes_LH_seed$S.jsonl ALL_EPISODES=1 CKPT=abs SEED=$S .venv/bin/python agr/prefix_monitors.py judge > /tmp/yb45_judge$S.log 2>&1; log "judge on seed $S done"
 done
 lms unload local-strong >/dev/null 2>&1
+# Registered name: EXPERIMENT-POWERED-REPLICATION (old ID YB-0045 is kept because code matches on it)
 D=algorithms/YB-0045-powered-replication/data
+# Registered name: EXPERIMENT-PROBE-BASELINE (old ID YB-0042 is kept because code matches on it)
 for f in algorithms/YB-0042-probe-baseline/data/seed{2,3,4,8}_LH.jsonl.gz algorithms/YB-0042-probe-baseline/data/layers_LH_seed{2,3,4,8}_0.npz algorithms/YB-0042-probe-baseline/data/hs_seed{2,3,4,8}.npz; do cp "$f" $D/; done
 .venv/bin/python - <<'PY' >> $LOG 2>&1
 import json, gzip, os, numpy as np
@@ -46,5 +48,5 @@ for S in ('9', '13', '14'):
 PY
 log 'packed'
 SANDBOX_MEM=16g SANDBOX_TIMEOUT=21600 sandbox/run.sh algorithms/YB-0045-powered-replication all > /tmp/yb45_analysis.log 2>&1; log "ANALYSIS EXIT=$?"
-./publish.sh 'YB-0045 powered replication: raw results per pre-registration (interpretation pending)' > /tmp/yb45_publish.log 2>&1; log "PUBLISH EXIT=$?"
+./publish.sh 'EXPERIMENT-POWERED-REPLICATION powered replication: raw results per pre-registration (interpretation pending)' > /tmp/yb45_publish.log 2>&1; log "PUBLISH EXIT=$?"
 log YB0045_ALL_DONE

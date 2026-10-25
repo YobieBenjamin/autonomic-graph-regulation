@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 live race (pre-registered; docs/PREREGISTRATION.md). Usage: live_race.py <arm B|C> [max_episodes].
+'''EXPERIMENT-OPENSHELL-GATING live race (pre-registered; docs/PREREGISTRATION.md). Usage: live_race.py <arm B|C> [max_episodes].
 For each replay-plan episode, an agent inside OpenShell sandbox agr-py signals start (GET /health), waits D seconds (the
 recorded answer time), then commits (POST /transfer with the episode id). Time zero = arrival of the start signal at the mock
 service (Mac clock), so sandbox start-up delay cannot bias the race. Arm B (reactive block): policy allow; at t_alarm the host

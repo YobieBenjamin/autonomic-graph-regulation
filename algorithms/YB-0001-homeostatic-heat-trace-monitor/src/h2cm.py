@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-"""YB-0001: Homeostatic Heat-Trace Circuit Monitor (H2CM).
+"""EXPERIMENT-HOMEOSTATIC-HEAT-TRACE-MONITOR: Homeostatic Heat-Trace Circuit Monitor (H2CM).
 
 Pipeline per input x:
   1. Build the model's *effective connectivity graph* for x: nodes are hidden
