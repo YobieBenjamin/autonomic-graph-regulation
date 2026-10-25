@@ -32,13 +32,13 @@ Data fingerprints (SHA-256 prefix): layers_seed2_0.npz 6b241b7133cefde7; layers_
 
 ## 6. Results (derivation seeds 2+3: 4,837 answered, 356 wrong, 19,348 serial observations; test seed 4: 530 answered, 46 wrong)
 **Race at matched ~10% false alarms (caught before the answer is emitted):** serial organism 29/46 (63.0%, 1.25 s to spare, 2.2 ms per check); AI-EWS v3 24/46 (52.2%); LLM judge on prefixes 9/46 (19.6%, 1.6 s per check); complete-trained reference 3/46 (6.5%); self-consistency on prefixes 0/46.
-EXPERIMENT-SERIAL-ORGANISM-BEATS-BEHAVIOR serial minus judge: +0.435 [+0.239, +0.609] (formally SUPERIOR). EXPERIMENT-SERIAL-TRAINING-HELPS serial minus reference: +0.565 [+0.413, +0.717] (holds). EXPERIMENT-SERIAL-STAGE-LEVELS-ORDERED AI-EWS v3 levels not ordered at every stage (fails); in-time recall CI [0.39, 0.67]. EXPERIMENT-SERIAL-NO-ACCURACY-COST AUROC at 100%: serial 0.839 vs reference 0.819, diff +0.020 [−0.017, +0.071] (no accuracy cost, holds). EXPERIMENT-SERIAL-SLIPS-IN-TIME silent slips in time: 6/17 (35%), CI [0.18, 0.59] (holds).
+EXPERIMENT-SERIAL-ORGANISM-VERSUS-BEHAVIOR serial minus judge: +0.435 [+0.239, +0.609] (formally SUPERIOR). EXPERIMENT-SERIAL-TRAINING-HELPS serial minus reference: +0.565 [+0.413, +0.717] (holds). EXPERIMENT-SERIAL-STAGE-LEVELS-ORDERED AI-EWS v3 levels not ordered at every stage (fails); in-time recall CI [0.39, 0.67]. EXPERIMENT-SERIAL-NO-ACCURACY-COST AUROC at 100%: serial 0.839 vs reference 0.819, diff +0.020 [−0.017, +0.071] (no accuracy cost, holds). EXPERIMENT-SERIAL-SLIPS-IN-TIME silent slips in time: 6/17 (35%), CI [0.18, 0.59] (holds).
 Per-stage AUROC (serial / reference): 25% 0.790 / 0.408; 50% 0.839 / 0.707; 75% 0.837 / 0.799; 100% 0.839 / 0.819.
 **Post-hoc validity control (not pre-registered):** reasoning length alone (revealed exactly at the first fractional checkpoint): AUROC 0.773, 15/46 caught in time at 10.1% false alarms; within-type length percentile: AUROC 0.578, 11/46. Within-type length AUROC: count 0.60, modpow 0.48, mul_hard 0.55, weekday 0.55.
 
 ## 7. Verdict
 - **EXPERIMENT-SERIAL-TRAINING-HELPS and EXPERIMENT-SERIAL-NO-ACCURACY-COST hold:** serial training transfers the organism's accuracy to partial reasoning (0.41 to 0.79 AUROC at 25%) at no cost at the end. This answers the EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM question: the complete-trained organism's early-warning failure was substantially a training-regime problem.
-- **EXPERIMENT-SERIAL-ORGANISM-BEATS-BEHAVIOR (EUREKA) formally holds but is not accepted:** the fractional checkpoint schedule leaks total reasoning length, and length alone already beats the judge. The organism's margin over the length-only control (29 vs 15) is suggestive, not proven.
+- **EXPERIMENT-SERIAL-ORGANISM-VERSUS-BEHAVIOR (EUREKA) formally holds but is not accepted:** the fractional checkpoint schedule leaks total reasoning length, and length alone already beats the judge. The organism's margin over the length-only control (29 vs 15) is suggestive, not proven.
 - EXPERIMENT-SERIAL-STAGE-LEVELS-ORDERED fails; EXPERIMENT-SERIAL-SLIPS-IN-TIME holds.
 
 ## 8. Limitations and next step

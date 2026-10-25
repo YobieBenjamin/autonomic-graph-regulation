@@ -12,8 +12,9 @@ folder was named "<code>-<title words>". The project retired those codes. Every 
 and its folder is algorithms/<the same words in lowercase>, e.g. algorithms/cortisol-integrator.
 
 The catalog is HYPOTHESES.md (one "## <NAME>: <title>" heading per hypothesis) and LEDGER.md (one "| <NAME> | ..." row
-per attempt). The project's registry (LABELS.md, outside this repository) is synced from these two files, so a name
-written here is a registered name.
+per attempt). A name the miner writes here is a proposal until the orchestrator registers it in the project's registry
+(LABELS.md, outside this repository); the orchestrator copies new catalog names into LABELS.md (kit/sync_catalog.py)
+and the naming checks refuse any name LABELS.md does not hold.
 
 Rules for a NEW name (new_name below):
   - the words come from the hypothesis title, in title order; small linking words (of, the, for, ...) and any word that

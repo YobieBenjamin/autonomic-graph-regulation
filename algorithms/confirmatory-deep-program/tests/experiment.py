@@ -28,11 +28,8 @@ V2 = np.array([vitals_v2(r, L2[r['idx']], hpa_cal=cal) for r in R2]); A = AIEWS(
 # ---- test (seed 3, touched once) ----
 od = np.array([Od.score(L3[r['idx']], r) for r in R3])
 ews = [A.score(vitals_v2(r, L3[r['idx']], hpa_cal=cal)) for r in R3]; S = np.array([s[0] for s in ews], float); lv = [s[1] for s in ews]
-# Registered name: EXPERIMENT-LLM-JUDGE-MONITOR (old ID B1 is kept because code matches on it)
-# Registered name: EXPERIMENT-SELF-CONSISTENCY-MONITOR (old ID B2 is kept because code matches on it)
-B1 = np.array([(J[r['idx']]['b1_p_wrong'] if J[r['idx']]['b1_p_wrong'] is not None else 50) / 100 for r in R3]); B2 = np.array([SC[r['idx']]['b2_disagree'] for r in R3])
-# Registered name: EXPERIMENT-ANSWER-CONFIDENCE-MONITOR (old ID B3 is kept because code matches on it)
-B3 = np.array([1 - min(r['p_top1'][min(r['final_start'], len(r['p_top1']) - 1):] or [1]) for r in R3])
+B1 = np.array([(J[r['idx']]['b1_p_wrong'] if J[r['idx']]['b1_p_wrong'] is not None else 50) / 100 for r in R3]); B2 = np.array([SC[r['idx']]['b2_disagree'] for r in R3])  # EXPERIMENT-LLM-JUDGE-MONITOR (old: B1); EXPERIMENT-SELF-CONSISTENCY-MONITOR (old: B2)
+B3 = np.array([1 - min(r['p_top1'][min(r['final_start'], len(r['p_top1']) - 1):] or [1]) for r in R3])  # EXPERIMENT-ANSWER-CONFIDENCE-MONITOR (old: B3)
 def ci(s, yy=None):
     yy = y if yy is None else yy; g = np.random.default_rng(0); b = []
     for _ in range(1000):

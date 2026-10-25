@@ -37,9 +37,7 @@ def test_c3_operating_point():
     R = synth(4000, 7); a = c3(R, R, R['d4']); q = np.quantile(neg(R['stack'])[R['y'] == 0], 0.9)
     assert np.array_equal(a, (neg(R['stack']) > q) & (R['d4'] >= 0.75))
 def test_derivation_check_runs():
-    # Registered name: EXPERIMENT-PER-TASK-CALIBRATED-COMBINATION (old ID C4 is kept because code matches on it)
-    # Registered name: EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old ID C2 is kept because code matches on it)
-    out = derivation_check(synth(3000, 8)); assert out['C4']['distinct_top2pct'] > 1 and out['C2']['caught_1pct'] >= 0
+    out = derivation_check(synth(3000, 8)); assert out['C4']['distinct_top2pct'] > 1 and out['C2']['caught_1pct'] >= 0  # EXPERIMENT-PER-TASK-CALIBRATED-COMBINATION (old: C4); EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old: C2)
 def test_experiment_end_to_end_on_synthetic():
     old = os.getcwd(); tmp = tempfile.mkdtemp(); os.makedirs(os.path.join(tmp, 'data')); os.makedirs(os.path.join(tmp, 'docs'))
     np.savez(os.path.join(tmp, 'data', 'explore_scores.npz'), **{k: v for k, v in synth(3000, 9).items() if k not in ('d4', 'd8')})
@@ -47,8 +45,7 @@ def test_experiment_end_to_end_on_synthetic():
     os.environ['SMOKE'] = '1'
     try:
         os.chdir(tmp); import experiment; importlib.reload(experiment); assert experiment.main() == 0
-        # Registered name: EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL (old ID H1 is kept because code matches on it)
-        r = json.load(open('docs/smoke.json')); assert r['episodes'] == 1500 and set(r['H1']) >= {'estimate_ci', 'supported'}
+        r = json.load(open('docs/smoke.json')); assert r['episodes'] == 1500 and set(r['H1']) >= {'estimate_ci', 'supported'}  # EXPERIMENT-COMBINATION-BEATS-PROBE-RECALL (old: H1)
         assert r['table']['C2']['fa_0.01']['fpr'] <= 0.01 + 1e-9  # EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old: C2), the key the frozen analysis writes
     finally:
         os.chdir(old); os.environ.pop('SMOKE')

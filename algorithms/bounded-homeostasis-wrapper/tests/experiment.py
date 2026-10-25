@@ -26,9 +26,7 @@ T, SEEDS, ETA = 3000, 10, 0.02
 alpha = np.clip((np.arange(T) - 500) / 2000, 0, 1)
 res = {"eta": ETA, "seeds": SEEDS, "detectors": {}}
 for kind, split in (("energy", False), ("act-mahalanobis", False), ("energy", True), ("act-mahalanobis", True)):
-    # Registered name: EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION (old ID C2 is kept because code matches on it)
-    # Registered name: EXPERIMENT-STATIONARY-BUDGET-CALIBRATION (old ID C1 is kept because code matches on it)
-    m = BHW(eta=ETA, split=split).fit(feat(Xcal, kind)); kind_label = kind + (" [C2 split-cal]" if split else " [C1]")
+    m = BHW(eta=ETA, split=split).fit(feat(Xcal, kind)); kind_label = kind + (" [C2 split-cal]" if split else " [C1]")  # EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION (old: C2); EXPERIMENT-STATIONARY-BUDGET-CALIBRATION (old: C1)
     R = {"p": m.p, "tau": m.tau, "B_rule_q0.999": m.B, "bound_T1": m.B + ETA * m.tau}
     agg = {md: {"final500_flag": [], "clean_first500_flag": [], "alarm_alpha": [], "clean_false_alarm": 0}
            for md in ("static", "unbounded", "budgeted")}
