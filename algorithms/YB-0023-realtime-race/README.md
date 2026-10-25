@@ -41,7 +41,7 @@ Exploratory, matched at 10% false alarms: deep organism 11/21 (52.4%), median 3.
 Information-matched AUROC (compute ignored) at 25/50/75%: deep organism 0.652/0.726/0.744; judge 0.704/0.775/0.773; self-consistency 0.694/0.699/0.588; token organism 0.372/0.560/0.623.
 
 ## 7. Verdict
-- Pre-registered H1-RT: formally 'organism wins' but **rejected as uninformative** because the rule did not match false-alarm rates (the pre-registration's flaw, recorded below).
+- Pre-registered H1: formally 'organism wins' but **rejected as uninformative** because the rule did not match false-alarm rates (the pre-registration's flaw, recorded below).
 - Exploratory (matched false alarms): the deep organism leads the judge in time-constrained detection, not significantly.
 - With equal information, the deep organism nearly matches the judge and beats self-consistency; the shallow organism collapses on partial reasoning.
 

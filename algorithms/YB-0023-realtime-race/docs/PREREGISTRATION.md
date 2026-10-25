@@ -21,7 +21,7 @@ A monitor that cannot finish before the deadline at a checkpoint contributes no 
 Thresholds: each monitor's 10%-FPR threshold on correct episodes (seed-0 thresholds for organisms; for B1 and B2 the
 threshold is set on this data's correct episodes, which favors them).
 **Primary metric:** recall of wrong answers alarmed before the deadline at 10% FPR.
-**H1-RT:** recall(O or O-deep, best of the two, declared by name here: O-deep) - recall(best behavior) > 0, paired bootstrap CI above 0.
+**H1:** recall(O or O-deep, best of the two, declared by name here: O-deep) - recall(best behavior) > 0, paired bootstrap CI above 0.
 
 ## Regime R1, information-matched (secondary)
 Same checkpoints, compute time ignored: AUROC of each monitor using only the prefix. Reported per checkpoint.
