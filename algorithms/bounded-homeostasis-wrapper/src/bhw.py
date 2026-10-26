@@ -14,7 +14,7 @@ anchor mu0 is capped by a budget B. Theorems (see README section 3):
   EXPERIMENT-STATIONARY-BUDGET-CALIBRATION  (calibration) under a stationary clean stream, D_t^2 ~ approx eta/(2-eta) * chi2_p,
       so B = sqrt(eta/(2-eta) * chi2_p^{-1}(q)) gives a per-step exceedance rate <= 1-q.
   EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION  (finite-sample correction) mu0 is estimated from n samples, so the true clean mean sits
-      ~ sqrt(chi2_p^{-1}(q)/n) away in P-norm; B_C2 = B_C1 + that term, with tau and P fit on
+      ~ sqrt(chi2_p^{-1}(q)/n) away in P-norm; B_corrected = B_stationary + that term, with tau and P fit on
       disjoint halves of the calibration set (split calibration). Heuristic; validated empirically.
 """
 import ctypes, os

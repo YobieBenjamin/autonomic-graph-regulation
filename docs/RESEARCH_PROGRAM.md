@@ -117,7 +117,7 @@ Consequences for the research:
 - **Open:** external validation on a different model; prose-span hallucination flagging (the product target);
   intent-type failures (symbol grounding); the transparent AI-EWS score does not yet beat the length control.
 
-## Related work (audit REVIEW-RELATED-WORK-MISSING; novelty is claimed only relative to this list)
+## Related work (audit REVIEW-NOVELTY-CLAIMED-WITHOUT-LITERATURE; novelty is claimed only relative to this list)
 - **Hidden-state error and truthfulness probes:** Azaria and Mitchell (2023), 'The internal state of an LLM knows when
   it's lying'; Kadavath et al. (2022), 'Language models (mostly) know what they know'; Orgad et al. (2024), 'LLMs know
   more than they show'; Kossen et al. (2024), semantic entropy probes (Oxford).
@@ -165,7 +165,7 @@ Announced 2026-09-28 (NVIDIA Developer Blog): OpenShell, an open-source (Apache 
 - **Scope:** one monitored model, machine-gradable single-answer tasks, four checkpoints up to 384 tokens.
 
 ## Related work addendum (2026-10-02)
-Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: activation-based monitors can be evaded by inputs optimised against them; the regulator's robustness to such attacks on its telemetry is untested (CORRECTIONS REVIEW-RELATED-WORK-INCOMPLETE, REVIEW-UNJAILBREAKABLE-CLAIM-DROPPED).
+Bailey et al., 2024, Obfuscated Activations Bypass LLM Latent-Space Defenses: activation-based monitors can be evaded by inputs optimised against them; the regulator's robustness to such attacks on its telemetry is untested (CORRECTIONS REVIEW-UNCERTAINTY-PAPERS-UNCITED, REVIEW-UNJAILBREAKABLE-CLAIM-DROPPED).
 
 ## Claim status after EXPERIMENT-OPENSHELL-GATING (2026-10-02)
 - **Supported (pre-registered replay, one setup):** acting on an in-time internal-state warning by changing an OpenShell policy on the fly lost the race in 74 of 93 cases (79.6% [72.0%, 87.1%]); re-counting 4 suspiciously fast wins as losses gives 83.9% [76.3%, 91.4%] (post hoc).

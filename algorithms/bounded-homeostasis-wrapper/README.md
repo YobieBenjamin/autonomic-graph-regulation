@@ -33,7 +33,7 @@ Notation: ‖v‖_P = √(vᵀPv), P = Σ̂⁻¹ (shrinkage-regularized). Thresh
 
 **EXPERIMENT-STATIONARY-BUDGET-CALIBRATION (budget calibration, stationary).** If clean s_t are i.i.d. with mean μ₀ and covariance Σ, the EWMA error has stationary covariance η/(2−η)·Σ, so D² = ‖μ − μ₀‖²_P ≈ η/(2−η)·χ²_p. Set B = √(η/(2−η)·χ²_p⁻¹(q)) for per-step exceedance ≈ 1 − q. (Gating truncates accepted inputs at τ, which makes this conservative.)
 
-**EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION (finite-sample correction).** μ₀ is estimated from n points, so the true clean mean is ≈ √(χ²_p⁻¹(q)/n) away in P-norm. Use B_C2 = B_C1 + √(χ²_p⁻¹(q)/n), and fit (μ₀, P) and τ on disjoint halves of the calibration data. EXPERIMENT-STATIONARY-BUDGET-CALIBRATION and EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION are approximations, labelled as such and tested empirically below; EXPERIMENT-BASELINE-CONFINEMENT-THEOREM, EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM and EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM are exact.
+**EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION (finite-sample correction).** μ₀ is estimated from n points, so the true clean mean is ≈ √(χ²_p⁻¹(q)/n) away in P-norm. Use B_corrected = B_stationary + √(χ²_p⁻¹(q)/n), and fit (μ₀, P) and τ on disjoint halves of the calibration data. EXPERIMENT-STATIONARY-BUDGET-CALIBRATION and EXPERIMENT-FINITE-SAMPLE-BUDGET-CORRECTION are approximations, labelled as such and tested empirically below; EXPERIMENT-BASELINE-CONFINEMENT-THEOREM, EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM and EXPERIMENT-MINIMUM-ATTACK-TIME-THEOREM are exact.
 
 ## 4. Code map
 

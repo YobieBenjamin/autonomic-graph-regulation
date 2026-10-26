@@ -21,7 +21,7 @@ Resolution codes: **FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE** (corrected in the
 |---|---|---|---|
 | REVIEW-LAYER-TAP-ONE-STEP-LATE | Layer tap stored each token's reading one step late (prompt pass first); stale, not future | Phase A: fresh forward pass (lag-1 error 0.01, aligned error 0.4-3.6) | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE: tap fixed + permanent test (agr/test_layertap_alignment.py); seeds 2-6 resynchronized (shift verified, 0.013 vs 0.5-0.9 SD); result confirmed on corrected data |
 | REVIEW-UNANSWERED-EPISODES-EXCLUDED | EXPERIMENT-CLEAN-REALTIME-RACE/34 excluded never-answered episodes (62/600, 63/600) without disclosure | auditor | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE: pre-declared sensitivity analysis; DOC disclosure in EXPERIMENT-CLEAN-REALTIME-RACE/34 |
-| REVIEW-POOLED-ESTIMATE-NEVER-COMPUTED | EXPERIMENT-REPLICATION-REALTIME-RACE undocumented; pre-registered pooled estimate EXPERIMENT-POOLED-SEEDS-ESTIMATE never computed | auditor, self | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE (pooled 5+6+7); DOC: EXPERIMENT-REPLICATION-REALTIME-RACE README and LEDGER row |
+| REVIEW-POOLED-ESTIMATE-NEVER-COMPUTED | EXPERIMENT-REPLICATION-REALTIME-RACE undocumented; pre-registered pooled estimate EXPERIMENT-REPLICATION-POOLED-SEEDS-ESTIMATE never computed | auditor, self | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE (pooled 5+6+7); DOC: EXPERIMENT-REPLICATION-REALTIME-RACE README and LEDGER row |
 | REVIEW-EUREKA-WORDING-OVERSTATED | 'EUREKA (confirmed robust)', 'first leak-free' overstated | auditor | REWORD: 'primary criterion met (EXPERIMENT-CLEAN-REALTIME-RACE), replicated (EXPERIMENT-REPLICATION-REALTIME-RACE), confirmed under the corrected protocol (EXPERIMENT-CORRECTED-REALTIME-RACE); first such result in this program' |
 | REVIEW-FALSE-ALARM-CAP-EXCEEDED | Organism false-alarm rate 10.12% > 10% cap | auditor | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE (tightest threshold with <= 10%) |
 | REVIEW-MONITORABLE-FALSE-ALARMS-UNREPORTED | False alarms among monitorable episodes unreported (16.6%) | auditor | FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE (reported) |
@@ -38,7 +38,7 @@ Resolution codes: **FIXED-EXPERIMENT-CORRECTED-REALTIME-RACE** (corrected in the
 | REVIEW-LENGTH-CONTROL-NOT-REPRODUCIBLE | EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM length control not reproducible (0.578 does not reproduce) | auditor, self | ARTIFACT: archive/audit/artifacts/baselines_and_breakdowns.py reproduces 0.773, 15/46 and 0.578, 11/46 (our definition: derivation-correct percentile by type) |
 | REVIEW-WRAPPER-UNMATCHED-FALSE-POSITIVES | EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER detection claims at unmatched false-positive rates | auditor rerun | REWORD; OPEN (backlog) matched comparison |
 | REVIEW-UNJAILBREAKABLE-CLAIM-DROPPED | RESEARCH_PROGRAM: 'behavior is not predictive', 'unjailbreakable by construction' | auditor | REWORD: update through EXPERIMENT-CORRECTED-REALTIME-RACE; 'text-blind' kept, 'unjailbreakable' dropped (untested) |
-| REVIEW-RELATED-WORK-MISSING | Novelty claims without related work (hidden-state error prediction literature) | auditor | DOC: related-work section |
+| REVIEW-NOVELTY-CLAIMED-WITHOUT-LITERATURE | Novelty claims without related work (hidden-state error prediction literature) | auditor | DOC: related-work section |
 
 ## Minor
 | ID | Finding | Resolution |
@@ -95,7 +95,7 @@ Independent, read-only audit of EXPERIMENT-CORRECTED-REALTIME-RACE and both blog
 | REVIEW-LAUNCH-WRAPPER-UNCOMMITTED | minor | Recorded alone; launch wrapper uncommitted | Guard added later; no contention logged | ARTIFACT: agr/start_seed7_after_push.sh (byte-identical); REWORD: no concurrent jobs logged, guard added afterwards |
 | REVIEW-ALIGNMENT-CRITERION-CHANGED | minor | Alignment pass criterion changed after seed 7 | Logged as REVIEW-SYNC-TEST-ARBITRARY-CAP | DOC: disclosed next to the second-model claim |
 | REVIEW-FIRMER-RESULT-OVERSTATED | minor | EXPERIMENT-CORRECTED-REALTIME-RACE README: result got firmer | Seed-7 lower bound vs judge +0.049 is below EXPERIMENT-REPLICATION-REALTIME-RACE +0.070 | REWORD: held |
-| REVIEW-RELATED-WORK-INCOMPLETE | minor | Related work incomplete | Burns 2023; Kuhn, Gal and Farquhar 2023; Bailey 2024 missing | DOC: add (blogs; RESEARCH_PROGRAM OPEN) |
+| REVIEW-UNCERTAINTY-PAPERS-UNCITED | minor | Related work incomplete | Burns 2023; Kuhn, Gal and Farquhar 2023; Bailey 2024 missing | DOC: add (blogs; RESEARCH_PROGRAM OPEN) |
 | REVIEW-TASK-LIST-INCOMPLETE | minor | Task list omits one type; uneven error distribution |  | DOC: all six types; per-type breakdown OPEN |
 | REVIEW-VERIFICATION-ATTRIBUTED-TO-AUTHOR | minor | I verified every critical finding myself | Verification was done by the AI research assistant under the author's direction | REWORD |
 

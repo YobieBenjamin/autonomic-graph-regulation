@@ -15,7 +15,7 @@ We gave the patient model (gpt-oss-20b) 480 questions a computer can grade exact
 - **Physical timing was weak.** Once question type is accounted for, timing and effort barely beat a coin flip. A fixed-size transformer spends about the same compute per token, so timing may simply not carry stress; real power draw (EXPERIMENT-METABOLIC-VITALS) is the next test.
 
 ## 2. Theory
-Independence Principle (docs/RESEARCH_PROGRAM.md): signals are ranked by independence from the transformer's statistics: tier 0 physical (latency, effort), tier 2 substrate (entropy, probabilities). The contamination hypothesis says tier-2 signals fail exactly when the model is confidently wrong. Pre-registered before data: **EXPERIMENT-SUBSTRATE-ON-CONFIDENT-ERRORS** a meaningful share of errors is confident and the substrate tier misses them at 10% FPR; **EXPERIMENT-PHYSICAL-TIER-ON-SUBSTRATE-MISSES** the physical tier catches a meaningful share of what the substrate tier misses.
+Independence Principle (docs/RESEARCH_PROGRAM.md): signals are ranked by independence from the transformer's statistics: tier 0 physical (latency, effort), tier 2 substrate (entropy, probabilities). The contamination hypothesis says tier-2 signals fail exactly when the model is confidently wrong. Pre-registered before data: **EXPERIMENT-SUBSTRATE-RECALL-ON-CONFIDENT-ERRORS** a meaningful share of errors is confident and the substrate tier misses them at 10% FPR; **EXPERIMENT-PHYSICAL-TIER-ON-SUBSTRATE-MISSES** the physical tier catches a meaningful share of what the substrate tier misses.
 
 ## 3. Mathematics and proofs
 **Signals.** For next-token distribution p_t: entropy H_t = −Σ_v p_t(v) log p_t(v); top-1 probability π_t = max_v p_t(v); margin m_t = log p_(1) − log p_(2). Latency ℓ_t = time between tokens t−1 and t (prefill excluded). Effort = number of generated tokens.
@@ -52,7 +52,7 @@ Gospel regime: 27 of 36 errors (75%) had every answer token at p ≥ 0.9.
 At 10% FPR, within type: substrate recall 52.8% overall and **59.3% on confident errors**; physical recall 30.6% overall and 37.0% on confident errors; physical caught 2 of the 17 errors the substrate tier missed (raw: 5 of 15).
 
 ## 7. Verdict on the predictions
-- **EXPERIMENT-SUBSTRATE-ON-CONFIDENT-ERRORS: partly.** First half holds strongly: most errors are confidently delivered (75%), so output watching is blind to them, which is the author's core premise. Second half fails: reasoning-phase substrate signals catch most confident errors. The answer tokens are contaminated (confident); the reasoning trace is not.
+- **EXPERIMENT-SUBSTRATE-RECALL-ON-CONFIDENT-ERRORS: partly.** First half holds strongly: most errors are confidently delivered (75%), so output watching is blind to them, which is the author's core premise. Second half fails: reasoning-phase substrate signals catch most confident errors. The answer tokens are contaminated (confident); the reasoning trace is not.
 - **EXPERIMENT-PHYSICAL-TIER-ON-SUBSTRATE-MISSES: not supported.** Physical timing adds little once question type is controlled (CI includes 0.5; 2 of 17 misses caught).
 - **Implication for the organism:** trust substrate signals from the reasoning phase, not the answer phase; treat timing as weak; test true metabolic power (EXPERIMENT-METABOLIC-VITALS) before discarding tier 0.
 

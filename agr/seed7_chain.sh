@@ -9,7 +9,7 @@
 cd "$(dirname "$0")/.."; export PATH=$HOME/.lmstudio/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 log() { echo "$(date +%H:%M) $1" >> /tmp/seed7_chain.log; }
 .venv/bin/python agr/test_layertap_alignment.py > /tmp/seed7_aligncheck.log 2>&1 || { log 'ABORT: alignment test failed'; exit 1; }; log 'alignment test passed'
-.venv/bin/python agr/recorder.py 100 800 --layers --seed=7 > /tmp/rec_L7.log 2>&1; log 'seed 7 recorded'
+.venv/bin/python agr/recorder.py 100 800 --layers --seed=7 > /tmp/recorder-layers-seed7.log 2>&1; log 'seed 7 recorded'
 lms server status 2>&1 | grep -q 'is running' || lms server start --port 1234 >/dev/null 2>&1
 lms load openai/gpt-oss-120b --context-length 65536 --gpu max -y --identifier local-strong >/dev/null 2>&1
 ALL_EPISODES=1 CKPT=abs SEED=7 .venv/bin/python agr/prefix_monitors.py judge > /tmp/prefix_judge7.log 2>&1; log 'judge done'

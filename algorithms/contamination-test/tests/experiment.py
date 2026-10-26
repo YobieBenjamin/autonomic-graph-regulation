@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
 '''EXPERIMENT-CONTAMINATION-TEST contamination test. Pre-registered (2026-09-28, before data were seen):
- EXPERIMENT-SUBSTRATE-ON-CONFIDENT-ERRORS a meaningful share of errors is delivered confidently, and the substrate tier misses them at 10% FPR;
+ EXPERIMENT-SUBSTRATE-RECALL-ON-CONFIDENT-ERRORS a meaningful share of errors is delivered confidently, and the substrate tier misses them at 10% FPR;
  EXPERIMENT-PHYSICAL-TIER-ON-SUBSTRATE-MISSES the physical tier catches a meaningful share of the errors the substrate tier misses.
 Ground truth is computed (no LLM judge). Primary analysis: answered episodes, failure = wrong answer. Episodes that hit the token cap without answering are excluded and counted separately (they would trivially favor the effort signal).'''
 import json, os, sys, numpy as np

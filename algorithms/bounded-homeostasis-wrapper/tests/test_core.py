@@ -16,7 +16,7 @@ def test_c_matches_python_reference():
         a, b = m.run(S, mode), m.run_reference(S, mode)
         for k in a: assert np.allclose(a[k], b[k]), (mode, k)
 
-def test_T1_T2_bound_holds_under_worst_case_attack():
+def test_baseline_and_acceptance_bounds_hold_under_worst_case_attack():
     for eta in (0.01, 0.05, 0.2):
         m = mon(eta=eta); T = int(5 * m.B / (eta * m.tau)) + 50
         out = m.run(worst_case_attack(m, T, "budgeted"), "budgeted")
@@ -26,7 +26,7 @@ def test_T1_T2_bound_holds_under_worst_case_attack():
         assert dist[acc].max() <= m.tau + m.B + eta * m.tau + 1e-9      # EXPERIMENT-ACCEPTANCE-CONFINEMENT-THEOREM
         assert out["frozen"][-1]
 
-def test_T3_alarm_step_matches_theory():
+def test_minimum_attack_time_alarm_step_matches_theory():
     m = mon(eta=0.05); c = 0.99
     out = m.run(worst_case_attack(m, 5000, "budgeted", c), "budgeted")
     t_alarm = int(np.argmax(out["frozen"])) + 1

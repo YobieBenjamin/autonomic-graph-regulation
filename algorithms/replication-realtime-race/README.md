@@ -1,6 +1,6 @@
 # EXPERIMENT-REPLICATION-REALTIME-RACE · Frozen replication of EXPERIMENT-CLEAN-REALTIME-RACE on a fresh test set (seed 6)
 
-**Status:** tested · **Replicated** (pre-registration c8cec65): EXPERIMENT-EUREKA-REPLICATION-CRITERION and EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS hold; EXPERIMENT-POOLED-SEEDS-ESTIMATE (pooled estimate) was not computed by this analysis and was completed in EXPERIMENT-CORRECTED-REALTIME-RACE. Superseded by the corrected re-analysis in EXPERIMENT-CORRECTED-REALTIME-RACE (telemetry synchronization and statistics fixed), where seed 6 is a secondary test set and the result again holds.
+**Status:** tested · **Replicated** (pre-registration c8cec65): EXPERIMENT-EUREKA-REPLICATION-CRITERION and EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS hold; EXPERIMENT-REPLICATION-POOLED-SEEDS-ESTIMATE (pooled estimate) was not computed by this analysis and was completed in EXPERIMENT-CORRECTED-REALTIME-RACE. Superseded by the corrected re-analysis in EXPERIMENT-CORRECTED-REALTIME-RACE (telemetry synchronization and statistics fixed), where seed 6 is a secondary test set and the result again holds.
 **Reproduce:** `SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/replication-realtime-race all`; EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS: `... robust`.
 
 ## 1. Plain English
@@ -15,9 +15,9 @@ Regulator 24/43 in time (55.8%, FPR 10.1%); LLM judge 13/43 (FPR 9.3%); length c
 EXPERIMENT-EUREKA-REPLICATION-CRITERION: regulator minus judge +0.256 [+0.070, +0.442]; minus length +0.302 [+0.116, +0.488]. EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS (exactly equal false alarms): 24 vs 13 at 9.3% and 22 vs 11 at 7.3%, both CIs above 0.
 
 ## 7. Verdict
-Replicated (EXPERIMENT-EUREKA-REPLICATION-CRITERION, EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS). EXPERIMENT-POOLED-SEEDS-ESTIMATE missing here (audit REVIEW-POOLED-ESTIMATE-NEVER-COMPUTED); computed in EXPERIMENT-CORRECTED-REALTIME-RACE: pooled seeds 5-7, +0.323 [+0.186, +0.433] vs the judge and +0.323 [+0.205, +0.434] vs length.
+Replicated (EXPERIMENT-EUREKA-REPLICATION-CRITERION, EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS). EXPERIMENT-REPLICATION-POOLED-SEEDS-ESTIMATE missing here (audit REVIEW-POOLED-ESTIMATE-NEVER-COMPUTED); computed in EXPERIMENT-CORRECTED-REALTIME-RACE: pooled seeds 5-7, +0.323 [+0.186, +0.433] vs the judge and +0.323 [+0.205, +0.434] vs length.
 
 ## Deviations
-EXPERIMENT-POOLED-SEEDS-ESTIMATE not computed by the analysis script (discovered in the audit); completed in EXPERIMENT-CORRECTED-REALTIME-RACE. A brief GPU-sharing window at the start of the seed-6 recording is logged in data/agr/contention_windows.txt.
+EXPERIMENT-REPLICATION-POOLED-SEEDS-ESTIMATE not computed by the analysis script (discovered in the audit); completed in EXPERIMENT-CORRECTED-REALTIME-RACE. A brief GPU-sharing window at the start of the seed-6 recording is logged in data/agr/contention_windows.txt.
 
 <!-- © 2026 Yobie Benjamin (YB). Autonomic Graph Regulation (AGR). SPDX-License-Identifier: CC-BY-NC-4.0 (see LICENSE-DOCS.txt, NOTICE). Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71 -->

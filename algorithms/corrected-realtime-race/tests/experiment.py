@@ -3,7 +3,7 @@
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
 '''EXPERIMENT-CORRECTED-REALTIME-RACE corrected real-time race, per docs/PREREGISTRATION.md (committed with this code before seed 7 exists).
 Primary: seed 7 (fixed tap, answered episodes). Sensitivity (REVIEW-UNANSWERED-EPISODES-EXCLUDED): seed 7 incl. never-answered as failures.
-Secondary: seeds 5 and 6 re-analysed on realigned data; pooled 5+6+7 (EXPERIMENT-POOLED-SEEDS-ESTIMATE). DRY_RUN=1: plumbing check on derivation data.'''
+Secondary: seeds 5 and 6 re-analysed on realigned data; pooled 5+6+7 (EXPERIMENT-REPLICATION-POOLED-SEEDS-ESTIMATE). DRY_RUN=1: plumbing check on derivation data.'''
 import json, os, sys, glob, numpy as np
 sys.path.insert(0, 'src')
 from flagship import load, auroc

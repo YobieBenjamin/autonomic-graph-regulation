@@ -11,7 +11,7 @@ V = g.normal(size=(600, 8)); y = (g.random(600) < 0.1).astype(int); V[y == 1, 7]
 A = AIEWS().fit(V, y)
 def t_bounded_8_vitals():
     assert all(0 <= A.score(g.normal(scale=9, size=8))[0] <= 24 for _ in range(300))
-def t_monotonic_v8():
+def t_monotonic_failure_to_settle():
     base = np.nanmedian(V[y == 0], 0); prev = -1
     for s in np.linspace(0, 6, 25):
         v = base.copy(); v[7] += A.direction[7] * s; S = A.score(v)[0]; assert S >= prev; prev = S
@@ -27,6 +27,6 @@ def t_race_rules():
 def t_deep_prefix_blind():
     L = np.abs(g.normal(size=(120, 24, 5))) + 1; L2 = L.copy(); L2[60:] = 50.0
     assert np.allclose(deep_features(L, 100, upto=60), deep_features(L2, 100, upto=60))
-T = [t_bounded_8_vitals, t_monotonic_v8, t_settle_closed_form, t_settle_prefix_blind, t_race_rules, t_deep_prefix_blind]
+T = [t_bounded_8_vitals, t_monotonic_failure_to_settle, t_settle_closed_form, t_settle_prefix_blind, t_race_rules, t_deep_prefix_blind]
 for t in T: t(); print('PASS', t.__name__)
 print(f'{len(T)}/{len(T)} tests passed')

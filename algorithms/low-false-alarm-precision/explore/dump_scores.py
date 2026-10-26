@@ -19,7 +19,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import GroupKFold
 COST, T = 0.005, (48, 96, 192, 384)
 TEXT_C = 1.0          # pre-declared: the value EXPERIMENT-TEXT-BASELINE-TRANSFER selected by derivation-only cross-validation (also used in EXPERIMENT-MULTILEVEL-FUSION)
-MARGIN = 0.10         # EXPERIMENT-NON-LLM-STACK-INFERIORITY-TEST non-inferiority margin (pre-declared)
+MARGIN = 0.10         # EXPERIMENT-NON-LLM-STACK-NONINFERIORITY-TEST non-inferiority margin (pre-declared)
 COST_SHARE = 0.01     # EXPERIMENT-MONITOR-COST-SHARE pass bar: monitor cost at most 1% of inference
 NB = int(os.environ.get('N_BOOT', '2000')); DRY = os.environ.get('DRY_RUN') == '1'
 DERIV = tuple(str(s) for s in range(2, 15)); TEST = tuple(str(s) for s in range(15, 27))
