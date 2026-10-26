@@ -19,21 +19,21 @@ def test_pct_midrank_ties_and_never_monitored():
     ref = np.array([1., 2., 2., 3., -np.inf])
     assert np.allclose(pct(np.array([2.0, 0.5, 10.0, -np.inf]), ref), [0.6, 0.2, 1.0, 0.1])
     v = np.sort(np.random.default_rng(0).normal(size=50)); assert np.all(np.diff(pct(v, v)) > 0)
-def test_c1_never_crosses_a_level():
+def test_tie_break_never_crosses_a_level():  # EXPERIMENT-SELF-DISAGREEMENT-TIE-BREAK (old: C1)
     R = synth(3000, 1); Z = synth(2000, 2)
     for k, d in ((4, Z['d4']), (8, Z['d8'])):
         s = c1(Z, R, d, k); lev = np.round(d * k).astype(int)
         for a in range(k):
             if (lev == a).any() and (lev == a + 1).any(): assert s[lev == a].max() < s[lev == a + 1].min()
-def test_c2_uses_reference_scale_and_is_deterministic():
+def test_combined_logistic_uses_reference_scale_and_is_deterministic():  # EXPERIMENT-COMBINED-LOGISTIC-CANDIDATE (old: C2)
     R = synth(4000, 3); Z = synth(1500, 4); m1, m2 = fit_c2(R), fit_c2(R)
     assert np.allclose(c2(m1, Z, R, Z['d4']), c2(m2, Z, R, Z['d4']))
     assert m1.coef_[0][0] > 0 and m1.coef_[0][1] > 0          # disagreement and stack both point toward errors
-def test_c4_is_continuous_and_handles_unseen_task():
+def test_per_task_calibration_is_continuous_and_handles_unseen_task():  # EXPERIMENT-PER-TASK-CALIBRATED-COMBINATION (old: C4)
     R = synth(4000, 5); Z = synth(1500, 6); Z['cat'][:20] = 'new_task'; m = fit_c2(R); ref = c4_reference(m, R)
     s = c4(m, ref, Z, R, Z['d4']); top = np.sort(s)[::-1][:30]
     assert np.all(np.isfinite(s)) and len(np.unique(top)) == len(top)   # no ties at the top (the exploratory fault)
-def test_c3_operating_point():
+def test_high_precision_conjunction_operating_point():  # EXPERIMENT-HIGH-PRECISION-CONJUNCTION (old: C3)
     R = synth(4000, 7); a = c3(R, R, R['d4']); q = np.quantile(neg(R['stack'])[R['y'] == 0], 0.9)
     assert np.array_equal(a, (neg(R['stack']) > q) & (R['d4'] >= 0.75))
 def test_derivation_check_runs():

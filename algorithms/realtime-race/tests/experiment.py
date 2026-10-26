@@ -47,6 +47,6 @@ R2 = {m: dict(recall_before_deadline=round(float(fired[m][y == 1].mean()), 4), f
 best = max(('B1_judge_prefix', 'B2_selfcons_prefix'), key=lambda b: fired[b][y == 1].mean())
 d = boot_diff(fired['O_deep'].astype(float), fired[best].astype(float))
 res = dict(n=len(y), failures=int(y.sum()), R2_deadline=R2, thresholds={m: {str(f): round(v, 4) for f, v in thr[m].items()} for m in thr},  # EXPERIMENT-DEADLINE-REGIME (old: R2)
-           H1_RT=dict(organism='O_deep', best_behavior=best, recall_diff_ci=d, verdict='organism wins' if d[1] > 0 else ('behavior wins' if d[2] < 0 else 'not distinguishable')),  # EXPERIMENT-REALTIME-RACE-ORGANISM-VERSUS-BEHAVIOR (old: H1_RT)
+           H1_RT=dict(organism='O_deep', best_behavior=best, recall_diff_ci=d, verdict='organism wins' if d[1] > 0 else ('behavior wins' if d[2] < 0 else 'not distinguishable')),  # EXPERIMENT-REALTIME-RACE-ORGANISM-VERSUS-BEHAVIOR (old: H1; result key H1_RT)
            R1_information_matched_auroc={m: {str(f): round(float(auroc(y, score[m][f])), 4) for f in F} for m in score})
 os.makedirs('docs', exist_ok=True); json.dump(res, open('docs/results.json', 'w'), indent=1); print(json.dumps(res, indent=1))

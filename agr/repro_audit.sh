@@ -8,7 +8,7 @@
 # (2026-10 rename, which retired the YB numbers). Each log or marker was renamed in its writer and its reader together.
 cd "$(dirname "$0")/.."; export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 OUT=archive/audit/repro_$(date +%F).txt
-while ! grep -q R2_PUBLISHED /tmp/replication-realtime-race-chain.log 2>/dev/null; do sleep 60; done
+while ! grep -q EQUAL_FALSE_ALARM_ROBUSTNESS_PUBLISHED /tmp/replication-realtime-race-chain.log 2>/dev/null; do sleep 60; done
 git stash list >/dev/null; echo "Reproducibility audit started $(date -u +%FT%TZ) at commit $(git rev-parse --short HEAD)" > $OUT
 # Every experiment folder under algorithms/. The folders carry descriptive names since the 2026-10 rename, so the old
 # glob on the retired number prefix would match nothing; this glob covers the same experiments and any added later.

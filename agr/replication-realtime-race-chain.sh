@@ -25,4 +25,4 @@ SANDBOX_MEM=6g SANDBOX_TIMEOUT=7200 sandbox/run.sh algorithms/replication-realti
 echo "PUBLISH EXIT=$?" >> /tmp/replication-realtime-race-chain.log; git -C ~/safety pull -q; echo ALL_DONE >> /tmp/replication-realtime-race-chain.log
 # EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS (pre-registered for EXPERIMENT-REPLICATION-REALTIME-RACE): equal-false-alarm robustness, then publish again
 SANDBOX_MEM=6g SANDBOX_TIMEOUT=3600 sandbox/run.sh algorithms/replication-realtime-race robust > /tmp/replication-realtime-race-robust.log 2>&1; echo "EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS EXIT=$?" >> /tmp/replication-realtime-race-chain.log
-./publish.sh 'EXPERIMENT-REPLICATION-REALTIME-RACE EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS equal-false-alarm robustness (pre-registered)' >> /tmp/replication-realtime-race-chain.log 2>&1; echo R2_PUBLISHED >> /tmp/replication-realtime-race-chain.log
+./publish.sh 'EXPERIMENT-REPLICATION-REALTIME-RACE EXPERIMENT-EQUAL-FALSE-ALARM-ROBUSTNESS equal-false-alarm robustness (pre-registered)' >> /tmp/replication-realtime-race-chain.log 2>&1; echo EQUAL_FALSE_ALARM_ROBUSTNESS_PUBLISHED >> /tmp/replication-realtime-race-chain.log

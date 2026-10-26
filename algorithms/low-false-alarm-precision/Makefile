@@ -10,7 +10,7 @@ src/libcore.so: src/vitals.c src/hpa.c src/layergraph.c
 test: build
 	python3 -m py_compile src/*.py explore/*.py tests/*.py
 	python3 tests/test_candidates.py
-	python3 tests/c4_check.py
+	python3 tests/per_task_calibrated_combination_check.py
 smoke: build
 	SMOKE=1 python3 tests/score_test.py
 	SMOKE=1 python3 tests/experiment.py

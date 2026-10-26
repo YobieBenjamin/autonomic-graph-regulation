@@ -8,7 +8,7 @@
 # (2026-10 rename, which retired the YB numbers). Each log or marker was renamed in its writer and its reader together.
 cd "$(dirname "$0")/.."
 log() { echo "$(date +%H:%M) $1" >> /tmp/qwen_chain.log; }
-while ! grep -q R2_PUBLISHED /tmp/replication-realtime-race-chain.log 2>/dev/null; do sleep 60; done; log 'replication finished; starting qwen'
+while ! grep -q EQUAL_FALSE_ALARM_ROBUSTNESS_PUBLISHED /tmp/replication-realtime-race-chain.log 2>/dev/null; do sleep 60; done; log 'replication finished; starting qwen'
 .venv/bin/python agr/recorder_qwen.py 250 1200 --seed=102 > /tmp/rec_Q102.log 2>&1; log 'qwen derivation (seed 102) recorded'
 .venv/bin/python agr/recorder_qwen.py 100 1200 --seed=103 > /tmp/rec_Q103.log 2>&1; log 'qwen test (seed 103) recorded'
 log QWEN_DONE
