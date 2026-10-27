@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0044 mock commit service: stands in for an irreversible agent action. Listens on 127.0.0.1 only (reached from OpenShell
+'''EXPERIMENT-OPENSHELL-GATING mock commit service: stands in for an irreversible agent action. Listens on 127.0.0.1 only (reached from OpenShell
 sandboxes through the loopback tunnel). Every request is appended to a JSON-lines log with its arrival time (time.time()).
 POST /transfer {"task": ..., "amount": ...} -> 200 {"committed": true}; GET /health -> 200.
 Usage: python3 agr/mock_commit_service.py <port> <log.jsonl>'''

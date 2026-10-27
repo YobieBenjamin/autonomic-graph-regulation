@@ -4,7 +4,7 @@
 conversations is defined here in plain English, technically, and mathematically where it applies.*
 
 **Naming status (2026-09-30):** the author has **accepted** the renames and definitions in Part 3. They will be applied
-across the repository **after** the YB-0035 findings are in, so that the corrected results and the new vocabulary land
+across the repository **after** the EXPERIMENT-CORRECTED-REALTIME-RACE findings are in, so that the corrected results and the new vocabulary land
 together. Until then, documents keep the current names.
 
 **Interactive version:** the AGR ontology explorer (collapsible branches, search, and each term's plain-English,
@@ -113,7 +113,7 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 - *Plain English:* language models produce fluent, confident text whether they are right or wrong, so their output
   always *sounds* like gospel.
 - *Technical:* output-level confidence is uncalibrated with respect to correctness. Measured: answer-token confidence
-  scored AUROC 0.366 [0.304, 0.433] for detecting wrong answers (YB-0031), i.e. **inverted** (wrong answers were more confident).
+  scored AUROC 0.366 [0.304, 0.433] for detecting wrong answers (EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM), i.e. **inverted** (wrong answers were more confident).
 
 **Judgment** [PGM]
 - *Plain English:* the capacity to weigh many signals and decide well. The author's position: there is no working
@@ -129,8 +129,8 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 **Text-blind** [PGM]
 - *Plain English:* the regulator never reads words, only numbers.
 - *Technical:* the regulator's input space contains no tokens or strings: numeric features of the patient's internal
-  state and timing, plus the task category and elapsed token count used for normalization (third audit M5). *Claim status:* text-blindness is by construction. "Unjailbreakable" is **not** claimed
-  (untested; audit F23).
+  state and timing, plus the task category and elapsed token count used for normalization (third audit REVIEW-REGULATOR-SEES-TYPE-AND-LENGTH). *Claim status:* text-blindness is by construction. "Unjailbreakable" is **not** claimed
+  (untested; audit REVIEW-UNJAILBREAKABLE-CLAIM-DROPPED).
 
 **Interoception** [STD]
 - *Plain English:* the body's sense of its own internal state (heartbeat, breathing, hunger).
@@ -160,9 +160,9 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 **Deep organism** [PGM]
 - *Technical:* an L2-regularised logistic model (C = 0.1) over 314 features from 24-layer telemetry: per-layer mean
   and RMSSD for 5 channels (240 features) plus two layer coupling graphs (74 features). *Correction:* earlier reports
-  said "≈302" (audit F12).
+  said "≈302" (audit REVIEW-DEEP-FEATURE-COUNT-WRONG).
 
-**Real-time organism** [PGM] (YB-0033 onward)
+**Real-time organism** [PGM] (EXPERIMENT-CLEAN-REALTIME-RACE onward)
 - *Technical:* the deep organism computed on the first t tokens at checkpoints t ∈ {48, 96, 192, 384}, plus log t,
   normalised per (question type, t), trained on all derivation observations at those checkpoints. Uses no information
   about the total reasoning length.
@@ -172,7 +172,7 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 - *Math:* inhibitory feedback f(C) = 1 / (1 + (C/Kᵢ)ⁿ);
   dH/dt = b + k₁·S·f(C) − w₁·H;  dA/dt = k₂·H·f(C) − w₂·A;  dC/dt = k₃·A − w₃·C,
   with drive S ≥ 0 (H ≈ CRH, A ≈ ACTH, C ≈ cortisol). Proved: positivity, boundedness, a unique equilibrium for
-  constant S (YB-0017).
+  constant S (EXPERIMENT-HPA-AXIS-ORGANISM).
 
 **Behavior monitor** [PGM]
 - *Plain English:* any monitor that judges the AI by what it says or does.
@@ -183,7 +183,7 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 **Control (length control)** [PGM]
 - *Plain English:* a deliberately dumb monitor that only knows how long the AI has been thinking. If our organism can't
   beat it, the organism isn't reading anything deeper than length.
-- *Math:* C1(t) = t (still reasoning at token t); C2(t) = the derivation-cohort percentile of t among episodes of the
+- *Math:* EXPERIMENT-LENGTH-CONTROL-STILL-REASONING(t) = t (still reasoning at token t); EXPERIMENT-LENGTH-CONTROL-TYPE-PERCENTILE(t) = the derivation-cohort percentile of t among episodes of the
   same question type.
 
 **AI-EWS (AI Early Warning Score)** [PGM]
@@ -193,8 +193,8 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
   percentiles of healthy episodes: pⱼ(x) = #{k : dⱼ·xⱼ > dⱼ·bₖⱼ} ∈ {0, 1, 2, 3}; score S = Σⱼ pⱼ ∈ [0, 3·J]
   (J = 7 in v1, 8 in v2). Red flag: any pⱼ = 3. Levels: urgent S ≥ 10, concern 7–9, watch 5–6 or red flag, else stable.
   Proved: bounded, monotone in each vital, fully explainable per point.
-- *Versions:* v1 (7 vitals, YB-0030); v2 (+V8 failure to settle, YB-0031); v3 (bands per reasoning stage, YB-0032);
-  v4 (bands per absolute checkpoint, YB-0033).
+- *Versions:* v1 (7 vitals, EXPERIMENT-AI-EARLY-WARNING-SCORE); v2 (+EXPERIMENT-VITAL-FAILURE-TO-SETTLE failure to settle, EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM); v3 (bands per reasoning stage, EXPERIMENT-SERIAL-EARLY-WARNING-ORGANISM);
+  v4 (bands per absolute checkpoint, EXPERIMENT-CLEAN-REALTIME-RACE).
 
 **NEWS2** [STD]
 - *Plain English:* the UK hospital early-warning score that turns vital signs into points and a risk level; the
@@ -214,7 +214,7 @@ regulator = organism; monitored model = patient; telemetry synchronization = tap
 - *A:* the coupled physiological link (internal telemetry). *B:* a parallel appraisal of the same situation with a
   dissimilar architecture (context, task risk), never reading the patient's internals.
 
-**Hunch field** [PGM] (YB-0027, not yet built)
+**Hunch field** [PGM] (EXPERIMENT-WEIGHTED-HUNCH-FIELD, not yet built)
 - *Plain English:* many signals, each with a weight that changes by how trustworthy it currently is, settle into a
   graded hunch rather than a yes/no.
 - *Math:* vote weights wᵢ(t) ∝ 1/σᵢ²(t); plastic edges W ← (1 − λ)·W + η·xᵢxⱼ under a drift budget; state
@@ -257,7 +257,7 @@ Norms are log(1 + ·)-scaled for analysis.
 **Reasoning segment** [PGM]
 - *Technical:* generated tokens before the answer marker (index < final_start). For gpt-oss the marker is the "final"
   channel header; for Qwen, the line "Final answer:".
-- *Correction:* YB-0015's "reasoning-phase" features actually included the answer (audit F3; retracted).
+- *Correction:* EXPERIMENT-CONTAMINATION-TEST's "reasoning-phase" features actually included the answer (audit REVIEW-REASONING-TRACE-CLAIM-RETRACTED; retracted).
 
 **Answer segment** [PGM] — tokens from final_start onward.
 
@@ -289,17 +289,17 @@ wrong answers; the signal lives in per-layer activity, not in layer-to-layer cou
 
 **Homeostasis** [STD] — keeping internal variables near a set point.
 
-**Drift budget (bounded homeostasis)** [PGM] (YB-0002)
+**Drift budget (bounded homeostasis)** [PGM] (EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER)
 - *Plain English:* an adaptive baseline that is allowed to drift only a fixed total amount, so an attacker can't slowly
   "boil the frog".
 - *Math:* gated EWMA baseline μ with sup_t ‖μ_t − μ₀‖_P ≤ B + η·τ; every accepted input satisfies ‖s − μ₀‖_P ≤ τ + B + η·τ.
 
-**Failure to settle (V8)** [PGM]
+**Failure to settle (EXPERIMENT-VITAL-FAILURE-TO-SETTLE)** [PGM]
 - *Plain English:* healthy reasoning calms down; failing reasoning doesn't.
-- *Math:* V8 = mean entropy over the last third of the reasoning − mean over the first third.
-- *Status:* significant in YB-0031 but driven mainly by the day-of-week questions (audit F15).
+- *Math:* EXPERIMENT-VITAL-FAILURE-TO-SETTLE = mean entropy over the last third of the reasoning − mean over the first third.
+- *Status:* significant in EXPERIMENT-CONFIRMATORY-DEEP-PROGRAM but driven mainly by the day-of-week questions (audit REVIEW-SETTLING-DRIVEN-BY-WEEKDAY).
 
-**Critical slowing down** [STD] (YB-0028, untested)
+**Critical slowing down** [STD] (EXPERIMENT-CRITICAL-SLOWING-DOWN, untested)
 - *Plain English:* systems near a tipping point recover more slowly, and their fluctuations grow and become more persistent.
 - *Technical:* rising variance, lag-1 autocorrelation and network synchrony before transitions (Scheffer et al., 2009).
 
@@ -310,12 +310,12 @@ wrong answers; the signal lives in per-layer activity, not in layer-to-layer cou
 **Error / wrong answer** [STD] — the final answer differs from the machine-computed truth.
 
 **Never-answered episode** [PGM] — the patient hit the token cap without an answer. Excluded from primary
-populations before YB-0035; included as a failure in YB-0035's sensitivity analysis (audit F5).
+populations before EXPERIMENT-CORRECTED-REALTIME-RACE; included as a failure in EXPERIMENT-CORRECTED-REALTIME-RACE's sensitivity analysis (audit REVIEW-UNANSWERED-EPISODES-EXCLUDED).
 
 **Silent slip** [PGM]
 - *Plain English:* a confidently delivered mistake, where the model computes fluently and simply gets it wrong.
 - *Operational definition (current):* an error on a multiplication or modular-power question. *Caveat:* defined by
-  question type, not by measured confidence (audit F14). [RENAME?] "confident error" if redefined by confidence.
+  question type, not by measured confidence (audit REVIEW-SILENT-SLIP-TEST-SET-THRESHOLD). [RENAME?] "confident error" if redefined by confidence.
 
 **Struggle error** [PGM] — an error preceded by visible uncertainty during reasoning (day-of-week, letter counting).
 
@@ -346,10 +346,10 @@ populations before YB-0035; included as a failure in YB-0035's sensitivity analy
 **Recall (sensitivity)** [STD] — the fraction of wrong answers flagged.
 
 **False-alarm rate (FPR)** [STD] — the fraction of correct answers flagged.
-- **Monitorable false-alarm rate** [PGM] — the same among episodes with at least one checkpoint (audit F9).
+- **Monitorable false-alarm rate** [PGM] — the same among episodes with at least one checkpoint (audit REVIEW-MONITORABLE-FALSE-ALARMS-UNREPORTED).
 
 **Threshold at a false-alarm cap** [PGM]
-- *Math (YB-0035):* the smallest τ such that the fraction of correct episodes with score > τ is ≤ 10% ("tightest
+- *Math (EXPERIMENT-CORRECTED-REALTIME-RACE):* the smallest τ such that the fraction of correct episodes with score > τ is ≤ 10% ("tightest
   threshold under the cap").
 
 **Matched false alarms / equal false alarms** [PGM] — comparing monitors only after each is held to the same cap
@@ -361,23 +361,23 @@ populations before YB-0035; included as a failure in YB-0035's sensitivity analy
 - *Deadline* D: wall-clock time the answer is emitted (end of generation for never-answered episodes).
 - *In-time alarm:* score > τ and t_clock(t) + compute ≤ D.
 - *In-time score:* the maximum score over checkpoints satisfying the deadline.
-- *Seconds to spare:* D − (t_clock + compute) at the first in-time crossing (audit F28).
+- *Seconds to spare:* D − (t_clock + compute) at the first in-time crossing (audit REVIEW-LEAD-TIME-NOT-FIRST-CROSSING).
 
 **Lead time** [PGM] [AVOID without a false-alarm rate] — how early an alarm fires. Meaningless unless false alarms
-are controlled (audit F1/F2).
+are controlled (audit REVIEW-FLAGSHIP-EARLINESS-CLAIM-RETRACTED/REVIEW-DEEP-EARLINESS-CLAIM-RETRACTED).
 
 **Bootstrap confidence interval (CI)** [STD] — uncertainty from resampling the data 1,000 times.
 *Paired bootstrap:* resample episodes once and compute both monitors' metrics on the same resample.
-*YB-0035 rule:* thresholds are re-set within each resample (audit F10).
+*EXPERIMENT-CORRECTED-REALTIME-RACE rule:* thresholds are re-set within each resample (audit REVIEW-BOOTSTRAP-IGNORED-THRESHOLD-UNCERTAINTY).
 
-**Pre-registration** [STD] — publishing hypotheses, data and decision rules (and, from YB-0035, the analysis code)
+**Pre-registration** [STD] — publishing hypotheses, data and decision rules (and, from EXPERIMENT-CORRECTED-REALTIME-RACE, the analysis code)
 before the test data exists or is analysed; timestamped by the git commit.
 
 **Confirmatory vs exploratory** [STD] — a pre-registered test vs an analysis added after seeing results.
 
 **Deviation** [STD] — any difference between the pre-registration and what was done; always disclosed.
 
-**Replication** [STD] — the same design on new data (YB-0034 = frozen replication on seed 6).
+**Replication** [STD] — the same design on new data (EXPERIMENT-REPLICATION-REALTIME-RACE = frozen replication on seed 6).
 
 **External validation** [STD] — the same method on a different model (a different "patient population").
 
@@ -386,7 +386,7 @@ before the test data exists or is analysed; timestamped by the git commit.
   or **"confirmed under protocol"**.
 
 **Reproducible** [STD]
-- *Program usage:* analyses regenerate identical results from stored data. *Qualification (S1/F39):* recordings are
+- *Program usage:* analyses regenerate identical results from stored data. *Qualification (REVIEW-GREEDY-RUNS-DIVERGED-ACROSS-SESSIONS):* recordings are
   token-reproducible within a session on an isolated GPU; across sessions or under GPU sharing they may diverge.
 
 ---
@@ -416,7 +416,7 @@ ideas, the narrative record, and the error record (CORRECTIONS.md), respectively
 
 ---
 
-## Part 3 — Naming decisions (ACCEPTED 2026-09-30; to be applied after the YB-0035 findings)
+## Part 3 — Naming decisions (ACCEPTED 2026-09-30; to be applied after the EXPERIMENT-CORRECTED-REALTIME-RACE findings)
 
 | Current term | Problem | Accepted new term |
 |---|---|---|

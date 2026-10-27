@@ -27,7 +27,7 @@ def uninstall(): qwen3_moe.Qwen3MoeDecoderLayer.__call__ = _ORIG
 _SKIP = [0]
 
 def reset():
-    '''Clear the buffer and discard the prompt (prefill) pass (telemetry synchronization; audit F4 applied to this model).'''
+    '''Clear the buffer and discard the prompt (prefill) pass (telemetry synchronization; audit REVIEW-LAYER-TAP-ONE-STEP-LATE applied to this model).'''
     _REC.clear(); _SKIP[0] = 1
 def pop():
     '''Oldest computed step (N_LAYERS, 5); mlx_lm pre-computes one step ahead, so take the oldest N_LAYERS records.'''

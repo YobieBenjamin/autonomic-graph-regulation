@@ -15,9 +15,9 @@ text-blind. This folder holds the trusted host-side instruments that turn a tran
 - Timing is a measured signal, so the recorder runs with the worker model unloaded; any concurrent load is logged in
   `data/agr/contention_windows.txt` for sensitivity analysis.
 
-Consumers: YB-0015 (contamination test) and YB-0017 (HPA-axis organism).
+Consumers: EXPERIMENT-CONTAMINATION-TEST (contamination test) and EXPERIMENT-HPA-AXIS-ORGANISM (HPA-axis organism).
 
-## Metabolic vitals (YB-0018): GPU/CPU power
+## Metabolic vitals (EXPERIMENT-METABOLIC-VITALS): GPU/CPU power
 `power.py` streams CPU and GPU power every 100 ms from macOS `powermetrics`, which requires root. Access is granted by
 one narrowly scoped sudoers rule allowing **only** `/usr/bin/powermetrics --samplers cpu_power,gpu_power -i 100 -f plist`
 without a password (no other arguments, so it cannot write files; no other commands). Verified: any other command or

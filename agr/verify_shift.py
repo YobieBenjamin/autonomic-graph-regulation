@@ -1,10 +1,10 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''Audit B9: complete verification of the one-step resynchronization of old recordings (agr/pack_realigned.py).
+'''Audit REVIEW-RESYNC-CHECK-UNCOMMITTED: complete verification of the one-step resynchronization of old recordings (agr/pack_realigned.py).
 Re-records seed-2 episodes 0..N-1 with the FIXED tap and compares each new reading new[t] with the old stored readings
 old[t+1] (the claimed shift) and old[t] (no shift). Episodes whose re-recording diverged from the original generation
-(different token count or entropy trace; see CORRECTIONS S1) are reported and excluded from the shift statistics.
+(different token count or entropy trace; see CORRECTIONS REVIEW-GREEDY-RUNS-DIVERGED-ACROSS-SESSIONS) are reported and excluded from the shift statistics.
 Errors are in units of each channel's standard deviation over the episode. Writes archive/audit/artifacts/shift_verification.json.'''
 import os, sys, json, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE); sys.path.insert(0, HERE)
@@ -27,7 +27,7 @@ for idx in range(N_EP):
     new = np.stack(lay); st = np.load(os.path.join(ROOT, 'data', 'agr', 'layers_seed2', '%d.npy' % idx)); o = old[idx]
     # Same generation = identical generated text (the original recording saved it). An earlier version compared entropy traces
     # within 1e-3; that failed on every episode because this script computes entropy differently and cross-session numeric
-    # noise (CORRECTIONS S1) exceeds 1e-3 even when the tokens are identical.
+    # noise (CORRECTIONS REVIEW-GREEDY-RUNS-DIVERGED-ACROSS-SESSIONS) exceeds 1e-3 even when the tokens are identical.
     same = tok.decode(toks) == (o.get('text') or '')
     row = dict(idx=idx, cat=E[idx][0], new_tokens=len(toks), old_tokens=o['n_tokens'], same_generation=bool(same))
     if same:

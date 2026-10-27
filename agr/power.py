@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Yobie Benjamin. Autonomic Graph Regulation (AGR). All rights reserved except as licensed.
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0  (see LICENSE.md, NOTICE)
 # Provenance canary: AGR-CANARY-7f3c2a9e-5b14-4d6e-9a1f-2c8e0b6d4a71
-'''YB-0018 metabolic instrument: streams Apple-silicon CPU/GPU power (every 100 ms) from powermetrics, via the one
+'''EXPERIMENT-METABOLIC-VITALS metabolic instrument: streams Apple-silicon CPU/GPU power (every 100 ms) from powermetrics, via the one
 passwordless sudo rule installed for exactly this command (see agr/README.md). Samples are stamped with the host
 monotonic clock (time.perf_counter) so they align with per-token timestamps from recorder.py.'''
 import plistlib, subprocess, threading, time

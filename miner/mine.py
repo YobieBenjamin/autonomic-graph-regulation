@@ -28,11 +28,14 @@ SECURITY: model-written code is built/run ONLY inside the Docker sandbox (sandbo
 no network, no secrets, non-root, capped. MINER_SANDBOX=host disables this (unsafe).
 """
 import json, os, re, shutil, subprocess, sys, threading, datetime, urllib.request
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import names   # miner/names.py: descriptive hypothesis names (EXPERIMENT-...), shared with the orchestrator
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HYP, LEDGER = os.path.join(ROOT, 'HYPOTHESES.md'), os.path.join(ROOT, 'LEDGER.md')
 STATE, SANDBOX_DIR = os.path.join(ROOT, 'miner', 'state.json'), os.path.join(ROOT, 'miner', 'sandbox')
-REF_DIR = os.path.join(ROOT, 'algorithms', 'YB-0002-bounded-homeostasis-wrapper')
+# Reference implementation shown to the model: EXPERIMENT-BOUNDED-HOMEOSTASIS-WRAPPER, in its descriptive folder.
+REF_DIR = os.path.join(ROOT, 'algorithms', 'bounded-homeostasis-wrapper')
 MODEL = os.environ.get('MINER_MODEL', 'claude-sonnet-5')
 TRIAGE_MODEL = os.environ.get('MINER_TRIAGE_MODEL', 'claude-haiku-4-5-20251001')
 BUDGET = int(os.environ.get('MINER_DAILY_TOKENS', 2_000_000))
@@ -112,20 +115,32 @@ def blocks(text):
 
 
 def claim():
+    """Take the first open hypothesis and mark it in-progress. Returns (name, block) or None.
+
+    The ID of a hypothesis is its descriptive catalog name from the heading ("## EXPERIMENT-...: title"); an open
+    hypothesis added without one is named first (names.ensure_named). A hypothesis whose folder already exists under
+    algorithms/ (for example a pre-registered experiment that is open but not run) is left alone: building it would
+    overwrite that folder, because the folder name now comes from the name, not from a fresh number."""
     with LOCK:
-        text = open(HYP).read()
+        text, given = names.ensure_named(open(HYP).read(), ROOT)
+        for g in given: print('named new hypothesis', g, flush=True)
         for block in blocks(text):
-            if 'status: open' in block:
-                hid = block.split()[1]
-                open(HYP, 'w').write(text.replace(block, block.replace('status: open', 'status: in-progress', 1)))
-                return hid, block
+            hid = names.parse_heading(block)[0]
+            if not hid or 'status: open' not in block:
+                continue
+            if os.path.exists(os.path.join(ROOT, 'algorithms', names.folder_for(hid))):
+                continue
+            open(HYP, 'w').write(text.replace(block, block.replace('status: open', 'status: in-progress', 1)))
+            return hid, block
     return None
 
 
 def set_status(hid, status):
     with LOCK:
         text = open(HYP).read()
-        text = re.sub(r'(## ' + re.escape(hid) + r'\b[^\n]*\n)status: \S+', r'\g<1>status: ' + status, text)
+        # the heading is "## NAME: title" (or "## NAME (extension): ..."); the lookahead stops a name from also
+        # matching the heading of a longer name that starts with it
+        text = re.sub(r'(## ' + re.escape(hid) + r'(?=[\s:(])[^\n]*\n)status: \S+', r'\g<1>status: ' + status, text)
         open(HYP, 'w').write(text)
 
 
@@ -134,9 +149,8 @@ def ledger(hid, name, status, headline):
         open(LEDGER, 'a').write('| ' + ' | '.join([hid, name, 'see HYPOTHESES.md', status, headline]) + ' |' + chr(10))
 
 
-def next_id():
-    ids = [int(x) for x in re.findall(r'YB-(\d{4})', open(HYP).read() + open(LEDGER).read())]
-    return 'YB-%04d' % (max(ids + [0]) + 1)
+# New hypotheses are no longer numbered (the old next_id() counted up letter-number codes). Each gets a descriptive name
+# built from its title by names.new_name(), checked unique against HYPOTHESES.md, LEDGER.md and algorithms/.
 
 
 # ---------------- API ----------------
@@ -156,7 +170,8 @@ def call(messages, model=MODEL, max_tokens=32000, system=None, cache=True):
 
 
 def ledger_digest(limit=4000):
-    rows = [l for l in open(LEDGER).read().splitlines() if l.startswith('| YB-')]
+    # ledger rows are the lines whose first column is a catalog name (EXPERIMENT-... or WAVE-...)
+    rows = [l for l in open(LEDGER).read().splitlines() if names.LEDGER_ROW_RE.match(l)]
     return chr(10).join(rows)[-limit:]
 
 
@@ -184,8 +199,13 @@ def propose():
         _, out = call([{'role': 'user', 'content': prompt}], max_tokens=2000)
         added = 0
         for h in out.get('hypotheses', [])[:n]:
-            hid = next_id()
-            entry = (chr(10) + '## ' + hid + ' \u2014 ' + h['name'] + chr(10) + 'status: open' + chr(10) + 'foundation: '
+            # Name the new hypothesis from its title: EXPERIMENT- plus 2 to 5 title words, unique in the catalog
+            # (never a number). It is written as the HYPOTHESES.md heading, which is the catalog the registry reads.
+            hid = names.new_name(h['name'], ROOT)
+            if not hid:
+                print('proposal left out: every wording of its title is already a name or folder:', h['name'], flush=True)
+                continue
+            entry = (chr(10) + '## ' + hid + ': ' + h['name'] + chr(10) + 'status: open' + chr(10) + 'foundation: '
                      + h['foundation'] + chr(10) + 'hypothesis: ' + h['hypothesis'] + chr(10) + 'test: ' + h['test']
                      + chr(10) + 'origin: proposed by miner' + chr(10))
             open(HYP, 'a').write(entry); added += 1
@@ -212,13 +232,14 @@ def run_tests(d):
 
 
 def mine_one(hid, block):
-    name = block.splitlines()[0].split('\u2014', 1)[-1].strip()
+    name = names.parse_heading(block)[1]          # the title after "## NAME: "
     start = load_state()['used']
     score, why = triage(hid, block)
     if score < MIN_SCORE:
         set_status(hid, 'skipped'); ledger(hid, name, 'skipped at triage', 'score %d/20: %s' % (score, why))
         return hid + ': SKIPPED (score %d) %s' % (score, why)
-    slug = hid + '-' + re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
+    # the folder is the name in lowercase without its prefix: EXPERIMENT-CORTISOL-INTEGRATOR -> algorithms/cortisol-integrator
+    slug = names.folder_for(hid)
     box = os.path.join(SANDBOX_DIR, slug); shutil.rmtree(box, ignore_errors=True); os.makedirs(box)
     msgs = [{'role': 'user', 'content': 'Algorithm ID ' + hid + '.' + chr(10) + block}]
     log, out = '', {}
@@ -234,7 +255,10 @@ def mine_one(hid, block):
         ok, log = run_tests(box)
         cost = load_state()['used'] - start
         if ok:
-            dest = os.path.join(ROOT, 'algorithms', slug); shutil.rmtree(dest, ignore_errors=True)
+            dest = os.path.join(ROOT, 'algorithms', slug)
+            if os.path.exists(dest):   # never overwrite an existing experiment folder (claim() skips these; this is a second guard)
+                set_status(hid, 'failed'); ledger(hid, name, 'not promoted', 'algorithms/' + slug + ' already exists')
+                return hid + ': NOT PROMOTED, algorithms/' + slug + ' already exists'
             shutil.move(box, dest); set_status(hid, 'tested')
             ledger(hid, name, 'tested', out.get('summary', '')[:200] + ' (%s tokens)' % format(cost, ','))
             if os.environ.get('MINER_PUBLISH') == '1':
@@ -276,7 +300,8 @@ def macos_sdk():
 if __name__ == '__main__':
     os.makedirs(SANDBOX_DIR, exist_ok=True)
     if DRY:
-        opened = [b.split()[1] for b in blocks(open(HYP).read()) if 'status: open' in b]
+        # list the open hypotheses by their catalog names (headings without a name are not listed)
+        opened = [names.parse_heading(b)[0] for b in blocks(open(HYP).read()) if 'status: open' in b and names.parse_heading(b)[0]]
         print('DRY RUN: %d open hypotheses: %s; budget left %s; cached context ~%d tokens'
               % (len(opened), opened, format(budget_left(), ','), len(SYSTEM[0]['text']) // 4)); sys.exit(0)
     if 'ANTHROPIC_API_KEY' not in os.environ:
