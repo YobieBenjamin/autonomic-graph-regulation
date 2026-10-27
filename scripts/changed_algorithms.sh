@@ -7,4 +7,5 @@
 cd "$(dirname "$0")/.."; BASE="${1:-origin/main}"
 if ! git rev-parse -q --verify "$BASE^{commit}" >/dev/null 2>&1; then ls -d algorithms/*/ | sed 's#/$##'; exit 0; fi   # unknown base: all
 { git diff --name-only "$BASE" -- algorithms; git ls-files --others --exclude-standard algorithms; } \
-  | grep -E '^algorithms/[^/]+/(src/|tests/|data/|Makefile$)' | cut -d/ -f1-2 | sort -u
+  | grep -E '^algorithms/[^/]+/(src/|tests/|data/|Makefile$)' | cut -d/ -f1-2 | sort -u \
+  | while read -r d; do if [ -d "$d" ]; then echo "$d"; fi; done   # a renamed or deleted folder has nothing to run
